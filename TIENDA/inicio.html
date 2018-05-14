@@ -40,7 +40,65 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
   from {opacity: .4} 
   to {opacity: 1}
 }
+.container {
+    position: relative;
+    width: 100%;
+    max-width: 1000px;
+}
 
+.container img {
+    width: 100%;
+    height: auto;
+}
+
+.container .btn {
+    position: absolute;
+    top: 50%;
+    left: 40%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    background-color: #ddd;
+    outline: 0;
+    color: black;
+    font-size: 16px;
+    padding: 10px 25px;
+    border: none;
+    cursor: pointer;
+    text-align: center;
+    display: inline-block;
+	text-decoration:none;
+}
+.container .btn2 {
+    position: absolute;
+    top: 50%;
+    left: 60%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    background-color: #ddd;
+    outline: 0;
+    color: black;
+    font-size: 16px;
+    padding: 10px 25px;
+    border: none;
+    cursor: pointer;
+    text-align: center;
+    display: inline-block;
+	text-decoration:none;
+}
+
+.container .btn:hover {
+   background-color: #555;
+  color: white;
+}
+.container .btn2:hover {
+   background-color: #555;
+  color: white;
+}
+	
+
+	
+
+	
 </style>
 <body class="w3-content" style="max-width:1200px">
 
@@ -89,9 +147,15 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
   </header>
 
   <!-- Image header -->
-  <div class="w3-display-container w3-container"> </div>
-	
+  <div class="w3-display-container w3-container"> 
 
+<div class="container">
+  <img src="hola.jpg" alt="Snow" style="width:100%">
+  <a href="americanas.html" class="btn">HOMBRE</a>
+  <a href="americanas.html" class="btn2">MUJER</a>
+ 
+</div>	  
+	 
 
 <div class="slideshow-container">
 
@@ -116,7 +180,7 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
   <span class="dot"></span> 
   <span class="dot"></span> 
 </div>
-	</div>
+  </div>
 <script>
 var slideIndex = 0;
 showSlides();
