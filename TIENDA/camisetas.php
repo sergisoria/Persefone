@@ -1,3 +1,4 @@
+<?php require_once('Connections/conexion.php'); ?>
 <!DOCTYPE html>
 <html>
 <title>Persephónē</title>
@@ -10,95 +11,6 @@
 <style>
 .w3-sidebar a {font-family: "Roboto", sans-serif}
 body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
-	/* Slideshow container */
-	
-.slideshow-container {
-  max-width: 1000px;
-  position: relative;
-  margin: auto;
-}
-
-
-.active {
-  background-color: #717171;
-}
-
-/* Fading animation */
-.fade {
-  -webkit-animation-name: fade;
-  -webkit-animation-duration: 1.5s;
-  animation-name: fade;
-  animation-duration: 1.5s;
-}
-
-@-webkit-keyframes fade {
-  from {opacity: .4} 
-  to {opacity: 1}
-}
-
-@keyframes fade {
-  from {opacity: .4} 
-  to {opacity: 1}
-}
-.container {
-    position: relative;
-    width: 100%;
-    max-width: 1000px;
-}
-
-.container img {
-    width: 100%;
-    height: auto;
-}
-
-.container .btn {
-    position: absolute;
-    top: 50%;
-    left: 40%;
-    transform: translate(-50%, -50%);
-    -ms-transform: translate(-50%, -50%);
-    background-color: #ddd;
-    outline: 0;
-    color: black;
-    font-size: 16px;
-    padding: 10px 25px;
-    border: none;
-    cursor: pointer;
-    text-align: center;
-    display: inline-block;
-	text-decoration:none;
-}
-.container .btn2 {
-    position: absolute;
-    top: 50%;
-    left: 60%;
-    transform: translate(-50%, -50%);
-    -ms-transform: translate(-50%, -50%);
-    background-color: #ddd;
-    outline: 0;
-    color: black;
-    font-size: 16px;
-    padding: 10px 25px;
-    border: none;
-    cursor: pointer;
-    text-align: center;
-    display: inline-block;
-	text-decoration:none;
-}
-
-.container .btn:hover {
-   background-color: #555;
-  color: white;
-}
-.container .btn2:hover {
-   background-color: #555;
-  color: white;
-}
-	
-
-	
-
-	
 </style>
 <body class="w3-content" style="max-width:1200px">
 
@@ -108,16 +20,17 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
     <i onclick="w3_close()" class="fa fa-remove w3-hide-large w3-button w3-display-topright"></i>
     <!-- <h3 class="w3-wide"><b>Persephónē</b></h3> -->
 	  <a href="inicio.html"><img src="logo2.png" /></a>
+	  
   </div>
   <div class="w3-padding-64 w3-large w3-text-grey" style="font-weight:bold">
-    	<a href="camisetas.html" class="w3-bar-item w3-button">Camisetas</a> 
-		<a href="vestidos.html" class="w3-bar-item w3-button">Vestidos</a> 
-		<a href="vaqueros.html" class="w3-bar-item w3-button">Vaqueros</a> 
-		<a href="chaquetones_de_la_parra.html" class="w3-bar-item w3-button">Chaquetas y abrigos</a> 
-		<a href="ropadeporte.html" class="w3-bar-item w3-button">Ropa de Deporte</a> 
-		<a href="americanas.html" class="w3-button">Americanas</a> 
-		<a href="zapatos.html" class="w3-bar-item w3-button">Zapatos</a>
-  </div>
+	  <a href="camisetas.html" class="w3-button w3-block w3-white w3-left-align">Camisetas</a> 
+	  <a href="vestidos.html" class="w3-bar-item w3-button">Vestidos</a> 
+	  <a href="vaqueros.html" class="w3-bar-item w3-button w3-padding">Vaqueros</a> 
+	  <a href="chaquetones_de_la_parra.html" class="w3-bar-item w3-button">Chaquetas y abrigos</a> 
+	  <a href="ropadeporte.html" class="w3-bar-item w3-button">Ropa de Deporte</a> 
+	  <a href="americanas.html" class="w3-bar-item w3-button">Americanas</a> 
+	  <a href="zapatos.html" class="w3-bar-item w3-button">Zapatos</a>
+	</div>
   <a href="#footer" class="w3-bar-item w3-button w3-padding">Contacta con nosotros</a> 
   <a href="javascript:void(0)" class="w3-bar-item w3-button w3-padding" onclick="document.getElementById('newsletter').style.display='block'">Novedades</a> 
 </nav>
@@ -138,70 +51,62 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
   <div class="w3-hide-large" style="margin-top:83px"></div>
   
   <!-- Top header -->
-  <header class="w3-container w3-xlarge">
-     <p class="w3-left">INICIO</p>
-    <p class="w3-right">
-      <i class="fa fa-shopping-cart w3-margin-right"></i>
-      <i class="fa fa-search"></i>
-    </p>
+<header class="w3-container w3-xlarge">
+     <p class="w3-left">CAMISETAS</p>
+    <p class="w3-right"> <i class="fa fa-shopping-cart w3-margin-right"></i> <i class="fa fa-search"></i> </p>
   </header>
 
   <!-- Image header -->
-  <div class="w3-display-container w3-container"> 
+  <div class="w3-display-container w3-container"> </div>
 
-<div class="container">
-  <img src="imagen_inicio.jpg" alt="Snow" style="width:100%">
-  <a href="ax_hombre_ropa.html" class="btn">HOMBRE</a>
-  <a href="ax_mujer_ropa.html" class="btn2">MUJER</a>
- </div>	  
-	 
-
-<div class="slideshow-container">
-
-<div class="mySlides fade">
-  <img src="slide1.jpg" style="width:100%">
-	
-</div>
-
-<div class="mySlides fade">
-  <img src="slide2.jpg" style="width:100%">
-</div>
-
-<div class="mySlides fade">
- <img src="slide3.jpg" style="width:100%">
-</div>
-
-</div>
-<br>
-
-<div style="text-align:center">
-  <span class="dot"></span> 
-  <span class="dot"></span> 
-  <span class="dot"></span> 
-</div>
+  <div class="w3-container w3-text-grey" id="jeans">
+    <p>6 items</p>
   </div>
-<script>
-var slideIndex = 0;
-showSlides();
 
-function showSlides() {
-    var i;
-    var slides = document.getElementsByClassName("mySlides");
-    var dots = document.getElementsByClassName("dot");
-    for (i = 0; i < slides.length; i++) {
-       slides[i].style.display = "none";  
-    }
-    slideIndex++;
-    if (slideIndex > slides.length) {slideIndex = 1}    
-    for (i = 0; i < dots.length; i++) {
-        dots[i].className = dots[i].className.replace(" active", "");
-    }
-    slides[slideIndex-1].style.display = "block";  
-    dots[slideIndex-1].className += " active";
-    setTimeout(showSlides, 5000);
-}
-</script>
- 
+  <!-- Product grid -->
+  <div class="w3-row w3-grayscale">
+
+
+    <div class="w3-col l3 s6">
+      <div class="w3-container">
+        <div class="w3-display-container"> <img src="camisetas/blanco.jpg" width="180" height="230" alt=""/>          
+          <div class="w3-display-middle w3-display-hover"> </div>
+        </div>
+        <p>Camiseta de Botones<br>
+        <strong>19,99 €</strong></p>
+      </div>
+      <div class="w3-container">
+        <div class="w3-display-container"> <img src="camisetas/mersi.jpg" width="180" height="230" alt=""/>
+          <p>Camiseta Merci<br>
+            <strong>15,99 €</strong></p>
+          <div class="w3-display-middle w3-display-hover"> </div>
+        </div>
+<p>&nbsp;</p>
+      </div>
+</div>
+
+    <div class="w3-col l3 s6">
+      <div class="w3-container">
+        <img src="camisetas/levis.jpg" width="180" height="230" >
+        <p>Camiseta Levi's<br>
+        <strong>35,99 €</strong></p>
+      </div>
+    <img src="camisetas/camisetagris.jpg" width="180" height="230" />
+    <p>Camiseta Gris<br>
+      <strong>25,99 €</strong></p>
+    </div>
+
+    <div class="w3-col l3 s6">
+      <div class="w3-container"> <img src="camisetas/white.jpg" width="180" height="230" />
+        <p>Camiseta con Estampado<br>
+        <strong>150,99 €</strong></p>
+      </div>
+      <div class="w3-container"> <img src="camisetas/nike.jpg" width="180" height="230" alt=""/>
+        <p>Camiseta Nike F.C.<br>
+          <strong>62,99 €</strong></p>
+      </div>
+    </div>
+</div>
 <!-- Subscribe section -->
   <!-- Footer -->
   <footer class="w3-padding-64 w3-light-grey w3-small w3-center" id="footer">
@@ -226,7 +131,7 @@ function showSlides() {
         <p><a href="#">Ayuda</a></p>
       </div>
 
-     <div class="w3-col s4 w3-justify">
+    <div class="w3-col s4 w3-justify">
         <h4>Tienda</h4>
         <p><i class="fa fa-fw fa-map-marker"></i> Persephónē</p>
         <p><i class="fa fa-fw fa-phone"></i> 0044123123</p>
@@ -285,8 +190,6 @@ function w3_close() {
     document.getElementById("mySidebar").style.display = "none";
     document.getElementById("myOverlay").style.display = "none";
 }
-	
-
 </script>
 
 </body>
