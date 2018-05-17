@@ -8,9 +8,41 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <style>
-.w3-container {text-decoration:none;}
 .w3-sidebar a {font-family: "Roboto", sans-serif}
 body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
+article {
+   
+    padding: 1em;
+    overflow: hidden;
+}
+.column {
+    float: left;
+    width: 50%;
+    padding: 15px;
+}
+
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+.btn {
+    position: absolute;
+    background-color: #ddd;
+    outline: 0;
+    color: black;
+    font-size: 12px;
+    padding: 10px 25px;
+    border: none;
+    cursor: pointer;
+    text-align: center;
+    display: inline-block;
+	text-decoration:none;
+}
+.btn:hover {
+   background-color: #555;
+  color: white;
+}
 </style>
 <body class="w3-content" style="max-width:1200px">
 
@@ -51,7 +83,7 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
   
   <!-- Top header -->
   <header class="w3-container w3-xlarge">
-     <p class="w3-left">A|X HOMBRE</p>
+     
     <p class="w3-right">
       <i class="fa fa-shopping-cart w3-margin-right"></i>
       <i class="fa fa-search"></i>
@@ -61,57 +93,43 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
   <!-- Image header -->
   <div class="w3-display-container w3-container"> </div>
 
-  <div class="w3-container w3-text-grey" id="jeans">
-    <p>6 items</p>
+  <div class="w3-container w3-text-grey w3-xlarge" id="jeans">
+    <p class="w3-left">Campera A|X HOMBRE</p>
   </div>
 
   <!-- Product grid -->
   <div class="w3-row w3-grayscale">
-
-
-    <div class="w3-col l3 s6">
-      <div class="w3-container">
-      <a class="w3-container" href="AX_HOMBRE_1FOTO.html">
-        <div class="w3-display-container"> <img src="AX_hombre/AXH1.jpg" width="180" height="230" alt=""/>          
-          <div class="w3-display-middle w3-display-hover"> </div>
-        </div>
-        <p>Campera<br>
-        <strong>210,00 €</strong></p>
-        </a>
-      </div>
-      <div class="w3-container">
-        <div class="w3-display-container"> <img src="AX_hombre/AXH2.jpg" width="180" height="230" alt=""/>
-          <p>Cazadora de plumas<br>
-            <strong>165,00 €</strong></p>
-          <div class="w3-display-middle w3-display-hover"> </div>
-        </div>
-<p>&nbsp;</p>
-      </div>
+  <div class="row">
+  <div class="column">
+    <img src="AX_hombre/AX_hombre_dentro/AXHD1.jpg" width="400" height="550" />
+  </div>
+  <div class="column">
+    <h1>Campera</h1>
+    <h4>Color: AZUL MARINO</h4>
+    <label style="display: table-cell; vertical-align: top" data-bind="text: sizeLabel, visible: !hideLabels, disable: isDisabled">TALLA:</label>
+    <div class="colour-size-select" data-bind="visible: sizeDropdownVisible()">
+                <select data-id="sizeSelect" data-bind="options: variants,
+                    optionsAfterRender: disableSizeIfOutOfStock,
+                    optionsText: &quot;Size&quot;,
+                    optionsCaption: selectSizeText,
+                    value: size,
+                    disable: isDisabled || sizeDropdownDisabled(),
+                    css:{ required : noSizeSelected()}"><option value="">Porfavor Selecciona</option><option value="">S</option><option value="">M</option><option value="">L</option><option value="">XL</option></select>
+                <!-- ko if: noSizeSelected() --><!-- /ko -->
+            </div>
+    <h3>Descripcion del Producto:</h3>
+    <p>Tela técnica<br>Cuello redondo<br>Manga larga<br>Multibolsillos <br>Monocolor<br>Abotonadura simple<br>Cierre de cremallera<br>Interior forrado<br></p>
+	<a href="#" class="btn">Añadir a la Cesta</a>
+  </div>
 </div>
-
-    <div class="w3-col l3 s6">
-      <div class="w3-container">
-        <img src="AX_hombre/AXH3.jpg" width="180" height="230" >
-        <p>Sneakers<br>
-        <strong>145,00 €</strong></p>
-      </div>
-    <img src="AX_hombre/AXH4.jpg" width="180" height="230" />
-    <p>Campera<br>
-      <strong>210,00 €</strong></p>
-    </div>
-
-    <div class="w3-col l3 s6">
-      <div class="w3-container"> <img src="AX_hombre/AXH5.jpg" width="180" height="230" />
-        <p>Snadalia de dedo<br>
-        <strong>49,00 €</strong></p>
-      </div>
-      <div class="w3-container"> <img src="AX_hombre/AXH6.jpg" width="180" height="230" alt=""/>
-        <p>Gorra<br>
-          <strong>60,00 €</strong></p>
-      </div>
-    </div>
-</div>
+  
+  </div>
 <!-- Subscribe section -->
+ <div class="w3-row w3-grayscale w3-xlarge">
+ <p> </p>
+ <p> </p>
+ <p> </p>
+ </div>
   <!-- Footer -->
   <footer class="w3-padding-64 w3-light-grey w3-small w3-center" id="footer">
     <div class="w3-row-padding">
@@ -135,7 +153,7 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
         <p><a href="#">Ayuda</a></p>
       </div>
 
-     <div class="w3-col s4 w3-justify">
+      <div class="w3-col s4 w3-justify">
         <h4>Tienda</h4>
         <p><i class="fa fa-fw fa-map-marker"></i> Persephónē</p>
         <p><i class="fa fa-fw fa-phone"></i> 0044123123</p>
