@@ -18,7 +18,9 @@ INSERT INTO `proveedores` (`idProveedor`, `Nombre`, `Direccion`, `Correo`, `Tele
 
 INSERT INTO `proveedores` (`idProveedor`, `Nombre`, `Direccion`, `Correo`, `Telefono`) VALUES ('5', 'Pretty Little Thing', 'Manchester, United Kingdom', 'support@prettylittlething.com', '215131277');
 
-INSERT INTO `proveedores` (`idProveedor`, `Nombre`, `Direccion`, `Correo`, `Telefono`) VALUES ('6', 'Warehouse', 'London', 'support@warehouse.com', '213'); 
+INSERT INTO `proveedores` (`idProveedor`, `Nombre`, `Direccion`, `Correo`, `Telefono`) VALUES ('6', 'Warehouse', 'London', 'support@warehouse.com', '+44 345 548 1000'); 
+
+INSERT INTO `proveedores` (`idProveedor`, `Nombre`, `Direccion`, `Correo`, `Telefono`) VALUES ('7', 'Warehouse', 'London', 'support@warehouse.com', '213'); 
 
 
 --Insert Productos
