@@ -98,7 +98,7 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `persephone`.`Inventario` (
   `idInventario` INT NOT NULL,
-  `Precio Unidad` FLOAT NOT NULL,
+  `PrecioUnidad` FLOAT NOT NULL,
   `Stock` INT NOT NULL,
   `Imagen` BLOB NOT NULL,
   `idTienda` INT NOT NULL,
@@ -133,8 +133,8 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `persephone`.`Promociones` (
   `idPromocion` INT NOT NULL,
   `Nombre` VARCHAR(20) NOT NULL,
-  `Fecha Inicio` DATE NOT NULL,
-  `Fecha Final` DATE NOT NULL,
+  `FechaInicio` DATE NOT NULL,
+  `FechaFinal` DATE NOT NULL,
   `Descripcion` VARCHAR(20) NOT NULL,
   `Descuento` INT NOT NULL,
   UNIQUE INDEX `idPromocion_UNIQUE` (`idPromocion` ASC),
@@ -149,7 +149,7 @@ CREATE TABLE IF NOT EXISTS `persephone`.`Carrito` (
   `idCarrito` INT NOT NULL,
   `Fecha` DATE NOT NULL,
   `Cantidad` INT NOT NULL,
-  `Valor Unidad` FLOAT NOT NULL,
+  `ValorUnidad` FLOAT NOT NULL,
   `Talla` DOUBLE NOT NULL,
   `Color` VARCHAR(20) NOT NULL,
   `idUsuario` INT NOT NULL,
@@ -179,14 +179,14 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `persephone`.`Metodo Pago`
+-- Table `persephone`.`MetodoPago`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `persephone`.`Metodo Pago` (
-  `idMetodo Pago` INT NOT NULL,
-  `Tipo Pago` VARCHAR(20) NOT NULL,
+CREATE TABLE IF NOT EXISTS `persephone`.`MetodoPago` (
+  `idMetodoPago` INT NOT NULL,
+  `TipoPago` VARCHAR(20) NOT NULL,
   `Descripcion` VARCHAR(20) NOT NULL,
-  PRIMARY KEY (`idMetodo Pago`),
-  UNIQUE INDEX `idMetodo Pago_UNIQUE` (`idMetodo Pago` ASC))
+  PRIMARY KEY (`idMetodoPago`),
+  UNIQUE INDEX `idMetodo Pago_UNIQUE` (`idMetodoPago` ASC))
 ENGINE = InnoDB;
 
 
@@ -197,14 +197,14 @@ CREATE TABLE IF NOT EXISTS `persephone`.`Ventas` (
   `idVenta` INT NOT NULL,
   `Fecha` DATE NOT NULL,
   `Cantidad` INT NOT NULL,
-  `Valor Unidad` FLOAT NOT NULL,
-  `idMetodo Pago` INT NOT NULL,
+  `ValorUnidad` FLOAT NOT NULL,
+  `idMetodoPago` INT NOT NULL,
   PRIMARY KEY (`idVenta`),
   UNIQUE INDEX `idVenta_UNIQUE` (`idVenta` ASC),
-  INDEX `fk_Ventas_Metodo Pago1_idx` (`idMetodo Pago` ASC),
-  CONSTRAINT `fk_Ventas_Metodo Pago1`
-    FOREIGN KEY (`idMetodo Pago`)
-    REFERENCES `persephone`.`Metodo Pago` (`idMetodo Pago`)
+  INDEX `fk_Ventas_Metodo Pago1_idx` (`idMetodoPago` ASC),
+  CONSTRAINT `fk_Ventas_MetodoPago1`
+    FOREIGN KEY (`idMetodoPago`)
+    REFERENCES `persephone`.`MetodoPago` (`idMetodoPago`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -215,8 +215,8 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `persephone`.`Pedido` (
   `idPedido` INT NOT NULL,
-  `Fecha Inicio` DATE NOT NULL,
-  `Fecha Estimada` DATE NOT NULL,
+  `FechaInicio` DATE NOT NULL,
+  `FechaEstimada` DATE NOT NULL,
   `idUsuario` INT NOT NULL,
   PRIMARY KEY (`idPedido`),
   UNIQUE INDEX `idPedido_UNIQUE` (`idPedido` ASC),
@@ -230,17 +230,17 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `persephone`.`Detalle Pedido`
+-- Table `persephone`.`DetallePedido`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `persephone`.`Detalle Pedido` (
-  `idDetalle Pedido` INT NOT NULL,
+CREATE TABLE IF NOT EXISTS `persephone`.`DetallePedido` (
+  `idDetallePedido` INT NOT NULL,
   `Cantidad` INT NOT NULL,
   `Talla` DECIMAL(10,0) NOT NULL,
   `Color` VARCHAR(20) NOT NULL,
   `idProducto` INT NOT NULL,
   `idPedido` INT NOT NULL,
-  PRIMARY KEY (`idDetalle Pedido`),
-  UNIQUE INDEX `idDetalle Pedido_UNIQUE` (`idDetalle Pedido` ASC),
+  PRIMARY KEY (`idDetallePedido`),
+  UNIQUE INDEX `idDetallePedido_UNIQUE` (`idDetallePedido` ASC),
   INDEX `fk_Detalle Pedido_Productos1_idx` (`idProducto` ASC),
   INDEX `fk_Detalle Pedido_Pedido1_idx` (`idPedido` ASC),
   CONSTRAINT `fk_Detalle Pedido_Productos1`
