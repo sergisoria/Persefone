@@ -1,4 +1,25 @@
 <?php require_once('Connections/conexion.php'); ?>
+<?php
+
+$variable_Consulta = "0";
+if (isset($VARIABLE)) {
+  $variable_Consulta = $VARIABLE;
+}
+//WHERE NOMBRECAMPO = %s ORDER BY NOMBRECAMPOFECHA DESC condicion ordenador todo
+$query_DatosConsulta = sprintf("SELECT * FROM productos", GetSQLValueString($variable_Consulta, "int"));
+$DatosConsulta = mysqli_query($conn,  $query_DatosConsulta) or die(mysqli_error($conn));
+$row_DatosConsulta = mysqli_fetch_assoc($DatosConsulta);
+$totalRows_DatosConsulta = mysqli_num_rows($DatosConsulta);
+
+//FINAL DE LA PARTE SUPERIOR
+?>
+
+
+<?php
+//AÑADIR AL FINAL DE LA PÁGINA
+mysqli_free_result($DatosConsulta);
+?>
+
 <!DOCTYPE html>
 <html>
 <title>Persephónē</title>
@@ -20,19 +41,19 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
     <i onclick="w3_close()" class="fa fa-remove w3-hide-large w3-button w3-display-topright"></i>
     <!-- <h3 class="w3-wide"><b>Persephónē</b></h3> -->
 	  <a href="inicio.html"><img src="logo2.png" /></a>
-	  
+
   </div>
   <div class="w3-padding-64 w3-large w3-text-grey" style="font-weight:bold">
-	  <a href="camisetas.html" class="w3-button w3-block w3-white w3-left-align">Camisetas</a> 
-	  <a href="vestidos.html" class="w3-bar-item w3-button">Vestidos</a> 
-	  <a href="vaqueros.html" class="w3-bar-item w3-button w3-padding">Vaqueros</a> 
-	  <a href="chaquetones_de_la_parra.html" class="w3-bar-item w3-button">Chaquetas y abrigos</a> 
-	  <a href="ropadeporte.html" class="w3-bar-item w3-button">Ropa de Deporte</a> 
-	  <a href="americanas.html" class="w3-bar-item w3-button">Americanas</a> 
+	  <a href="camisetas.html" class="w3-button w3-block w3-white w3-left-align">Camisetas</a>
+	  <a href="vestidos.html" class="w3-bar-item w3-button">Vestidos</a>
+	  <a href="vaqueros.html" class="w3-bar-item w3-button w3-padding">Vaqueros</a>
+	  <a href="chaquetones_de_la_parra.html" class="w3-bar-item w3-button">Chaquetas y abrigos</a>
+	  <a href="ropadeporte.html" class="w3-bar-item w3-button">Ropa de Deporte</a>
+	  <a href="americanas.html" class="w3-bar-item w3-button">Americanas</a>
 	  <a href="zapatos.html" class="w3-bar-item w3-button">Zapatos</a>
 	</div>
-  <a href="#footer" class="w3-bar-item w3-button w3-padding">Contacta con nosotros</a> 
-  <a href="javascript:void(0)" class="w3-bar-item w3-button w3-padding" onclick="document.getElementById('newsletter').style.display='block'">Novedades</a> 
+  <a href="#footer" class="w3-bar-item w3-button w3-padding">Contacta con nosotros</a>
+  <a href="javascript:void(0)" class="w3-bar-item w3-button w3-padding" onclick="document.getElementById('newsletter').style.display='block'">Novedades</a>
 </nav>
 
 <!-- Top menu on small screens -->
@@ -49,7 +70,7 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
 
   <!-- Push down content on small screens -->
   <div class="w3-hide-large" style="margin-top:83px"></div>
-  
+
   <!-- Top header -->
 <header class="w3-container w3-xlarge">
      <p class="w3-left">CAMISETAS</p>
@@ -63,50 +84,47 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
     <p>6 items</p>
   </div>
 
+  <?php
+//AQUI ES DONDE SE SACAN LOS DATOS, SE COMPRUEBA QUE HAY RESULTADOS
+if ($totalRows_DatosConsulta > 0) {
+do {?>
+  <div class="col-sm-4">
+							<div class="product-image-wrapper">
+								<div class="single-products">
+										<div class="productinfo text-center">
+											<img src="AX_hombre/AXH2.jpg" width="180" height="230" alt=""/>
+											<h2><?php echo $row_DatosConsulta["nombre"]; ?>€</h2>
+											<p><?php echo $row_DatosConsulta["Precio Unidad"]; ?></p>
+											<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+										</div>
+										<div class="product-overlay">
+											<div class="overlay-content">
+												<h2>AAAA...</h2>
+												<p>AAAA....</p>
+												<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+											</div>
+										</div>
+								</div>
+								<div class="choose">
+									<ul class="nav nav-pills nav-justified">
+										<li><a href="#"><i class="fa fa-plus-square"></i>Add to wishlist</a></li>
+										<li><a href="#"><i class="fa fa-plus-square"></i>Add to compare</a></li>
+									</ul>
+								</div>
+							</div>
+						</div>
+  <?php
+		echo $row_DatosConsulta["NOMBRECAMPO"];
+
+       } while ($row_DatosConsulta = mysqli_fetch_assoc($DatosConsulta));
+}
+else
+{ //MOSTRAR SI NO HAY RESULTADOS ?>
+    No hay resultados.
+    <?php } ?>
+
   <!-- Product grid -->
-  <div class="w3-row w3-grayscale">
 
-
-    <div class="w3-col l3 s6">
-      <div class="w3-container">
-        <div class="w3-display-container"> <img src="camisetas/blanco.jpg" width="180" height="230" alt=""/>          
-          <div class="w3-display-middle w3-display-hover"> </div>
-        </div>
-        <p>Camiseta de Botones<br>
-        <strong>19,99 €</strong></p>
-      </div>
-      <div class="w3-container">
-        <div class="w3-display-container"> <img src="camisetas/mersi.jpg" width="180" height="230" alt=""/>
-          <p>Camiseta Merci<br>
-            <strong>15,99 €</strong></p>
-          <div class="w3-display-middle w3-display-hover"> </div>
-        </div>
-<p>&nbsp;</p>
-      </div>
-</div>
-
-    <div class="w3-col l3 s6">
-      <div class="w3-container">
-        <img src="camisetas/levis.jpg" width="180" height="230" >
-        <p>Camiseta Levi's<br>
-        <strong>35,99 €</strong></p>
-      </div>
-    <img src="camisetas/camisetagris.jpg" width="180" height="230" />
-    <p>Camiseta Gris<br>
-      <strong>25,99 €</strong></p>
-    </div>
-
-    <div class="w3-col l3 s6">
-      <div class="w3-container"> <img src="camisetas/white.jpg" width="180" height="230" />
-        <p>Camiseta con Estampado<br>
-        <strong>150,99 €</strong></p>
-      </div>
-      <div class="w3-container"> <img src="camisetas/nike.jpg" width="180" height="230" alt=""/>
-        <p>Camiseta Nike F.C.<br>
-          <strong>62,99 €</strong></p>
-      </div>
-    </div>
-</div>
 <!-- Subscribe section -->
   <!-- Footer -->
   <footer class="w3-padding-64 w3-light-grey w3-small w3-center" id="footer">
@@ -147,7 +165,7 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
     </div>
   </footer>
 
- 
+
 
   <!-- End page content -->
 </div>
@@ -166,7 +184,7 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
 </div>
 
 <script>
-// Accordion 
+// Accordion
 function myAccFunc() {
     var x = document.getElementById("demoAcc");
     if (x.className.indexOf("w3-show") == -1) {
@@ -185,7 +203,7 @@ function w3_open() {
     document.getElementById("mySidebar").style.display = "block";
     document.getElementById("myOverlay").style.display = "block";
 }
- 
+
 function w3_close() {
     document.getElementById("mySidebar").style.display = "none";
     document.getElementById("myOverlay").style.display = "none";
