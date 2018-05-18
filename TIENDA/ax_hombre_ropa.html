@@ -11,6 +11,105 @@
 .w3-container {text-decoration:none;}
 .w3-sidebar a {font-family: "Roboto", sans-serif}
 body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
+
+* {
+    box-sizing: border-box;
+}
+
+.openBtn {
+    background: #f1f1f1;
+    border: none;
+    padding: 10px 15px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.openBtn:hover {
+    background: #bbb;
+}
+
+.overlay {
+    height: 100%;
+    width: 100%;
+    display: none;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0, 0.9);
+}
+
+.overlay-content {
+    position: relative;
+    top: 46%;
+    width: 80%;
+    text-align: center;
+    margin-top: 30px;
+    margin: auto;
+}
+
+.overlay .closebtn {
+    position: absolute;
+    top: 20px;
+    right: 45px;
+    font-size: 60px;
+    cursor: pointer;
+    color: white;
+}
+
+.overlay .closebtn:hover {
+    color: #ccc;
+}
+
+.overlay input[type=text] {
+    padding: 15px;
+    font-size: 17px;
+    border: none;
+    float: left;
+    width: 80%;
+    background: white;
+}
+
+.overlay input[type=text]:hover {
+    background: #f1f1f1;
+}
+
+.overlay button {
+    float: left;
+    width: 20%;
+    padding: 15px;
+    background: #ddd;
+    font-size: 17px;
+    border: none;
+    cursor: pointer;
+}
+
+.overlay button:hover {
+    background: #bbb;
+}
+ul.breadcrumb {
+    padding: 10px 16px;
+    list-style: none;
+  
+}
+ul.breadcrumb li {
+    display: inline;
+    font-size: 20px;
+}
+ul.breadcrumb li+li:before {
+    padding: 5px;
+  
+    content: "/";
+}
+ul.breadcrumb li a {
+    color: #0275d8;
+    text-decoration: none;
+}
+ul.breadcrumb li a:hover {
+    color: #01447e;
+    text-decoration: underline;
+}
 </style>
 <body class="w3-content" style="max-width:1200px">
 
@@ -20,7 +119,17 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
     <i onclick="w3_close()" class="fa fa-remove w3-hide-large w3-button w3-display-topright"></i>
     <!-- <h3 class="w3-wide"><b>Persephónē</b></h3> -->
 	  <a href="inicio.html"><img src="logo2.png" /></a>
+      
   </div>
+  <div id="myOverlay2" class="overlay">
+  <span class="closebtn" onclick="closeSearch()" title="Close Overlay">×</span>
+  <div class="overlay-content">
+    <form action="/action_page.php">
+      <input type="text" placeholder="Buscar.." name="search">
+      <button type="submit"><i class="fa fa-search"></i></button>
+    </form>
+  </div>
+</div>
   <div class="w3-padding-64 w3-large w3-text-grey" style="font-weight:bold">
     	<a href="camisetas.html" class="w3-bar-item w3-button">Camisetas</a> 
 		<a href="vestidos.html" class="w3-bar-item w3-button">Vestidos</a> 
@@ -51,18 +160,33 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
   
   <!-- Top header -->
   <header class="w3-container w3-xlarge">
-     <p class="w3-left">A|X HOMBRE</p>
+    <!-- <p class="w3-left">A|X HOMBRE</p> -->
     <p class="w3-right">
       <i class="fa fa-shopping-cart w3-margin-right"></i>
-      <i class="fa fa-search"></i>
+      <i onclick="openSearch()" class="fa fa-search openBtn">
+      </i>
     </p>
+    <script>
+function openSearch() {
+    document.getElementById("myOverlay2").style.display = "block";
+}
+
+function closeSearch() {
+    document.getElementById("myOverlay2").style.display = "none";
+}
+</script>
   </header>
 
   <!-- Image header -->
-  <div class="w3-display-container w3-container"> </div>
-
+  <div class="w3-display-container w3-container"> 
+  
+  </div>
+<ul class="breadcrumb">
+  <li><a  style='text-decoration:none;color:grey;'href="inicio.html">INICIO</a></li>
+  <li>A|X HOMBRE</li>
+</ul>
   <div class="w3-container w3-text-grey" id="jeans">
-    <p>6 items</p>
+      <p>6 items</p>
   </div>
 
   <!-- Product grid -->
@@ -71,10 +195,8 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
 
     <div class="w3-col l3 s6">
       <div class="w3-container">
-      <a class="w3-container" href="AX_HOMBRE_1FOTO.html">
-        <div class="w3-display-container"> <img src="AX_hombre/AXH1.jpg" width="180" height="230" alt=""/>          
-          <div class="w3-display-middle w3-display-hover"> </div>
-        </div>
+      <a style='text-decoration:none;color:black;'class="w3-container" href="AX_HOMBRE_1FOTO.html">
+        <img src="AX_hombre/AXH1.jpg" width="180" height="230" alt=""/>          
         <p>Campera<br>
         <strong>210,00 €</strong></p>
         </a>
@@ -91,21 +213,29 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
 
     <div class="w3-col l3 s6">
       <div class="w3-container">
+      <a style='text-decoration:none;color:black;'class="w3-container" href="AX_HOMBRE_2FOTO.html">
         <img src="AX_hombre/AXH3.jpg" width="180" height="230" >
         <p>Sneakers<br>
         <strong>145,00 €</strong></p>
+        </a>
       </div>
+       <div class="w3-container">
     <img src="AX_hombre/AXH4.jpg" width="180" height="230" />
     <p>Campera<br>
       <strong>210,00 €</strong></p>
     </div>
+    </div>
 
     <div class="w3-col l3 s6">
-      <div class="w3-container"> <img src="AX_hombre/AXH5.jpg" width="180" height="230" />
+      <div class="w3-container"> 
+      <a style='text-decoration:none;color:black;'class="w3-container" href="AX_HOMBRE_3FOTO.html">
+      <img src="AX_hombre/AXH5.jpg" width="180" height="230" />
         <p>Snadalia de dedo<br>
         <strong>49,00 €</strong></p>
+        </a>
       </div>
-      <div class="w3-container"> <img src="AX_hombre/AXH6.jpg" width="180" height="230" alt=""/>
+      <div class="w3-container"> 
+      <img src="AX_hombre/AXH6.jpg" width="180" height="230" alt=""/>
         <p>Gorra<br>
           <strong>60,00 €</strong></p>
       </div>
@@ -194,6 +324,7 @@ function w3_close() {
     document.getElementById("mySidebar").style.display = "none";
     document.getElementById("myOverlay").style.display = "none";
 }
+
 </script>
 
 </body>

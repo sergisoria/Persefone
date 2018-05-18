@@ -43,104 +43,6 @@ article {
    background-color: #555;
   color: white;
 }
-* {
-    box-sizing: border-box;
-}
-
-.openBtn {
-    background: #f1f1f1;
-    border: none;
-    padding: 10px 15px;
-    font-size: 20px;
-    cursor: pointer;
-}
-
-.openBtn:hover {
-    background: #bbb;
-}
-
-.overlay {
-    height: 100%;
-    width: 100%;
-    display: none;
-    position: fixed;
-    z-index: 1;
-    top: 0;
-    left: 0;
-    background-color: rgb(0,0,0);
-    background-color: rgba(0,0,0, 0.9);
-}
-
-.overlay-content {
-    position: relative;
-    top: 46%;
-    width: 80%;
-    text-align: center;
-    margin-top: 30px;
-    margin: auto;
-}
-
-.overlay .closebtn {
-    position: absolute;
-    top: 20px;
-    right: 45px;
-    font-size: 60px;
-    cursor: pointer;
-    color: white;
-}
-
-.overlay .closebtn:hover {
-    color: #ccc;
-}
-
-.overlay input[type=text] {
-    padding: 15px;
-    font-size: 17px;
-    border: none;
-    float: left;
-    width: 80%;
-    background: white;
-}
-
-.overlay input[type=text]:hover {
-    background: #f1f1f1;
-}
-
-.overlay button {
-    float: left;
-    width: 20%;
-    padding: 15px;
-    background: #ddd;
-    font-size: 17px;
-    border: none;
-    cursor: pointer;
-}
-
-.overlay button:hover {
-    background: #bbb;
-}
-ul.breadcrumb {
-    padding: 10px 16px;
-    list-style: none;
-  
-}
-ul.breadcrumb li {
-    display: inline;
-    font-size: 20px;
-}
-ul.breadcrumb li+li:before {
-    padding: 5px;
-  
-    content: "/";
-}
-ul.breadcrumb li a {
-    color: #0275d8;
-    text-decoration: none;
-}
-ul.breadcrumb li a:hover {
-    color: #01447e;
-    text-decoration: underline;
-}
 </style>
 <body class="w3-content" style="max-width:1200px">
 
@@ -151,15 +53,6 @@ ul.breadcrumb li a:hover {
     <!-- <h3 class="w3-wide"><b>Persephónē</b></h3> -->
 	  <a href="inicio.html"><img src="logo2.png" /></a>
   </div>
-  <div id="myOverlay2" class="overlay">
-  <span class="closebtn" onclick="closeSearch()" title="Close Overlay">×</span>
-  <div class="overlay-content">
-    <form action="/action_page.php">
-      <input type="text" placeholder="Buscar.." name="search">
-      <button type="submit"><i class="fa fa-search"></i></button>
-    </form>
-  </div>
-</div>
   <div class="w3-padding-64 w3-large w3-text-grey" style="font-weight:bold">
     	<a href="camisetas.html" class="w3-bar-item w3-button">Camisetas</a> 
 		<a href="vestidos.html" class="w3-bar-item w3-button">Vestidos</a> 
@@ -189,42 +82,31 @@ ul.breadcrumb li a:hover {
   <div class="w3-hide-large" style="margin-top:83px"></div>
   
   <!-- Top header -->
-   <header class="w3-container w3-xlarge">
-    <!-- <p class="w3-left">A|X HOMBRE</p> -->
+  <header class="w3-container w3-xlarge">
+     
     <p class="w3-right">
       <i class="fa fa-shopping-cart w3-margin-right"></i>
-      <i onclick="openSearch()" class="fa fa-search openBtn">
-      </i>
+      <i class="fa fa-search"></i>
     </p>
-    <script>
-function openSearch() {
-    document.getElementById("myOverlay2").style.display = "block";
-}
-
-function closeSearch() {
-    document.getElementById("myOverlay2").style.display = "none";
-}
-</script>
   </header>
+
   <!-- Image header -->
   <div class="w3-display-container w3-container"> </div>
 
-  <div class="w3-container w3-text-grey w3-xlarge" id="jeans"></div>
-<ul class="breadcrumb">
-  <li><a  style='text-decoration:none;color:grey;'href="inicio.html">INICIO</a></li>
-  <li><a  style='text-decoration:none;color:grey;'href="ax_hombre_ropa.html">A|X HOMBRE</a></li>
-  <li>CAMPERA</li>
-</ul>
+  <div class="w3-container w3-text-grey w3-xlarge" id="jeans">
+    <p class="w3-left">Sneakers A|X HOMBRE</p>
+  </div>
+
   <!-- Product grid -->
   <div class="w3-row w3-grayscale">
   <div class="row">
   <div class="column">
-    <img src="AX_hombre/AX_hombre_dentro/AXHD1.jpg" width="400" height="550" />
+    <img src="AX_hombre/AX_hombre_dentro/AXHD2.jpg" width="400" height="550" />
   </div>
   <div class="column">
-    <h1>CAMPERA</h1>
+    <h1>SNEAKERS</h1>
     <h4>Color: AZUL MARINO</h4>
-    <h3>Precio: 210,00 €</h3>
+    <h3>Precio: 145,00 €</h3>
     <label style="display: table-cell; vertical-align: top" data-bind="text: sizeLabel, visible: !hideLabels, disable: isDisabled">TALLA:</label>
     <div class="colour-size-select" data-bind="visible: sizeDropdownVisible()">
                 <select data-id="sizeSelect" data-bind="options: variants,
@@ -233,17 +115,18 @@ function closeSearch() {
                     optionsCaption: selectSizeText,
                     value: size,
                     disable: isDisabled || sizeDropdownDisabled(),
-                    css:{ required : noSizeSelected()}"><option value="">Porfavor Selecciona</option><option value="">S</option><option value="">M</option><option value="">L</option><option value="">XL</option></select>
+                    css:{ required : noSizeSelected()}"><option value="">Porfavor Selecciona</option><option value="">39</option><option value="">40</option><option value="">41</option><option value="">42</option><option value="">43</option><option value="">44</option><option value="">45</option></select>
                 <!-- ko if: noSizeSelected() --><!-- /ko -->
             </div>
-             <p></p>
+            <p></p>
          <a href="#" class="btn">Añadir a la Cesta</a>
          <p><br></p>
+
     <a onclick="myAccFunc()" href="javascript:void(0)" class="w3-button w3-block w3-white w3-left-align" id="myBtn">
       Descripcion del Producto: <i class="fa fa-caret-down"></i>
     </a>
     <div id="demoAcc" class="w3-bar-block w3-hide w3-medium">
-      <p>Tela técnica<br>Cuello redondo<br>Manga larga<br>Multibolsillos <br>Monocolor<br>Abotonadura simple<br>Cierre de cremallera<br>Interior forrado<br></p>
+      <p>Monocolor<br>Cierre con elásticos<br>Puntera redonda<br>Suela de goma<br></p>
     </div>
 	
   </div>
