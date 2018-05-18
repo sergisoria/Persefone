@@ -91,7 +91,7 @@ do {?>
 										<div class="productinfo text-center">
 											<img src="AX_hombre/AXH2.jpg" width="180" height="230" alt=""/>
 											<h2><?php echo $row_DatosConsulta["Nombre"]; ?>€</h2>
-											<p><?php echo $row_DatosConsulta["Precio Unidad"]; ?></p>
+											<p><?php echo $row_DatosConsulta["PrecioUnidad"]; ?></p>
 											<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
 										</div>
 										<div class="product-overlay">
