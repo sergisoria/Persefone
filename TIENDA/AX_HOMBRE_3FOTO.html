@@ -43,6 +43,88 @@ article {
    background-color: #555;
   color: white;
 }
+.overlay {
+    height: 100%;
+    width: 100%;
+    display: none;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0, 0.9);
+}
+
+.overlay-content {
+    position: relative;
+    top: 46%;
+    width: 80%;
+    text-align: center;
+    margin-top: 30px;
+    margin: auto;
+}
+
+.overlay .closebtn {
+    position: absolute;
+    top: 20px;
+    right: 45px;
+    font-size: 60px;
+    cursor: pointer;
+    color: white;
+}
+
+.overlay .closebtn:hover {
+    color: #ccc;
+}
+
+.overlay input[type=text] {
+    padding: 15px;
+    font-size: 17px;
+    border: none;
+    float: left;
+    width: 80%;
+    background: white;
+}
+
+.overlay input[type=text]:hover {
+    background: #f1f1f1;
+}
+
+.overlay button {
+    float: left;
+    width: 20%;
+    padding: 15px;
+    background: #ddd;
+    font-size: 17px;
+    border: none;
+    cursor: pointer;
+}
+
+.overlay button:hover {
+    background: #bbb;
+}
+ul.breadcrumb {
+    padding: 10px 16px;
+    list-style: none;
+  
+}
+ul.breadcrumb li {
+    display: inline;
+    font-size: 20px;
+}
+ul.breadcrumb li+li:before {
+    padding: 5px;
+  
+    content: "/";
+}
+ul.breadcrumb li a {
+    color: #0275d8;
+    text-decoration: none;
+}
+ul.breadcrumb li a:hover {
+    color: #01447e;
+    text-decoration: underline;
+}
 </style>
 <body class="w3-content" style="max-width:1200px">
 
@@ -93,9 +175,12 @@ article {
   <!-- Image header -->
   <div class="w3-display-container w3-container"> </div>
 
-  <div class="w3-container w3-text-grey w3-xlarge" id="jeans">
-    <p class="w3-left">Sandalia de dedo A|X HOMBRE</p>
-  </div>
+  <div class="w3-container w3-text-grey w3-xlarge" id="jeans"> </div>
+  <ul class="breadcrumb">
+  <li><a  style='text-decoration:none;color:grey;'href="inicio.html">INICIO</a></li>
+  <li><a  style='text-decoration:none;color:grey;'href="ax_hombre_ropa.html">A|X HOMBRE</a></li>
+  <li>SANDALIA DE DEDO</li>
+</ul>
 
   <!-- Product grid -->
   <div class="w3-row w3-grayscale">
