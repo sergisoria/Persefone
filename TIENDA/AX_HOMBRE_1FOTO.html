@@ -104,8 +104,9 @@ article {
     <img src="AX_hombre/AX_hombre_dentro/AXHD1.jpg" width="400" height="550" />
   </div>
   <div class="column">
-    <h1>Campera</h1>
+    <h1>CAMPERA</h1>
     <h4>Color: AZUL MARINO</h4>
+    <h3>Precio: 210,00 €</h3>
     <label style="display: table-cell; vertical-align: top" data-bind="text: sizeLabel, visible: !hideLabels, disable: isDisabled">TALLA:</label>
     <div class="colour-size-select" data-bind="visible: sizeDropdownVisible()">
                 <select data-id="sizeSelect" data-bind="options: variants,
@@ -117,9 +118,16 @@ article {
                     css:{ required : noSizeSelected()}"><option value="">Porfavor Selecciona</option><option value="">S</option><option value="">M</option><option value="">L</option><option value="">XL</option></select>
                 <!-- ko if: noSizeSelected() --><!-- /ko -->
             </div>
-    <h3>Descripcion del Producto:</h3>
-    <p>Tela técnica<br>Cuello redondo<br>Manga larga<br>Multibolsillos <br>Monocolor<br>Abotonadura simple<br>Cierre de cremallera<br>Interior forrado<br></p>
-	<a href="#" class="btn">Añadir a la Cesta</a>
+             <p></p>
+         <a href="#" class="btn">Añadir a la Cesta</a>
+         <p><br></p>
+    <a onclick="myAccFunc()" href="javascript:void(0)" class="w3-button w3-block w3-white w3-left-align" id="myBtn">
+      Descripcion del Producto: <i class="fa fa-caret-down"></i>
+    </a>
+    <div id="demoAcc" class="w3-bar-block w3-hide w3-medium">
+      <p>Tela técnica<br>Cuello redondo<br>Manga larga<br>Multibolsillos <br>Monocolor<br>Abotonadura simple<br>Cierre de cremallera<br>Interior forrado<br></p>
+    </div>
+	
   </div>
 </div>
   
