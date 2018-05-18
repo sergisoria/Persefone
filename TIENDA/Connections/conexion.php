@@ -5,7 +5,7 @@ if (!isset($_SESSION)) {
   session_start();
 }
 
-$hostname_conn = "172.17.129.166";
+$hostname_conn = "172.17.129.142";
 $database_conn = "persephone";
 $username_conn = "root";
 $password_conn = "";
@@ -16,11 +16,11 @@ mysqli_set_charset($conn, 'utf8');
 if (is_file("includes/funciones.php")) 
 include("includes/funciones.php"); 
 
-echo <script> alert("Connection realizada"); </script>;
+
 
 else
 {
-echo <script> alert("Connection error1"); </script>;
-	include("../includes/funciones.php");
+
+	include("../../includes/funciones.php");
 }
 ?>
