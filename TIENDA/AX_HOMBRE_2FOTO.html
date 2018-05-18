@@ -8,113 +8,40 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <style>
-.w3-container {text-decoration:none;}
 .w3-sidebar a {font-family: "Roboto", sans-serif}
 body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
-.openBtn {
-    background: #f1f1f1;
-    border: none;
-    padding: 10px 15px;
-    font-size: 20px;
-    cursor: pointer;
+article {
+   
+    padding: 1em;
+    overflow: hidden;
 }
-* {
-    box-sizing: border-box;
-}
-
-.openBtn {
-    background: #f1f1f1;
-    border: none;
-    padding: 10px 15px;
-    font-size: 20px;
-    cursor: pointer;
+.column {
+    float: left;
+    width: 50%;
+    padding: 15px;
 }
 
-.openBtn:hover {
-    background: #bbb;
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
 }
-
-.overlay {
-    height: 100%;
-    width: 100%;
-    display: none;
-    position: fixed;
-    z-index: 1;
-    top: 0;
-    left: 0;
-    background-color: rgb(0,0,0);
-    background-color: rgba(0,0,0, 0.9);
-}
-
-.overlay-content {
-    position: relative;
-    top: 46%;
-    width: 80%;
-    text-align: center;
-    margin-top: 30px;
-    margin: auto;
-}
-
-.overlay .closebtn {
+.btn {
     position: absolute;
-    top: 20px;
-    right: 45px;
-    font-size: 60px;
-    cursor: pointer;
-    color: white;
-}
-
-.overlay .closebtn:hover {
-    color: #ccc;
-}
-
-.overlay input[type=text] {
-    padding: 15px;
-    font-size: 17px;
-    border: none;
-    float: left;
-    width: 80%;
-    background: white;
-}
-
-.overlay input[type=text]:hover {
-    background: #f1f1f1;
-}
-
-.overlay button {
-    float: left;
-    width: 20%;
-    padding: 15px;
-    background: #ddd;
-    font-size: 17px;
+    background-color: #ddd;
+    outline: 0;
+    color: black;
+    font-size: 12px;
+    padding: 10px 25px;
     border: none;
     cursor: pointer;
+    text-align: center;
+    display: inline-block;
+	text-decoration:none;
 }
-
-.overlay button:hover {
-    background: #bbb;
-}
-ul.breadcrumb {
-    padding: 10px 16px;
-    list-style: none;
-  
-}
-ul.breadcrumb li {
-    display: inline;
-    font-size: 20px;
-}
-ul.breadcrumb li+li:before {
-    padding: 5px;
-  
-    content: "/";
-}
-ul.breadcrumb li a {
-    color: #0275d8;
-    text-decoration: none;
-}
-ul.breadcrumb li a:hover {
-    color: #01447e;
-    text-decoration: underline;
+.btn:hover {
+   background-color: #555;
+  color: white;
 }
 </style>
 <body class="w3-content" style="max-width:1200px">
@@ -125,17 +52,7 @@ ul.breadcrumb li a:hover {
     <i onclick="w3_close()" class="fa fa-remove w3-hide-large w3-button w3-display-topright"></i>
     <!-- <h3 class="w3-wide"><b>Persephónē</b></h3> -->
 	  <a href="inicio.html"><img src="logo2.png" /></a>
-      
   </div>
-  <div id="myOverlay2" class="overlay">
-  <span class="closebtn" onclick="closeSearch()" title="Close Overlay">×</span>
-  <div class="overlay-content">
-    <form action="/action_page.php">
-      <input type="text" placeholder="Buscar.." name="search">
-      <button type="submit"><i class="fa fa-search"></i></button>
-    </form>
-  </div>
-</div>
   <div class="w3-padding-64 w3-large w3-text-grey" style="font-weight:bold">
     	<a href="camisetas.html" class="w3-bar-item w3-button">Camisetas</a> 
 		<a href="vestidos.html" class="w3-bar-item w3-button">Vestidos</a> 
@@ -166,88 +83,62 @@ ul.breadcrumb li a:hover {
   
   <!-- Top header -->
   <header class="w3-container w3-xlarge">
-    <!-- <p class="w3-left">A|X HOMBRE</p> -->
+     
     <p class="w3-right">
       <i class="fa fa-shopping-cart w3-margin-right"></i>
-      <i onclick="openSearch()" class="fa fa-search openBtn">
-      </i>
+      <i class="fa fa-search"></i>
     </p>
-    <script>
-function openSearch() {
-    document.getElementById("myOverlay2").style.display = "block";
-}
-
-function closeSearch() {
-    document.getElementById("myOverlay2").style.display = "none";
-}
-</script>
   </header>
 
   <!-- Image header -->
-  <div class="w3-display-container w3-container"> 
-  
-  </div>
-<ul class="breadcrumb">
-  <li><a  style='text-decoration:none;color:grey;'href="inicio.html">INICIO</a></li>
-  <li>A|X HOMBRE</li>
-</ul>
-  <div class="w3-container w3-text-grey" id="jeans">
-      <p>6 items</p>
+  <div class="w3-display-container w3-container"> </div>
+
+  <div class="w3-container w3-text-grey w3-xlarge" id="jeans">
+    <p class="w3-left">Sneakers A|X HOMBRE</p>
   </div>
 
   <!-- Product grid -->
   <div class="w3-row w3-grayscale">
+  <div class="row">
+  <div class="column">
+    <img src="AX_hombre/AX_hombre_dentro/AXHD2.jpg" width="400" height="550" />
+  </div>
+  <div class="column">
+    <h1>SNEAKERS</h1>
+    <h4>Color: AZUL MARINO</h4>
+    <h3>Precio: 145,00 €</h3>
+    <label style="display: table-cell; vertical-align: top" data-bind="text: sizeLabel, visible: !hideLabels, disable: isDisabled">TALLA:</label>
+    <div class="colour-size-select" data-bind="visible: sizeDropdownVisible()">
+                <select data-id="sizeSelect" data-bind="options: variants,
+                    optionsAfterRender: disableSizeIfOutOfStock,
+                    optionsText: &quot;Size&quot;,
+                    optionsCaption: selectSizeText,
+                    value: size,
+                    disable: isDisabled || sizeDropdownDisabled(),
+                    css:{ required : noSizeSelected()}"><option value="">Porfavor Selecciona</option><option value="">39</option><option value="">40</option><option value="">41</option><option value="">42</option><option value="">43</option><option value="">44</option><option value="">45</option></select>
+                <!-- ko if: noSizeSelected() --><!-- /ko -->
+            </div>
+            <p></p>
+         <a href="#" class="btn">Añadir a la Cesta</a>
+         <p><br></p>
 
-
-    <div class="w3-col l3 s6">
-      <div class="w3-container">
-      <a style='text-decoration:none;color:black;'class="w3-container" href="AX_HOMBRE_1FOTO.html">
-        <img src="AX_hombre/AXH1.jpg" width="180" height="230" alt=""/>          
-        <p>Campera<br>
-        <strong>210,00 €</strong></p>
-        </a>
-      </div>
-      <div class="w3-container">
-        <div class="w3-display-container"> <img src="AX_hombre/AXH2.jpg" width="180" height="230" alt=""/>
-          <p>Cazadora de plumas<br>
-            <strong>165,00 €</strong></p>
-          <div class="w3-display-middle w3-display-hover"> </div>
-        </div>
-<p>&nbsp;</p>
-      </div>
+    <a onclick="myAccFunc()" href="javascript:void(0)" class="w3-button w3-block w3-white w3-left-align" id="myBtn">
+      Descripcion del Producto: <i class="fa fa-caret-down"></i>
+    </a>
+    <div id="demoAcc" class="w3-bar-block w3-hide w3-medium">
+      <p>Monocolor<br>Cierre con elásticos<br>Puntera redonda<br>Suela de goma<br></p>
+    </div>
+	
+  </div>
 </div>
-
-    <div class="w3-col l3 s6">
-      <div class="w3-container">
-      <a style='text-decoration:none;color:black;'class="w3-container" href="AX_HOMBRE_2FOTO.html">
-        <img src="AX_hombre/AXH3.jpg" width="180" height="230" >
-        <p>Sneakers<br>
-        <strong>145,00 €</strong></p>
-        </a>
-      </div>
-       <div class="w3-container">
-    <img src="AX_hombre/AXH4.jpg" width="180" height="230" />
-    <p>Campera<br>
-      <strong>210,00 €</strong></p>
-    </div>
-    </div>
-
-    <div class="w3-col l3 s6">
-      <div class="w3-container"> 
-      <a style='text-decoration:none;color:black;'class="w3-container" href="AX_HOMBRE_3FOTO.html">
-      <img src="AX_hombre/AXH5.jpg" width="180" height="230" />
-        <p>Snadalia de dedo<br>
-        <strong>49,00 €</strong></p>
-        </a>
-      </div>
-      <div class="w3-container"> 
-      <img src="AX_hombre/AXH6.jpg" width="180" height="230" alt=""/>
-        <p>Gorra<br>
-          <strong>60,00 €</strong></p>
-      </div>
-    </div>
-</div>
+  
+  </div>
 <!-- Subscribe section -->
+ <div class="w3-row w3-grayscale w3-xlarge">
+ <p> </p>
+ <p> </p>
+ <p> </p>
+ </div>
   <!-- Footer -->
   <footer class="w3-padding-64 w3-light-grey w3-small w3-center" id="footer">
     <div class="w3-row-padding">
@@ -271,7 +162,7 @@ function closeSearch() {
         <p><a href="#">Ayuda</a></p>
       </div>
 
-     <div class="w3-col s4 w3-justify">
+      <div class="w3-col s4 w3-justify">
         <h4>Tienda</h4>
         <p><i class="fa fa-fw fa-map-marker"></i> Persephónē</p>
         <p><i class="fa fa-fw fa-phone"></i> 0044123123</p>
@@ -330,7 +221,6 @@ function w3_close() {
     document.getElementById("mySidebar").style.display = "none";
     document.getElementById("myOverlay").style.display = "none";
 }
-
 </script>
 
 </body>
