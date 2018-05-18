@@ -13,7 +13,6 @@ $conn = mysqli_connect($hostname_conn, $username_conn, $password_conn, $database
 mysqli_set_charset($conn, 'utf8');
 
 
-<<<<<<< HEAD
 if (is_file("includes/funciones.php")) 
 
 
@@ -25,17 +24,3 @@ echo 'error';
 	
 }
 ?>
-	
-=======
-if (is_file("includes/funciones.php"))
-
-
-echo "ok";
-
-
-{
-echo 'error';
-
-}
-?>
->>>>>>> master

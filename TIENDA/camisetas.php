@@ -6,7 +6,7 @@ if (isset($VARIABLE)) {
   $variable_Consulta = $VARIABLE;
 }
 //WHERE NOMBRECAMPO = %s ORDER BY NOMBRECAMPOFECHA DESC condicion ordenador todo
-$query_DatosConsulta = sprintf("SELECT * FROM productos", GetSQLValueString($variable_Consulta, "int"));
+$query_DatosConsulta = sprintf("SELECT * FROM productos");
 $DatosConsulta = mysqli_query($conn,  $query_DatosConsulta) or die(mysqli_error($conn));
 $row_DatosConsulta = mysqli_fetch_assoc($DatosConsulta);
 $totalRows_DatosConsulta = mysqli_num_rows($DatosConsulta);
@@ -15,10 +15,7 @@ $totalRows_DatosConsulta = mysqli_num_rows($DatosConsulta);
 ?>
 
 
-<?php
-//AÑADIR AL FINAL DE LA PÁGINA
-mysqli_free_result($DatosConsulta);
-?>
+
 
 <!DOCTYPE html>
 <html>
@@ -93,7 +90,7 @@ do {?>
 								<div class="single-products">
 										<div class="productinfo text-center">
 											<img src="AX_hombre/AXH2.jpg" width="180" height="230" alt=""/>
-											<h2><?php echo $row_DatosConsulta["nombre"]; ?>€</h2>
+											<h2><?php echo $row_DatosConsulta["Nombre"]; ?>€</h2>
 											<p><?php echo $row_DatosConsulta["Precio Unidad"]; ?></p>
 											<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
 										</div>
@@ -114,7 +111,7 @@ do {?>
 							</div>
 						</div>
   <?php
-		echo $row_DatosConsulta["NOMBRECAMPO"];
+	
 
        } while ($row_DatosConsulta = mysqli_fetch_assoc($DatosConsulta));
 }
@@ -212,3 +209,8 @@ function w3_close() {
 
 </body>
 </html>
+
+<?php
+//AÑADIR AL FINAL DE LA PÁGINA
+mysqli_free_result($DatosConsulta);
+?>
