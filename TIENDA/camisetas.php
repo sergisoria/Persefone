@@ -6,7 +6,7 @@ if (isset($VARIABLE)) {
   $variable_Consulta = $VARIABLE;
 }
 //WHERE NOMBRECAMPO = %s ORDER BY NOMBRECAMPOFECHA DESC condicion ordenador todo
-$query_DatosConsulta = sprintf("SELECT * FROM productos");
+$query_DatosConsulta = sprintf("SELECT * FROM productos WHERE Tipo = 'Camiseta'");
 $DatosConsulta = mysqli_query($conn,  $query_DatosConsulta) or die(mysqli_error($conn));
 $row_DatosConsulta = mysqli_fetch_assoc($DatosConsulta);
 $totalRows_DatosConsulta = mysqli_num_rows($DatosConsulta);
