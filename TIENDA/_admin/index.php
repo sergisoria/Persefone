@@ -45,7 +45,7 @@
                         <form role="form" action="acceso.php" method="post">
                             <fieldset>
                                 <div class="form-group">
-                                    <input class="form-control" placeholder="email" name="email" >
+                                    <input class="form-control" placeholder="email" name="email" type="email" >
                                 </div>
                                 <div class="form-group">
                                     <input class="form-control" placeholder="Contraseña" name="password" type="password" value="">
