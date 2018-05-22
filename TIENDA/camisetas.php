@@ -1,4 +1,4 @@
-<?php require_once('Connections/conexion.php'); ?>
+﻿<?php require_once('Connections/conexion.php'); ?>
 <?php
 
 $variable_Consulta = "0";
@@ -86,30 +86,24 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
   <div class="w3-display-container w3-container"> </div>
 
   <div class="w3-container w3-text-grey" id="jeans">
-    <p>6 items</p>
+    <p><?php echo $totalRows_DatosConsulta  ?> items</p>
   </div>
-
+<div class="w3-row w3-grayscale">
   <?php
 //AQUI ES DONDE SE SACAN LOS DATOS, SE COMPRUEBA QUE HAY RESULTADOS
 if ($totalRows_DatosConsulta > 0) {
 do {?>
-  <div class="col-sm-4">
-							<div class="product-image-wrapper">
-								<div class="single-products">
-										<div class="productinfo text-center">
-											<img src="AX_hombre/AXH2.jpg" width="180" height="230" alt=""/>
-											<h2><?php echo $row_DatosConsulta["Nombre"]; ?>€</h2>
-											<p><?php echo $row_DatosConsulta["PrecioUnidad"]; ?></p>
-											<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-										</div>
-										<div class="product-overlay">
-											<div class="overlay-content">
-												<h2>AAAA...</h2>
-												<p>AAAA....</p>
-												<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-											</div>
-										</div>
-								</div>
+  <div class="w3-col l3 s6">
+<div class="w3-container">
+<?php 
+
+	echo '<img src="data:image/jpeg;base64,'.base64_encode($row_DatosConsulta['Imagen'] ).'" width="180" height="230" alt=""/>';
+?>
+										
+<p><?php echo $row_DatosConsulta["Nombre"]; ?><br>
+<strong><?php echo $row_DatosConsulta["PrecioUnidad"]; ?>€</strong></p>
+											
+										
 								
 							</div>
 						</div>
@@ -124,7 +118,7 @@ else
     <?php } ?>
 
   <!-- Product grid -->
-
+ </div>
 <!-- Subscribe section -->
   <!-- Footer -->
   
