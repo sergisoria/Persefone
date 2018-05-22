@@ -127,6 +127,7 @@ else
 
 <!-- Subscribe section -->
   <!-- Footer -->
+  
   <footer class="w3-padding-64 w3-light-grey w3-small w3-center" id="footer">
     <div class="w3-row-padding">
       <div class="w3-col s4">
