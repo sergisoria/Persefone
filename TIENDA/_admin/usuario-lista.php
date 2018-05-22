@@ -9,7 +9,7 @@ if (isset($VARIABLE)) {
 }
 
 $query_DatosConsulta = sprintf("SELECT * FROM Usuarios ORDER BY idUsuario ASC");
-$DatosConsulta = mysqli_query($con,  $query_DatosConsulta) or die(mysqli_error($con));
+$DatosConsulta = mysqli_query($conn,  $query_DatosConsulta) or die(mysqli_error($conn));
 $row_DatosConsulta = mysqli_fetch_assoc($DatosConsulta);
 $totalRows_DatosConsulta = mysqli_num_rows($DatosConsulta);
 

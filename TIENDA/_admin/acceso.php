@@ -1,4 +1,5 @@
-<?php require_once('../Connections/conexion.php'); ?><?php
+<?php require_once('../Connections/conexion.php'); ?>
+<?php require_once('../includes/funciones.php'); ?><?php
 
 if (!isset($_SESSION)) {
   session_start();
@@ -20,15 +21,15 @@ if (isset($_POST['email'])) {
   //ATENCIÓN USAMOS MD5 para guardar la contraseña.
   $password=md5($_POST['password']);
   $MM_fldUserAuthorization = "Rol";
-  $MM_redirectLoginSuccess = "index.php";
+  $MM_redirectLoginSuccess = "inicio.php";
   $MM_redirectLoginFailed = "error.php";
   $MM_redirecttoReferrer = false;
   
   	
-  $LoginRS__query=sprintf("SELECT idUsuario, email, password, Rol FROM Usuarios WHERE Correo=%s AND Password=%s AND Rol=1",
+  $LoginRS__query=sprintf("SELECT idUsuario, Correo, password, Rol FROM Usuarios WHERE Correo=%s AND Password=%s AND Rol=1",
   GetSQLValueString($loginUsername, "text"), GetSQLValueString($password, "text")); 
    
-  $LoginRS = mysqli_query($con,  $LoginRS__query) or die(mysqli_error($con));
+  $LoginRS = mysqli_query($conn,  $LoginRS__query) or die(mysqli_error($conn));
   $loginFoundUser = mysqli_num_rows($LoginRS);
   if ($loginFoundUser) {
     
