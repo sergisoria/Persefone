@@ -10,6 +10,137 @@
 <style>
 .w3-sidebar a {font-family: "Roboto", sans-serif}
 body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
+article {
+   
+    padding: 1em;
+    overflow: hidden;
+}
+.column {
+    float: left;
+    width: 50%;
+    padding: 15px;
+}
+
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+.btn {
+    position: absolute;
+    background-color: #ddd;
+    outline: 0;
+    color: black;
+    font-size: 12px;
+    padding: 10px 25px;
+    border: none;
+    cursor: pointer;
+    text-align: center;
+    display: inline-block;
+	text-decoration:none;
+}
+.btn:hover {
+   background-color: #555;
+  color: white;
+}
+* {
+    box-sizing: border-box;
+}
+
+.openBtn {
+    background: #f1f1f1;
+    border: none;
+    padding: 10px 15px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.openBtn:hover {
+    background: #bbb;
+}
+
+.overlay {
+    height: 100%;
+    width: 100%;
+    display: none;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0, 0.9);
+}
+
+.overlay-content {
+    position: relative;
+    top: 46%;
+    width: 80%;
+    text-align: center;
+    margin-top: 30px;
+    margin: auto;
+}
+
+.overlay .closebtn {
+    position: absolute;
+    top: 20px;
+    right: 45px;
+    font-size: 60px;
+    cursor: pointer;
+    color: white;
+}
+
+.overlay .closebtn:hover {
+    color: #ccc;
+}
+
+.overlay input[type=text] {
+    padding: 15px;
+    font-size: 17px;
+    border: none;
+    float: left;
+    width: 80%;
+    background: white;
+}
+
+.overlay input[type=text]:hover {
+    background: #f1f1f1;
+}
+
+.overlay button {
+    float: left;
+    width: 20%;
+    padding: 15px;
+    background: #ddd;
+    font-size: 17px;
+    border: none;
+    cursor: pointer;
+}
+
+.overlay button:hover {
+    background: #bbb;
+}
+ul.breadcrumb {
+    padding: 10px 16px;
+    list-style: none;
+  
+}
+ul.breadcrumb li {
+    display: inline;
+    font-size: 20px;
+}
+ul.breadcrumb li+li:before {
+    padding: 5px;
+  
+    content: "/";
+}
+ul.breadcrumb li a {
+    color: #0275d8;
+    text-decoration: none;
+}
+ul.breadcrumb li a:hover {
+    color: #01447e;
+    text-decoration: underline;
+}
 </style>
 <body class="w3-content" style="max-width:1200px">
 
@@ -20,6 +151,15 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
     <!-- <h3 class="w3-wide"><b>Persephónē</b></h3> -->
 	  <a href="inicio.html"><img src="logo2.png" /></a>
   </div>
+  <div id="myOverlay2" class="overlay">
+  <span class="closebtn" onclick="closeSearch()" title="Close Overlay">×</span>
+  <div class="overlay-content">
+    <form action="/action_page.php">
+      <input type="text" placeholder="Buscar.." name="search">
+      <button type="submit"><i class="fa fa-search"></i></button>
+    </form>
+  </div>
+</div>
   <div class="w3-padding-64 w3-large w3-text-grey" style="font-weight:bold">
     	<a href="camisetas.html" class="w3-bar-item w3-button">Camisetas</a> 
 		<a href="vestidos.html" class="w3-bar-item w3-button">Vestidos</a> 
@@ -49,77 +189,73 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
   <div class="w3-hide-large" style="margin-top:83px"></div>
   
   <!-- Top header -->
-  <header class="w3-container w3-xlarge">
-     <p class="w3-left">A|X MUJER</p>
+   <header class="w3-container w3-xlarge">
+    <!-- <p class="w3-left">A|X HOMBRE</p> -->
     <p class="w3-right">
       <i class="fa fa-shopping-cart w3-margin-right"></i>
-      <i class="fa fa-search"></i>
+      <i onclick="openSearch()" class="fa fa-search openBtn">
+      </i>
     </p>
-  </header>
+    <script>
+function openSearch() {
+    document.getElementById("myOverlay2").style.display = "block";
+}
 
+function closeSearch() {
+    document.getElementById("myOverlay2").style.display = "none";
+}
+</script>
+  </header>
   <!-- Image header -->
   <div class="w3-display-container w3-container"> </div>
 
-  <div class="w3-container w3-text-grey" id="jeans">
-    <p>6 items</p>
-  </div>
-
+  <div class="w3-container w3-text-grey w3-xlarge" id="jeans"></div>
+<ul class="breadcrumb">
+  <li><a  style='text-decoration:none;color:grey;'href="inicio.html">INICIO</a></li>
+  <li><a  style='text-decoration:none;color:grey;'href="camisetas.html">CAMISETAS</a></li>
+  <li>CAMISETA GRIS</li>
+</ul>
   <!-- Product grid -->
   <div class="w3-row w3-grayscale">
-
-
-    <div class="w3-col l3 s6">
-      <div class="w3-container">
-        <a style='text-decoration:none;color:black;'class="w3-container" href="AX_MUJER_1FOTO.html"> <img src="AX_mujer/AXM1.jpg" width="180" height="230" alt=""/>          
-        <p>Sneakers<br>
-        <strong>125,00 €</strong></p>
-          </a>
-      </div>
-      <div class="w3-container">
-        
-        <a style='text-decoration:none;color:black;'class="w3-container" href="AX_MUJER_4FOTO.html">  <img src="AX_mujer/AXM2.jpg" width="180" height="230" alt=""/>
-          <p>Talones<br>
-            <strong>145,00 €</strong></p>
-             </a>
-          
-        </div>  
-</div>
-
-    <div class="w3-col l3 s6">
-      <div class="w3-container">
-        <a style='text-decoration:none;color:black;'class="w3-container" href="AX_MUJER_2FOTO.html"> 
-        <img src="AX_mujer/AXM3.jpg" width="180" height="230" >
-        <p>Shorts<br>
-        <strong>105,00 €</strong></p>
-        </a>
-      </div>
-      
-       
-       <div class="w3-container">
-       
-      <a style='text-decoration:none;color:black;'class="w3-container" href="AX_MUJER_5FOTO.html"> <img src="AX_mujer/AXM4.jpg" width="180" height="230" />
-      <p>Clutch<br>
-      <strong>75,00 €</strong></p>
-      </a>
+  <div class="row">
+  <div class="column">
+    <img src="camisetas/camisetagris.jpg" width="300" height="385" />
+  </div>
+  <div class="column">
+    <h1>CAMISETA DE COLOR GRIS</h1>
+    <h4>Color: GRIS</h4>
+    <h3>Precio: 25,99 €</h3>
+    <label style="display: table-cell; vertical-align: top" data-bind="text: sizeLabel, visible: !hideLabels, disable: isDisabled">TALLA:</label>
+    <div class="colour-size-select" data-bind="visible: sizeDropdownVisible()">
+ <select data-id="sizeSelect" data-bind="options: variants,
+                    optionsAfterRender: disableSizeIfOutOfStock,
+                    optionsText: &quot;Size&quot;,
+                    optionsCaption: selectSizeText,
+                    value: size,
+                    disable: isDisabled || sizeDropdownDisabled(),
+                    css:{ required : noSizeSelected()}"><option value="">Porfavor Selecciona</option><option value="">S</option><option value="">M</option><option value="">L</option><option value="">XL</option></select>
+                <!-- ko if: noSizeSelected() --><!-- /ko -->
+            </div>
+             <p></p>
+         <a href="#" class="btn">Añadir a la Cesta</a>
+         <p><br></p>
+    <a onclick="myAccFunc()" href="javascript:void(0)" class="w3-button w3-block w3-white w3-left-align" id="myBtn">
+      Descripcion del Producto: <i class="fa fa-caret-down"></i>
+    </a>
+    <div id="demoAcc" class="w3-bar-block w3-hide w3-medium">
+      <p>Manga larga<br>Estampado calaveras</p>
     </div>
+	
+  </div>
 </div>
-
-    <div class="w3-col l3 s6">
-      <div class="w3-container">
-      <a style='text-decoration:none;color:black;'class="w3-container" href="AX_MUJER_3FOTO.html"> <img src="AX_mujer/AXM5.jpg" width="180" height="230" />
-        <p>Bolso<br>
-        <strong>145,00 €</strong></p>
-         </a>
-      </div>
-      <div class="w3-container"> 
-      <a style='text-decoration:none;color:black;'class="w3-container" href="AX_MUJER_6FOTO.html"><img src="AX_mujer/AXM6.jpg" width="180" height="230" alt=""/>
-        <p>Mochila<br>
-          <strong>125,00 €</strong></p>
-          </a>
-      </div>
-    </div>
-</div>
+  
+  </div>
 <!-- Subscribe section -->
+ <div class="w3-row w3-grayscale w3-xlarge">
+ <p> </p>
+ <p> </p>
+ <p> </p>
+ </div>
   <!-- Footer -->
   <footer class="w3-padding-64 w3-light-grey w3-small w3-center" id="footer">
     <div class="w3-row-padding">
