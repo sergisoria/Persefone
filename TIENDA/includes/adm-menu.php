@@ -238,7 +238,7 @@
                             <a href="usuario-lista.php"><i class="fa fa-dashboard fa-fw"></i> Usuarios</a>
                         </li>
                           <li>
-                            <a href="usuario-lista.php"><i class="fa fa-dashboard fa-fw"></i>Productos</a>
+                            <a href="usuario-lista.php"><i class="fa fa-dashboard fa-fw"></i>Almacen</a>
                         </li>
                           <li>
                             <a href="usuario-lista.php"><i class="fa fa-dashboard fa-fw"></i> Ventas</a>

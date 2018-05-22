@@ -3,7 +3,7 @@
             
              
 <?php
-
+-
 $editFormAction = $_SERVER['PHP_SELF'];
 if (isset($_SERVER['QUERY_STRING'])) {
   $editFormAction .= "?" . htmlentities($_SERVER['QUERY_STRING']);
@@ -11,10 +11,9 @@ if (isset($_SERVER['QUERY_STRING'])) {
 
 if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "forminsertar")) {
 
-
   $insertSQL = sprintf("INSERT INTO Usuarios(Login,Password,Correo,Telefono,Nombre,Apellidos,Direccion,Rol) VALUES (%s, %s, %s, %s,%s, %s, %s, %s)",
                       	GetSQLValueString($_POST["Login"], "text"),
-					  	GetSQLValueString($_POST(md5(["Password"])), "text"),
+					  	GetSQLValueString(md5 ($_POST["Password"]), "text"),
 					  	GetSQLValueString($_POST["Correo"], "text"),
 					  	GetSQLValueString($_POST["Telefono"], "int"),
 					   	GetSQLValueString($_POST["Nombre"], "text"),
@@ -23,7 +22,7 @@ if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "forminsertar")) {
 					  	GetSQLValueString($_POST["Rol"], "int"));
 
   
-  $Result1 = mysqli_query(con,  $insertSQL) or die(mysqli_error(con));
+  $Result1 = mysqli_query($conn,  $insertSQL) or die(mysqli_error($conn));
 
 
   $insertGoTo = "usuario-lista.php";
@@ -88,7 +87,7 @@ if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "forminsertar")) {
                                   <form action="usuario-add.php" method="post" id="forminsertar" name="forminsertar" role="form">
                                         <div class="form-group">
                                             <label>Login</label>
-                                            <input class="form-control" placeholder="e-mail" name="Login" id=" Login">
+                                            <input class="form-control" placeholder="Login" name="Login" id=" Login">
                                         </div>
                                         <div class="form-group">
                                             <label>Password</label>
@@ -108,12 +107,12 @@ if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "forminsertar")) {
                                             <input class="form-control" placeholder="Escribir Nombre del usuario" name="Nombre" id="Nombre">
                                         </div>
                                           <div class="form-group">
-                                            <label>Apellido </label>
-                                            <input class="form-control" placeholder="Escribir Apellido del usuario" name="Apellido" id="Apellido">
+                                            <label>Apellidos </label>
+                                            <input class="form-control" placeholder="Escribir Apellido del usuario" name="Apellidos" id="Apellidos">
                                         </div>  
                                         <div class="form-group">
-                                            <label>Direcion </label>
-                                            <input class="form-control" placeholder="Escribir la direcion del usuario" name="Direcion" id="Direcion">
+                                            <label>Direccion </label>
+                                            <input class="form-control" placeholder="Escribir la direcion del usuario" name="Direccion" id="Direcion">
                                         </div>
                                          
                                           
