@@ -1,3 +1,22 @@
+<?php require_once('Connections/conexion.php'); ?>
+<?php
+
+$variable_Consulta = "0";
+if (isset($VARIABLE)) {
+  $variable_Consulta = $VARIABLE;
+}
+//WHERE NOMBRECAMPO = %s ORDER BY NOMBRECAMPOFECHA DESC condicion ordenador todo
+$query_DatosConsulta = sprintf("SELECT * FROM productos WHERE Tipo = 'Camiseta'");
+$DatosConsulta = mysqli_query($conn,  $query_DatosConsulta) or die(mysqli_error($conn));
+$row_DatosConsulta = mysqli_fetch_assoc($DatosConsulta);
+$totalRows_DatosConsulta = mysqli_num_rows($DatosConsulta);
+
+//FINAL DE LA PARTE SUPERIOR
+?>
+
+
+
+
 <!DOCTYPE html>
 <html>
 <title>Persephónē</title>
@@ -7,109 +26,17 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <style>
-.w3-container {text-decoration:none;}
 .w3-sidebar a {font-family: "Roboto", sans-serif}
 body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
-
-* {
-    box-sizing: border-box;
-}
-
-.openBtn {
-    background: #f1f1f1;
-    border: none;
-    padding: 10px 15px;
-    font-size: 20px;
-    cursor: pointer;
-}
-
-.openBtn:hover {
-    background: #bbb;
-}
-
-.overlay {
-    height: 100%;
-    width: 100%;
-    display: none;
-    position: fixed;
-    z-index: 1;
-    top: 0;
-    left: 0;
-    background-color: rgb(0,0,0);
-    background-color: rgba(0,0,0, 0.9);
-}
-
-.overlay-content {
-    position: relative;
-    top: 46%;
-    width: 80%;
-    text-align: center;
-    margin-top: 30px;
-    margin: auto;
-}
-
-.overlay .closebtn {
-    position: absolute;
-    top: 20px;
-    right: 45px;
-    font-size: 60px;
-    cursor: pointer;
-    color: white;
-}
-
-.overlay .closebtn:hover {
-    color: #ccc;
-}
-
-.overlay input[type=text] {
-    padding: 15px;
-    font-size: 17px;
-    border: none;
-    float: left;
-    width: 80%;
-    background: white;
-}
-
-.overlay input[type=text]:hover {
-    background: #f1f1f1;
-}
-
-.overlay button {
-    float: left;
-    width: 20%;
-    padding: 15px;
-    background: #ddd;
-    font-size: 17px;
-    border: none;
-    cursor: pointer;
-}
-
-.overlay button:hover {
-    background: #bbb;
-}
-ul.breadcrumb {
-    padding: 10px 16px;
-    list-style: none;
-  
-}
-ul.breadcrumb li {
-    display: inline;
-    font-size: 20px;
-}
-ul.breadcrumb li+li:before {
-    padding: 5px;
-  
-    content: "/";
-}
-ul.breadcrumb li a {
-    color: #0275d8;
-    text-decoration: none;
-}
-ul.breadcrumb li a:hover {
-    color: #01447e;
-    text-decoration: underline;
-}
 </style>
 <body class="w3-content" style="max-width:1200px">
 
@@ -117,36 +44,21 @@ ul.breadcrumb li a:hover {
 <nav class="w3-sidebar w3-bar-block w3-white w3-collapse w3-top" style="z-index:3;width:250px" id="mySidebar">
   <div class="w3-container w3-display-container w3-padding-16">
     <i onclick="w3_close()" class="fa fa-remove w3-hide-large w3-button w3-display-topright"></i>
-   <!-- <h3 class="w3-wide"><b>Persephónē</b></h3> -->
+    <!-- <h3 class="w3-wide"><b>Persephónē</b></h3> -->
 	  <a href="inicio.html"><img src="logo2.png" /></a>
+
   </div>
-  
-   <div id="myOverlay2" class="overlay">
-  <span class="closebtn" onclick="closeSearch()" title="Close Overlay">×</span>
-  <div class="overlay-content">
-    <form action="/action_page.php">
-      <input type="text" placeholder="Buscar.." name="search">
-      <button type="submit"><i class="fa fa-search"></i></button>
-    </form>
-  </div>
-</div>
-  
-  
-  
-  
-  
-  
   <div class="w3-padding-64 w3-large w3-text-grey" style="font-weight:bold">
-    	<a href="camisetas.html" class="w3-bar-item w3-button">Camisetas</a> 
-		<a href="vestidos.html" class="w3-button w3-block w3-white w3-left-align">Vestidos</a> 
-		<a href="vaqueros.html" class="w3-bar-item w3-button">Vaqueros</a> 
-		<a href="chaquetones_de_la_parra.html" class="w3-bar-item w3-button">Chaquetas y abrigos</a> 
-		<a href="ropadeporte.html" class="w3-bar-item w3-button">Ropa de Deporte</a> 
-		<a href="americanas.html" class="w3-bar-item w3-button">Americanas</a> 
-		<a href="zapatos.html" class="w3-bar-item w3-button">Zapatos</a>
-  </div>
-  <a href="#footer" class="w3-bar-item w3-button w3-padding">Contacta con nosotros</a> 
-  <a href="javascript:void(0)" class="w3-bar-item w3-button w3-padding" onclick="document.getElementById('newsletter').style.display='block'">Novedades</a> 
+	  <a href="camisetas.html" class="w3-button w3-block w3-white w3-left-align">Camisetas</a>
+	  <a href="vestidos.html" class="w3-bar-item w3-button">Vestidos</a>
+	  <a href="vaqueros.html" class="w3-bar-item w3-button w3-padding">Vaqueros</a>
+	  <a href="chaquetones_de_la_parra.html" class="w3-bar-item w3-button">Chaquetas y abrigos</a>
+	  <a href="ropadeporte.html" class="w3-bar-item w3-button">Ropa de Deporte</a>
+	  <a href="americanas.html" class="w3-bar-item w3-button">Americanas</a>
+	  <a href="zapatos.html" class="w3-bar-item w3-button">Zapatos</a>
+	</div>
+  <a href="#footer" class="w3-bar-item w3-button w3-padding">Contacta con nosotros</a>
+  <a href="javascript:void(0)" class="w3-bar-item w3-button w3-padding" onclick="document.getElementById('newsletter').style.display='block'">Novedades</a>
 </nav>
 
 <!-- Top menu on small screens -->
@@ -163,82 +75,53 @@ ul.breadcrumb li a:hover {
 
   <!-- Push down content on small screens -->
   <div class="w3-hide-large" style="margin-top:83px"></div>
-  
-  <!-- Top header -->
-  <header class="w3-container w3-xlarge">
-    <p class="w3-right">
-      <i class="fa fa-shopping-cart w3-margin-right"></i>
-     <i onclick="openSearch()" class="fa fa-search openBtn">
-	 </i>
-    </p>
-	
- <script>
-function openSearch() {
-    document.getElementById("myOverlay2").style.display = "block";
-}
 
-function closeSearch() {
-    document.getElementById("myOverlay2").style.display = "none";
-}
-</script>
+  <!-- Top header -->
+<header class="w3-container w3-xlarge">
+     <p class="w3-left">CAMISETAS</p>
+    <p class="w3-right"> <i class="fa fa-shopping-cart w3-margin-right"></i> <i class="fa fa-search"></i> </p>
   </header>
 
   <!-- Image header -->
   <div class="w3-display-container w3-container"> </div>
-<ul class="breadcrumb">
-  <li><a  style='text-decoration:none;color:grey;'href="inicio.html">INICIO</a></li>
-  <li>VESTIDOS</li>
-</ul>
+
   <div class="w3-container w3-text-grey" id="jeans">
-    <p>6 items</p>
+    <p><?php echo $totalRows_DatosConsulta  ?> items</p>
   </div>
+<div class="w3-row w3-grayscale">
+  <?php
+//AQUI ES DONDE SE SACAN LOS DATOS, SE COMPRUEBA QUE HAY RESULTADOS
+if ($totalRows_DatosConsulta > 0) {
+do {?>
+  <div class="w3-col l3 s6">
+<div class="w3-container">
+<?php 
+
+	echo '<img src="data:image/jpeg;base64,'.base64_encode($row_DatosConsulta['Imagen'] ).'" width="180" height="230" alt=""/>';
+?>
+										
+<p><?php echo $row_DatosConsulta["Nombre"]; ?><br>
+<strong><?php echo $row_DatosConsulta["PrecioUnidad"]; ?>€</strong></p>
+											
+										
+								
+							</div>
+						</div>
+  <?php
+	
+
+       } while ($row_DatosConsulta = mysqli_fetch_assoc($DatosConsulta));
+}
+else
+{ //MOSTRAR SI NO HAY RESULTADOS ?>
+    No hay resultados.
+    <?php } ?>
 
   <!-- Product grid -->
-  <div class="w3-row w3-grayscale">
-
-
-    <div class="w3-col l3 s6">
-      <div class="w3-container">
-        <div class="w3-display-container"> <img src="vestidos/vestido1.jpg" width="161" height="230" alt=""/>          
-          <div class="w3-display-middle w3-display-hover"> </div>
-        </div>
-        <p>Vestido largo de PrettyLittleThing<br>
-        <strong>47,99 €</strong></p>
-      </div>
-      <div class="w3-container">
-        <div class="w3-display-container"> <img src="vestidos/vestido4.jpg" width="161" height="230" alt=""/>
-          <p>Vestido con ribete de volante  de Boohoo<br>
-            <strong>13,49 €</strong></p>
-          <div class="w3-display-middle w3-display-hover"> </div>
-        </div>
-<p>&nbsp;</p>
-      </div>
-</div>
-
-    <div class="w3-col l3 s6">
-      <div class="w3-container">
-        <img src="vestidos/vestido2.jpg" width="161" height="230" >
-        <p>Vestido largo de Warehouse<br>
-        <strong>51,99 €</strong></p>
-      </div>
-    <img src="vestidos/vestido5.jpg" width="161" height="230" />
-    <p>Vestido largo de &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; River Island<br>
-      <strong>68,99 €</strong></p>
-    </div>
-
-    <div class="w3-col l3 s6">
-      <div class="w3-container"> <img src="vestidos/vestido3.jpg" width="161" height="230" />
-        <p>Vestido con manga de PrettyLittleThing<br>
-        <strong>40,99 €</strong></p>
-      </div>
-      <div class="w3-container"> <img src="vestidos/vestidos6.jpg" width="161" height="230" alt=""/>
-        <p>Vestido estilo polo de de Weekday<br>
-          <strong>45,00 €</strong></p>
-      </div>
-    </div>
-</div>
+ </div>
 <!-- Subscribe section -->
   <!-- Footer -->
+  
   <footer class="w3-padding-64 w3-light-grey w3-small w3-center" id="footer">
     <div class="w3-row-padding">
       <div class="w3-col s4">
@@ -261,7 +144,7 @@ function closeSearch() {
         <p><a href="#">Ayuda</a></p>
       </div>
 
-      <div class="w3-col s4 w3-justify">
+    <div class="w3-col s4 w3-justify">
         <h4>Tienda</h4>
         <p><i class="fa fa-fw fa-map-marker"></i> Persephónē</p>
         <p><i class="fa fa-fw fa-phone"></i> 0044123123</p>
@@ -277,7 +160,7 @@ function closeSearch() {
     </div>
   </footer>
 
- 
+
 
   <!-- End page content -->
 </div>
@@ -296,7 +179,7 @@ function closeSearch() {
 </div>
 
 <script>
-// Accordion 
+// Accordion
 function myAccFunc() {
     var x = document.getElementById("demoAcc");
     if (x.className.indexOf("w3-show") == -1) {
@@ -315,7 +198,7 @@ function w3_open() {
     document.getElementById("mySidebar").style.display = "block";
     document.getElementById("myOverlay").style.display = "block";
 }
- 
+
 function w3_close() {
     document.getElementById("mySidebar").style.display = "none";
     document.getElementById("myOverlay").style.display = "none";
@@ -324,3 +207,8 @@ function w3_close() {
 
 </body>
 </html>
+
+<?php
+//AÑADIR AL FINAL DE LA PÁGINA
+mysqli_free_result($DatosConsulta);
+?>
