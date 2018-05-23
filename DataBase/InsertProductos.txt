@@ -1,6 +1,6 @@
 INSERT INTO `productos` (`idProducto`, `Nombre`, `Referencia`, `Stock`, `PrecioUnidad`, `Tipo`, `Color`, `Talla`,`Genero`, `Imagen`, `idProveedor`)
 
-('1', 'Camiseta Nike FC', '1', '50', '23.50', 'Camiseta', 'Negro', 'S','Masculino','Imagen');
+('1', 'Camiseta Nike FC', '1', '50', '62.99', 'Camiseta', 'Negro', 'S','Masculino','Imagen');
 ('2', 'Campera', '2', '35', '210,00', 'Chaqueta', 'Negro', 'S', 'Masculino','Imagen');
 ('3', 'Sneakers', '3', '25', '145,00', 'Zapato','Azul Marino','40','Masculino','Imagen');
 ('4', 'Sandalia de dedo', '4', '20', '49,00', 'Zapato','Negro','40','Masculino','Imagen');
@@ -13,6 +13,20 @@ INSERT INTO `productos` (`idProducto`, `Nombre`, `Referencia`, `Stock`, `PrecioU
 ('11', 'Talones', '11', '15', '145,00', 'Zapato', 'Rojo','40','Femenino','Imagen');
 ('12', 'Clutch', '12', '10', '75,00', 'Bolso', 'Gris','Talla Unica','Femenino','Imagen');
 ('13', 'Mochila', '13', '20', '125,00', 'Bolso', 'Gris','Talla Unica','Femenino','Imagen');
-
+('14', 'Camiseta de Botones', '14', '30', '19.99', 'Camiseta', 'Blanco', 'S', 'Femenino','Imagen');
+('15', 'Camiseta Levis', '15', '40', '35.99', 'Camiseta', 'Blanco', 'S', 'Femenino', 'Imagen');
+('16', 'Camiseta con Estampado', '16', '15', '150.99', 'Camiseta', 'Blanco', 'S', 'Femenino', 'Imagen');
+('17', 'Camiseta Merci', '17', '35', '15.99', 'Camiseta', 'Blanco', 'S', 'Masculino', 'Imagen');
+('18', 'Camiseta Gris', '18', '50', '25.99', 'Camiseta', 'Gris', 'S', 'Masculino', 'Imagen');
+('19', 'Vestido largo de PrettyLittleThing', '19', '10', '47.99', 'Vestido', 'Blanco', 'S', 'Femenino', 'Imagen');
+('20', 'Vestido largo de Warehouse', '20', '18', '51.99', 'Vestido', 'Multicolor', 'S', 'Femenino', 'Imagen');
+('21', 'Vestido con manga de PrettyLittleThing', '21', '10', '40.99', 'Vestido', 'Verde', 'S', 'Femenino', 'Imagen');
+('22', 'Vestido con ribete de volante de Boohoo', '22', '22', '13.49', 'Vestido', 'Negro', 'S', 'Femenino', 'Imagen');
+('23', 'Vestido largo de River Island', '23', '20', '68.99', 'Vestido', 'Naranja', 'S', 'Femenino', 'Imagen');
+('24', 'Vestido estilo polo de de Weekday', '24', '40', '45.00', 'Vestido', 'Blanco', 'S', 'Femenino', 'Imagen');
+('25', 'Parka de Only & Sons', '25', '40', '70.99', 'Abrigo', 'Gris', 'S', 'Masculino', 'Imagen');
+('26', 'Parka de punto extragrande de Kyoto', '26', '20', '48.99', 'Abrigo', 'Negro', 'S', 'Masculino', 'Imagen');
+('27', 'Parka larga de D-Struct', '27', '10', '76.99', 'Abrigo', 'Blanco', 'S', 'Masculino', 'Imagen');
+('28', 'Parka forrada de New Look', '28', '35', '56.49', 'Abrigo', 'Crema', 'S', 'Femenino', 'Imagen');
 
 
