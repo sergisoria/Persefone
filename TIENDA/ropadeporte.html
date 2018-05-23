@@ -8,8 +8,108 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <style>
+.w3-container {text-decoration:none;}
 .w3-sidebar a {font-family: "Roboto", sans-serif}
 body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
+
+* {
+    box-sizing: border-box;
+}
+
+.openBtn {
+    background: #f1f1f1;
+    border: none;
+    padding: 10px 15px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.openBtn:hover {
+    background: #bbb;
+}
+
+.overlay {
+    height: 100%;
+    width: 100%;
+    display: none;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0, 0.9);
+}
+
+.overlay-content {
+    position: relative;
+    top: 46%;
+    width: 80%;
+    text-align: center;
+    margin-top: 30px;
+    margin: auto;
+}
+
+.overlay .closebtn {
+    position: absolute;
+    top: 20px;
+    right: 45px;
+    font-size: 60px;
+    cursor: pointer;
+    color: white;
+}
+
+.overlay .closebtn:hover {
+    color: #ccc;
+}
+
+.overlay input[type=text] {
+    padding: 15px;
+    font-size: 17px;
+    border: none;
+    float: left;
+    width: 80%;
+    background: white;
+}
+
+.overlay input[type=text]:hover {
+    background: #f1f1f1;
+}
+
+.overlay button {
+    float: left;
+    width: 20%;
+    padding: 15px;
+    background: #ddd;
+    font-size: 17px;
+    border: none;
+    cursor: pointer;
+}
+
+.overlay button:hover {
+    background: #bbb;
+}
+ul.breadcrumb {
+    padding: 10px 16px;
+    list-style: none;
+  
+}
+ul.breadcrumb li {
+    display: inline;
+    font-size: 20px;
+}
+ul.breadcrumb li+li:before {
+    padding: 5px;
+  
+    content: "/";
+}
+ul.breadcrumb li a {
+    color: #0275d8;
+    text-decoration: none;
+}
+ul.breadcrumb li a:hover {
+    color: #01447e;
+    text-decoration: underline;
+}
 </style>
 <body class="w3-content" style="max-width:1200px">
 
@@ -20,6 +120,18 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
     <!-- <h3 class="w3-wide"><b>Persephónē</b></h3> -->
 	  <a href="inicio.html"><img src="logo2.png" /></a>
   </div>
+  
+    <div id="myOverlay2" class="overlay">
+  <span class="closebtn" onclick="closeSearch()" title="Close Overlay">×</span>
+  <div class="overlay-content">
+    <form action="/action_page.php">
+      <input type="text" placeholder="Buscar.." name="search">
+      <button type="submit"><i class="fa fa-search"></i></button>
+    </form>
+  </div>
+</div>
+
+
   <div class="w3-padding-64 w3-large w3-text-grey" style="font-weight:bold">
         <a href="camisetas.html" class="w3-bar-item w3-button">Camisetas</a> 
 		<a href="vestidos.html" class="w3-bar-item w3-button">Vestidos</a> 
@@ -50,15 +162,32 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
   
   <!-- Top header -->
   <header class="w3-container w3-xlarge">
-     <p class="w3-left">ROPA DE DEPORTE</p>
     <p class="w3-right">
       <i class="fa fa-shopping-cart w3-margin-right"></i>
-      <i class="fa fa-search"></i>
+       <i onclick="openSearch()" class="fa fa-search openBtn">
+	   </i>
     </p>
+	
+	
+	
+	<script>
+function openSearch() {
+    document.getElementById("myOverlay2").style.display = "block";
+}
+
+function closeSearch() {
+    document.getElementById("myOverlay2").style.display = "none";
+}
+</script>
   </header>
 
   <!-- Image header -->
   <div class="w3-display-container w3-container"> </div>
+
+  <ul class="breadcrumb">
+  <li><a  style='text-decoration:none;color:grey;'href="inicio.html">INICIO</a></li>
+  <li>ROPA DE DEPORTE</li>
+</ul>
 
   <div class="w3-container w3-text-grey" id="jeans">
     <p>6 items</p>
