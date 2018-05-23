@@ -1,0 +1,18 @@
+INSERT INTO `productos` (`idProducto`, `Nombre`, `Referencia`, `Stock`, `PrecioUnidad`, `Tipo`, `Color`, `Talla`,`Genero`, `Imagen`, `idProveedor`)
+
+('1', 'Camiseta Nike FC', '1', '50', '23.50', 'Camiseta', 'Negro', 'S','Masculino','Imagen');
+('2', 'Campera', '2', '35', '210,00', 'Chaqueta', 'Negro', 'S', 'Masculino','Imagen');
+('3', 'Sneakers', '3', '25', '145,00', 'Zapato','Azul Marino','40','Masculino','Imagen');
+('4', 'Sandalia de dedo', '4', '20', '49,00', 'Zapato','Negro','40','Masculino','Imagen');
+('5', 'Cazadora de plumas', '5', '35', '165,00', 'Chaqueta','Gris','S','Masculino','Imagen');
+('6', 'Campera', '6', '20', '210,00', 'Chaqueta','Blanco','S','Masculino','Imagen');
+('7', 'Gorra', '7', '30', '60,00', 'Gorra', 'Azul Marino', 'Talla Unica','Masculino','Imagen');
+('8', 'Sneakers', '8', '30', '125,00', 'Zapato', 'Blanco', '40', 'Femenino','Imagen');
+('9', 'Shorts', '9', '25', '105,00', 'Pantalon', 'Negro', 'S', 'Femenino','Imagen');
+('10', 'Bolso Shopping', '10', '40', '145,00', 'Bolso', 'Rosa', 'Talla Unica','Femenino','Imagen');
+('11', 'Talones', '11', '15', '145,00', 'Zapato', 'Rojo','40','Femenino','Imagen');
+('12', 'Clutch', '12', '10', '75,00', 'Bolso', 'Gris','Talla Unica','Femenino','Imagen');
+('13', 'Mochila', '13', '20', '125,00', 'Bolso', 'Gris','Talla Unica','Femenino','Imagen');
+
+
+
