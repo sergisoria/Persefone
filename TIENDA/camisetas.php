@@ -1,4 +1,4 @@
-<?php require_once('Connections/conexion.php'); ?>
+﻿<?php require_once('Connections/conexion.php'); ?>
 <?php
 
 $variable_Consulta = "0";
@@ -6,7 +6,7 @@ if (isset($VARIABLE)) {
   $variable_Consulta = $VARIABLE;
 }
 //WHERE NOMBRECAMPO = %s ORDER BY NOMBRECAMPOFECHA DESC condicion ordenador todo
-$query_DatosConsulta = sprintf("SELECT * FROM productos", GetSQLValueString($variable_Consulta, "int"));
+$query_DatosConsulta = sprintf("SELECT * FROM productos WHERE Tipo = 'Camiseta'");
 $DatosConsulta = mysqli_query($conn,  $query_DatosConsulta) or die(mysqli_error($conn));
 $row_DatosConsulta = mysqli_fetch_assoc($DatosConsulta);
 $totalRows_DatosConsulta = mysqli_num_rows($DatosConsulta);
@@ -15,10 +15,7 @@ $totalRows_DatosConsulta = mysqli_num_rows($DatosConsulta);
 ?>
 
 
-<?php
-//AÑADIR AL FINAL DE LA PÁGINA
-mysqli_free_result($DatosConsulta);
-?>
+
 
 <!DOCTYPE html>
 <html>
@@ -29,6 +26,14 @@ mysqli_free_result($DatosConsulta);
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <style>
 .w3-sidebar a {font-family: "Roboto", sans-serif}
 body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
@@ -81,40 +86,29 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
   <div class="w3-display-container w3-container"> </div>
 
   <div class="w3-container w3-text-grey" id="jeans">
-    <p>6 items</p>
+    <p><?php echo $totalRows_DatosConsulta  ?> items</p>
   </div>
-
+<div class="w3-row w3-grayscale">
   <?php
 //AQUI ES DONDE SE SACAN LOS DATOS, SE COMPRUEBA QUE HAY RESULTADOS
 if ($totalRows_DatosConsulta > 0) {
 do {?>
-  <div class="col-sm-4">
-							<div class="product-image-wrapper">
-								<div class="single-products">
-										<div class="productinfo text-center">
-											<img src="AX_hombre/AXH2.jpg" width="180" height="230" alt=""/>
-											<h2><?php echo $row_DatosConsulta["nombre"]; ?>€</h2>
-											<p><?php echo $row_DatosConsulta["Precio Unidad"]; ?></p>
-											<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-										</div>
-										<div class="product-overlay">
-											<div class="overlay-content">
-												<h2>AAAA...</h2>
-												<p>AAAA....</p>
-												<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-											</div>
-										</div>
-								</div>
-								<div class="choose">
-									<ul class="nav nav-pills nav-justified">
-										<li><a href="#"><i class="fa fa-plus-square"></i>Add to wishlist</a></li>
-										<li><a href="#"><i class="fa fa-plus-square"></i>Add to compare</a></li>
-									</ul>
-								</div>
+  <div class="w3-col l3 s6">
+<div class="w3-container">
+<?php 
+
+	echo '<img src="data:image/jpeg;base64,'.base64_encode($row_DatosConsulta['Imagen'] ).'" width="180" height="230" alt=""/>';
+?>
+										
+<p><?php echo $row_DatosConsulta["Nombre"]; ?><br>
+<strong><?php echo $row_DatosConsulta["PrecioUnidad"]; ?>€</strong></p>
+											
+										
+								
 							</div>
 						</div>
   <?php
-		echo $row_DatosConsulta["NOMBRECAMPO"];
+	
 
        } while ($row_DatosConsulta = mysqli_fetch_assoc($DatosConsulta));
 }
@@ -124,9 +118,10 @@ else
     <?php } ?>
 
   <!-- Product grid -->
-
+ </div>
 <!-- Subscribe section -->
   <!-- Footer -->
+  
   <footer class="w3-padding-64 w3-light-grey w3-small w3-center" id="footer">
     <div class="w3-row-padding">
       <div class="w3-col s4">
@@ -212,3 +207,8 @@ function w3_close() {
 
 </body>
 </html>
+
+<?php
+//AÑADIR AL FINAL DE LA PÁGINA
+mysqli_free_result($DatosConsulta);
+?>
