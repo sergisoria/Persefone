@@ -1,4 +1,4 @@
-﻿<?php require_once('Connections/conexion.php'); ?>
+<?php require_once('Connections/conexion.php'); ?>
 <?php
 
 $variable_Consulta = "0";
@@ -18,12 +18,6 @@ $totalRows_DatosConsultaTIPO = mysqli_num_rows($DatosConsultaTIPO);
 
 //FINAL DE LA PARTE SUPERIOR
 ?>
-<?php
- if(isset($_POST['search'])){
-	 $query_DatosConsulta = sprintf("SELECT * FROM productos WHERE Nombre like '%".$_POST['search']."%'");
-	 $DatosConsulta = mysqli_query($conn,  $query_DatosConsulta) or die(mysqli_error($conn));
- }
- ?>
 
 <!DOCTYPE html>
 <html>
@@ -34,20 +28,96 @@ $totalRows_DatosConsultaTIPO = mysqli_num_rows($DatosConsultaTIPO);
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<!-- <!-- Latest compiled and minified CSS -->
-<!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">-->
-
-<!-- jQuery library -->
-<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>-->
-
-<!-- Latest compiled JavaScript -->
-<!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>-->
 <style>
-.w3-container {text-decoration:none;}
 .w3-sidebar a {font-family: "Roboto", sans-serif}
 body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
+	/* Slideshow container */
+	
+.slideshow-container {
+  max-width: 1000px;
+  position: relative;
+  margin: auto;
+}
 
-* {
+
+.active {
+  background-color: #717171;
+}
+
+/* Fading animation */
+.fade {
+  -webkit-animation-name: fade;
+  -webkit-animation-duration: 1.5s;
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@-webkit-keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
+
+@keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
+.container {
+    position: relative;
+    width: 100%;
+    max-width: 1000px;
+}
+
+.container img {
+    width: 100%;
+    height: auto;
+}
+
+.container .btn {
+    position: absolute;
+    top: 50%;
+    left: 40%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    background-color: #ddd;
+    outline: 0;
+    color: black;
+    font-size: 16px;
+    padding: 10px 25px;
+    border: none;
+    cursor: pointer;
+    text-align: center;
+    display: inline-block;
+	text-decoration:none;
+}
+.container .btn2 {
+    position: absolute;
+    top: 50%;
+    left: 60%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    background-color: #ddd;
+    outline: 0;
+    color: black;
+    font-size: 16px;
+    padding: 10px 25px;
+    border: none;
+    cursor: pointer;
+    text-align: center;
+    display: inline-block;
+	text-decoration:none;
+}
+
+.container .btn:hover {
+   background-color: #555;
+  color: white;
+}
+.container .btn2:hover {
+   background-color: #555;
+  color: white;
+}
+	
+
+{
     box-sizing: border-box;
 }
 
@@ -144,7 +214,9 @@ ul.breadcrumb li a {
 ul.breadcrumb li a:hover {
     color: #01447e;
     text-decoration: underline;
-}
+}	
+
+	
 </style>
 <body class="w3-content" style="max-width:1200px">
 
@@ -154,9 +226,9 @@ ul.breadcrumb li a:hover {
     <i onclick="w3_close()" class="fa fa-remove w3-hide-large w3-button w3-display-topright"></i>
     <!-- <h3 class="w3-wide"><b>Persephónē</b></h3> -->
 	  <a href="inicio.php"><img src="logo2.png" /></a>
-
   </div>
-  <div id="myOverlay2" class="overlay">
+  
+   <div id="myOverlay2" class="overlay">
   <span class="closebtn" onclick="closeSearch()" title="Close Overlay">×</span>
   <div class="overlay-content">
     <form action="/action_page.php">
@@ -165,7 +237,9 @@ ul.breadcrumb li a:hover {
     </form>
   </div>
 </div>
-<?php
+ 
+  
+  <?php
 //AQUI ES DONDE SE SACAN LOS DATOS, SE COMPRUEBA QUE HAY RESULTADOS
 if ($totalRows_DatosConsultaTIPO > 0) {
 do {?>
@@ -184,19 +258,8 @@ else
 { //MOSTRAR SI NO HAY RESULTADOS ?>
     No hay resultados.
     <?php } ?>
-
-
-  <!--<div class="w3-padding-64 w3-large w3-text-grey" style="font-weight:bold">
-	  <a href="camisetas.html" class="w3-button w3-block w3-white w3-left-align">Camisetas</a>
-	  <a href="vestidos.html" class="w3-bar-item w3-button">Vestidos</a>
-	  <a href="vaqueros.html" class="w3-bar-item w3-button w3-padding">Vaqueros</a>
-	  <a href="chaquetones_de_la_parra.html" class="w3-bar-item w3-button">Chaquetas y abrigos</a>
-	  <a href="ropadeporte.html" class="w3-bar-item w3-button">Ropa de Deporte</a>
-	  <a href="americanas.html" class="w3-bar-item w3-button">Americanas</a>
-	  <a href="zapatos.html" class="w3-bar-item w3-button">Zapatos</a>
-	</div>-->
-  <a href="#footer" class="w3-bar-item w3-button w3-padding">Contacta con nosotros</a>
-  <a href="javascript:void(0)" class="w3-bar-item w3-button w3-padding" onclick="document.getElementById('newsletter').style.display='block'">Novedades</a>
+  <a href="#footer" class="w3-bar-item w3-button w3-padding">Contacta con nosotros</a> 
+  <a href="javascript:void(0)" class="w3-bar-item w3-button w3-padding" onclick="document.getElementById('newsletter').style.display='block'">Novedades</a> 
 </nav>
 
 <!-- Top menu on small screens -->
@@ -213,16 +276,15 @@ else
 
   <!-- Push down content on small screens -->
   <div class="w3-hide-large" style="margin-top:83px"></div>
-
+  
   <!-- Top header -->
-<header class="w3-container w3-xlarge">
-     <!-- <p class="w3-left">A|X HOMBRE</p> -->
+  <header class="w3-container w3-xlarge">
     <p class="w3-right">
       <i class="fa fa-shopping-cart w3-margin-right"></i>
-      <i onclick="openSearch()" class="fa fa-search openBtn" id="buscar">
-      </i>
+     <i onclick="openSearch()" class="fa fa-search openBtn">
+	</i>
     </p>
-    <script>
+	<script>
 function openSearch() {
     document.getElementById("myOverlay2").style.display = "block";
 }
@@ -234,48 +296,63 @@ function closeSearch() {
   </header>
 
   <!-- Image header -->
-  <div class="w3-display-container w3-container"> </div>
-<ul class="breadcrumb">
-  <li><a  style='text-decoration:none;color:grey;'href="inicio.html">INICIO</a></li>
-  <li>CAMISETAS</li>
-</ul>
-  <div class="w3-container w3-text-grey" id="jeans">
-    <p><?php echo $totalRows_DatosConsulta  ?> items</p>
-  </div>
-<div class="w3-row w3-grayscale">
-  <?php
-//AQUI ES DONDE SE SACAN LOS DATOS, SE COMPRUEBA QUE HAY RESULTADOS
-if ($totalRows_DatosConsulta > 0) {
-do {?>
-  <div class="w3-col l3 s6">
-<div class="w3-container">
-<?php 
+  <div class="w3-display-container w3-container"> 
 
-	echo '<img src="data:image/jpeg;base64,'.base64_encode($row_DatosConsulta['Imagen'] ).'" width="180" height="230" alt=""/>';
-?>
-										
-<p><?php echo $row_DatosConsulta["Nombre"]; ?><br>
-<strong><?php echo $row_DatosConsulta["PrecioUnidad"]; ?>€</strong></p>
-											
-										
-								
-							</div>
-						</div>
-  <?php
+<div class="container">
+  <img src="imagen_inicio.jpg" alt="Snow" style="width:100%">
+  <a href="ax_hombre_ropa.html" class="btn">HOMBRE</a>
+  <a href="ax_mujer_ropa.html" class="btn2">MUJER</a>
+ </div>	  
+	 
+
+<div class="slideshow-container">
+
+<div class="mySlides fade">
+  <img src="slide1.jpg" style="width:100%">
 	
+</div>
 
-       } while ($row_DatosConsulta = mysqli_fetch_assoc($DatosConsulta));
+<div class="mySlides fade">
+  <img src="slide2.jpg" style="width:100%">
+</div>
+
+<div class="mySlides fade">
+ <img src="slide3.jpg" style="width:100%">
+</div>
+
+</div>
+<br>
+
+<div style="text-align:center">
+  <span class="dot"></span> 
+  <span class="dot"></span> 
+  <span class="dot"></span> 
+</div>
+  </div>
+<script>
+var slideIndex = 0;
+showSlides();
+
+function showSlides() {
+    var i;
+    var slides = document.getElementsByClassName("mySlides");
+    var dots = document.getElementsByClassName("dot");
+    for (i = 0; i < slides.length; i++) {
+       slides[i].style.display = "none";  
+    }
+    slideIndex++;
+    if (slideIndex > slides.length) {slideIndex = 1}    
+    for (i = 0; i < dots.length; i++) {
+        dots[i].className = dots[i].className.replace(" active", "");
+    }
+    slides[slideIndex-1].style.display = "block";  
+    dots[slideIndex-1].className += " active";
+    setTimeout(showSlides, 5000);
 }
-else
-{ //MOSTRAR SI NO HAY RESULTADOS ?>
-    No hay resultados.
-    <?php } ?>
-
-  <!-- Product grid -->
- </div>
+</script>
+ 
 <!-- Subscribe section -->
   <!-- Footer -->
-  
   <footer class="w3-padding-64 w3-light-grey w3-small w3-center" id="footer">
     <div class="w3-row-padding">
       <div class="w3-col s4">
@@ -298,7 +375,7 @@ else
         <p><a href="#">Ayuda</a></p>
       </div>
 
-    <div class="w3-col s4 w3-justify">
+     <div class="w3-col s4 w3-justify">
         <h4>Tienda</h4>
         <p><i class="fa fa-fw fa-map-marker"></i> Persephónē</p>
         <p><i class="fa fa-fw fa-phone"></i> 0044123123</p>
@@ -314,7 +391,7 @@ else
     </div>
   </footer>
 
-
+ 
 
   <!-- End page content -->
 </div>
@@ -333,7 +410,7 @@ else
 </div>
 
 <script>
-// Accordion
+// Accordion 
 function myAccFunc() {
     var x = document.getElementById("demoAcc");
     if (x.className.indexOf("w3-show") == -1) {
@@ -352,17 +429,14 @@ function w3_open() {
     document.getElementById("mySidebar").style.display = "block";
     document.getElementById("myOverlay").style.display = "block";
 }
-
+ 
 function w3_close() {
     document.getElementById("mySidebar").style.display = "none";
     document.getElementById("myOverlay").style.display = "none";
 }
+	
+
 </script>
 
 </body>
 </html>
-
-<?php
-//AÑADIR AL FINAL DE LA PÁGINA
-mysqli_free_result($DatosConsulta);
-?>
