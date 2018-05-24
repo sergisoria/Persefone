@@ -8,8 +8,108 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <style>
+.w3-container {text-decoration:none;}
 .w3-sidebar a {font-family: "Roboto", sans-serif}
 body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
+
+* {
+    box-sizing: border-box;
+}
+
+.openBtn {
+    background: #f1f1f1;
+    border: none;
+    padding: 10px 15px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.openBtn:hover {
+    background: #bbb;
+}
+
+.overlay {
+    height: 100%;
+    width: 100%;
+    display: none;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0, 0.9);
+}
+
+.overlay-content {
+    position: relative;
+    top: 46%;
+    width: 80%;
+    text-align: center;
+    margin-top: 30px;
+    margin: auto;
+}
+
+.overlay .closebtn {
+    position: absolute;
+    top: 20px;
+    right: 45px;
+    font-size: 60px;
+    cursor: pointer;
+    color: white;
+}
+
+.overlay .closebtn:hover {
+    color: #ccc;
+}
+
+.overlay input[type=text] {
+    padding: 15px;
+    font-size: 17px;
+    border: none;
+    float: left;
+    width: 80%;
+    background: white;
+}
+
+.overlay input[type=text]:hover {
+    background: #f1f1f1;
+}
+
+.overlay button {
+    float: left;
+    width: 20%;
+    padding: 15px;
+    background: #ddd;
+    font-size: 17px;
+    border: none;
+    cursor: pointer;
+}
+
+.overlay button:hover {
+    background: #bbb;
+}
+ul.breadcrumb {
+    padding: 10px 16px;
+    list-style: none;
+  
+}
+ul.breadcrumb li {
+    display: inline;
+    font-size: 20px;
+}
+ul.breadcrumb li+li:before {
+    padding: 5px;
+  
+    content: "/";
+}
+ul.breadcrumb li a {
+    color: #0275d8;
+    text-decoration: none;
+}
+ul.breadcrumb li a:hover {
+    color: #01447e;
+    text-decoration: underline;
+}
 </style>
 <body class="w3-content" style="max-width:1200px">
 
@@ -18,16 +118,28 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
   <div class="w3-container w3-display-container w3-padding-16">
     <i onclick="w3_close()" class="fa fa-remove w3-hide-large w3-button w3-display-topright"></i>
     <!-- <h3 class="w3-wide"><b>Persephónē</b></h3> -->
-	  <a href="inicio.html"><img src="logo2.png" /></a>
+    <a href="inicio.html"><img src="logo2.png" /></a>
   </div>
+  
+     <div id="myOverlay2" class="overlay">
+  <span class="closebtn" onclick="closeSearch()" title="Close Overlay">×</span>
+  <div class="overlay-content">
+    <form action="/action_page.php">
+      <input type="text" placeholder="Buscar.." name="search">
+      <button type="submit"><i class="fa fa-search"></i></button>
+    </form>
+  </div>
+</div>
+
+
   <div class="w3-padding-64 w3-large w3-text-grey" style="font-weight:bold">
-		<a href="camisetas.html" class="w3-bar-item w3-button">Camisetas</a> 
-		<a href="vestidos.html" class="w3-bar-item w3-button">Vestidos</a> 
-		<a href="vaqueros.html" class="w3-button w3-block w3-white w3-left-align">Vaqueros</a> 
-		<a href="chaquetones_de_la_parra.html" class="w3-bar-item w3-button">Chaquetas y abrigos</a> 
-		<a href="ropadeporte.html" class="w3-bar-item w3-button">Ropa de Deporte</a> 
-		<a href="americanas.html" class="w3-bar-item w3-button">Americanas</a> 
-		<a href="zapatos.html" class="w3-bar-item w3-button">Zapatos</a>
+    <a href="camisetas.html" class="w3-bar-item w3-button">Camisetas</a> 
+    <a href="vestidos.html" class="w3-bar-item w3-button">Vestidos</a> 
+    <a href="vaqueros.html" class="w3-button w3-block w3-white w3-left-align">Vaqueros</a> 
+    <a href="chaquetones_de_la_parra.html" class="w3-bar-item w3-button">Chaquetas y abrigos</a> 
+    <a href="ropadeporte.html" class="w3-bar-item w3-button">Ropa de Deporte</a> 
+    <a href="americanas.html" class="w3-bar-item w3-button">Americanas</a> 
+    <a href="zapatos.html" class="w3-bar-item w3-button">Zapatos</a>
   </div>
   <a href="#footer" class="w3-bar-item w3-button w3-padding">Contacta con nosotros</a> 
   <a href="javascript:void(0)" class="w3-bar-item w3-button w3-padding" onclick="document.getElementById('newsletter').style.display='block'">Novedades</a> 
@@ -38,188 +150,93 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
   <div class="w3-bar-item w3-padding-24 w3-wide">Persephónē</div>
   <a href="javascript:void(0)" class="w3-bar-item w3-button w3-padding-24 w3-right" onclick="w3_open()"><i class="fa fa-bars"></i></a>
 </header>
-
+ 
 <!-- Overlay effect when opening sidebar on small screens -->
 <div class="w3-overlay w3-hide-large" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
-
+ 
 <!-- !PAGE CONTENT! -->
 <div class="w3-main" style="margin-left:250px">
-
+ 
   <!-- Push down content on small screens -->
   <div class="w3-hide-large" style="margin-top:83px"></div>
   
   <!-- Top header -->
   <header class="w3-container w3-xlarge">
-     <p class="w3-left">VAQUEROS</p>
     <p class="w3-right">
       <i class="fa fa-shopping-cart w3-margin-right"></i>
-      <i class="fa fa-search"></i>
+       <i onclick="openSearch()" class="fa fa-search openBtn">
+	</i>
     </p>
-  </header>
+	
+	<script>
+function openSearch() {
+    document.getElementById("myOverlay2").style.display = "block";
+}
 
+function closeSearch() {
+    document.getElementById("myOverlay2").style.display = "none";
+}
+</script>
+  </header>
+ 
   <!-- Image header -->
   <div class="w3-display-container w3-container"> </div>
+ 
+  <ul class="breadcrumb">
+  <li><a  style='text-decoration:none;color:grey;'href="inicio.html">INICIO</a></li>
+  <li>VAQUEROS</li>
+</ul>
 
   <div class="w3-container w3-text-grey" id="jeans">
     <p>6 items</p>
   </div>
+ 
+  <!-- Product grid -->
+  <div class="w3-row w3-grayscale">
+ 
+ 
+    <div class="w3-col l3 s6">
+      <div class="w3-container">
+        <div class="w3-display-container"> <img src="jeans/buenas/jeans2.jpg" width="160" height="230" alt=""/>          
+          <div class="w3-display-middle w3-display-hover"> </div>
+        </div>
+        <p>Vaqueros de Liquor N Poker<br>
+        <strong> 55,99 €</strong>      </p>
+      </div>
+      <div class="w3-container">
+        <div class="w3-display-container"> <img src="jeans/buenas/jeans6.jpg" width="160" height="230" alt=""/>
+          <p>Vaqueros ajustados de Liquor N Poker<br>
+            <strong>55,99 €</strong></p>
+          <div class="w3-display-middle w3-display-hover"> </div>
+        </div>
+<p>&nbsp;</p>
+      </div>
+</div>
+ 
+  <div class="w3-col l3 s6">
+      <div class="w3-container">
+        <img src="jeans/buenas/jeans3.jpg" width="160" height="230" >
+        <p>Vaqueros ajustados de Liquor N Poker<br>
+        <strong>55,99 €</strong></p>
+      </div>
+    <img src="jeans/buenas/jeans7.jpg" width="160" height="230" />
+    <p>Vaqueros ajustados blancos de Liquor N Poker<br>
+      <strong>55,99 €</strong></p>
+    </div>
+ 
+    <div class="w3-col l3 s6">
+      <div class="w3-container"> <img src="jeans/buenas/jeans4.jpg" width="160" height="230" />
+        <p>Vaqueros elásticos de Armani Exchange<br>
+        <strong>131,99 €</strong></p>
+      </div>
+      <div class="w3-container"> <img src="jeans/buenas/jeans8.jpg" width="160" height="230" alt=""/>
+        <p>Vaqueros ajustados de Brooklyn Supply Co<br>
+          <strong>62,99 €</strong></p>
+      </div>
+    </div>
+</div>
 
-  <!-- Product grid --><div class="features_items"><!--features_items-->
-						<h2 class="title text-center">Features Items</h2>
-						<div class="col-sm-4">
-							<div class="product-image-wrapper">
-								<div class="single-products">
-										<div class="productinfo text-center">
-											<img src="images/home/product1.jpg" alt="" />
-											<h2>$56</h2>
-											<p>Easy Polo Black Edition</p>
-											<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-										</div>
-										<div class="product-overlay">
-											<div class="overlay-content">
-												<h2>$56</h2>
-												<p>Easy Polo Black Edition</p>
-												<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-											</div>
-										</div>
-								</div>
-								<div class="choose">
-									<ul class="nav nav-pills nav-justified">
-										<li><a href="#"><i class="fa fa-plus-square"></i>Add to wishlist</a></li>
-										<li><a href="#"><i class="fa fa-plus-square"></i>Add to compare</a></li>
-									</ul>
-								</div>
-							</div>
-						</div>
-						<div class="col-sm-4">
-							<div class="product-image-wrapper">
-								<div class="single-products">
-									<div class="productinfo text-center">
-										<img src="images/home/product2.jpg" alt="" />
-										<h2>$56</h2>
-										<p>Easy Polo Black Edition</p>
-										<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-									</div>
-									<div class="product-overlay">
-										<div class="overlay-content">
-											<h2>$56</h2>
-											<p>Easy Polo Black Edition</p>
-											<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-										</div>
-									</div>
-								</div>
-								<div class="choose">
-									<ul class="nav nav-pills nav-justified">
-										<li><a href="#"><i class="fa fa-plus-square"></i>Add to wishlist</a></li>
-										<li><a href="#"><i class="fa fa-plus-square"></i>Add to compare</a></li>
-									</ul>
-								</div>
-							</div>
-						</div>
-						<div class="col-sm-4">
-							<div class="product-image-wrapper">
-								<div class="single-products">
-									<div class="productinfo text-center">
-										<img src="images/home/product3.jpg" alt="" />
-										<h2>$56</h2>
-										<p>Easy Polo Black Edition</p>
-										<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-									</div>
-									<div class="product-overlay">
-										<div class="overlay-content">
-											<h2>$56</h2>
-											<p>Easy Polo Black Edition</p>
-											<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-										</div>
-									</div>
-								</div>
-								<div class="choose">
-									<ul class="nav nav-pills nav-justified">
-										<li><a href="#"><i class="fa fa-plus-square"></i>Add to wishlist</a></li>
-										<li><a href="#"><i class="fa fa-plus-square"></i>Add to compare</a></li>
-									</ul>
-								</div>
-							</div>
-						</div>
-						<div class="col-sm-4">
-							<div class="product-image-wrapper">
-								<div class="single-products">
-									<div class="productinfo text-center">
-										<img src="images/home/product4.jpg" alt="" />
-										<h2>$56</h2>
-										<p>Easy Polo Black Edition</p>
-										<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-									</div>
-									<div class="product-overlay">
-										<div class="overlay-content">
-											<h2>$56</h2>
-											<p>Easy Polo Black Edition</p>
-											<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-										</div>
-									</div>
-									<img src="images/home/new.png" class="new" alt="" />
-								</div>
-								<div class="choose">
-									<ul class="nav nav-pills nav-justified">
-										<li><a href="#"><i class="fa fa-plus-square"></i>Add to wishlist</a></li>
-										<li><a href="#"><i class="fa fa-plus-square"></i>Add to compare</a></li>
-									</ul>
-								</div>
-							</div>
-						</div>
-						<div class="col-sm-4">
-							<div class="product-image-wrapper">
-								<div class="single-products">
-									<div class="productinfo text-center">
-										<img src="images/home/product5.jpg" alt="" />
-										<h2>$56</h2>
-										<p>Easy Polo Black Edition</p>
-										<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-									</div>
-									<div class="product-overlay">
-										<div class="overlay-content">
-											<h2>$56</h2>
-											<p>Easy Polo Black Edition</p>
-											<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-										</div>
-									</div>
-									<img src="images/home/sale.png" class="new" alt="" />
-								</div>
-								<div class="choose">
-									<ul class="nav nav-pills nav-justified">
-										<li><a href="#"><i class="fa fa-plus-square"></i>Add to wishlist</a></li>
-										<li><a href="#"><i class="fa fa-plus-square"></i>Add to compare</a></li>
-									</ul>
-								</div>
-							</div>
-						</div>
-						<div class="col-sm-4">
-							<div class="product-image-wrapper">
-								<div class="single-products">
-									<div class="productinfo text-center">
-										<img src="images/home/product6.jpg" alt="" />
-										<h2>$56</h2>
-										<p>Easy Polo Black Edition</p>
-										<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-									</div>
-									<div class="product-overlay">
-										<div class="overlay-content">
-											<h2>$56</h2>
-											<p>Easy Polo Black Edition</p>
-											<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-										</div>
-									</div>
-								</div>
-								<div class="choose">
-									<ul class="nav nav-pills nav-justified">
-										<li><a href="#"><i class="fa fa-plus-square"></i>Add to wishlist</a></li>
-										<li><a href="#"><i class="fa fa-plus-square"></i>Add to compare</a></li>
-									</ul>
-								</div>
-							</div>
-						</div>
-						
-					</div><!-- Subscribe section -->
+<!-- Subscribe section -->
   <!-- Footer -->
   <footer class="w3-padding-64 w3-light-grey w3-small w3-center" id="footer">
     <div class="w3-row-padding">
@@ -233,7 +250,7 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
           <button type="submit" class="w3-button w3-block w3-black">Enviar</button>
         </form>
       </div>
-
+ 
       <div class="w3-col s4">
         <h4>Sobre nosotros...</h4>
         <p><a href="#">Soporte</a></p>
@@ -242,8 +259,8 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
         <p><a href="#">Tarjeta Regalo</a></p>
         <p><a href="#">Ayuda</a></p>
       </div>
-
-      <div class="w3-col s4 w3-justify">
+	  
+	  <div class="w3-col s4 w3-justify">
         <h4>Tienda</h4>
         <p><i class="fa fa-fw fa-map-marker"></i> Persephónē</p>
         <p><i class="fa fa-fw fa-phone"></i> 0044123123</p>
@@ -258,12 +275,10 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
       </div>
     </div>
   </footer>
-
- 
-
-  <!-- End page content -->
+  
+   <!-- End page content -->
 </div>
-
+ 
 <!-- Newsletter Modal -->
 <div id="newsletter" class="w3-modal">
   <div class="w3-modal-content w3-animate-zoom" style="padding:32px">
@@ -276,22 +291,24 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
     </div>
   </div>
 </div>
-
+ 
 <script>
 // Accordion 
 function myAccFunc() {
     var x = document.getElementById("demoAcc");
     if (x.className.indexOf("w3-show") == -1) {
         x.className += " w3-show";
-    } else {
+		
+		
+		 } else {
         x.className = x.className.replace(" w3-show", "");
     }
 }
-
+ 
 // Click on the "Jeans" link on page load to open the accordion for demo purposes
 document.getElementById("myBtn").click();
-
-
+ 
+ 
 // Script to open and close sidebar
 function w3_open() {
     document.getElementById("mySidebar").style.display = "block";
@@ -303,6 +320,9 @@ function w3_close() {
     document.getElementById("myOverlay").style.display = "none";
 }
 </script>
-
+ 
 </body>
+
 </html>
+
+
