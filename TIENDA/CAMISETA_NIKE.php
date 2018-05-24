@@ -1,4 +1,4 @@
-﻿<?php require_once('Connections/conexion.php'); ?>
+<?php require_once('Connections/conexion.php'); ?>
 <?php
 
 $variable_Consulta = "0";
@@ -6,24 +6,16 @@ if (isset($VARIABLE)) {
   $variable_Consulta = $VARIABLE;
 }
 //WHERE NOMBRECAMPO = %s ORDER BY NOMBRECAMPOFECHA DESC condicion ordenador todo
-$query_DatosConsulta = sprintf("SELECT * FROM productos WHERE idTipos = '1'");
+$query_DatosConsulta = sprintf("SELECT * FROM productos WHERE Tipo = 'Camiseta' AND Nombre = 'Camiseta Nike FC'");
 $DatosConsulta = mysqli_query($conn,  $query_DatosConsulta) or die(mysqli_error($conn));
 $row_DatosConsulta = mysqli_fetch_assoc($DatosConsulta);
 $totalRows_DatosConsulta = mysqli_num_rows($DatosConsulta);
 
-$query_DatosConsultaTIPO = sprintf("SELECT * FROM tipos limit 7");
-$DatosConsultaTIPO = mysqli_query($conn,  $query_DatosConsultaTIPO) or die(mysqli_error($conn));
-$row_DatosConsultaTIPO = mysqli_fetch_assoc($DatosConsultaTIPO);
-$totalRows_DatosConsultaTIPO = mysqli_num_rows($DatosConsultaTIPO);
-
 //FINAL DE LA PARTE SUPERIOR
 ?>
-<?php
- if(isset($_POST['search'])){
-	 $query_DatosConsulta = sprintf("SELECT * FROM productos WHERE Nombre like '%".$_POST['search']."%'");
-	 $DatosConsulta = mysqli_query($conn,  $query_DatosConsulta) or die(mysqli_error($conn));
- }
- ?>
+
+
+
 
 <!DOCTYPE html>
 <html>
@@ -34,19 +26,51 @@ $totalRows_DatosConsultaTIPO = mysqli_num_rows($DatosConsultaTIPO);
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<!-- <!-- Latest compiled and minified CSS -->
-<!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">-->
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
 <!-- jQuery library -->
-<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>-->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
 <!-- Latest compiled JavaScript -->
-<!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>-->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <style>
-.w3-container {text-decoration:none;}
+<style>
 .w3-sidebar a {font-family: "Roboto", sans-serif}
 body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
+article {
+   
+    padding: 1em;
+    overflow: hidden;
+}
+.column {
+    float: left;
+    width: 50%;
+    padding: 15px;
+}
 
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+.btn {
+    position: absolute;
+    background-color: #ddd;
+    outline: 0;
+    color: black;
+    font-size: 12px;
+    padding: 10px 25px;
+    border: none;
+    cursor: pointer;
+    text-align: center;
+    display: inline-block;
+	text-decoration:none;
+}
+.btn:hover {
+   background-color: #555;
+  color: white;
+}
 * {
     box-sizing: border-box;
 }
@@ -153,40 +177,10 @@ ul.breadcrumb li a:hover {
   <div class="w3-container w3-display-container w3-padding-16">
     <i onclick="w3_close()" class="fa fa-remove w3-hide-large w3-button w3-display-topright"></i>
     <!-- <h3 class="w3-wide"><b>Persephónē</b></h3> -->
-	  <a href="inicio.php"><img src="logo2.png" /></a>
+	  <a href="inicio.html"><img src="logo2.png" /></a>
 
   </div>
-  <div id="myOverlay2" class="overlay">
-  <span class="closebtn" onclick="closeSearch()" title="Close Overlay">×</span>
-  <div class="overlay-content">
-    <form action="/action_page.php">
-      <input type="text" placeholder="Buscar.." name="search"id="search">
-      <button type="submit"><i class="fa fa-search"></i></button>
-    </form>
-  </div>
-</div>
-<?php
-//AQUI ES DONDE SE SACAN LOS DATOS, SE COMPRUEBA QUE HAY RESULTADOS
-if ($totalRows_DatosConsultaTIPO > 0) {
-do {?>
-  <div class=" w3-large w3-text-grey" style="font-weight:bold">
-	  <a href="#" class="w3-bar-item w3-button"><?php echo $row_DatosConsultaTIPO["NombreTipo"];?></a>
-	</div>
-
-										
-
-  <?php
-	
-
-       } while ($row_DatosConsultaTIPO = mysqli_fetch_assoc($DatosConsultaTIPO));
-}
-else
-{ //MOSTRAR SI NO HAY RESULTADOS ?>
-    No hay resultados.
-    <?php } ?>
-
-
-  <!--<div class="w3-padding-64 w3-large w3-text-grey" style="font-weight:bold">
+  <div class="w3-padding-64 w3-large w3-text-grey" style="font-weight:bold">
 	  <a href="camisetas.html" class="w3-button w3-block w3-white w3-left-align">Camisetas</a>
 	  <a href="vestidos.html" class="w3-bar-item w3-button">Vestidos</a>
 	  <a href="vaqueros.html" class="w3-bar-item w3-button w3-padding">Vaqueros</a>
@@ -194,7 +188,7 @@ else
 	  <a href="ropadeporte.html" class="w3-bar-item w3-button">Ropa de Deporte</a>
 	  <a href="americanas.html" class="w3-bar-item w3-button">Americanas</a>
 	  <a href="zapatos.html" class="w3-bar-item w3-button">Zapatos</a>
-	</div>-->
+	</div>
   <a href="#footer" class="w3-bar-item w3-button w3-padding">Contacta con nosotros</a>
   <a href="javascript:void(0)" class="w3-bar-item w3-button w3-padding" onclick="document.getElementById('newsletter').style.display='block'">Novedades</a>
 </nav>
@@ -216,51 +210,62 @@ else
 
   <!-- Top header -->
 <header class="w3-container w3-xlarge">
-     <!-- <p class="w3-left">A|X HOMBRE</p> -->
-    <p class="w3-right">
-      <i class="fa fa-shopping-cart w3-margin-right"></i>
-      <i onclick="openSearch()" class="fa fa-search openBtn" id="buscar">
-      </i>
-    </p>
-    <script>
-function openSearch() {
-    document.getElementById("myOverlay2").style.display = "block";
-}
-
-function closeSearch() {
-    document.getElementById("myOverlay2").style.display = "none";
-}
-</script>
+     <p class="w3-left">CAMISETAS</p>
+    <p class="w3-right"> <i class="fa fa-shopping-cart w3-margin-right"></i> <i class="fa fa-search"></i> </p>
   </header>
 
   <!-- Image header -->
-  <div class="w3-display-container w3-container"> </div>
-<ul class="breadcrumb">
+  <ul class="breadcrumb">
   <li><a  style='text-decoration:none;color:grey;'href="inicio.html">INICIO</a></li>
-  <li>CAMISETAS</li>
+  <li><a  style='text-decoration:none;color:grey;'href="camisetas.html">CAMISETAS</a></li>
+  <li>CAMISETA NIKE FC</li>
 </ul>
-  <div class="w3-container w3-text-grey" id="jeans">
-    <p><?php echo $totalRows_DatosConsulta  ?> items</p>
+  <!-- Product grid -->
+  <div class="w3-row w3-grayscale">
+  <div class="row">
+  <div class="column">
+  <?php 
+
+	echo '<img src="data:image/jpeg;base64,'.base64_encode($row_DatosConsulta['Imagen'] ).'" width="400" height="550" alt=""/>';
+?>
+
+  </div>
+  <div class="column">
+    <h1><?php echo $row_DatosConsulta["Nombre"]; ?></h1>
+    <h4>Color: <?php echo $row_DatosConsulta["Color"]; ?></h4>
+    <h3>Precio: <?php echo $row_DatosConsulta["PrecioUnidad"]; ?>€</h3>
+    <label style="display: table-cell; vertical-align: top" data-bind="text: sizeLabel, visible: !hideLabels, disable: isDisabled">TALLA:</label>
+    <div class="colour-size-select" data-bind="visible: sizeDropdownVisible()">
+                <select data-id="sizeSelect" data-bind="options: variants,
+                    optionsAfterRender: disableSizeIfOutOfStock,
+                    optionsText: &quot;Size&quot;,
+                    optionsCaption: selectSizeText,
+                    value: size,
+                    disable: isDisabled || sizeDropdownDisabled(),
+                    css:{ required : noSizeSelected()}"><option value="">Porfavor Selecciona</option><option value="">S</option><option value="">M</option><option value="">L</option><option value="">XL</option></select>
+                <!-- ko if: noSizeSelected() --><!-- /ko -->
+            </div>
+             <p></p>
+         <a href="#" class="btn">Añadir a la Cesta</a>
+         <p><br></p>
+    <a onclick="myAccFunc()" href="javascript:void(0)" class="w3-button w3-block w3-white w3-left-align" id="myBtn">
+      Descripcion del Producto: <i class="fa fa-caret-down"></i>
+    </a>
+    <div id="demoAcc" class="w3-bar-block w3-hide w3-medium">
+      <p>Tela técnica<br>Cuello redondo<br>Manga larga<br>Multibolsillos <br>Monocolor<br>Abotonadura simple<br>Cierre de cremallera<br>Interior forrado<br></p>
+    </div>
+	
+  </div>
+</div>
+  
   </div>
 <div class="w3-row w3-grayscale">
   <?php
 //AQUI ES DONDE SE SACAN LOS DATOS, SE COMPRUEBA QUE HAY RESULTADOS
 if ($totalRows_DatosConsulta > 0) {
 do {?>
-  <div class="w3-col l3 s6">
-<div class="w3-container">
-<?php 
 
-	echo '<img src="data:image/jpeg;base64,'.base64_encode($row_DatosConsulta['Imagen'] ).'" width="180" height="230" alt=""/>';
-?>
-										
-<p><?php echo $row_DatosConsulta["Nombre"]; ?><br>
-<strong><?php echo $row_DatosConsulta["PrecioUnidad"]; ?>€</strong></p>
-											
-										
-								
-							</div>
-						</div>
+
   <?php
 	
 
