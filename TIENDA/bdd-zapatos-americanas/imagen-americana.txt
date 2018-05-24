@@ -1,6 +1,0 @@
-('43', 'Americana Azul', '43', '50', '83.99', '6', 'Azul Marino', '32,74-77', 'Masculino', 'Imagen', '2');
-('44', 'Americana Gris', '44', '50', '95.99 ', '6', 'Gris', '34', 'Masculino','Imagen','11');
-('45', 'Americana de Cuadros', '45', '50', '100.99 ', '6', 'Gris', '36', 'Masculino','Imagen','1');
-('46', 'Blazer Verde Pistacho', '46', '50', '60.99', '6', 'Verde ', '26', 'Femenino','Imagen','9');
-('47', 'Blazer Negro', '47', '50', '50.99', '6', 'Negro', '28', 'Femenino','Imagen','2');
-('48', 'Blazer Rosa', '48', '70', '80.99', '6', 'Rosa', '30', 'Femenino','Imagen', '2');

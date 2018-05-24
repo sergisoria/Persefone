@@ -1,0 +1,6 @@
+('49', 'Bambas Nike Cortez', '49', '20', '73.99', 'Zapato', 'Blanco', '40', 'Unisex','Imagen','4');
+('50', 'Bambas Nike MB', '50', '20', '55.99', 'Zapato', 'Negro', '39', 'Femenino','Imagen','4');
+('51', 'Bambas Nike - SB', '51', '10', '85.99', 'Zapato', 'Gris', '40', 'Femenino','Imagen','4');
+('52', 'Bambas Nike - SJ', '52', '80', '90.99', 'Zapato', 'Marron', '45', 'Masculino','Imagen','4');
+('53', 'Bambas Nike Lunar', '53', '30', '70.99 ', 'Zapato', 'Negro', '43', 'Masculino','Imagen','4');
+('54', 'Bambas Nike Air-Force', '54', '50', '120.99', 'Zapato', 'Negro', '45', 'Masculino','Imagen','4');
