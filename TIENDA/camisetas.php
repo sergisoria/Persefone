@@ -1,12 +1,11 @@
 ﻿<?php require_once('Connections/conexion.php'); ?>
 <?php
-
+$idtipos = $_GET['id'];
 $variable_Consulta = "0";
 if (isset($VARIABLE)) {
   $variable_Consulta = $VARIABLE;
 }
-//WHERE NOMBRECAMPO = %s ORDER BY NOMBRECAMPOFECHA DESC condicion ordenador todo
-$query_DatosConsulta = sprintf("SELECT * FROM productos WHERE idTipos = '1'");
+$query_DatosConsulta = sprintf("SELECT * FROM productos WHERE idTipos = '$idtipos'");
 $DatosConsulta = mysqli_query($conn,  $query_DatosConsulta) or die(mysqli_error($conn));
 $row_DatosConsulta = mysqli_fetch_assoc($DatosConsulta);
 $totalRows_DatosConsulta = mysqli_num_rows($DatosConsulta);
@@ -15,6 +14,7 @@ $query_DatosConsultaTIPO = sprintf("SELECT * FROM tipos limit 7");
 $DatosConsultaTIPO = mysqli_query($conn,  $query_DatosConsultaTIPO) or die(mysqli_error($conn));
 $row_DatosConsultaTIPO = mysqli_fetch_assoc($DatosConsultaTIPO);
 $totalRows_DatosConsultaTIPO = mysqli_num_rows($DatosConsultaTIPO);
+
 
 //FINAL DE LA PARTE SUPERIOR
 ?>
@@ -159,7 +159,7 @@ ul.breadcrumb li a:hover {
   <div id="myOverlay2" class="overlay">
   <span class="closebtn" onclick="closeSearch()" title="Close Overlay">×</span>
   <div class="overlay-content">
-    <form action="/action_page.php">
+    <form action="/camisetas.php">
       <input type="text" placeholder="Buscar.." name="search"id="search">
       <button type="submit"><i class="fa fa-search"></i></button>
     </form>
@@ -170,7 +170,7 @@ ul.breadcrumb li a:hover {
 if ($totalRows_DatosConsultaTIPO > 0) {
 do {?>
   <div class=" w3-large w3-text-grey" style="font-weight:bold">
-	  <a href="#" class="w3-bar-item w3-button"><?php echo $row_DatosConsultaTIPO["NombreTipo"];?></a>
+	  <a href="<?php echo 'camisetas.php?id='.$row_DatosConsultaTIPO["idTipos"]?>" class="w3-bar-item w3-button"><?php echo $row_DatosConsultaTIPO["NombreTipo"];?></a>
 	</div>
 
 										
@@ -184,17 +184,6 @@ else
 { //MOSTRAR SI NO HAY RESULTADOS ?>
     No hay resultados.
     <?php } ?>
-
-
-  <!--<div class="w3-padding-64 w3-large w3-text-grey" style="font-weight:bold">
-	  <a href="camisetas.html" class="w3-button w3-block w3-white w3-left-align">Camisetas</a>
-	  <a href="vestidos.html" class="w3-bar-item w3-button">Vestidos</a>
-	  <a href="vaqueros.html" class="w3-bar-item w3-button w3-padding">Vaqueros</a>
-	  <a href="chaquetones_de_la_parra.html" class="w3-bar-item w3-button">Chaquetas y abrigos</a>
-	  <a href="ropadeporte.html" class="w3-bar-item w3-button">Ropa de Deporte</a>
-	  <a href="americanas.html" class="w3-bar-item w3-button">Americanas</a>
-	  <a href="zapatos.html" class="w3-bar-item w3-button">Zapatos</a>
-	</div>-->
   <a href="#footer" class="w3-bar-item w3-button w3-padding">Contacta con nosotros</a>
   <a href="javascript:void(0)" class="w3-bar-item w3-button w3-padding" onclick="document.getElementById('newsletter').style.display='block'">Novedades</a>
 </nav>
@@ -219,7 +208,7 @@ else
      <!-- <p class="w3-left">A|X HOMBRE</p> -->
     <p class="w3-right">
       <i class="fa fa-shopping-cart w3-margin-right"></i>
-      <i onclick="openSearch()" class="fa fa-search openBtn" id="buscar">
+      <i onclick="openSearch()" class="fa fa-search openBtn" id="search">
       </i>
     </p>
     <script>
@@ -230,33 +219,37 @@ function openSearch() {
 function closeSearch() {
     document.getElementById("myOverlay2").style.display = "none";
 }
+
 </script>
+	
   </header>
 
   <!-- Image header -->
   <div class="w3-display-container w3-container"> </div>
 <ul class="breadcrumb">
-  <li><a  style='text-decoration:none;color:grey;'href="inicio.html">INICIO</a></li>
-  <li>CAMISETAS</li>
+  <li><a  style='text-decoration:none;color:grey;'href="inicio.php">INICIO</a></li>
+  <li><?php echo $row_DatosConsultaTIPO["NombreTipo"];?></li>
 </ul>
   <div class="w3-container w3-text-grey" id="jeans">
     <p><?php echo $totalRows_DatosConsulta  ?> items</p>
   </div>
 <div class="w3-row w3-grayscale">
   <?php
+  //style='text-decoration:none;color:black;'class="w3-container" 
 //AQUI ES DONDE SE SACAN LOS DATOS, SE COMPRUEBA QUE HAY RESULTADOS
 if ($totalRows_DatosConsulta > 0) {
 do {?>
   <div class="w3-col l3 s6">
 <div class="w3-container">
+<a style='text-decoration:none;color:black;'class="w3-container"  href="<?php echo 'camiseta_nike.php?id='.$row_DatosConsulta["idProducto"]?>">
 <?php 
-
-	echo '<img src="data:image/jpeg;base64,'.base64_encode($row_DatosConsulta['Imagen'] ).'" width="180" height="230" alt=""/>';
+	
+	echo '<img id="imagen" src="data:image/jpeg;base64,'.base64_encode($row_DatosConsulta['Imagen'] ).'" width="180" height="230" alt=""/>';
 ?>
 										
 <p><?php echo $row_DatosConsulta["Nombre"]; ?><br>
 <strong><?php echo $row_DatosConsulta["PrecioUnidad"]; ?>€</strong></p>
-											
+</a>											
 										
 								
 							</div>
@@ -342,6 +335,7 @@ function myAccFunc() {
         x.className = x.className.replace(" w3-show", "");
     }
 }
+
 
 // Click on the "Jeans" link on page load to open the accordion for demo purposes
 document.getElementById("myBtn").click();

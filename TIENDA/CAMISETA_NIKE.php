@@ -1,16 +1,31 @@
 <?php require_once('Connections/conexion.php'); ?>
 <?php
-
+$id = $_GET['id'];
 $variable_Consulta = "0";
 if (isset($VARIABLE)) {
   $variable_Consulta = $VARIABLE;
 }
 //WHERE NOMBRECAMPO = %s ORDER BY NOMBRECAMPOFECHA DESC condicion ordenador todo
-$query_DatosConsulta = sprintf("SELECT * FROM productos WHERE Tipo = 'Camiseta' AND Nombre = 'Camiseta Nike FC'");
+$query_DatosConsulta = sprintf("SELECT * FROM productos WHERE idProducto = '$id'");
 $DatosConsulta = mysqli_query($conn,  $query_DatosConsulta) or die(mysqli_error($conn));
 $row_DatosConsulta = mysqli_fetch_assoc($DatosConsulta);
 $totalRows_DatosConsulta = mysqli_num_rows($DatosConsulta);
 
+$query_DatosConsultaINV = sprintf("SELECT * FROM inventario");
+$DatosConsultaINV = mysqli_query($conn,  $query_DatosConsultaINV) or die(mysqli_error($conn));
+$row_DatosConsultaINV = mysqli_fetch_assoc($DatosConsultaINV);
+$totalRows_DatosConsultaINV = mysqli_num_rows($DatosConsultaINV);
+
+//recoger el nombre sacando la id para el entre comillas titulo
+$query_DatosConsultaNameWithID = sprintf("SELECT * FROM productos where idProducto= '$id'");
+$DatosConsultaNameWithID  = mysqli_query($conn,  $query_DatosConsultaNameWithID ) or die(mysqli_error($conn));
+$row_DatosConsultaNameWithID  = mysqli_fetch_assoc($DatosConsultaNameWithID );
+$totalRows_DatosConsultaNameWithID  = mysqli_num_rows($DatosConsultaNameWithID );
+
+$query_DatosConsultaTIPO = sprintf("SELECT * FROM tipos limit 7");
+$DatosConsultaTIPO = mysqli_query($conn,  $query_DatosConsultaTIPO) or die(mysqli_error($conn));
+$row_DatosConsultaTIPO = mysqli_fetch_assoc($DatosConsultaTIPO);
+$totalRows_DatosConsultaTIPO = mysqli_num_rows($DatosConsultaTIPO);
 //FINAL DE LA PARTE SUPERIOR
 ?>
 
@@ -26,15 +41,7 @@ $totalRows_DatosConsulta = mysqli_num_rows($DatosConsulta);
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
-<!-- jQuery library -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-
-<!-- Latest compiled JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<style>
 <style>
 .w3-sidebar a {font-family: "Roboto", sans-serif}
 body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
@@ -180,15 +187,34 @@ ul.breadcrumb li a:hover {
 	  <a href="inicio.html"><img src="logo2.png" /></a>
 
   </div>
-  <div class="w3-padding-64 w3-large w3-text-grey" style="font-weight:bold">
-	  <a href="camisetas.html" class="w3-button w3-block w3-white w3-left-align">Camisetas</a>
-	  <a href="vestidos.html" class="w3-bar-item w3-button">Vestidos</a>
-	  <a href="vaqueros.html" class="w3-bar-item w3-button w3-padding">Vaqueros</a>
-	  <a href="chaquetones_de_la_parra.html" class="w3-bar-item w3-button">Chaquetas y abrigos</a>
-	  <a href="ropadeporte.html" class="w3-bar-item w3-button">Ropa de Deporte</a>
-	  <a href="americanas.html" class="w3-bar-item w3-button">Americanas</a>
-	  <a href="zapatos.html" class="w3-bar-item w3-button">Zapatos</a>
+   <div id="myOverlay2" class="overlay">
+  <span class="closebtn" onclick="closeSearch()" title="Close Overlay">×</span>
+  <div class="overlay-content">
+    <form action="/camisetas.php">
+      <input type="text" placeholder="Buscar.." name="search"id="search">
+      <button type="submit"><i class="fa fa-search"></i></button>
+    </form>
+  </div>
+</div>
+  <?php
+//AQUI ES DONDE SE SACAN LOS DATOS, SE COMPRUEBA QUE HAY RESULTADOS
+if ($totalRows_DatosConsultaTIPO > 0) {
+do {?>
+  <div class=" w3-large w3-text-grey" style="font-weight:bold">
+	  <a href="<?php echo 'camisetas.php?id='.$row_DatosConsultaTIPO["idTipos"]?>" class="w3-bar-item w3-button"><?php echo $row_DatosConsultaTIPO["NombreTipo"];?></a>
 	</div>
+
+										
+
+  <?php
+	
+
+       } while ($row_DatosConsultaTIPO = mysqli_fetch_assoc($DatosConsultaTIPO));
+}
+else
+{ //MOSTRAR SI NO HAY RESULTADOS ?>
+    No hay resultados.
+    <?php } ?>	
   <a href="#footer" class="w3-bar-item w3-button w3-padding">Contacta con nosotros</a>
   <a href="javascript:void(0)" class="w3-bar-item w3-button w3-padding" onclick="document.getElementById('newsletter').style.display='block'">Novedades</a>
 </nav>
@@ -210,15 +236,28 @@ ul.breadcrumb li a:hover {
 
   <!-- Top header -->
 <header class="w3-container w3-xlarge">
-     <p class="w3-left">CAMISETAS</p>
-    <p class="w3-right"> <i class="fa fa-shopping-cart w3-margin-right"></i> <i class="fa fa-search"></i> </p>
+     <p class="w3-right">
+      <i class="fa fa-shopping-cart w3-margin-right"></i>
+      <i onclick="openSearch()" class="fa fa-search openBtn" id="search">
+      </i>
+    </p>
+    <script>
+function openSearch() {
+    document.getElementById("myOverlay2").style.display = "block";
+}
+
+function closeSearch() {
+    document.getElementById("myOverlay2").style.display = "none";
+}
+
+</script>
   </header>
 
   <!-- Image header -->
   <ul class="breadcrumb">
-  <li><a  style='text-decoration:none;color:grey;'href="inicio.html">INICIO</a></li>
-  <li><a  style='text-decoration:none;color:grey;'href="camisetas.html">CAMISETAS</a></li>
-  <li>CAMISETA NIKE FC</li>
+  <li><a  style='text-decoration:none;color:grey;'href="inicio.php">INICIO</a></li>
+  <li><a  style='text-decoration:none;color:grey;'href="#"> <?php echo $row_DatosConsultaTIPO["NombreTipo"];?> </a></li>
+  <li><?php echo $row_DatosConsulta["Nombre"]; ?></li>
 </ul>
   <!-- Product grid -->
   <div class="w3-row w3-grayscale">
@@ -235,16 +274,38 @@ ul.breadcrumb li a:hover {
     <h4>Color: <?php echo $row_DatosConsulta["Color"]; ?></h4>
     <h3>Precio: <?php echo $row_DatosConsulta["PrecioUnidad"]; ?>€</h3>
     <label style="display: table-cell; vertical-align: top" data-bind="text: sizeLabel, visible: !hideLabels, disable: isDisabled">TALLA:</label>
-    <div class="colour-size-select" data-bind="visible: sizeDropdownVisible()">
+	<div class="colour-size-select" data-bind="visible: sizeDropdownVisible()">
                 <select data-id="sizeSelect" data-bind="options: variants,
                     optionsAfterRender: disableSizeIfOutOfStock,
                     optionsText: &quot;Size&quot;,
                     optionsCaption: selectSizeText,
                     value: size,
                     disable: isDisabled || sizeDropdownDisabled(),
-                    css:{ required : noSizeSelected()}"><option value="">Porfavor Selecciona</option><option value="">S</option><option value="">M</option><option value="">L</option><option value="">XL</option></select>
+                    css:{ required : noSizeSelected()}"><option value="">Porfavor Selecciona</option>  
+					<?php
+					
+//AQUI ES DONDE SE SACAN LOS DATOS, SE COMPRUEBA QUE HAY RESULTADOS
+if ($totalRows_DatosConsultaINV > 0) {
+do {?>
+
+    
+<option value=""><?php echo $row_DatosConsultaINV['Talla']; ?></option>
+										
+
+  <?php
+	
+
+       } while ($row_DatosConsultaINV = mysqli_fetch_assoc($DatosConsultaINV));
+}
+else
+{ //MOSTRAR SI NO HAY RESULTADOS ?>
+    No hay resultados.
+    <?php } ?>
+					
+					
+					
                 <!-- ko if: noSizeSelected() --><!-- /ko -->
-            </div>
+            </select></div>
              <p></p>
          <a href="#" class="btn">Añadir a la Cesta</a>
          <p><br></p>
