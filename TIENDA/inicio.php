@@ -244,7 +244,7 @@ ul.breadcrumb li a:hover {
 if ($totalRows_DatosConsultaTIPO > 0) {
 do {?>
   <div class=" w3-large w3-text-grey" style="font-weight:bold">
-	  <a href="#" class="w3-bar-item w3-button"><?php echo $row_DatosConsultaTIPO["NombreTipo"];?></a>
+	  <a href="<?php echo 'camisetas.php?id='.$row_DatosConsultaTIPO["idTipos"]?>" class="w3-bar-item w3-button"><?php echo $row_DatosConsultaTIPO["NombreTipo"];?></a>
 	</div>
 
 										
@@ -300,7 +300,7 @@ function closeSearch() {
 
 <div class="container">
   <img src="imagen_inicio.jpg" alt="Snow" style="width:100%">
-  <a href="ax_hombre_ropa.html" class="btn">HOMBRE</a>
+  <a href="camisetas.php?id=8" class="btn">HOMBRE</a>
   <a href="ax_mujer_ropa.html" class="btn2">MUJER</a>
  </div>	  
 	 
