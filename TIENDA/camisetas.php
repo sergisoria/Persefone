@@ -228,7 +228,7 @@ function closeSearch() {
   <div class="w3-display-container w3-container"> </div>
 <ul class="breadcrumb">
   <li><a  style='text-decoration:none;color:grey;'href="inicio.php">INICIO</a></li>
-  <li><?php echo $row_DatosConsultaTIPO["NombreTipo"];?></li>
+
 </ul>
   <div class="w3-container w3-text-grey" id="jeans">
     <p><?php echo $totalRows_DatosConsulta  ?> items</p>
@@ -243,8 +243,8 @@ do {?>
 <div class="w3-container">
 <a style='text-decoration:none;color:black;'class="w3-container"  href="<?php echo 'camiseta_nike.php?id='.$row_DatosConsulta["idProducto"]?>">
 <?php 
+	echo '<img src="'.$row_DatosConsulta['Imagen'].'" width="180" height="230" alt=""/>';
 	
-	echo '<img id="imagen" src="data:image/jpeg;base64,'.base64_encode($row_DatosConsulta['Imagen'] ).'" width="180" height="230" alt=""/>';
 ?>
 										
 <p><?php echo $row_DatosConsulta["Nombre"]; ?><br>
