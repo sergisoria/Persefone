@@ -5,6 +5,7 @@ if (!isset($_SESSION)) {
   session_start();
 }
 
+
 $loginFormAction = $_SERVER['PHP_SELF'];
 if (isset($_GET['accesscheck'])) {
   $_SESSION['PrevUrl'] = $_GET['accesscheck'];
@@ -28,7 +29,7 @@ if (isset($_POST['email'])) {
   	
   $LoginRS__query=sprintf("SELECT idUsuario, Correo, Password, Rol FROM Usuarios WHERE Correo=%s AND Password=%s AND Rol=1",
   GetSQLValueString($loginUsername, "text"),
-GetSQLValueString($password, "text")); 
+  GetSQLValueString($password, "text")); 
    
   $LoginRS = mysqli_query($conn,  $LoginRS__query) or die(mysqli_error($conn));
   $loginFoundUser = mysqli_num_rows($LoginRS);
@@ -43,7 +44,7 @@ GetSQLValueString($password, "text"));
     $_SESSION['persefone_Login'] = mysqli_result($LoginRS,0,'Login');
     $_SESSION['persefone_Mail'] = mysqli_result($LoginRS,0,'Correo');
     $_SESSION['persefone_Nivel'] = mysqli_result($LoginRS,0,'Rol');
-	//ContabilizarAcceso($_SESSION['NOMBREWEB_UserId']);
+	($_SESSION['NOMBREWEB_UserId']);
 	
 	/* DESCOMENTAR SOLO SI SE USA EL CHECK DE RECORDAR CONTRASEÑA, HABRÁ QUE USAR LA FUNCIÓN generar_cookie()
 	if ((isset($_POST["CAMPORECUERDA"])) && ($_POST["CAMPORECUERDA"]=="1"))
