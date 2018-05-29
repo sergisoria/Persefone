@@ -1,22 +1,67 @@
 <?php require_once('Connections/conexion.php'); ?>
-<?php
-
-$variable_Consulta = "0";
-if (isset($VARIABLE)) {
-  $variable_Consulta = $VARIABLE;
-}
-//WHERE NOMBRECAMPO = %s ORDER BY NOMBRECAMPOFECHA DESC condicion ordenador todo
-$query_DatosConsulta = sprintf("SELECT * FROM productos");
-$DatosConsulta = mysqli_query($conn,  $query_DatosConsulta) or die(mysqli_error($conn));
-$row_DatosConsulta = mysqli_fetch_assoc($DatosConsulta);
-$totalRows_DatosConsulta = mysqli_num_rows($DatosConsulta);
-
+<?php 
 $query_DatosConsultaTIPO = sprintf("SELECT * FROM tipos limit 7");
 $DatosConsultaTIPO = mysqli_query($conn,  $query_DatosConsultaTIPO) or die(mysqli_error($conn));
 $row_DatosConsultaTIPO = mysqli_fetch_assoc($DatosConsultaTIPO);
 $totalRows_DatosConsultaTIPO = mysqli_num_rows($DatosConsultaTIPO);
+?>
+<?php 
 
-//FINAL DE LA PARTE SUPERIOR
+if(isset($_SESSION['carrito'])){
+	
+	$arreglo=$_SESSION['carrito'];
+	$entro=false;
+	$numero=0;
+	
+	for($i=0; $i<count($arreglo); $i++){
+		if($arreglo[$i]['id'] == 1){
+		    $entro=true;
+            $numero=$i;			
+		}
+	}
+	
+	if($entro==true){
+		$arreglo[$numero]['Cantidad']= $arreglo[$numero]['Cantidad']+1;
+		$_SESSION['carrito']=$arreglo;
+	}else{
+	 
+	   $nombre="";
+	   $precio=0;
+	   $imagen="";
+	   $id = 1;
+	   $re="select * from productos where idProducto=$id";
+	   $mi = mysqli_query($conn,  $re);
+	   while($fa = mysqli_fetch_assoc($mi)){
+		    $nombre=$fa['Nombre'];
+			$precio=$fa['PrecioUnidad'];
+			$imagen=$fa['Imagen'];
+	   
+	   
+	   
+	   $datosnuevos=array('idProducto'=>$id,
+	                    'Nombre' =>$nombre,
+						'PrecioUnidad' =>$precio,
+						'Imagen' =>$imagen,
+						'Cantidad'=>1);
+	
+	
+
+	   array_push($arreglo,$datosnuevos);
+	   
+	   $_SESSION['carrito']=$arreglo;
+	   }
+}
+	
+}
+	
+	
+
+
+
+?>
+
+<?php
+
 ?>
 
 <!DOCTYPE html>
@@ -237,9 +282,7 @@ ul.breadcrumb li a:hover {
     </form>
   </div>
 </div>
- 
-  
-  <?php
+<?php
 //AQUI ES DONDE SE SACAN LOS DATOS, SE COMPRUEBA QUE HAY RESULTADOS
 if ($totalRows_DatosConsultaTIPO > 0) {
 do {?>
@@ -284,6 +327,45 @@ else
      <i onclick="openSearch()" class="fa fa-search openBtn">
 	</i>
     </p>
+	
+	 <?php
+	 
+	   $total=0;
+	   if(isset($_SESSION['carrito'])){
+		   $datos=$_SESSION['carrito'];
+		   
+		   for($i=0;$i<count($datos); $i++){
+			
+       ?>
+		
+		<div class="producto">
+		     <center>
+			 <br>
+			 <span><?php echo $datos[$i]['Nombre']?></span><br>
+			 <span>Precio: <?php echo $datos[$i]['Precio'];?></span><br>
+			 <span>Cantidad<input type="text" value="<?php echo $datos[$i]['Cantidad']; ?>"></span>
+			 
+			 <span>Preciototal  <?php echo $datos[$i]['Precio'] * $datos[$i]['Cantidad'];?></span>
+			 </center>
+			
+	<?php	
+
+        $total=($datos[$i]['Cantidad']*$datos[$i]['Precio'])+total;
+	
+		   }
+		   
+		   
+	   }else{
+		   echo '<center><h2>El carrito esta vacio</h2></center>';
+	 
+	   }
+	   echo '<center><h2>Total: '.$total.' </h2></center>';
+	 
+	 ?>
+	 <center><a href="inicio.php">ver productos</a></center>
+	 
+	 
+	 
 	<script>
 function openSearch() {
     document.getElementById("myOverlay2").style.display = "block";
@@ -295,40 +377,10 @@ function closeSearch() {
 </script>
   </header>
 
-  <!-- Image header -->
-  <div class="w3-display-container w3-container"> 
+  
 
-<div class="container">
-  <img src="imagen_inicio.jpg" alt="Snow" style="width:100%">
-  <a href="cat.php?id=8" class="btn">HOMBRE</a>
-  <a href="cat.php?id=9" class="btn2">MUJER</a>
- </div>	  
-	 
 
-<div class="slideshow-container">
 
-<div class="mySlides fade">
-  <img src="slide1.jpg" style="width:100%">
-	
-</div>
-
-<div class="mySlides fade">
-  <img src="slide2.jpg" style="width:100%">
-</div>
-
-<div class="mySlides fade">
- <img src="slide3.jpg" style="width:100%">
-</div>
-
-</div>
-<br>
-
-<div style="text-align:center">
-  <span class="dot"></span> 
-  <span class="dot"></span> 
-  <span class="dot"></span> 
-</div>
-  </div>
 <script>
 var slideIndex = 0;
 showSlides();
@@ -367,11 +419,12 @@ function showSlides() {
       </div>
 
       <div class="w3-col s4">
-        <h4>Sobre Persephónē</h4>
-        <p><a href="about_us.php"style='color:black;'>Sobre Nosotros</a></p>
-        <p><a href="#"style='color:black;'>Envio</a></p>
-        <p><a href="#"style='color:black;'>Pago</a></p>
-        <p><a href="#"style='color:black;'>Ayuda</a></p>
+        <h4>Sobre nosotros...</h4>
+        <p><a href="#">Soporte</a></p>
+        <p><a href="#">Envio</a></p>
+        <p><a href="#">Pago</a></p>
+        <p><a href="#">Tarjeta Regalo</a></p>
+        <p><a href="#">Ayuda</a></p>
       </div>
 
      <div class="w3-col s4 w3-justify">
@@ -400,13 +453,10 @@ function showSlides() {
   <div class="w3-modal-content w3-animate-zoom" style="padding:32px">
     <div class="w3-container w3-white w3-center">
       <i onclick="document.getElementById('newsletter').style.display='none'" class="fa fa-remove w3-right w3-button w3-transparent w3-xxlarge"></i>
-      <h2 class="w3-wide"style="
-    padding-left: 50px;
-    border-left-width: 10px;
-">NOVEDADES</h2>
+      <h2 class="w3-wide">NOVEDADES</h2>
       <p>Sé el primero enterarte de nuevos productos o nuevas ofertas</p>
       <p><input class="w3-input w3-border" type="text" placeholder="Inserta el correo"></p>
-      <button type="button" class="w3-button w3-padding-large w3-blue w3-margin-bottom" onclick="document.getElementById('newsletter').style.display='none'">REGÍSTRATE AHORA</button>
+      <button type="button" class="w3-button w3-padding-large w3-red w3-margin-bottom" onclick="document.getElementById('newsletter').style.display='none'">REGÍSTRATE AHORA</button>
     </div>
   </div>
 </div>

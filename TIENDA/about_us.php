@@ -5,11 +5,7 @@ $variable_Consulta = "0";
 if (isset($VARIABLE)) {
   $variable_Consulta = $VARIABLE;
 }
-//WHERE NOMBRECAMPO = %s ORDER BY NOMBRECAMPOFECHA DESC condicion ordenador todo
-$query_DatosConsulta = sprintf("SELECT * FROM productos");
-$DatosConsulta = mysqli_query($conn,  $query_DatosConsulta) or die(mysqli_error($conn));
-$row_DatosConsulta = mysqli_fetch_assoc($DatosConsulta);
-$totalRows_DatosConsulta = mysqli_num_rows($DatosConsulta);
+
 
 $query_DatosConsultaTIPO = sprintf("SELECT * FROM tipos limit 7");
 $DatosConsultaTIPO = mysqli_query($conn,  $query_DatosConsultaTIPO) or die(mysqli_error($conn));
@@ -296,60 +292,23 @@ function closeSearch() {
   </header>
 
   <!-- Image header -->
-  <div class="w3-display-container w3-container"> 
+  <div class="w3-display-container w3-container"></div>
+  <ul class="breadcrumb">
+  <li><a  style='text-decoration:none;color:grey;font-size:200%;margin-left: 250px;'>¿QUIENES SOMOS?</a></li>
+</ul>
+<section class="grid"><section class="grid-row">        <section class="grid-column grid-column__width--1 grid-column__position--1">
+            
+<section class="grid-text grid-text__position--left-top">
+    <section class="grid-text__container">
+            <h2 class="grid-text__title " style="color: #000000;                 display:none;
+">
 
-<div class="container">
-  <img src="imagen_inicio.jpg" alt="Snow" style="width:100%">
-  <a href="cat.php?id=8" class="btn">HOMBRE</a>
-  <a href="cat.php?id=9" class="btn2">MUJER</a>
- </div>	  
-	 
-
-<div class="slideshow-container">
-
-<div class="mySlides fade">
-  <img src="slide1.jpg" style="width:100%">
-	
-</div>
-
-<div class="mySlides fade">
-  <img src="slide2.jpg" style="width:100%">
-</div>
-
-<div class="mySlides fade">
- <img src="slide3.jpg" style="width:100%">
-</div>
-
-</div>
-<br>
-
-<div style="text-align:center">
-  <span class="dot"></span> 
-  <span class="dot"></span> 
-  <span class="dot"></span> 
-</div>
-  </div>
-<script>
-var slideIndex = 0;
-showSlides();
-
-function showSlides() {
-    var i;
-    var slides = document.getElementsByClassName("mySlides");
-    var dots = document.getElementsByClassName("dot");
-    for (i = 0; i < slides.length; i++) {
-       slides[i].style.display = "none";  
-    }
-    slideIndex++;
-    if (slideIndex > slides.length) {slideIndex = 1}    
-    for (i = 0; i < dots.length; i++) {
-        dots[i].className = dots[i].className.replace(" active", "");
-    }
-    slides[slideIndex-1].style.display = "block";  
-    dots[slideIndex-1].className += " active";
-    setTimeout(showSlides, 5000);
-}
-</script>
+            </h2>
+                        <p class="grid-text__copy " style="color: #000000;"></p>
+            </section>
+</section>
+        </section>
+      
  
 <!-- Subscribe section -->
   <!-- Footer -->

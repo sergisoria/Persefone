@@ -1,23 +1,50 @@
 <?php require_once('Connections/conexion.php'); ?>
 <?php
-
+$id = $_GET['id'];
 $variable_Consulta = "0";
 if (isset($VARIABLE)) {
   $variable_Consulta = $VARIABLE;
 }
 //WHERE NOMBRECAMPO = %s ORDER BY NOMBRECAMPOFECHA DESC condicion ordenador todo
-$query_DatosConsulta = sprintf("SELECT * FROM productos");
+$query_DatosConsulta = sprintf("SELECT * FROM productos WHERE idProducto = '$id'");
 $DatosConsulta = mysqli_query($conn,  $query_DatosConsulta) or die(mysqli_error($conn));
 $row_DatosConsulta = mysqli_fetch_assoc($DatosConsulta);
 $totalRows_DatosConsulta = mysqli_num_rows($DatosConsulta);
+
+
+$query_DatosConsultaIDK = sprintf("SELECT REPLACE(Descripcion,'-','<br>-') FROM productos WHERE idProducto = '$id'");
+$DatosConsultaIDK = mysqli_query($conn,  $query_DatosConsultaIDK) or die(mysqli_error($conn));
+$row_DatosConsultaIDK = mysqli_fetch_assoc($DatosConsultaIDK);
+$totalRows_DatosConsultaIDK = mysqli_num_rows($DatosConsultaIDK);
+
+$query_DatosConsultaINV = sprintf("SELECT * FROM inventario where idProducto = '$id'");
+$DatosConsultaINV = mysqli_query($conn,  $query_DatosConsultaINV) or die(mysqli_error($conn));
+$row_DatosConsultaINV = mysqli_fetch_assoc($DatosConsultaINV);
+$totalRows_DatosConsultaINV = mysqli_num_rows($DatosConsultaINV);
+
+//recoger el nombre sacando la id para el entre comillas titulo
+$query_DatosConsultaNameWithID = sprintf("SELECT NombreTipo FROM tipos where idTipos = '$id'");
+$DatosConsultaNameWithID  = mysqli_query($conn,  $query_DatosConsultaNameWithID ) or die(mysqli_error($conn));
+$row_DatosConsultaNameWithID  = mysqli_fetch_assoc($DatosConsultaNameWithID );
+$totalRows_DatosConsultaNameWithID  = mysqli_num_rows($DatosConsultaNameWithID );
 
 $query_DatosConsultaTIPO = sprintf("SELECT * FROM tipos limit 7");
 $DatosConsultaTIPO = mysqli_query($conn,  $query_DatosConsultaTIPO) or die(mysqli_error($conn));
 $row_DatosConsultaTIPO = mysqli_fetch_assoc($DatosConsultaTIPO);
 $totalRows_DatosConsultaTIPO = mysqli_num_rows($DatosConsultaTIPO);
-
 //FINAL DE LA PARTE SUPERIOR
+	
+	
+
+    
+
+    
+    
+
 ?>
+
+
+
 
 <!DOCTYPE html>
 <html>
@@ -31,57 +58,28 @@ $totalRows_DatosConsultaTIPO = mysqli_num_rows($DatosConsultaTIPO);
 <style>
 .w3-sidebar a {font-family: "Roboto", sans-serif}
 body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
-	/* Slideshow container */
-	
-.slideshow-container {
-  max-width: 1000px;
-  position: relative;
-  margin: auto;
+article {
+   
+    padding: 1em;
+    overflow: hidden;
+}
+.column {
+    float: left;
+    width: 50%;
+    padding: 15px;
 }
 
-
-.active {
-  background-color: #717171;
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
 }
-
-/* Fading animation */
-.fade {
-  -webkit-animation-name: fade;
-  -webkit-animation-duration: 1.5s;
-  animation-name: fade;
-  animation-duration: 1.5s;
-}
-
-@-webkit-keyframes fade {
-  from {opacity: .4} 
-  to {opacity: 1}
-}
-
-@keyframes fade {
-  from {opacity: .4} 
-  to {opacity: 1}
-}
-.container {
-    position: relative;
-    width: 100%;
-    max-width: 1000px;
-}
-
-.container img {
-    width: 100%;
-    height: auto;
-}
-
-.container .btn {
+.btn {
     position: absolute;
-    top: 50%;
-    left: 40%;
-    transform: translate(-50%, -50%);
-    -ms-transform: translate(-50%, -50%);
     background-color: #ddd;
     outline: 0;
     color: black;
-    font-size: 16px;
+    font-size: 12px;
     padding: 10px 25px;
     border: none;
     cursor: pointer;
@@ -89,35 +87,11 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
     display: inline-block;
 	text-decoration:none;
 }
-.container .btn2 {
-    position: absolute;
-    top: 50%;
-    left: 60%;
-    transform: translate(-50%, -50%);
-    -ms-transform: translate(-50%, -50%);
-    background-color: #ddd;
-    outline: 0;
-    color: black;
-    font-size: 16px;
-    padding: 10px 25px;
-    border: none;
-    cursor: pointer;
-    text-align: center;
-    display: inline-block;
-	text-decoration:none;
-}
-
-.container .btn:hover {
+.btn:hover {
    background-color: #555;
   color: white;
 }
-.container .btn2:hover {
-   background-color: #555;
-  color: white;
-}
-	
-
-{
+* {
     box-sizing: border-box;
 }
 
@@ -214,9 +188,7 @@ ul.breadcrumb li a {
 ul.breadcrumb li a:hover {
     color: #01447e;
     text-decoration: underline;
-}	
-
-	
+}
 </style>
 <body class="w3-content" style="max-width:1200px">
 
@@ -226,19 +198,17 @@ ul.breadcrumb li a:hover {
     <i onclick="w3_close()" class="fa fa-remove w3-hide-large w3-button w3-display-topright"></i>
     <!-- <h3 class="w3-wide"><b>Persephónē</b></h3> -->
 	  <a href="inicio.php"><img src="logo2.png" /></a>
+
   </div>
-  
    <div id="myOverlay2" class="overlay">
   <span class="closebtn" onclick="closeSearch()" title="Close Overlay">×</span>
   <div class="overlay-content">
-    <form action="/action_page.php">
+    <form action="<?php echo '/cat.php?'?>">
       <input type="text" placeholder="Buscar.." name="search"id="search">
       <button type="submit"><i class="fa fa-search"></i></button>
     </form>
   </div>
 </div>
- 
-  
   <?php
 //AQUI ES DONDE SE SACAN LOS DATOS, SE COMPRUEBA QUE HAY RESULTADOS
 if ($totalRows_DatosConsultaTIPO > 0) {
@@ -250,16 +220,16 @@ do {?>
 										
 
   <?php
-	
+	//w3-button w3-block w3-white w3-left-align
 
        } while ($row_DatosConsultaTIPO = mysqli_fetch_assoc($DatosConsultaTIPO));
 }
 else
 { //MOSTRAR SI NO HAY RESULTADOS ?>
     No hay resultados.
-    <?php } ?>
-  <a href="#footer" class="w3-bar-item w3-button w3-padding">Contacta con nosotros</a> 
-  <a href="javascript:void(0)" class="w3-bar-item w3-button w3-padding" onclick="document.getElementById('newsletter').style.display='block'">Novedades</a> 
+    <?php } ?>	
+  <a href="#footer" class="w3-bar-item w3-button w3-padding">Contacta con nosotros</a>
+  <a href="javascript:void(0)" class="w3-bar-item w3-button w3-padding" onclick="document.getElementById('newsletter').style.display='block'">Novedades</a>
 </nav>
 
 <!-- Top menu on small screens -->
@@ -276,15 +246,15 @@ else
 
   <!-- Push down content on small screens -->
   <div class="w3-hide-large" style="margin-top:83px"></div>
-  
+
   <!-- Top header -->
-  <header class="w3-container w3-xlarge">
-    <p class="w3-right">
+<header class="w3-container w3-xlarge">
+     <p class="w3-right">
       <i class="fa fa-shopping-cart w3-margin-right"></i>
-     <i onclick="openSearch()" class="fa fa-search openBtn">
-	</i>
+      <i onclick="openSearch()" class="fa fa-search openBtn" id="search">
+      </i>
     </p>
-	<script>
+    <script>
 function openSearch() {
     document.getElementById("myOverlay2").style.display = "block";
 }
@@ -292,67 +262,111 @@ function openSearch() {
 function closeSearch() {
     document.getElementById("myOverlay2").style.display = "none";
 }
+
 </script>
   </header>
 
   <!-- Image header -->
-  <div class="w3-display-container w3-container"> 
+  <ul class="breadcrumb">
+  <li><a  style='text-decoration:none;color:grey;'href="inicio.php">INICIO</a></li>
+  <li><?php echo $row_DatosConsulta["Nombre"]; ?></li>
+</ul>
+  <!-- Product grid -->
+  <div class="w3-row w3-grayscale">
+  <div class="row">
+  <div class="column">
+  <?php 
 
-<div class="container">
-  <img src="imagen_inicio.jpg" alt="Snow" style="width:100%">
-  <a href="cat.php?id=8" class="btn">HOMBRE</a>
-  <a href="cat.php?id=9" class="btn2">MUJER</a>
- </div>	  
-	 
+	echo '<img src="'.$row_DatosConsulta['Imagen'].'" width="400" height="550" alt=""/>';
+	// echo '<img src="data:image/jpeg;base64,'.base64_encode($row_DatosConsulta['Imagen'] ).'" width="400" height="550" alt=""/>';
+?>
 
-<div class="slideshow-container">
-
-<div class="mySlides fade">
-  <img src="slide1.jpg" style="width:100%">
-	
-</div>
-
-<div class="mySlides fade">
-  <img src="slide2.jpg" style="width:100%">
-</div>
-
-<div class="mySlides fade">
- <img src="slide3.jpg" style="width:100%">
-</div>
-
-</div>
-<br>
-
-<div style="text-align:center">
-  <span class="dot"></span> 
-  <span class="dot"></span> 
-  <span class="dot"></span> 
-</div>
   </div>
-<script>
-var slideIndex = 0;
-showSlides();
+  <div class="column">
+    <h1><?php echo $row_DatosConsulta["Nombre"]; ?></h1>
+    <h4>Color: <?php echo $row_DatosConsulta["Color"]; ?></h4>
+    <h3>Precio: <?php echo $row_DatosConsulta["PrecioUnidad"]; ?>€</h3>
+    <label style="display: table-cell; vertical-align: top" data-bind="text: sizeLabel, visible: !hideLabels, disable: isDisabled">TALLA:</label>
+	<div class="colour-size-select" data-bind="visible: sizeDropdownVisible()">	
+                <select name="madredelsoria" id="madredelsoria" data-id="sizeSelect" data-bind="options: variants,
+                    optionsAfterRender: disableSizeIfOutOfStock,
+                    optionsText: &quot;Size&quot;,
+                    optionsCaption: selectSizeText,
+                    value: size,
+                    disable: isDisabled || sizeDropdownDisabled(),
+                    css:{ required : noSizeSelected()}"><option value="">Porfavor Selecciona</option>  
+					<?php
+					
+//AQUI ES DONDE SE SACAN LOS DATOS, SE COMPRUEBA QUE HAY RESULTADOS
+if ($totalRows_DatosConsultaINV > 0) {
+do {?>
 
-function showSlides() {
-    var i;
-    var slides = document.getElementsByClassName("mySlides");
-    var dots = document.getElementsByClassName("dot");
-    for (i = 0; i < slides.length; i++) {
-       slides[i].style.display = "none";  
-    }
-    slideIndex++;
-    if (slideIndex > slides.length) {slideIndex = 1}    
-    for (i = 0; i < dots.length; i++) {
-        dots[i].className = dots[i].className.replace(" active", "");
-    }
-    slides[slideIndex-1].style.display = "block";  
-    dots[slideIndex-1].className += " active";
-    setTimeout(showSlides, 5000);
+    
+<option value=""><?php echo $row_DatosConsultaINV['Talla']; ?></option>
+										
+
+  <?php
+
+
+       } while ($row_DatosConsultaINV = mysqli_fetch_assoc($DatosConsultaINV));
 }
-</script>
- 
+else
+{ //MOSTRAR SI NO HAY RESULTADOS ?>
+    No hay resultados.
+	
+    <?php } ?>
+	
+					
+					
+					
+                <!-- ko if: noSizeSelected() --><!-- /ko -->
+            </select></div>
+             <p></p>
+		 
+		 <form action="">
+         <a href="<?php echo 'carritodecompras1.php?id='.$row_DatosConsulta["idProducto"]?>" class="btn">Añadir a la Cesta</a>
+		 </form>
+		 
+         <p><br></p>
+    <a onclick="myAccFunc()" href="javascript:void(0)" class="w3-button w3-block w3-white w3-left-align" id="myBtn">
+      Descripcion del Producto: <i class="fa fa-caret-down"></i>
+    </a>
+    <div id="demoAcc" class="w3-bar-block w3-hide w3-medium">
+      <p style="
+    margin-top: 0px;
+    margin-bottom: 0px;
+">-<?php echo $row_DatosConsultaIDK["REPLACE(Descripcion,'-','<br>-')"]?></p>
+	
+	
+   
+	</div>
+	
+  </div>
+</div>
+  
+  </div>
+<div class="w3-row w3-grayscale">
+  <?php
+//AQUI ES DONDE SE SACAN LOS DATOS, SE COMPRUEBA QUE HAY RESULTADOS
+if ($totalRows_DatosConsulta > 0) {
+do {?>
+
+
+  <?php
+	
+
+       } while ($row_DatosConsulta = mysqli_fetch_assoc($DatosConsulta));
+}
+else
+{ //MOSTRAR SI NO HAY RESULTADOS ?>
+    No hay resultados.
+    <?php } ?>
+
+  <!-- Product grid -->
+ </div>
 <!-- Subscribe section -->
   <!-- Footer -->
+  
   <footer class="w3-padding-64 w3-light-grey w3-small w3-center" id="footer">
     <div class="w3-row-padding">
       <div class="w3-col s4">
@@ -374,7 +388,7 @@ function showSlides() {
         <p><a href="#"style='color:black;'>Ayuda</a></p>
       </div>
 
-     <div class="w3-col s4 w3-justify">
+    <div class="w3-col s4 w3-justify">
         <h4>Tienda</h4>
         <p><i class="fa fa-fw fa-map-marker"></i> Persephónē</p>
         <p><i class="fa fa-fw fa-phone"></i> 0044123123</p>
@@ -390,7 +404,7 @@ function showSlides() {
     </div>
   </footer>
 
- 
+
 
   <!-- End page content -->
 </div>
@@ -412,7 +426,7 @@ function showSlides() {
 </div>
 
 <script>
-// Accordion 
+// Accordion
 function myAccFunc() {
     var x = document.getElementById("demoAcc");
     if (x.className.indexOf("w3-show") == -1) {
@@ -431,14 +445,17 @@ function w3_open() {
     document.getElementById("mySidebar").style.display = "block";
     document.getElementById("myOverlay").style.display = "block";
 }
- 
+
 function w3_close() {
     document.getElementById("mySidebar").style.display = "none";
     document.getElementById("myOverlay").style.display = "none";
 }
-	
-
 </script>
 
 </body>
 </html>
+
+<?php
+//AÑADIR AL FINAL DE LA PÁGINA
+mysqli_free_result($DatosConsulta);
+?>
