@@ -244,8 +244,8 @@ INSERT INTO `metodopago` (`idMetodoPago`, `TipoPago`, `Descripcion`) VALUES
 			INSERT INTO `promociones` (`idPromocion`, `Nombre`, `FechaInicio`, `FechaFinal`, `Descripcion`, `Descuento`) VALUES ('1', 'Navidad', '2018-12-20', '2019-01-07', 'Epoca Navideña 2018', '10'); 
 
 --Insert Pedido
-			INSERT INTO `pedido` (`idPedido`, `FechaInicio`, `FechaEstimada`, `idUsuario`) VALUES ('1', '2018-05-20', '2018-05-23', '1'); 
-
+			INSERT INTO `pedido` (`idPedido`, `FechaInicio`, `FechaEstimada`, `idUsuario`,`Estado`) VALUES ('1', '2018-05-20', '2018-05-23', '1','Anulado');
+			
 --Insert Detalle Pedido
 			INSERT INTO `detallepedido` (`idDetallePedido`, `Cantidad`, `Talla`, `Color`, `idProducto`, `idPedido`) VALUES ('1', '4', 'S', 'Verde', '1', '1'); 
 
