@@ -1,3 +1,24 @@
+<?php require_once('Connections/conexion.php'); ?>
+<?php
+
+$variable_Consulta = "0";
+if (isset($VARIABLE)) {
+  $variable_Consulta = $VARIABLE;
+}
+//WHERE NOMBRECAMPO = %s ORDER BY NOMBRECAMPOFECHA DESC condicion ordenador todo
+$query_DatosConsulta = sprintf("SELECT * FROM productos WHERE idTipos = '1'");
+$DatosConsulta = mysqli_query($conn,  $query_DatosConsulta) or die(mysqli_error($conn));
+$row_DatosConsulta = mysqli_fetch_assoc($DatosConsulta);
+$totalRows_DatosConsulta = mysqli_num_rows($DatosConsulta);
+
+$query_DatosConsultaTIPO = sprintf("SELECT * FROM tipos");
+$DatosConsultaTIPO = mysqli_query($conn,  $query_DatosConsultaTIPO) or die(mysqli_error($conn));
+$row_DatosConsultaTIPO = mysqli_fetch_assoc($DatosConsultaTIPO);
+$totalRows_DatosConsultaTIPO = mysqli_num_rows($DatosConsultaTIPO);
+
+//FINAL DE LA PARTE SUPERIOR
+?>
+
 <!DOCTYPE html>
 <html>
 <title>Persephónē</title>
@@ -216,17 +237,27 @@ ul.breadcrumb li a:hover {
     </form>
   </div>
 </div>
+ 
   
-  
-  <div class="w3-padding-64 w3-large w3-text-grey" style="font-weight:bold">
-    	<a href="camisetas.html" class="w3-bar-item w3-button">Camisetas</a> 
-		<a href="vestidos.html" class="w3-bar-item w3-button">Vestidos</a> 
-		<a href="vaqueros.html" class="w3-bar-item w3-button">Vaqueros</a> 
-		<a href="chaquetones_de_la_parra.html" class="w3-bar-item w3-button">Chaquetas y abrigos</a> 
-		<a href="ropadeporte.html" class="w3-bar-item w3-button">Ropa de Deporte</a> 
-		<a href="americanas.html" class="w3-button">Americanas</a> 
-		<a href="zapatos.html" class="w3-bar-item w3-button">Zapatos</a>
-  </div>
+  <?php
+//AQUI ES DONDE SE SACAN LOS DATOS, SE COMPRUEBA QUE HAY RESULTADOS
+if ($totalRows_DatosConsultaTIPO > 0) {
+do {?>
+  <div class=" w3-large w3-text-grey" style="font-weight:bold">
+	  <a href="#" class="w3-bar-item w3-button"><?php echo $row_DatosConsultaTIPO["NombreTipo"];?></a>
+	</div>
+
+										
+
+  <?php
+	
+
+       } while ($row_DatosConsultaTIPO = mysqli_fetch_assoc($DatosConsultaTIPO));
+}
+else
+{ //MOSTRAR SI NO HAY RESULTADOS ?>
+    No hay resultados.
+    <?php } ?>
   <a href="#footer" class="w3-bar-item w3-button w3-padding">Contacta con nosotros</a> 
   <a href="javascript:void(0)" class="w3-bar-item w3-button w3-padding" onclick="document.getElementById('newsletter').style.display='block'">Novedades</a> 
 </nav>
