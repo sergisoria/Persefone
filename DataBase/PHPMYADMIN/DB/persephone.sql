@@ -3,9 +3,15 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
+<<<<<<< HEAD
 -- Temps de generació: 29-05-2018 a les 15:11:40
 -- Versió del servidor: 10.1.31-MariaDB
 -- Versió de PHP: 7.2.4
+=======
+-- Tiempo de generación: 28-05-2018 a las 15:27:34
+-- Versión del servidor: 10.1.31-MariaDB
+-- Versión de PHP: 7.2.4
+>>>>>>> master
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -41,7 +47,11 @@ CREATE TABLE `carrito` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
+<<<<<<< HEAD
 -- Bolcament de dades per a la taula `carrito`
+=======
+-- Volcado de datos para la tabla `carrito`
+>>>>>>> master
 --
 
 INSERT INTO `carrito` (`idCarrito`, `Fecha`, `Cantidad`, `ValorUnidad`, `Talla`, `Color`, `idUsuario`, `idProducto`, `idPromocion`) VALUES
@@ -63,7 +73,11 @@ CREATE TABLE `detallepedido` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
+<<<<<<< HEAD
 -- Bolcament de dades per a la taula `detallepedido`
+=======
+-- Volcado de datos para la tabla `detallepedido`
+>>>>>>> master
 --
 
 INSERT INTO `detallepedido` (`idDetallePedido`, `Cantidad`, `Talla`, `Color`, `idProducto`, `idPedido`) VALUES
@@ -79,6 +93,10 @@ CREATE TABLE `inventario` (
   `idInventario` int(11) NOT NULL,
   `idTienda` int(11) NOT NULL,
   `idProducto` int(11) NOT NULL,
+<<<<<<< HEAD
+=======
+  `idProveedor` int(11) NOT NULL,
+>>>>>>> master
   `idTipos` int(11) NOT NULL,
   `Stock` int(11) NOT NULL,
   `Talla` varchar(20) NOT NULL,
@@ -86,6 +104,7 @@ CREATE TABLE `inventario` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
+<<<<<<< HEAD
 -- Bolcament de dades per a la taula `inventario`
 --
 
@@ -136,6 +155,13 @@ INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `
 (44, 1, 11, 9, 20, '42', 'Femenino'),
 (45, 1, 12, 9, 20, 'Talla única', 'Femenino'),
 (46, 1, 13, 9, 20, 'Talla única', 'Femenino');
+=======
+-- Volcado de datos para la tabla `inventario`
+--
+
+INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idProveedor`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES
+(1, 1, 1, 4, 1, 20, 'S', 'Masculino');
+>>>>>>> master
 
 -- --------------------------------------------------------
 
@@ -171,7 +197,11 @@ CREATE TABLE `pedido` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
+<<<<<<< HEAD
 -- Bolcament de dades per a la taula `pedido`
+=======
+-- Volcado de datos para la tabla `pedido`
+>>>>>>> master
 --
 
 INSERT INTO `pedido` (`idPedido`, `FechaInicio`, `FechaEstimada`, `idUsuario`) VALUES
@@ -193,6 +223,7 @@ CREATE TABLE `productos` (
   `Talla` varchar(20) NOT NULL,
   `Genero` varchar(20) NOT NULL,
   `Imagen` varchar(255) NOT NULL,
+<<<<<<< HEAD
   `idProveedor` int(11) NOT NULL,
   `Descripcion` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -256,6 +287,70 @@ INSERT INTO `productos` (`idProducto`, `Nombre`, `Referencia`, `PrecioUnidad`, `
 (52, 'Bambas Nike - SJ', '52', '90.99', 7, 'Marron', '45', 'Masculino', '.\\zapatosc\\ZAPATO_DENTRO\\ZAPATOS_DENTRO5.jpg', 4, ' Exterior de ante - Cierre de cordones - Marca en la lengüeta y en la abertura - Acolchados para mayor comodidad - Logo de Nike en contraste - Suela gruesa de goma - Dibujo texturizado'),
 (53, 'Bambas Nike Lunar', '53', '70.99', 7, 'Negro', '43', 'Masculino', '.\\zapatosc\\ZAPATO_DENTRO\\ZAPATOS_DENTRO3.jpg', 4, ' Superposiciones resistentes a las abrasiones - Cierre de cordones - Con cables Flywire para un ajuste seguro - Tobillo acolchado - Amotiguación de espuma para mayor estabilidad y comodidad - Logo característico de Nike - Goma adherente en la parte delant'),
 (54, 'Bambas Nike Air-Force', '54', '120.99', 7, 'Negro', '45', 'Masculino', '.\\zapatosc\\ZAPATO_DENTRO\\ZAPATOS_DENTRO4.jpg', 4, ' Cierre de cordones - Logo de Nike en los laterales - Espuma moldeada para apoyar la zona media del pie y el talón - Borde con forma - Trabilla para calzar - Unidad Max Air para amortiguar y permitir un movimiento suave');
+=======
+  `idProveedor` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `productos`
+--
+
+INSERT INTO `productos` (`idProducto`, `Nombre`, `Referencia`, `PrecioUnidad`, `idTipos`, `Color`, `Talla`, `Genero`, `Imagen`, `idProveedor`) VALUES
+(1, 'Camiseta Nike FC', '1', '62.99', 1, 'Negro', 'S', 'Masculino', '.\\camisetas\\camisetas_dentro\\CAMISETAS_DENTRO1.jpg', 4),
+(2, 'Campera', '2', '210.00', 8, 'Negro', 'S', 'Masculino', '.\\AX_hombre\\AX_hombre_dentro\\AXHD1.jpg', 11),
+(3, 'Sneakers', '3', '145.00', 8, 'Azul Marino', '40', 'Masculino', '.\\AX_hombre\\AX_hombre_dentro\\AXHD2.jpg', 11),
+(4, 'Sandalia de dedo', '4', '49.00', 8, 'Negro', '40', 'Masculino', '.\\AX_hombre\\AX_hombre_dentro\\AXHD3.jpg', 11),
+(5, 'Cazadora de plumas', '5', '165.00', 8, 'Gris', 'S', 'Masculino', '.\\AX_hombre\\AX_hombre_dentro\\AXHD4.jpg', 11),
+(6, 'Campera', '6', '210.00', 8, 'Blanco', 'S', 'Masculino', '.\\AX_hombre\\AX_hombre_dentro\\AXHD5.jpg', 11),
+(7, 'Gorra', '7', '60.00', 8, 'Azul Marino', 'Talla Unica', 'Masculino', '.\\AX_hombre\\AX_hombre_dentro\\AXHD6.jpg', 11),
+(8, 'Sneakers', '8', '125.00', 9, 'Blanco', '40', 'Femenino', '.\\AX_mujer\\AX_mujer_dentro\\AXMD1.jpg', 11),
+(9, 'Shorts', '9', '105.00', 9, 'Negro', 'S', 'Femenino', '.\\AX_mujer\\AX_mujer_dentro\\AXMD2.jpg', 11),
+(10, 'Bolso Shopping', '10', '145.00', 9, 'Rosa', 'Talla Unica', 'Femenino', '.\\AX_mujer\\AX_mujer_dentro\\AXMD3.jpg', 11),
+(11, 'Talones', '11', '145.00', 9, 'Rojo', '40', 'Femenino', '.\\AX_mujer\\AX_mujer_dentro\\AXMD4.jpg', 11),
+(12, 'Clutch', '12', '75.00', 9, 'Gris', 'Talla Unica', 'Femenino', '.\\AX_mujer\\AX_mujer_dentro\\AXMD5.jpg', 11),
+(13, 'Mochila', '13', '125.00', 9, 'Gris', 'Talla Unica', 'Femenino', '.\\AX_mujer\\AX_mujer_dentro\\AXMD6.jpg', 11),
+(14, 'Camiseta de Botones', '14', '19.99', 1, 'Blanco', 'S', 'Femenino', '.\\camisetas\\camisetas_dentro\\CAMISETAS_DENTRO2.jpg', 2),
+(15, 'Camiseta Levis', '15', '35.99', 1, 'Blanco', 'S', 'Femenino', '.\\camisetas\\camisetas_dentro\\CAMISETAS_DENTRO4.jpg', 3),
+(16, 'Camiseta con Estampado', '16', '150.99', 1, 'Blanco', 'S', 'Femenino', '.\\camisetas\\camisetas_dentro\\CAMISETAS_DENTRO6.jpg', 2),
+(17, 'Camiseta Merci', '17', '15.99', 1, 'Blanco', 'S', 'Masculino', '.\\camisetas\\camisetas_dentro\\CAMISETAS_DENTRO5.jpg', 2),
+(18, 'Camiseta Gris', '18', '25.99', 1, 'Gris', 'S', 'Masculino', '.\\camisetas\\camisetas_dentro\\CAMISETAS_DENTRO3.jpg', 2),
+(19, 'Vestido largo de PrettyLittleThing', '19', '47.99', 2, 'Blanco', 'S', 'Femenino', '.\\vestidos\\VESTIDOS_DENTRO\\VESTIDOS_DENTRO1.jpg', 5),
+(20, 'Vestido largo de Warehouse', '20', '51.99', 2, 'Multicolor', 'S', 'Femenino', '.\\vestidos\\VESTIDOS_DENTRO\\VESTIDOS_DENTRO2.jpg', 6),
+(21, 'Vestido con manga de PrettyLittleThing', '21', '40.99', 2, 'Verde', 'S', 'Femenino', '.\\vestidos\\VESTIDOS_DENTRO\\VESTIDOS_DENTRO3.jpg', 5),
+(22, 'Vestido con ribete de volante de Boohoo', '22', '13.49', 2, 'Negro', 'S', 'Femenino', '.\\vestidos\\VESTIDOS_DENTRO\\VESTIDOS_DENTRO4.jpg', 7),
+(23, 'Vestido largo de River Island', '23', '68.99', 2, 'Naranja', 'S', 'Femenino', '.\\vestidos\\VESTIDOS_DENTRO\\VESTIDOS_DENTRO5.jpg', 9),
+(24, 'Vestido estilo polo de de Weekday', '24', '45.00', 2, 'Blanco', 'S', 'Femenino', '.\\vestidos\\VESTIDOS_DENTRO\\VESTIDOS_DENTRO6.jpg', 8),
+(25, 'Parka de Only & Sons', '25', '70.99', 4, 'Gris', 'S', 'Masculino', '.\\chaqueta\\CHAQUETAS_DENTRO\\CHAQUETAS_DENTRO1.jpg', 13),
+(26, 'Parka de punto extragrande de Kyoto', '26', '48.99', 4, 'Negro', 'S', 'Masculino', '.\\chaqueta\\CHAQUETAS_DENTRO\\CHAQUETAS_DENTRO2.jpg', 15),
+(27, 'Parka larga de D-Struct', '27', '76.99', 4, 'Blanco', 'S', 'Masculino', '.\\chaqueta\\CHAQUETAS_DENTRO\\CHAQUETAS_DENTRO3.jpg', 14),
+(28, 'Parka forrada de New Look', '28', '56.49', 4, 'Crema', 'S', 'Femenino', '.\\chaqueta\\CHAQUETAS_DENTRO\\CHAQUETAS_DENTRO4.jpg', 16),
+(29, 'Chaqueta de piel sintética de Mongolia', '29', '66.99', 4, 'Azul', 'S', 'Femenino', '.\\chaqueta\\CHAQUETAS_DENTRO\\CHAQUETAS_DENTRO5.jpg', 2),
+(30, 'Parka de camuflaje de Weekday', '30', '89.99', 4, 'Verde', 'S', 'Femenino', '.\\chaqueta\\CHAQUETAS_DENTRO\\CHAQUETAS_DENTRO6.jpg', 8),
+(31, 'Vaqueros de Liquor N Poker', '31', '55.99', 3, 'Azul', '36', 'Unisex', '.\\jeans\\buenas\\JEANS_DENTRO\\JEANS_DENTRO2.jpeg', 10),
+(32, 'Vaqueros ajustados de Liquor N Poker', '32', '55.99', 3, 'Negro', '36', 'Unisex', '.\\jeans\\buenas\\JEANS_DENTRO\\JEANS_DENTRO3.jpeg', 10),
+(33, 'Vaqueros elásticos de Armani Exchange', '33', '131.99', 3, 'Azul', '36', 'Unisex', '.\\jeans\\buenas\\JEANS_DENTRO\\JEANS_DENTRO4.jpeg', 11),
+(34, 'Vaqueros ajustados de Liquor N Poker', '34', '50.99', 3, 'Negro', '36', 'Unisex', '.\\jeans\\buenas\\JEANS_DENTRO\\JEANS_DENTRO5.jpeg', 10),
+(35, 'Vaqueros ajustado de Liquor N Poker', '35', '55.99', 3, 'Blanco', '36', 'Unisex', '.\\jeans\\buenas\\JEANS_DENTRO\\JEANS_DENTRO6.jpeg', 10),
+(36, 'Vaqueros ajustados de Brooklyn Denim', '36', '62.99', 3, 'Negro', '36', 'Unisex', '.\\jeans\\buenas\\JEANS_DENTRO\\9576510-1-black.jpg', 12),
+(37, 'Chandal Adidas', '37', '43.99', 5, 'Rojo', '36', 'Femenino', '.\\ropa de deporte\\RD_DENTRO\\RD_DENTRO1.jpg', 17),
+(38, 'Chandal Puma', '38', '65.99', 5, 'Negro', '36', 'Femenino', '.\\ropa de deporte\\RD_DENTRO\\RD_DENTRO5.jpg', 18),
+(39, 'Chandal Nike', '39', '80.99', 5, 'Rosa', '36', 'Femenino', '.\\ropa de deporte\\RD_DENTRO\\RD_DENTRO4.jpg', 4),
+(40, 'Chandal SF Completo', '40', '160.99', 5, 'Gris', 'S', 'Masculino', '.\\ropa de deporte\\RD_DENTRO\\RD_DENTRO2.jpg', 19),
+(41, 'Chandal Asos Completo', '41', '90.99', 5, 'Rojo', 'S', 'Masculino', '.\\ropa de deporte\\RD_DENTRO\\RD_DENTRO6.jpg', 2),
+(42, 'Chandal Armani Completo', '42', '300.99', 5, 'Negro', 'S', 'Masculino', '.\\ropa de deporte\\RD_DENTRO\\RD_DENTRO3.jpg', 11),
+(43, 'Americana Azul', '43', '83.99', 6, 'Azul Marino', '32', 'Masculino', '.\\americanas\\AMERICANAS_DENTRO\\AMERICANAS_DENTRO2.jpg', 2),
+(44, 'Americana Gris', '44', '95.99', 6, 'Gris', '34', 'Masculino', '.\\americanas\\AMERICANAS_DENTRO\\AMERICANAS_DENTRO4.jpg', 11),
+(45, 'Americana de Cuadros', '45', '100.99', 6, 'Gris', '36', 'Masculino', '.\\americanas\\AMERICANAS_DENTRO\\AMERICANAS_DENTRO3.jpg', 1),
+(46, 'Blazer Verde Pistacho', '46', '60.99', 6, 'Verde ', '26', 'Femenino', '.\\americanas\\AMERICANAS_DENTRO\\AMERICANAS_DENTRO1.jpg', 9),
+(47, 'Blazer Negro', '47', '50.99', 6, 'Negro', '28', 'Femenino', '.\\americanas\\AMERICANAS_DENTRO\\AMERICANAS_DENTRO6.jpg', 2),
+(48, 'Blazer Rosa', '48', '80.99', 6, 'Rosa', '30', 'Femenino', '.\\americanas\\AMERICANAS_DENTRO\\AMERICANAS_DENTRO7.jpg', 2),
+(49, 'Bambas Nike Cortez', '49', '73.99', 7, 'Blanco', '40', 'Unisex', '.\\zapatosc\\ZAPATO_DENTRO\\ZAPATOS_DENTRO1.jpg', 4),
+(50, 'Bambas Nike MB', '50', '55.99', 7, 'Negro', '39', 'Femenino', '.\\zapatosc\\ZAPATO_DENTRO\\ZAPATOS_DENTRO2.jpg', 4),
+(51, 'Bambas Nike - SB', '51', '85.99', 7, 'Gris', '40', 'Femenino', '.\\zapatosc\\ZAPATO_DENTRO\\ZAPATOS_DENTRO6.jpg', 4),
+(52, 'Bambas Nike - SJ', '52', '90.99', 7, 'Marron', '45', 'Masculino', '.\\zapatosc\\ZAPATO_DENTRO\\ZAPATOS_DENTRO5.jpg', 4),
+(53, 'Bambas Nike Lunar', '53', '70.99', 7, 'Negro', '43', 'Masculino', '.\\zapatosc\\ZAPATO_DENTRO\\ZAPATOS_DENTRO3.jpg', 4),
+(54, 'Bambas Nike Air-Force', '54', '120.99', 7, 'Negro', '45', 'Masculino', '.\\zapatosc\\ZAPATO_DENTRO\\ZAPATOS_DENTRO4.jpg', 4);
+>>>>>>> master
 
 -- --------------------------------------------------------
 
@@ -273,7 +368,11 @@ CREATE TABLE `promociones` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
+<<<<<<< HEAD
 -- Bolcament de dades per a la taula `promociones`
+=======
+-- Volcado de datos para la tabla `promociones`
+>>>>>>> master
 --
 
 INSERT INTO `promociones` (`idPromocion`, `Nombre`, `FechaInicio`, `FechaFinal`, `Descripcion`, `Descuento`) VALUES
@@ -365,8 +464,12 @@ INSERT INTO `tipos` (`idTipos`, `NombreTipo`, `Web`) VALUES
 (6, 'Americanas', NULL),
 (7, 'Zapatos', NULL),
 (8, 'Armani Masculino', NULL),
+<<<<<<< HEAD
 (9, 'Armani Femenino', NULL),
 (10, 'Bolsos', NULL);
+=======
+(9, 'Armani Femenino', NULL);
+>>>>>>> master
 
 -- --------------------------------------------------------
 
@@ -411,14 +514,22 @@ CREATE TABLE `ventas` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
+<<<<<<< HEAD
 -- Bolcament de dades per a la taula `ventas`
+=======
+-- Volcado de datos para la tabla `ventas`
+>>>>>>> master
 --
 
 INSERT INTO `ventas` (`idVenta`, `Fecha`, `Cantidad`, `ValorUnidad`, `idMetodoPago`, `idProducto`, `idUsuario`) VALUES
 (1, '2018-05-20', 4, '120.00', 1, 1, 1);
 
 --
+<<<<<<< HEAD
 -- Índexs per a les taules bolcades
+=======
+-- Índices para tablas volcadas
+>>>>>>> master
 --
 
 --
@@ -444,8 +555,14 @@ ALTER TABLE `detallepedido`
 -- Índexs per a la taula `inventario`
 --
 ALTER TABLE `inventario`
+<<<<<<< HEAD
   ADD PRIMARY KEY (`idInventario`,`idTienda`,`idProducto`),
   ADD KEY `fk_Inventario_Tienda_idx` (`idTienda`),
+=======
+  ADD PRIMARY KEY (`idInventario`,`idTienda`),
+  ADD KEY `fk_Inventario_Tienda_idx` (`idTienda`),
+  ADD KEY `fk_Inventario_Proveedores1_idx` (`idProveedor`),
+>>>>>>> master
   ADD KEY `fk_Inventario_Productos1_idx` (`idProducto`),
   ADD KEY `fk_Inventario_Tipos1_idx` (`idTipos`);
 
@@ -535,12 +652,15 @@ ALTER TABLE `carrito`
 --
 ALTER TABLE `detallepedido`
   MODIFY `idDetallePedido` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+<<<<<<< HEAD
 
 --
 -- AUTO_INCREMENT per la taula `inventario`
 --
 ALTER TABLE `inventario`
   MODIFY `idInventario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
+=======
+>>>>>>> master
 
 --
 -- AUTO_INCREMENT per la taula `metodopago`
@@ -608,6 +728,10 @@ ALTER TABLE `detallepedido`
 --
 ALTER TABLE `inventario`
   ADD CONSTRAINT `fk_Inventario_Productos1` FOREIGN KEY (`idProducto`) REFERENCES `productos` (`idProducto`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+<<<<<<< HEAD
+=======
+  ADD CONSTRAINT `fk_Inventario_Proveedores1` FOREIGN KEY (`idProveedor`) REFERENCES `proveedores` (`idProveedor`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+>>>>>>> master
   ADD CONSTRAINT `fk_Inventario_Tienda` FOREIGN KEY (`idTienda`) REFERENCES `tienda` (`idTienda`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_Inventario_Tipos1` FOREIGN KEY (`idTipos`) REFERENCES `tipos` (`idTipos`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 

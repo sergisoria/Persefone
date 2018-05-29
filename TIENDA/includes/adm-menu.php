@@ -6,7 +6,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html">SB Admin v2.0</a>
+                <a class="navbar-brand" href="index.php">Administracion</a>
             </div>
             <!-- /.navbar-header -->
 
@@ -238,20 +238,28 @@
                             <a href="usuario-lista.php"><i class="fa fa-dashboard fa-fw"></i> Usuarios</a>
                         </li>
                           <li>
-                            <a href="usuario-lista.php"><i class="fa fa-dashboard fa-fw"></i>Almacen</a>
+                            <a href="productos-lista.php"><i class="fa fa-dashboard fa-fw"></i>Productos</a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="productos-add.php">Añadir un producto</a>
+                                </li>
+                                <li>
+                                    <a href="productos-lista.php">Borrar un producto</a>
+                                </li>
+                            </ul>
                         </li>
                           <li>
                             <a href="usuario-lista.php"><i class="fa fa-dashboard fa-fw"></i> Ventas</a>
                         </li>
                         
                         <li>
-                            <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Charts<span class="fa arrow"></span></a>
+                            <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Pedido<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="flot.html">Flot Charts</a>
+                                    <a href="flot.html">detalle Pedido</a>
                                 </li>
                                 <li>
-                                    <a href="morris.html">Morris.js Charts</a>
+                                    <a href="morris.html">Metodo de pagos</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
