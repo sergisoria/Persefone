@@ -74,13 +74,13 @@ $totalRows_DatosConsulta = mysqli_num_rows($DatosConsulta);
                                             <th>idProductos</th>
                                             <th>Nombre</th>
                                             <th>Referencia</th>
-                                            <th>Stock</th>
                                             <th>PrecioUnidad</th>
                                             <th>Tipo</th>
                                             <th>Color</th>
                                             <th>Talla</th>
                                             <th>Genero</th>
                                             <th>Imagen</th>
+                                            <th>Opciones</th>
                                             
                                         </tr>
                                     </thead>
@@ -95,14 +95,20 @@ $totalRows_DatosConsulta = mysqli_num_rows($DatosConsulta);
 						<td><?php echo $row_DatosConsulta["idProducto"];?></td>
 						<td><?php echo $row_DatosConsulta["Nombre"];?></td>
 						<td><?php echo $row_DatosConsulta["Referencia"];?></td>
-						<td><?php echo $row_DatosConsulta["Stock"];?></td>
 						<td><?php echo $row_DatosConsulta["PrecioUnidad"];?></td>
-						<td><?php echo $row_DatosConsulta["Tipo"];?></td>
+						<td><?php echo $row_DatosConsulta["idTipos"];?></td>
 						<td><?php echo $row_DatosConsulta["Color"];?></td>
 						<td><?php echo $row_DatosConsulta["Talla"];?></td>
 						<td><?php echo $row_DatosConsulta["Genero"];?></td>
-						<td><?php	echo '<img src="data:image/jpeg;base64,'.base64_encode($row_DatosConsulta['Imagen'] ).'" width="100" height="150" alt=""/>';?></td>
+						<td><?php echo '<img src=".'.$row_DatosConsulta["Imagen"].'"width="100" height="100"/>';?></td>
 						
+						  <td><a href="productos-add.php"class="btn btn-outline btn-primary">Modificar</a><br>
+						  <a href="productos-add.php"class="btn btn-outline btn-primary">Borrar</a></br>
+						</td>
+						
+						
+						
+				
 				</tr>
               		
               		<?php

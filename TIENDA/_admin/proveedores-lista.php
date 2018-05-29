@@ -8,13 +8,13 @@ if (isset($VARIABLE)) {
   $variable_Consulta = $VARIABLE;
 }
 
-$query_DatosConsulta = sprintf("SELECT * FROM Usuarios ORDER BY idUsuario ASC");
+$query_DatosConsulta = sprintf("SELECT * FROM proveedores ORDER BY idProveedor ASC");
 $DatosConsulta = mysqli_query($conn,  $query_DatosConsulta) or die(mysqli_error($conn));
 $row_DatosConsulta = mysqli_fetch_assoc($DatosConsulta);
 $totalRows_DatosConsulta = mysqli_num_rows($DatosConsulta);
 
 
-?>
+?> 
              
 
 <!DOCTYPE html>
@@ -28,7 +28,7 @@ $totalRows_DatosConsulta = mysqli_num_rows($DatosConsulta);
     <meta name="description" content="">
     <meta name="author" content="">
     <!-- InstanceBeginEditable name="doctitle" -->
-    <title>Administración Tienda </title>
+    <title>Gestion de Productos</title>
     <!-- InstanceEndEditable -->
     <!-- Bootstrap Core CSS -->
     <?php include("../includes/adm-cabecera.php"); ?>
@@ -52,11 +52,11 @@ $totalRows_DatosConsulta = mysqli_num_rows($DatosConsulta);
   <div id="page-wrapper">
      <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">Gestión de Usuarios</h1>
+                    <h1 class="page-header">Gestion de Productos</h1>
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
-	  <a href="usuario-add.php"class="btn btn-outline btn-primary">Añadir Usuario</a><br></br>
+	  <a href="proveedores-add.php"class="btn btn-outline btn-primary">Añadir Proveedores</a><br></br>
             
 <div class="row">
                 <div class="col-lg-12">
@@ -71,10 +71,13 @@ $totalRows_DatosConsulta = mysqli_num_rows($DatosConsulta);
                                 <table class="table table-striped">
                                     <thead>
                                         <tr>
-                                            <th>Id</th>
+                                            <th>idProveedor</th>
                                             <th>Nombre</th>
-                                            <th>e-mail</th>
-                                            <th>Nivel</th>
+                                            <th>Direccion</th>
+                                            <th>Correo</th>
+                                            <th>Telefono</th>
+                                            <th>WebPage</th>
+                                           
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -85,11 +88,16 @@ $totalRows_DatosConsulta = mysqli_num_rows($DatosConsulta);
               		?>
               		
 				<tr>
-						<td><?php echo $row_DatosConsulta["idUsuario"];?></td>
+						<td><?php echo $row_DatosConsulta["idProveedor"];?></td>
 						<td><?php echo $row_DatosConsulta["Nombre"];?></td>
+						<td><?php echo $row_DatosConsulta["Direccion"];?></td>
 						<td><?php echo $row_DatosConsulta["Correo"];?></td>
-						<td><?php echo MostrarEstado($row_DatosConsulta["Rol"]);?></td>
+						<td><?php echo $row_DatosConsulta["Telefono"];?></td>
+						<td><?php echo $row_DatosConsulta["Webpage"];?></td>
 						
+						
+						
+				
 				</tr>
               		
               		<?php
@@ -102,8 +110,8 @@ $totalRows_DatosConsulta = mysqli_num_rows($DatosConsulta);
                                  } 
 		else
 		 { //MOSTRAR SI NO HAY RESULTADOS ?>
-                No hay resultados.
-                <?php } ?>
+               
+                <?php echo("no hay resultados "); } ?>
                             </div>
                             <!-- /.table-responsive -->
                         </div>

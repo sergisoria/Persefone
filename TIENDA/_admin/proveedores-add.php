@@ -9,24 +9,20 @@ if (isset($_SERVER['QUERY_STRING'])) {
   $editFormAction .= "?" . htmlentities($_SERVER['QUERY_STRING']);
 }
 
-if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "forminsertarpro")) {
+if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "forminsertarprove")) {
 
-  $insertSQL = sprintf("INSERT INTO productos(Nombre,Referencia,PrecioUnidad,idTipos,Color,Talla,Genero,idProveedor) VALUES ( %s, %s, %s, %s, %s, %s,%s,%s )",
+  $insertSQL = sprintf("INSERT INTO proveedores(Nombre,Direccion,Correo,Telefono,Webpage) VALUES ( %s, %s, %s, %s, %s)",
                       	
 					  	GetSQLValueString($_POST["Nombre"], "text"),
-					    GetSQLValueString($_POST["Referencia"], "int"),
-					   	GetSQLValueString($_POST["PrecioUnidad"], "int"),
-					  	GetSQLValueString($_POST["idTipos"], "int"),
-					  	GetSQLValueString($_POST["Color"], "text"),
-					   	GetSQLValueString($_POST["Talla"], "text"),
-					    GetSQLValueString($_POST["Genero"], "text"),
-						//GetSQLValueString($_POST["Imagen"], "text"),
-  						GetSQLValueString($_POST["idProveedor"], "int"));
-	
+					    GetSQLValueString($_POST["Direccion"], "text"),
+					   	GetSQLValueString($_POST["Correo"], "text"),
+					  	GetSQLValueString($_POST["Telefono"], "text"),
+					  	GetSQLValueString($_POST["Webpage"], "text"));
+					
   $Result1 = mysqli_query($conn,  $insertSQL) or die(mysqli_error($conn));
 
 
-  $insertGoTo ="productos-lista.php";
+  $insertGoTo ="proveedores-lista.php";
   if (isset($_SERVER['QUERY_STRING'])) {
     $insertGoTo .= (strpos($insertGoTo, '?')) ? "&" : "?";
     $insertGoTo .= $_SERVER['QUERY_STRING'];
@@ -37,6 +33,7 @@ if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "forminsertarpro")) 
 
 <!DOCTYPE html>
 <html lang="en">
+
 <!-- InstanceBegin template="/Templates/Administracion.dwt.php" codeOutsideHTMLIsLocked="false" -->
 
 <head>
@@ -71,13 +68,13 @@ if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "forminsertarpro")) 
   <div id="page-wrapper">
      <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">Gestión de Productos</h1>
+                    <h1 class="page-header">Gestión de Proveedor</h1>
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
 	  <a href="productos-lista.php"class="btn btn-outline btn-info">Volver atras</a><br></br>
             
-<div class="row">
+	<div class="row">
                 <div class="col-lg-12">
                     <div class="panel panel-default">
                         <div class="panel-heading">
@@ -86,7 +83,8 @@ if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "forminsertarpro")) 
                         <div class="panel-body">
                             <div class="row">
                                 <div class="col-lg-6">
-                                  <form action="productos-add.php" method="post" id="forminsertarpro" name="forminsertarpro" role="form">
+                                  <form action="proveedores-add.php" method="post" id="forminsertarprove" name="forminsertarprove" role="form">
+                                       
                                        
                                         <div class="form-group">
                                             <label>Nombre</label>
@@ -95,75 +93,35 @@ if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "forminsertarpro")) 
                                        
                                            
                                         <div class="form-group">
-                                            <label>Referencia</label>
-                                            <input class="form-control" placeholder="e-mail" name="Referencia" id="Referencia" type="number">
+                                            <label>Direccion</label>
+                                            <input class="form-control" placeholder="Direccion" name="Direccion" id="Direccion" >
                                         </div>
                                         
                                         <div>
                                             <div class="form-group">
-                                            <label>PrecioUnidad</label>
-                                            <input class="form-control" placeholder="e-mail" name="PrecioUnidad" id="PrecioUnidad" type="number">
+                                            <label>Correo</label>
+                                            <input class="form-control" placeholder="e-mail" name="Correo" id="Correo" type="email">
                                         </div>
                                         
                                         <div class="form-group">
-                                            <label>idTipo </label>
-                                            <input class="form-control" placeholder="idTipos" name="idTipos" id="idTipos">
+                                            <label>Telefono </label>
+                                            <input class="form-control" placeholder="Telefono" name="Telefono" id="Telefono" type="number">
                                         </div>
                                          
                                           <div class="form-group">
-                                            <label>Color </label>
-                                            <input class="form-control" placeholder="Color" name="Color" id="Color">
+                                            <label>Webpage</label>
+                                            <input class="form-control" placeholder="Webpage" name="Webpage" id="Webpage" >
                                         </div>  
-                                        
-                                         <div class="form-group">
-                                            <label>Genero </label>
-                                            <input class="form-control" placeholder="Genero" name="Genero" id="Genero">
-                                      
-                                        </div>
-                                        
-                                       	<div class="form-group">
-										<label>Nivel de Usuario</label>
-										<select name="Talla" class="form-control" id="Talla">
-										<option value="2XS">2XS </option>
-										<option value="XS">XS </option>
-										<option value="S">S </option>
-										<option value="M">M </option>
-                						<option value="L">L </option>
-                                    	<option value="XL">XL </option>
-										<option value="2XL">2XL </option>
-										<option value="3XL">3XL </option>
-										</select>
-										
-						 				 </div>  
-                                            <div class="form-group">
-                                            <label>idProveedor </label>
-                                            <input class="form-control" placeholder="Escribir Apellido del usuario" name="idProveedor" id="idProveedor">
-                                        </div>  
-			
-		
-                                         
-	
-       
-        <div class="form-group">
-         	<label>File input</label>
-        	<input type="file" input id="Imagen" name="Imagen" >
-        </div>
-      
-     
-				
-		
-		
-                                <button type="submit" class="btn btn-success">Añadir</button>
-                                      <input name="MM_insert" type="hidden" id="MM_insert" value="forminsertarpro">
+                                  
+           
+                                		<button type="submit" class="btn btn-success">Añadir</button>
+                                      <input name="MM_insert" type="hidden" id="MM_insert" value="forminsertarprove">
                                        
-                                    </form>
-                              </div>
-                                <!-- /.col-lg-6 (nested) -->
-                                
-                                <!-- /.col-lg-6 (nested) -->
-                            </div>
+                                   </form>
+                             
+                         
                             <!-- /.row (nested) -->
-                        </div>
+                  
                         <!-- /.panel-heading -->
                         <div class="panel-body">
                             
