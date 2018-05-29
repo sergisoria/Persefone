@@ -19,7 +19,7 @@ if (is_file("includes/funciones.php"))
 echo "ok";
 
 	
-{
+else{
 echo 'error';
 	
 }

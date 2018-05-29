@@ -11,13 +11,19 @@ $DatosConsulta = mysqli_query($conn,  $query_DatosConsulta) or die(mysqli_error(
 $row_DatosConsulta = mysqli_fetch_assoc($DatosConsulta);
 $totalRows_DatosConsulta = mysqli_num_rows($DatosConsulta);
 
-$query_DatosConsultaINV = sprintf("SELECT * FROM inventario");
+
+$query_DatosConsultaIDK = sprintf("SELECT REPLACE(Descripcion,'-','<br>-') FROM productos WHERE idProducto = '$id'");
+$DatosConsultaIDK = mysqli_query($conn,  $query_DatosConsultaIDK) or die(mysqli_error($conn));
+$row_DatosConsultaIDK = mysqli_fetch_assoc($DatosConsultaIDK);
+$totalRows_DatosConsultaIDK = mysqli_num_rows($DatosConsultaIDK);
+
+$query_DatosConsultaINV = sprintf("SELECT * FROM inventario where idProducto = '$id'");
 $DatosConsultaINV = mysqli_query($conn,  $query_DatosConsultaINV) or die(mysqli_error($conn));
 $row_DatosConsultaINV = mysqli_fetch_assoc($DatosConsultaINV);
 $totalRows_DatosConsultaINV = mysqli_num_rows($DatosConsultaINV);
 
 //recoger el nombre sacando la id para el entre comillas titulo
-$query_DatosConsultaNameWithID = sprintf("SELECT * FROM productos where idProducto= '$id'");
+$query_DatosConsultaNameWithID = sprintf("SELECT NombreTipo FROM tipos where idTipos = '$id'");
 $DatosConsultaNameWithID  = mysqli_query($conn,  $query_DatosConsultaNameWithID ) or die(mysqli_error($conn));
 $row_DatosConsultaNameWithID  = mysqli_fetch_assoc($DatosConsultaNameWithID );
 $totalRows_DatosConsultaNameWithID  = mysqli_num_rows($DatosConsultaNameWithID );
@@ -27,6 +33,14 @@ $DatosConsultaTIPO = mysqli_query($conn,  $query_DatosConsultaTIPO) or die(mysql
 $row_DatosConsultaTIPO = mysqli_fetch_assoc($DatosConsultaTIPO);
 $totalRows_DatosConsultaTIPO = mysqli_num_rows($DatosConsultaTIPO);
 //FINAL DE LA PARTE SUPERIOR
+	
+	
+
+    
+
+    
+    
+
 ?>
 
 
@@ -184,7 +198,7 @@ ul.breadcrumb li a:hover {
   <div class="w3-container w3-display-container w3-padding-16">
     <i onclick="w3_close()" class="fa fa-remove w3-hide-large w3-button w3-display-topright"></i>
     <!-- <h3 class="w3-wide"><b>Persephónē</b></h3> -->
-	  <a href="inicio.html"><img src="logo2.png" /></a>
+	  <a href="inicio.php"><img src="logo2.png" /></a>
 
   </div>
    <div id="myOverlay2" class="overlay">
@@ -207,7 +221,7 @@ do {?>
 										
 
   <?php
-	
+	//w3-button w3-block w3-white w3-left-align
 
        } while ($row_DatosConsultaTIPO = mysqli_fetch_assoc($DatosConsultaTIPO));
 }
@@ -256,7 +270,6 @@ function closeSearch() {
   <!-- Image header -->
   <ul class="breadcrumb">
   <li><a  style='text-decoration:none;color:grey;'href="inicio.php">INICIO</a></li>
-  <li><a  style='text-decoration:none;color:grey;'href="#"> <?php echo $row_DatosConsultaTIPO["NombreTipo"];?> </a></li>
   <li><?php echo $row_DatosConsulta["Nombre"]; ?></li>
 </ul>
   <!-- Product grid -->
@@ -265,7 +278,8 @@ function closeSearch() {
   <div class="column">
   <?php 
 
-	echo '<img src="data:image/jpeg;base64,'.base64_encode($row_DatosConsulta['Imagen'] ).'" width="400" height="550" alt=""/>';
+	echo '<img src="'.$row_DatosConsulta['Imagen'].'" width="400" height="550" alt=""/>';
+	// echo '<img src="data:image/jpeg;base64,'.base64_encode($row_DatosConsulta['Imagen'] ).'" width="400" height="550" alt=""/>';
 ?>
 
   </div>
@@ -274,8 +288,8 @@ function closeSearch() {
     <h4>Color: <?php echo $row_DatosConsulta["Color"]; ?></h4>
     <h3>Precio: <?php echo $row_DatosConsulta["PrecioUnidad"]; ?>€</h3>
     <label style="display: table-cell; vertical-align: top" data-bind="text: sizeLabel, visible: !hideLabels, disable: isDisabled">TALLA:</label>
-	<div class="colour-size-select" data-bind="visible: sizeDropdownVisible()">
-                <select data-id="sizeSelect" data-bind="options: variants,
+	<div class="colour-size-select" data-bind="visible: sizeDropdownVisible()">	
+                <select name="madredelsoria" id="madredelsoria" data-id="sizeSelect" data-bind="options: variants,
                     optionsAfterRender: disableSizeIfOutOfStock,
                     optionsText: &quot;Size&quot;,
                     optionsCaption: selectSizeText,
@@ -293,28 +307,42 @@ do {?>
 										
 
   <?php
-	
+
 
        } while ($row_DatosConsultaINV = mysqli_fetch_assoc($DatosConsultaINV));
 }
 else
 { //MOSTRAR SI NO HAY RESULTADOS ?>
     No hay resultados.
+	
     <?php } ?>
+	
 					
 					
 					
                 <!-- ko if: noSizeSelected() --><!-- /ko -->
             </select></div>
              <p></p>
-         <a href="#" class="btn">Añadir a la Cesta</a>
+			 <?php 	$gender = @$_POST['madredelsoria'];
+			 $SQL = sprintf("INSERT INTO `carrito` (`idCarrito`, `Fecha`, `Cantidad`, `ValorUnidad`, `Talla`, `Color`, `idUsuario`, `idProducto`, `idPromocion`) VALUES ('2', '2018-05-28', '1', '".$row_DatosConsulta['PrecioUnidad']."', '$gender', '".$row_DatosConsulta['Color']."', '1', '$id', '1');");
+
+	echo '<form action=" $result = mysqli_query($conn,  $SQL) or die(mysqli_error($conn)); " method="">
+         <a href="" class="btn">Añadir a la Cesta</a>
+		 </form>'	
+	?>	 
          <p><br></p>
     <a onclick="myAccFunc()" href="javascript:void(0)" class="w3-button w3-block w3-white w3-left-align" id="myBtn">
       Descripcion del Producto: <i class="fa fa-caret-down"></i>
     </a>
     <div id="demoAcc" class="w3-bar-block w3-hide w3-medium">
-      <p>Tela técnica<br>Cuello redondo<br>Manga larga<br>Multibolsillos <br>Monocolor<br>Abotonadura simple<br>Cierre de cremallera<br>Interior forrado<br></p>
-    </div>
+      <p style="
+    margin-top: 0px;
+    margin-bottom: 0px;
+">-<?php echo $row_DatosConsultaIDK["REPLACE(Descripcion,'-','<br>-')"]?></p>
+	
+	
+   
+	</div>
 	
   </div>
 </div>

@@ -301,7 +301,7 @@ function closeSearch() {
 <div class="container">
   <img src="imagen_inicio.jpg" alt="Snow" style="width:100%">
   <a href="camisetas.php?id=8" class="btn">HOMBRE</a>
-  <a href="ax_mujer_ropa.html" class="btn2">MUJER</a>
+  <a href="camisetas.php?id=9" class="btn2">MUJER</a>
  </div>	  
 	 
 
