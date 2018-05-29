@@ -1,22 +1,67 @@
 <?php require_once('Connections/conexion.php'); ?>
-<?php
-
-$variable_Consulta = "0";
-if (isset($VARIABLE)) {
-  $variable_Consulta = $VARIABLE;
-}
-//WHERE NOMBRECAMPO = %s ORDER BY NOMBRECAMPOFECHA DESC condicion ordenador todo
-$query_DatosConsulta = sprintf("SELECT * FROM productos WHERE idTipos = '1'");
-$DatosConsulta = mysqli_query($conn,  $query_DatosConsulta) or die(mysqli_error($conn));
-$row_DatosConsulta = mysqli_fetch_assoc($DatosConsulta);
-$totalRows_DatosConsulta = mysqli_num_rows($DatosConsulta);
-
-$query_DatosConsultaTIPO = sprintf("SELECT * FROM tipos");
+<?php 
+$query_DatosConsultaTIPO = sprintf("SELECT * FROM tipos limit 7");
 $DatosConsultaTIPO = mysqli_query($conn,  $query_DatosConsultaTIPO) or die(mysqli_error($conn));
 $row_DatosConsultaTIPO = mysqli_fetch_assoc($DatosConsultaTIPO);
 $totalRows_DatosConsultaTIPO = mysqli_num_rows($DatosConsultaTIPO);
+?>
+<?php 
 
-//FINAL DE LA PARTE SUPERIOR
+if(isset($_SESSION['carrito'])){
+	
+	$arreglo=$_SESSION['carrito'];
+	$entro=false;
+	$numero=0;
+	
+	for($i=0; $i<count($arreglo); $i++){
+		if($arreglo[$i]['id'] == 1){
+		    $entro=true;
+            $numero=$i;			
+		}
+	}
+	
+	if($entro==true){
+		$arreglo[$numero]['Cantidad']= $arreglo[$numero]['Cantidad']+1;
+		$_SESSION['carrito']=$arreglo;
+	}else{
+	 
+	   $nombre="";
+	   $precio=0;
+	   $imagen="";
+	   $id = 1;
+	   $re="select * from productos where idProducto=$id";
+	   $mi = mysqli_query($conn,  $re);
+	   while($fa = mysqli_fetch_assoc($mi)){
+		    $nombre=$fa['Nombre'];
+			$precio=$fa['PrecioUnidad'];
+			$imagen=$fa['Imagen'];
+	   
+	   
+	   
+	   $datosnuevos=array('idProducto'=>$id,
+	                    'Nombre' =>$nombre,
+						'PrecioUnidad' =>$precio,
+						'Imagen' =>$imagen,
+						'Cantidad'=>1);
+	
+	
+
+	   array_push($arreglo,$datosnuevos);
+	   
+	   $_SESSION['carrito']=$arreglo;
+	   }
+}
+	
+}
+	
+	
+
+
+
+?>
+
+<?php
+
 ?>
 
 <!DOCTYPE html>
@@ -225,26 +270,24 @@ ul.breadcrumb li a:hover {
   <div class="w3-container w3-display-container w3-padding-16">
     <i onclick="w3_close()" class="fa fa-remove w3-hide-large w3-button w3-display-topright"></i>
     <!-- <h3 class="w3-wide"><b>Persephónē</b></h3> -->
-	  <a href="inicio.html"><img src="logo2.png" /></a>
+	  <a href="inicio.php"><img src="logo2.png" /></a>
   </div>
   
    <div id="myOverlay2" class="overlay">
   <span class="closebtn" onclick="closeSearch()" title="Close Overlay">×</span>
   <div class="overlay-content">
     <form action="/action_page.php">
-      <input type="text" placeholder="Buscar.." name="search">
+      <input type="text" placeholder="Buscar.." name="search"id="search">
       <button type="submit"><i class="fa fa-search"></i></button>
     </form>
   </div>
 </div>
- 
-  
-  <?php
+<?php
 //AQUI ES DONDE SE SACAN LOS DATOS, SE COMPRUEBA QUE HAY RESULTADOS
 if ($totalRows_DatosConsultaTIPO > 0) {
 do {?>
   <div class=" w3-large w3-text-grey" style="font-weight:bold">
-	  <a href="#" class="w3-bar-item w3-button"><?php echo $row_DatosConsultaTIPO["NombreTipo"];?></a>
+	  <a href="<?php echo 'cat.php?id='.$row_DatosConsultaTIPO["idTipos"]?>" class="w3-bar-item w3-button"><?php echo $row_DatosConsultaTIPO["NombreTipo"];?></a>
 	</div>
 
 										
@@ -284,6 +327,45 @@ else
      <i onclick="openSearch()" class="fa fa-search openBtn">
 	</i>
     </p>
+	
+	 <?php
+	 
+	   $total=0;
+	   if(isset($_SESSION['carrito'])){
+		   $datos=$_SESSION['carrito'];
+		   
+		   for($i=0;$i<count($datos); $i++){
+			
+       ?>
+		
+		<div class="producto">
+		     <center>
+			 <br>
+			 <span><?php echo $datos[$i]['Nombre']?></span><br>
+			 <span>Precio: <?php echo $datos[$i]['Precio'];?></span><br>
+			 <span>Cantidad<input type="text" value="<?php echo $datos[$i]['Cantidad']; ?>"></span>
+			 
+			 <span>Preciototal  <?php echo $datos[$i]['Precio'] * $datos[$i]['Cantidad'];?></span>
+			 </center>
+			
+	<?php	
+
+        $total=($datos[$i]['Cantidad']*$datos[$i]['Precio'])+total;
+	
+		   }
+		   
+		   
+	   }else{
+		   echo '<center><h2>El carrito esta vacio</h2></center>';
+	 
+	   }
+	   echo '<center><h2>Total: '.$total.' </h2></center>';
+	 
+	 ?>
+	 <center><a href="inicio.php">ver productos</a></center>
+	 
+	 
+	 
 	<script>
 function openSearch() {
     document.getElementById("myOverlay2").style.display = "block";
@@ -295,40 +377,10 @@ function closeSearch() {
 </script>
   </header>
 
-  <!-- Image header -->
-  <div class="w3-display-container w3-container"> 
+  
 
-<div class="container">
-  <img src="imagen_inicio.jpg" alt="Snow" style="width:100%">
-  <a href="ax_hombre_ropa.html" class="btn">HOMBRE</a>
-  <a href="ax_mujer_ropa.html" class="btn2">MUJER</a>
- </div>	  
-	 
 
-<div class="slideshow-container">
 
-<div class="mySlides fade">
-  <img src="slide1.jpg" style="width:100%">
-	
-</div>
-
-<div class="mySlides fade">
-  <img src="slide2.jpg" style="width:100%">
-</div>
-
-<div class="mySlides fade">
- <img src="slide3.jpg" style="width:100%">
-</div>
-
-</div>
-<br>
-
-<div style="text-align:center">
-  <span class="dot"></span> 
-  <span class="dot"></span> 
-  <span class="dot"></span> 
-</div>
-  </div>
 <script>
 var slideIndex = 0;
 showSlides();

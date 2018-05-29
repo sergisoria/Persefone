@@ -6,7 +6,7 @@ if (isset($VARIABLE)) {
   $variable_Consulta = $VARIABLE;
 }
 //WHERE NOMBRECAMPO = %s ORDER BY NOMBRECAMPOFECHA DESC condicion ordenador todo
-$query_DatosConsulta = sprintf("SELECT * FROM productos WHERE idTipos = '1'");
+$query_DatosConsulta = sprintf("SELECT * FROM productos");
 $DatosConsulta = mysqli_query($conn,  $query_DatosConsulta) or die(mysqli_error($conn));
 $row_DatosConsulta = mysqli_fetch_assoc($DatosConsulta);
 $totalRows_DatosConsulta = mysqli_num_rows($DatosConsulta);
@@ -244,7 +244,7 @@ ul.breadcrumb li a:hover {
 if ($totalRows_DatosConsultaTIPO > 0) {
 do {?>
   <div class=" w3-large w3-text-grey" style="font-weight:bold">
-	  <a href="<?php echo 'camisetas.php?id='.$row_DatosConsultaTIPO["idTipos"]?>" class="w3-bar-item w3-button"><?php echo $row_DatosConsultaTIPO["NombreTipo"];?></a>
+	  <a href="<?php echo 'cat.php?id='.$row_DatosConsultaTIPO["idTipos"]?>" class="w3-bar-item w3-button"><?php echo $row_DatosConsultaTIPO["NombreTipo"];?></a>
 	</div>
 
 										
@@ -300,8 +300,8 @@ function closeSearch() {
 
 <div class="container">
   <img src="imagen_inicio.jpg" alt="Snow" style="width:100%">
-  <a href="camisetas.php?id=8" class="btn">HOMBRE</a>
-  <a href="camisetas.php?id=9" class="btn2">MUJER</a>
+  <a href="cat.php?id=8" class="btn">HOMBRE</a>
+  <a href="cat.php?id=9" class="btn2">MUJER</a>
  </div>	  
 	 
 
@@ -367,12 +367,11 @@ function showSlides() {
       </div>
 
       <div class="w3-col s4">
-        <h4>Sobre nosotros...</h4>
-        <p><a href="#">Soporte</a></p>
-        <p><a href="#">Envio</a></p>
-        <p><a href="#">Pago</a></p>
-        <p><a href="#">Tarjeta Regalo</a></p>
-        <p><a href="#">Ayuda</a></p>
+        <h4>Sobre Persephónē</h4>
+        <p><a href="about_us.php"style='color:black;'>Sobre Nosotros</a></p>
+        <p><a href="#"style='color:black;'>Envio</a></p>
+        <p><a href="#"style='color:black;'>Pago</a></p>
+        <p><a href="#"style='color:black;'>Ayuda</a></p>
       </div>
 
      <div class="w3-col s4 w3-justify">
@@ -401,10 +400,13 @@ function showSlides() {
   <div class="w3-modal-content w3-animate-zoom" style="padding:32px">
     <div class="w3-container w3-white w3-center">
       <i onclick="document.getElementById('newsletter').style.display='none'" class="fa fa-remove w3-right w3-button w3-transparent w3-xxlarge"></i>
-      <h2 class="w3-wide">NOVEDADES</h2>
+      <h2 class="w3-wide"style="
+    padding-left: 50px;
+    border-left-width: 10px;
+">NOVEDADES</h2>
       <p>Sé el primero enterarte de nuevos productos o nuevas ofertas</p>
       <p><input class="w3-input w3-border" type="text" placeholder="Inserta el correo"></p>
-      <button type="button" class="w3-button w3-padding-large w3-red w3-margin-bottom" onclick="document.getElementById('newsletter').style.display='none'">REGÍSTRATE AHORA</button>
+      <button type="button" class="w3-button w3-padding-large w3-blue w3-margin-bottom" onclick="document.getElementById('newsletter').style.display='none'">REGÍSTRATE AHORA</button>
     </div>
   </div>
 </div>
