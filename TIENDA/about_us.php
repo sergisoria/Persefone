@@ -5,13 +5,9 @@ $variable_Consulta = "0";
 if (isset($VARIABLE)) {
   $variable_Consulta = $VARIABLE;
 }
-//WHERE NOMBRECAMPO = %s ORDER BY NOMBRECAMPOFECHA DESC condicion ordenador todo
-$query_DatosConsulta = sprintf("SELECT * FROM productos WHERE idTipos = '1'");
-$DatosConsulta = mysqli_query($conn,  $query_DatosConsulta) or die(mysqli_error($conn));
-$row_DatosConsulta = mysqli_fetch_assoc($DatosConsulta);
-$totalRows_DatosConsulta = mysqli_num_rows($DatosConsulta);
 
-$query_DatosConsultaTIPO = sprintf("SELECT * FROM tipos");
+
+$query_DatosConsultaTIPO = sprintf("SELECT * FROM tipos limit 7");
 $DatosConsultaTIPO = mysqli_query($conn,  $query_DatosConsultaTIPO) or die(mysqli_error($conn));
 $row_DatosConsultaTIPO = mysqli_fetch_assoc($DatosConsultaTIPO);
 $totalRows_DatosConsultaTIPO = mysqli_num_rows($DatosConsultaTIPO);
@@ -225,14 +221,14 @@ ul.breadcrumb li a:hover {
   <div class="w3-container w3-display-container w3-padding-16">
     <i onclick="w3_close()" class="fa fa-remove w3-hide-large w3-button w3-display-topright"></i>
     <!-- <h3 class="w3-wide"><b>Persephónē</b></h3> -->
-	  <a href="inicio.html"><img src="logo2.png" /></a>
+	  <a href="inicio.php"><img src="logo2.png" /></a>
   </div>
   
    <div id="myOverlay2" class="overlay">
   <span class="closebtn" onclick="closeSearch()" title="Close Overlay">×</span>
   <div class="overlay-content">
     <form action="/action_page.php">
-      <input type="text" placeholder="Buscar.." name="search">
+      <input type="text" placeholder="Buscar.." name="search"id="search">
       <button type="submit"><i class="fa fa-search"></i></button>
     </form>
   </div>
@@ -244,7 +240,7 @@ ul.breadcrumb li a:hover {
 if ($totalRows_DatosConsultaTIPO > 0) {
 do {?>
   <div class=" w3-large w3-text-grey" style="font-weight:bold">
-	  <a href="#" class="w3-bar-item w3-button"><?php echo $row_DatosConsultaTIPO["NombreTipo"];?></a>
+	  <a href="<?php echo 'cat.php?id='.$row_DatosConsultaTIPO["idTipos"]?>" class="w3-bar-item w3-button"><?php echo $row_DatosConsultaTIPO["NombreTipo"];?></a>
 	</div>
 
 										
@@ -296,60 +292,23 @@ function closeSearch() {
   </header>
 
   <!-- Image header -->
-  <div class="w3-display-container w3-container"> 
+  <div class="w3-display-container w3-container"></div>
+  <ul class="breadcrumb">
+  <li><a  style='text-decoration:none;color:grey;font-size:200%;margin-left: 250px;'>¿QUIENES SOMOS?</a></li>
+</ul>
+<section class="grid"><section class="grid-row">        <section class="grid-column grid-column__width--1 grid-column__position--1">
+            
+<section class="grid-text grid-text__position--left-top">
+    <section class="grid-text__container">
+            <h2 class="grid-text__title " style="color: #000000;                 display:none;
+">
 
-<div class="container">
-  <img src="imagen_inicio.jpg" alt="Snow" style="width:100%">
-  <a href="ax_hombre_ropa.html" class="btn">HOMBRE</a>
-  <a href="ax_mujer_ropa.html" class="btn2">MUJER</a>
- </div>	  
-	 
-
-<div class="slideshow-container">
-
-<div class="mySlides fade">
-  <img src="slide1.jpg" style="width:100%">
-	
-</div>
-
-<div class="mySlides fade">
-  <img src="slide2.jpg" style="width:100%">
-</div>
-
-<div class="mySlides fade">
- <img src="slide3.jpg" style="width:100%">
-</div>
-
-</div>
-<br>
-
-<div style="text-align:center">
-  <span class="dot"></span> 
-  <span class="dot"></span> 
-  <span class="dot"></span> 
-</div>
-  </div>
-<script>
-var slideIndex = 0;
-showSlides();
-
-function showSlides() {
-    var i;
-    var slides = document.getElementsByClassName("mySlides");
-    var dots = document.getElementsByClassName("dot");
-    for (i = 0; i < slides.length; i++) {
-       slides[i].style.display = "none";  
-    }
-    slideIndex++;
-    if (slideIndex > slides.length) {slideIndex = 1}    
-    for (i = 0; i < dots.length; i++) {
-        dots[i].className = dots[i].className.replace(" active", "");
-    }
-    slides[slideIndex-1].style.display = "block";  
-    dots[slideIndex-1].className += " active";
-    setTimeout(showSlides, 5000);
-}
-</script>
+            </h2>
+                        <p class="grid-text__copy " style="color: #000000;"></p>
+            </section>
+</section>
+        </section>
+      
  
 <!-- Subscribe section -->
   <!-- Footer -->
@@ -367,12 +326,11 @@ function showSlides() {
       </div>
 
       <div class="w3-col s4">
-        <h4>Sobre nosotros...</h4>
-        <p><a href="#">Soporte</a></p>
-        <p><a href="#">Envio</a></p>
-        <p><a href="#">Pago</a></p>
-        <p><a href="#">Tarjeta Regalo</a></p>
-        <p><a href="#">Ayuda</a></p>
+        <h4>Sobre Persephónē</h4>
+        <p><a href="about_us.php"style='color:black;'>Sobre Nosotros</a></p>
+        <p><a href="#"style='color:black;'>Envio</a></p>
+        <p><a href="#"style='color:black;'>Pago</a></p>
+        <p><a href="#"style='color:black;'>Ayuda</a></p>
       </div>
 
      <div class="w3-col s4 w3-justify">
@@ -401,10 +359,13 @@ function showSlides() {
   <div class="w3-modal-content w3-animate-zoom" style="padding:32px">
     <div class="w3-container w3-white w3-center">
       <i onclick="document.getElementById('newsletter').style.display='none'" class="fa fa-remove w3-right w3-button w3-transparent w3-xxlarge"></i>
-      <h2 class="w3-wide">NOVEDADES</h2>
+      <h2 class="w3-wide"style="
+    padding-left: 50px;
+    border-left-width: 10px;
+">NOVEDADES</h2>
       <p>Sé el primero enterarte de nuevos productos o nuevas ofertas</p>
       <p><input class="w3-input w3-border" type="text" placeholder="Inserta el correo"></p>
-      <button type="button" class="w3-button w3-padding-large w3-red w3-margin-bottom" onclick="document.getElementById('newsletter').style.display='none'">REGÍSTRATE AHORA</button>
+      <button type="button" class="w3-button w3-padding-large w3-blue w3-margin-bottom" onclick="document.getElementById('newsletter').style.display='none'">REGÍSTRATE AHORA</button>
     </div>
   </div>
 </div>
