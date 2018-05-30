@@ -280,7 +280,7 @@ else
   <!-- Top header -->
   <header class="w3-container w3-xlarge">
     <p class="w3-right">
-      <i class="fa fa-shopping-cart w3-margin-right"></i>
+      <a style='text-decoration:none;color:black;'href="carritodecompras1.php" ><i class="fa fa-shopping-cart openBtn"></i></a>
      <i onclick="openSearch()" class="fa fa-search openBtn">
 	</i>
     </p>
