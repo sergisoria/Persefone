@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 <?php require_once('Connections/conexion.php'); ?>
 <?php
     if(!isset($_SESSION)) 
@@ -36,6 +37,11 @@ if(isset($_GET["action"])){
 
 ?>
 
+=======
+<?php
+  require_once('Connections/conexion.php'); 
+?>
+>>>>>>> Stashed changes
 
 
 <!DOCTYPE html>
@@ -255,6 +261,7 @@ ul.breadcrumb li a:hover {
       <button type="submit"><i class="fa fa-search"></i></button>
     </form>
   </div>
+<<<<<<< Updated upstream
 </div>
 <?php
 //AQUI ES DONDE SE SACAN LOS DATOS, SE COMPRUEBA QUE HAY RESULTADOS
@@ -288,6 +295,9 @@ else
 <!-- Overlay effect when opening sidebar on small screens -->
 <div class="w3-overlay w3-hide-large" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
 
+=======
+</div>	 
+>>>>>>> Stashed changes
 <!-- !PAGE CONTENT! -->
 <div class="w3-main" style="margin-left:250px">
 
@@ -297,6 +307,7 @@ else
   <!-- Top header -->
   <header class="w3-container w3-xlarge">
     <p class="w3-right">
+<<<<<<< Updated upstream
       <a style='text-decoration:none;color:black;'href="carritodecompras1.php" ><i class="fa fa-shopping-cart openBtn"></i></a>
      <i onclick="openSearch()" class="fa fa-search openBtn">
 	</i>
@@ -366,6 +377,23 @@ function showSlides() {
 }
 </script>
  
+=======
+      <i class="fa fa-shopping-cart w3-margin-right"></i>
+     <i onclick="openSearch()" class="fa fa-search openBtn">
+	</i>
+    </p>  
+	  </header>
+     <?php
+	   if(isset($_SESSION['carrito'])){
+		   
+	   }else{
+		   echo '<center><h2>El carro esta vacio</h2></center>';
+	 
+	   }
+	 
+	 ?>
+
+>>>>>>> Stashed changes
 <!-- Subscribe section -->
   <!-- Footer -->
   <footer class="w3-padding-64 w3-light-grey w3-small w3-center" id="footer">
