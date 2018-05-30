@@ -1,5 +1,5 @@
 <?php require_once('../Connections/conexion.php'); ?>
-<?php require_once('../includes/funciones.php'); ?>
+
 
 <?php
 
@@ -111,7 +111,9 @@ $totalRows_DatosConsulta = mysqli_num_rows($DatosConsulta);
 		else
 		 { //MOSTRAR SI NO HAY RESULTADOS ?>
                
-                <?php echo("no hay resultados "); } ?>
+                <?php if ($totalRows_DatosConsulta == null){
+					$echo("no hay resultados "); } 
+		 	 } ?>
                             </div>
                             <!-- /.table-responsive -->
                         </div>

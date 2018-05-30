@@ -122,8 +122,12 @@ $totalRows_DatosConsulta = mysqli_num_rows($DatosConsulta);
 		else
 		 { //MOSTRAR SI NO HAY RESULTADOS ?>
                
-                <?php echo("no hay resultados "); } ?>
-                            </div>
+                <?php 
+				if ($totalRows_DatosConsulta == '0'){
+					$echo("no hay resultados "); } 
+		 }	
+		 ?>
+						</div>
                             <!-- /.table-responsive -->
                         </div>
                         <!-- /.panel-body -->

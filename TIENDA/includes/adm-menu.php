@@ -235,9 +235,19 @@
                             <!-- /input-group -->
                         </li>
                         <li>
+						
+						
                             <a href="usuario-lista.php"><i class="fa fa-dashboard fa-fw"></i> Usuarios</a>
-                        </li>
-                          <li>
+							<ul class="nav nav-second-level">
+							<li>
+							<a href="usuario-lista.php">Listar Usuarios</a>
+							</li>
+							<li>
+							<a href="usuario-add.php">Añadir Usuarios</a>
+							</li>
+							</ul>
+						</li>	
+                        <li>
                             <a href="productos-lista.php"><i class="fa fa-dashboard fa-fw"></i>Productos</a>
                             <ul class="nav nav-second-level">
                                 <li>
@@ -247,25 +257,26 @@
                                     <a href="productos-add.php">Añadir Productos</a>
                                 </li>
                             </ul>
-                            <li>
+						</li>
+                        <li>
                             <a href="productos-lista.php"><i class="fa fa-dashboard fa-fw"></i>Proveedores</a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="proveedores-lista.php">Listar un proveedore</a>
+                                    <a href="proveedores-lista.php">Listar Proveedores</a>
                                 </li>
                                 <li>
-                                    <a href="proveedores-add.php">Añadir un producto</a>
+                                    <a href="proveedores-add.php">Añadir Proveedores</a>
                                 </li>
                             </ul>
-                        
+                        </li>
                         <li>
                             <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Pedido<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="flot.html">detalle Pedido</a>
+                                    <a href="flot.html">Detalle Pedido</a>
                                 </li>
                                 <li>
-                                    <a href="morris.html">Metodo de pagos</a>
+                                    <a href="morris.html">Metodo de Pagos</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->

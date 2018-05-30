@@ -247,8 +247,7 @@ INSERT INTO `metodopago` (`idMetodoPago`, `TipoPago`, `Descripcion`) VALUES
 			INSERT INTO `pedido` (`idPedido`, `FechaInicio`, `FechaEstimada`, `idUsuario`,`Estado`) VALUES ('1', '2018-05-20', '2018-05-23', '1','Anulado');
 			
 --Insert Detalle Pedido
-			INSERT INTO `detallepedido` (`idDetallePedido`, `Cantidad`, `Talla`, `Color`, `idProducto`, `idPedido`) VALUES ('1', '4', 'S', 'Verde', '1', '1'); 
-
+				
 --Insert Carrito
 			INSERT INTO `carrito` (`idCarrito`, `Fecha`, `Cantidad`, `ValorUnidad`, `Talla`, `Color`, `idUsuario`, `idProducto`, `idPromocion`) VALUES ('1', '2018-05-21', '4', '120.00', 'S', 'Rojo', '1', '1', '1');
 

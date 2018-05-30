@@ -12,11 +12,7 @@ $query_DatosConsulta = sprintf("SELECT * FROM Usuarios ORDER BY idUsuario ASC");
 $DatosConsulta = mysqli_query($conn,  $query_DatosConsulta) or die(mysqli_error($conn));
 $row_DatosConsulta = mysqli_fetch_assoc($DatosConsulta);
 $totalRows_DatosConsulta = mysqli_num_rows($DatosConsulta);
-
-
 ?>
-             
-
 <!DOCTYPE html>
 <html lang="en"><!-- InstanceBegin template="/Templates/Administracion.dwt.php" codeOutsideHTMLIsLocked="false" -->
 
@@ -102,8 +98,11 @@ $totalRows_DatosConsulta = mysqli_num_rows($DatosConsulta);
                                  } 
 		else
 		 { //MOSTRAR SI NO HAY RESULTADOS ?>
-                No hay resultados.
-                <?php } ?>
+                
+                <?php if ($totalRows_DatosConsulta == '0'){
+					$echo("no hay resultados "); } 
+		 }	 ?>
+				
                             </div>
                             <!-- /.table-responsive -->
                         </div>
