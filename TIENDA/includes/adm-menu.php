@@ -6,7 +6,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.php">Administracion</a>
+                <a class="navbar-brand" href="inicio.php">Administracion</a>
             </div>
             <!-- /.navbar-header -->
 
@@ -223,63 +223,82 @@
             <div class="navbar-default sidebar" role="navigation">
                 <div class="sidebar-nav navbar-collapse">
                     <ul class="nav" id="side-menu">
-                        <li class="sidebar-search">
-                            <div class="input-group custom-search-form">
-                                <input type="text" class="form-control" placeholder="Search...">
-                                <span class="input-group-btn">
-                                <button class="btn btn-default" type="button">
-                                    <i class="fa fa-search"></i>
-                                </button>
-                            </span>
-                            </div>
-                            <!-- /input-group -->
-                        </li>
-                        <li>
-                            <a href="usuario-lista.php"><i class="fa fa-dashboard fa-fw"></i> Usuarios</a>
-                        </li>
+                       
+                        
                           <li>
                             <a href="productos-lista.php"><i class="fa fa-dashboard fa-fw"></i>Productos</a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="productos-lista.php">Listar Productos</a>
+                                    <a href="productos-lista.php">Productos</a>
                                 </li>
                                 <li>
-                                    <a href="productos-add.php">Añadir Productos</a>
+                                    <a href="proveedores-lista.php">Proveedores</a>
                                 </li>
                             </ul>
-                            <li>
-                            <a href="productos-lista.php"><i class="fa fa-dashboard fa-fw"></i>Proveedores</a>
+						</li>
+                             <li>
+                            <a href="productos-lista.php"><i class="fa fa-dashboard fa-fw"></i>Pedidos</a>
+                            <ul class="nav nav-second-level">
+                             <li>
+                                    <a href="pedidos-pendientes.php">Pendientes</a>
+                                </li>
+                                <li>
+                                    <a href="pedidos-completados.php">Completados</a>
+                                </li>
+                                 <li>
+                                    <a href="pedidos-anulados.php">Anulados</a>
+ 
+                                </li>
+                            </ul>
+						</li>
+                   
+                             <li>
+                            <a href="productos-lista.php"><i class="fa fa-dashboard fa-fw"></i>Configuracion</a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="proveedores-lista.php">Listar un proveedore</a>
+                                    <a href="usuario-lista.php">Configuracion General</a>
                                 </li>
                                 <li>
-                                    <a href="proveedores-add.php">Añadir un producto</a>
+                                    <a href="usuario-lista.php">Usuarios</a>
+                                </li>
+                                 <li>
+                                    <a href="usuario-lista.php">Anulados</a>
+                                </li>
+                                  <li>
+                                    <a href="usuario-lista.php">Slider principal</a>
+                                </li>
+                                    <li>
+                                    <a href="usuario-lista.php">Comentarios</a>
+                                </li>
+                                    <li>
+                                    <a href="usuario-lista.php">Zonas</a>
+                                </li>
+                                 <li>
+                                    <a href="usuario-lista.php">Precios de Grupo</a>
+                                </li>
+                                <li>
+                                    <a href="usuario-lista.php">Idiomas</a>
+                                </li>
+                                 <li>
+                                    <a href="usuario-lista.php">Pie de pagina</a>
+                                </li>
+                                <li>
+                                    <a href="usuario-lista.php">Impuestos</a>
+                                </li>
+                                <li>
+                                    <a href="usuario-lista.php">Monedas</a>
                                 </li>
                             </ul>
-                        
-                        <li>
-                            <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Pedido<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li>
-                                    <a href="flot.html">detalle Pedido</a>
-                                </li>
-                                <li>
-                                    <a href="morris.html">Metodo de pagos</a>
-                                </li>
+						
+                               
                             </ul>
+                                </li>
+                                                     
+  
                             <!-- /.nav-second-level -->
-                        </li>
-                  
-                                <li>
-                                    <a href="blank.html">Blank Page</a>
-                                </li>
-                                <li>
-                                    <a href="login.html">Login Page</a>
-                                </li>
-                            </ul>
+                   
                             <!-- /.nav-second-level -->
-                        </li>
+                       
                     </ul>
                 </div>
                 <!-- /.sidebar-collapse -->
