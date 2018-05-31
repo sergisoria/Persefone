@@ -103,7 +103,7 @@ $totalRows_DatosConsulta = mysqli_num_rows($DatosConsulta);
 						<td><?php echo '<img src=".'.$row_DatosConsulta["Imagen"].'"width="100" height="100"/>';?></td>
 						
 						  <td><a href="productos-add.php"class="btn btn-outline btn-primary">Modificar</a><br>
-						  <a href="productos-add.php"class="btn btn-outline btn-primary">Borrar</a></br>
+						  <a href="productos-add.php"class="btn btn-outline btn-primary">Borrar</a>
 						</td>
 						
 						

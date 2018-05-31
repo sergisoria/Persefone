@@ -1,4 +1,4 @@
-﻿<?php require_once('../Connections/conexion.php'); ?>
+﻿	<?php require_once('../Connections/conexion.php'); ?>
 <?php require_once('../includes/funciones.php'); ?>
  
 <?php
@@ -187,12 +187,13 @@ $totalRows_DatosConsulta = mysqli_num_rows($DatosConsulta);
                                     <thead>
                                         <tr>
                                           
-                                            <th><p class="fa fa-key">_ID_</p></th>
-                                            <th><p class="fa fa-user">_Nombre_</p></th>
-                                            <th><p class="fa fa-envelope-o">Email</p></th>
-                                          	<th><p class="fa fa-user">Rol</p></th>
-                                          	<th><p class="fa fa-user">Estado</p></th>
-                                          	<th><p class="fa fa-user">Aciones</p></th>
+                                            <th>ID</th>
+                                            <th> </th>
+                                            <th>Nombre</th>
+                                            <th>Email</th>
+                                          	<th>Rol</th>
+                                          	<th>Estado</th>
+                                          	<th>Aciones</th>
 
                                         </tr>
                                     </thead>
@@ -205,11 +206,22 @@ $totalRows_DatosConsulta = mysqli_num_rows($DatosConsulta);
                   ?>
 		 <tr>
             <td><?php echo $row_DatosConsulta["idUsuario"];?></td>
+            
+            <td>
+            <?php if ($row_DatosConsulta["Imagen"]!=""){?>
+            <img src="../images/usuarios/<?php echo $row_DatosConsulta["Imagen"];?>" width="30" height="30" alt=""/>
+						<?php }
+						else
+						{?>
+						<img src="../images/usuarios/sinfoto.jpg" width="30" height="30" alt=""/>
+						<?php }?></td>
+           
+           
             <td><?php echo $row_DatosConsulta["Nombre"];?></td>
             <td><?php echo $row_DatosConsulta["Correo"];?></td>
             <td><?php echo MostrarNivel($row_DatosConsulta["Rol"]);?></td>
             <td><?php echo MostrarEstado($row_DatosConsulta["Status"]);?></td>
-           	<td><a href="usuario-edit.php?id=<?php echo $row_DatosConsulta["idUsuario"];?>" class="btn btn-success btn-circle"></td>
+           	<td><a href="usuario-edit.php?id=<?php echo $row_DatosConsulta["idUsuario"];?>" class="btn btn-warning btn-circle"><i class="fa fa-edit"></i></a></td>
             
             
         </tr>
