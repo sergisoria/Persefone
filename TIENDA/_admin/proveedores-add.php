@@ -62,6 +62,9 @@ if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "forminsertarprove")
 
 <body>
 <!-- InstanceBeginEditable name="ContenidoAdmin" -->
+<script src="scriptupload.js"></script>
+<script src="../js/scriptadmin.js"></script>
+
 <div id="wrapper">
   <!-- Navigation -->
   <?php include("../includes/adm-menu.php"); ?>
@@ -78,40 +81,51 @@ if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "forminsertarprove")
                 <div class="col-lg-12">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            Añadir Producto
+                            Añadir Proveedor
                          </div>
                         <div class="panel-body">
                             <div class="row">
                                 <div class="col-lg-6">
-                                  <form action="proveedores-add.php" method="post" id="forminsertarprove" name="forminsertarprove" role="form">
+                                  <form action="proveedores-add.php" method="post" id="forminsertarprove" name="forminsertarprove" role="form" onSubmit="javascript:return validarproveedoralta();">
+                                  
                                        
-                                       
+                                      
                                         <div class="form-group">
-                                            <label>Nombre</label>
-                                            <input class="form-control" placeholder="Nombre" name="Nombre" id=" Nombre">
+                                            <label>Nombre </label>
+                                            <input class="form-control" placeholder="Escribir Nombre del usuario" name="Nombre" id="Nombre">
                                         </div>
+                                          <div class="alert alert-danger oculto" id="errorNom">Nombre obligatorio</div>
+                                          
                                        
                                            
-                                        <div class="form-group">
-                                            <label>Direccion</label>
-                                            <input class="form-control" placeholder="Direccion" name="Direccion" id="Direccion" >
+                                          <div class="form-group">
+                                            <label>Direccion </label>
+                                            <input class="form-control" placeholder="Escribir la direcion del usuario" name="Direccion" id="Direcion">
                                         </div>
                                         
-                                        <div>
+                                         <div class="alert alert-danger oculto" id="errorDir">Direccion obligatorio</div>
+                                             
                                             <div class="form-group">
                                             <label>Correo</label>
                                             <input class="form-control" placeholder="e-mail" name="Correo" id="Correo" type="email">
-                                        </div>
+                                        	</div>
                                         
-                                        <div class="form-group">
-                                            <label>Telefono </label>
+                                         <div class="alert alert-danger oculto" id="errorCorreo">Correo obligatorio</div>
+                                         
+                                              <div class="form-group">
+                                            <label>Telefono</label>
                                             <input class="form-control" placeholder="Telefono" name="Telefono" id="Telefono" type="number">
                                         </div>
+                                        
+                                         <div class="alert alert-danger oculto" id="errorTel">Telefono obligatorio</div>
+                                         
                                          
                                           <div class="form-group">
                                             <label>Webpage</label>
                                             <input class="form-control" placeholder="Webpage" name="Webpage" id="Webpage" >
                                         </div>  
+                                          
+                                           <div class="alert alert-danger oculto" id="errorWeb">Telefono obligatorio</div>
                                   
            
                                 		<button type="submit" class="btn btn-success">Añadir</button>
