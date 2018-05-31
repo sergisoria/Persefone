@@ -1,4 +1,4 @@
-﻿	<?php require_once('../Connections/conexion.php'); ?>
+﻿<?php require_once('../Connections/conexion.php'); ?>
 <?php require_once('../includes/funciones.php'); ?>
  
 <?php
@@ -51,9 +51,6 @@ $query_limit_DatosConsulta = sprintf("%s LIMIT %d, %d", $query_DatosConsulta, $s
 $DatosConsulta = mysqli_query($conn,  $query_DatosConsulta) or die(mysqli_error($conn));
 $row_DatosConsulta = mysqli_fetch_assoc($DatosConsulta);
 $totalRows_DatosConsulta = mysqli_num_rows($DatosConsulta);
-<<<<<<< HEAD
-?>
-=======
 
 
 /**************************************************************/
@@ -93,7 +90,6 @@ $totalRows_DatosConsulta = mysqli_num_rows($DatosConsulta);
 ?>
              
  
->>>>>>> master
 <!DOCTYPE html>
 <html lang="en"><!-- InstanceBegin template="/Templates/Administracion.dwt.php" codeOutsideHTMLIsLocked="false" -->
  
@@ -107,7 +103,6 @@ $totalRows_DatosConsulta = mysqli_num_rows($DatosConsulta);
  <!-- InstanceBeginEditable name="doctitle" -->
     <title>Usuario Lista</title>
     <!-- InstanceEndEditable -->
-    <!-- Bootstrap Core CSS -->
     <?php include("../includes/adm-cabecera.php"); ?>
  
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -193,7 +188,7 @@ $totalRows_DatosConsulta = mysqli_num_rows($DatosConsulta);
                                             <th>Email</th>
                                           	<th>Rol</th>
                                           	<th>Estado</th>
-                                          	<th>Aciones</th>
+                                          	<th>Acciones</th>
 
                                         </tr>
                                     </thead>
@@ -209,7 +204,7 @@ $totalRows_DatosConsulta = mysqli_num_rows($DatosConsulta);
             
             <td>
             <?php if ($row_DatosConsulta["Imagen"]!=""){?>
-            <img src="../images/usuarios/<?php echo $row_DatosConsulta["Imagen"];?>" width="30" height="30" alt=""/>
+            <img src="../images/usuarios/<?php echo $row_DatosConsulta["Imagen"];?>" width="50" height="50" alt=""/>
 						<?php }
 						else
 						{?>
@@ -269,11 +264,9 @@ $totalRows_DatosConsulta = mysqli_num_rows($DatosConsulta);
         } 
 		else
 		 { //MOSTRAR SI NO HAY RESULTADOS ?>
-                
-                <?php if ($totalRows_DatosConsulta == '0'){
-					$echo("no hay resultados "); } 
+               <?php if ($totalRows_DatosConsulta == '0'){
+					$echo("No hay resultados "); } 
 		 }	 ?>
-				
                             </div>
                             <!-- /.table-responsive -->
                         </div>

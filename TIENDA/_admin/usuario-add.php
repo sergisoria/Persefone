@@ -184,10 +184,10 @@ $nombrecarpetadestino="../images/usuarios/"; //carpeta destino con barra al fina
 $nombrecampofichero="file1";
 $nombrecampostatus="status1";
 $nombrebarraprogreso="progressBar1";
-$maximotamanofichero="500000"; //en Bytes, "0" para ilimitado. 1000000 Bytes = 1000Kb = 1Mb
+$maximotamanofichero="0"; //en Bytes, "0" para ilimitado. 1000000 Bytes = 1000Kb = 1Mb
 $tiposficheropermitidos="0"; //  Por ejemplo "jpg,doc,png", separados por comas y poner "0" para permitir todos los tipos
-$limiteancho="200"; // En píxels, "0" significa cualquier tamaño permitido
-$limitealto="200"; // En píxels, "0" significa cualquier tamaño permitido
+$limiteancho="0"; // En píxels, "0" significa cualquier tamaño permitido
+$limitealto="0"; // En píxels, "0" significa cualquier tamaño permitido
 									  
 $cadenadeparametros="'".$nombrecampoimagen."','".$nombrecampoimagenmostrar."','".$nombrecarpetadestino."','".$nombrecampofichero."','".$nombrecampostatus."','".$nombrebarraprogreso."','".$maximotamanofichero."','".$tiposficheropermitidos."','".$limiteancho."','".$limitealto."'";
 

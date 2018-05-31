@@ -9,9 +9,9 @@ if (isset($_SERVER['QUERY_STRING'])) {
   $editFormAction .= "?" . htmlentities($_SERVER['QUERY_STRING']);
 }
 
-if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "forminsertarpro")) {
+if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "forminsertar")) {
 
-  $insertSQL = sprintf("INSERT INTO productos(Nombre,Referencia,PrecioUnidad,idTipos,Color,Talla,Genero,idProveedor) VALUES ( %s, %s, %s, %s, %s, %s,%s,%s )",
+  $insertSQL = sprintf("INSERT INTO productos(Nombre,Referencia,PrecioUnidad,idTipos,Color,Talla,Genero,Imagen,idProveedor,Descripcion) VALUES ( %s, %s, %s, %s, %s, %s,%s,%s,%s,%s)",
                       	
 					  	GetSQLValueString($_POST["Nombre"], "text"),
 					    GetSQLValueString($_POST["Referencia"], "int"),
@@ -20,9 +20,10 @@ if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "forminsertarpro")) 
 					  	GetSQLValueString($_POST["Color"], "text"),
 					   	GetSQLValueString($_POST["Talla"], "text"),
 					    GetSQLValueString($_POST["Genero"], "text"),
-						//GetSQLValueString($_POST["Imagen"], "text"),
-  						GetSQLValueString($_POST["idProveedor"], "int"));
-	
+						GetSQLValueString($_POST["Imagen"], "text"),
+  						GetSQLValueString($_POST["idProveedor"], "int"),
+						GetSQLValueString($_POST["Descripcion"], "text"));
+						
   $Result1 = mysqli_query($conn,  $insertSQL) or die(mysqli_error($conn));
 
 
@@ -86,43 +87,43 @@ if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "forminsertarpro")) 
                         <div class="panel-body">
                             <div class="row">
                                 <div class="col-lg-6">
-                                  <form action="productos-add.php" method="post" id="forminsertarpro" name="forminsertarpro" role="form">
+                                  <form action="productos-add.php" method="post" id="forminsertar" name="forminsertar" role="form">
                                        
                                         <div class="form-group">
                                             <label>Nombre</label>
-                                            <input class="form-control" placeholder="Nombre" name="Nombre" id=" Nombre">
+                                            <input class="form-control" placeholder="Escribe el Nombre" name="Nombre" id=" Nombre">
                                         </div>
                                        
                                            
                                         <div class="form-group">
                                             <label>Referencia</label>
-                                            <input class="form-control" placeholder="e-mail" name="Referencia" id="Referencia" type="number">
+                                            <input class="form-control" placeholder="Escribe la Referencia" name="Referencia" id="Referencia" type="number">
                                         </div>
                                         
                                         <div>
                                             <div class="form-group">
                                             <label>PrecioUnidad</label>
-                                            <input class="form-control" placeholder="e-mail" name="PrecioUnidad" id="PrecioUnidad" type="number">
+                                            <input class="form-control" placeholder="Escribe el Precio Unidad" name="PrecioUnidad" id="PrecioUnidad" type="number">
                                         </div>
                                         
                                         <div class="form-group">
                                             <label>idTipo </label>
-                                            <input class="form-control" placeholder="idTipos" name="idTipos" id="idTipos">
+                                            <input class="form-control" placeholder="Escribe el idTipo" name="idTipos" id="idTipos">
                                         </div>
                                          
                                           <div class="form-group">
                                             <label>Color </label>
-                                            <input class="form-control" placeholder="Color" name="Color" id="Color">
+                                            <input class="form-control" placeholder="Escribe el Color" name="Color" id="Color">
                                         </div>  
                                         
                                          <div class="form-group">
                                             <label>Genero </label>
-                                            <input class="form-control" placeholder="Genero" name="Genero" id="Genero">
+                                            <input class="form-control" placeholder="Escribe el Genero" name="Genero" id="Genero">
                                       
                                         </div>
                                         
                                        	<div class="form-group">
-										<label>Nivel de Usuario</label>
+										<label>Talla</label>
 										<select name="Talla" class="form-control" id="Talla">
 										<option value="2XS">2XS </option>
 										<option value="XS">XS </option>
@@ -137,24 +138,67 @@ if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "forminsertarpro")) 
 						 				 </div>  
                                             <div class="form-group">
                                             <label>idProveedor </label>
-                                            <input class="form-control" placeholder="Escribir Apellido del usuario" name="idProveedor" id="idProveedor">
+                                            <input class="form-control" placeholder="Escriba el idProveedor" name="idProveedor" id="idProveedor">
+                                        </div>  
+										
+										 </div>  
+                                            <div class="form-group">
+                                            <label>Descripcion </label>
+                                            <input class="form-control" placeholder="Escriba la descripcion" name="Descripcion" id="Descripcion">
                                         </div>  
 			
-		
-                                         
-	
-       
-        <div class="form-group">
-         	<label>File input</label>
-        	<input type="file" input id="Imagen" name="Imagen" >
-        </div>
-      
-     
-				
-		
-		
-                                <button type="submit" class="btn btn-success">Añadir</button>
-                                      <input name="MM_insert" type="hidden" id="MM_insert" value="forminsertarpro">
+		<?php 
+//BLOQUE INSERCION IMAGEN
+//***********************
+//***********************
+//***********************
+//***********************
+//PARÁMETROS DE IMAGEN
+$nombrecampoimagen="Imagen";
+$nombrecampoimagenmostrar="Imagenpic";
+$nombrecarpetadestino="../images/usuarios/"; //carpeta destino con barra al final
+$nombrecampofichero="file1";
+$nombrecampostatus="status1";
+$nombrebarraprogreso="progressBar1";
+$maximotamanofichero="0"; //en Bytes, "0" para ilimitado. 1000000 Bytes = 1000Kb = 1Mb
+$tiposficheropermitidos="0"; //  Por ejemplo "jpg,doc,png", separados por comas y poner "0" para permitir todos los tipos
+$limiteancho="0"; // En píxels, "0" significa cualquier tamaño permitido
+$limitealto="0"; // En píxels, "0" significa cualquier tamaño permitido
+									  
+$cadenadeparametros="'".$nombrecampoimagen."','".$nombrecampoimagenmostrar."','".$nombrecarpetadestino."','".$nombrecampofichero."','".$nombrecampostatus."','".$nombrebarraprogreso."','".$maximotamanofichero."','".$tiposficheropermitidos."','".$limiteancho."','".$limitealto."'";
+
+//$cadenadeparametros="";
+
+									  
+									  ?>
+<div class="form-group">
+	<label>Imagen</label>
+	<input class="form-control"  name="<?php echo $nombrecampoimagen;?>" id="<?php echo $nombrecampoimagen;?>">
+</div> 
+<div class="form-group">
+	<div class="row">
+		<div class="col-lg-6">
+			<input type="file" name="<?php echo $nombrecampofichero;?>" id="<?php echo $nombrecampofichero;?>"><br>
+		</div>
+		<div class="col-lg-6">
+			<input class="form-control" type="button" value="Subir Fichero" onclick="uploadFile(<?php echo $cadenadeparametros;?>)">
+		</div>
+	</div>
+	<progress id="<?php echo $nombrebarraprogreso;?>" value="0" max="100" style="width:100%;"></progress>
+	<h5 id="<?php echo $nombrecampostatus;?>"></h5>
+	<img src="" alt="" id="<?php echo $nombrecampoimagenmostrar;?>">
+</div>   
+<?php /*?>
+//***********************
+//***********************
+//***********************								
+//***********************
+// FIN BLOQUE INSERCION IMAGEN
+<?php */?>                              
+                                       
+                                        
+                                        <button type="submit" class="btn btn-success">Añadir</button>
+                                      <input name="MM_insert" type="hidden" id="MM_insert" value="forminsertar">
                                        
                                     </form>
                               </div>
@@ -189,3 +233,8 @@ if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "forminsertarpro")) 
 </body>
 
 <!-- InstanceEnd --></html>
+
+                                         
+	
+       
+       
