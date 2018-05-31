@@ -244,8 +244,8 @@ INSERT INTO `metodopago` (`idMetodoPago`, `TipoPago`, `Descripcion`) VALUES
 			INSERT INTO `promociones` (`idPromocion`, `Nombre`, `FechaInicio`, `FechaFinal`, `Descripcion`, `Descuento`) VALUES ('1', 'Navidad', '2018-12-20', '2019-01-07', 'Epoca Navideña 2018', '10'); 
 
 --Insert Pedido
-			INSERT INTO `pedido` (`idPedido`, `FechaInicio`, `FechaEstimada`, `idUsuario`) VALUES ('1', '2018-05-20', '2018-05-23', '1'); 
-
+			INSERT INTO `pedido` (`idPedido`, `FechaInicio`, `FechaEstimada`, `idUsuario`,`Estado`) VALUES ('1', '2018-05-20', '2018-05-23', '1','Anulado');
+			
 --Insert Detalle Pedido
 			INSERT INTO `detallepedido` (`idDetallePedido`, `Cantidad`, `Talla`, `Color`, `idProducto`, `idPedido`) VALUES ('1', '4', 'S', 'Verde', '1', '1'); 
 
@@ -257,7 +257,6 @@ INSERT INTO `metodopago` (`idMetodoPago`, `TipoPago`, `Descripcion`) VALUES
 
 --Insert Inventario
 			-- 1. Camiseta Nike F.C 
-			
 			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('1', '1', '1', '1', '20', 'S', 'Masculino');
 			
 			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('2', '1', '1', '1', '20', 'M', 'Masculino');
@@ -266,7 +265,6 @@ INSERT INTO `metodopago` (`idMetodoPago`, `TipoPago`, `Descripcion`) VALUES
 			
 			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('4', '1', '1', '1', '20', 'XL', 'Masculino');
 			-- 2. Campera
-			
 			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('5', '1', '2', '8', '20', 'S', 'Masculino');
 			
 			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('6', '1', '2', '8', '20', 'M', 'Masculino');
@@ -275,7 +273,6 @@ INSERT INTO `metodopago` (`idMetodoPago`, `TipoPago`, `Descripcion`) VALUES
 			
 			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('8', '1', '2', '8', '20', 'XL', 'Masculino');
 			-- 3. Sneakers
-			
 			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('9', '1', '3', '8', '20', '39', 'Masculino');
 			
 			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('10', '1', '3', '8', '20', '40', 'Masculino');
@@ -290,7 +287,6 @@ INSERT INTO `metodopago` (`idMetodoPago`, `TipoPago`, `Descripcion`) VALUES
 			
 			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('15', '1', '3', '8', '20', '45', 'Masculino');
 			-- 4. Sandalia de dedo
-			
 			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('16', '1', '4', '8', '20', '39', 'Masculino');
 			
 			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('17', '1', '4', '8', '20', '40', 'Masculino');
@@ -304,7 +300,6 @@ INSERT INTO `metodopago` (`idMetodoPago`, `TipoPago`, `Descripcion`) VALUES
 			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('21', '1', '4', '8', '20', '44', 'Masculino');
 			
 			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('22', '1', '4', '8', '20', '45', 'Masculino');
-			
 			-- 5. Cazadora de plumas
 			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('23', '1', '5', '8', '20', 'S', 'Masculino');
 			
@@ -313,7 +308,6 @@ INSERT INTO `metodopago` (`idMetodoPago`, `TipoPago`, `Descripcion`) VALUES
 			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('25', '1', '5', '8', '20', 'L', 'Masculino');
 			
 			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('26', '1', '5', '8', '20', 'XL', 'Masculino');
-			
 			-- 6. Campera
 			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('27', '1', '6', '8', '20', 'S', 'Masculino');
 			
@@ -354,7 +348,620 @@ INSERT INTO `metodopago` (`idMetodoPago`, `TipoPago`, `Descripcion`) VALUES
 			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('45', '1', '12', '9', '20', 'Talla única', 'Femenino');
 			-- 13. Mochila
 			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('46', '1', '13', '9', '20', 'Talla única', 'Femenino');
+			-- 14. Camiseta de botones
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('47', '1', '14', '1', '20', 'S', 'Femenino');
 			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('48', '1', '14', '1', '20', 'M', 'Femenino');
 			
-
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('49', '1', '14', '1', '20', 'L', 'Femenino');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('50', '1', '14', '1', '20', 'XL', 'Femenino');	
+			-- 15. Camiseta Levis
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('51', '1', '15', '1', '20', 'S', 'Femenino');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('52', '1', '15', '1', '20', 'M', 'Femenino');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('53', '1', '15', '1', '20', 'L', 'Femenino');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('54', '1', '15', '1', '20', 'XL', 'Femenino');	
+			-- 16. Camiseta con Estampado
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('55', '1', '16', '1', '20', 'S', 'Femenino');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('56', '1', '16', '1', '20', 'M', 'Femenino');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('57', '1', '16', '1', '20', 'L', 'Femenino');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('58', '1', '16', '1', '20', 'XL', 'Femenino');	
+			-- 17. Camiseta Merci
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('59', '1', '17', '1', '20', 'S', 'Masculino');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('60', '1', '17', '1', '20', 'M', 'Masculino');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('61', '1', '17', '1', '20', 'L', 'Masculino');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('62', '1', '17', '1', '20', 'XL', 'Masculino');	
+			-- 18. Camiseta Gris
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('63', '1', '18', '1', '20', 'S', 'Masculino');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('64', '1', '18', '1', '20', 'M', 'Masculino');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('65', '1', '18', '1', '20', 'L', 'Masculino');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('66', '1', '18', '1', '20', 'XL', 'Masculino');	
+			-- 19. Vestido Largo de PrettyLittleThing
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('67', '1', '19', '2', '20', '32', 'Femenino');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('68', '1', '19', '2', '20', '34', 'Femenino');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('69', '1', '19', '2', '20', '36', 'Femenino');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('70', '1', '19', '2', '20', '38', 'Femenino');	
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('71', '1', '19', '2', '20', '40', 'Femenino');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('72', '1', '19', '2', '20', '42', 'Femenino');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('73', '1', '19', '2', '20', '44', 'Femenino');	
+			-- 20. Vestido Largo de Warehouse
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('74', '1', '20', '2', '20', '32', 'Femenino');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('75', '1', '20', '2', '20', '34', 'Femenino');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('76', '1', '20', '2', '20', '36', 'Femenino');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('77', '1', '20', '2', '20', '38', 'Femenino');	
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('78', '1', '20', '2', '20', '40', 'Femenino');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('79', '1', '20', '2', '20', '42', 'Femenino');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('80', '1', '20', '2', '20', '44', 'Femenino');	
+			-- 21. Vestido con manga de PrettyLittleThing
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('81', '1', '21', '2', '20', '32', 'Femenino');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('83', '1', '21', '2', '20', '34', 'Femenino');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('84', '1', '21', '2', '20', '36', 'Femenino');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('85', '1', '21', '2', '20', '38', 'Femenino');	
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('86', '1', '21', '2', '20', '40', 'Femenino');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('87', '1', '21', '2', '20', '42', 'Femenino');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('88', '1', '21', '2', '20', '44', 'Femenino');
+			-- 22. Vestido con ribete de volante de Boohoo
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('89', '1', '22', '2', '20', '32', 'Femenino');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('90', '1', '22', '2', '20', '34', 'Femenino');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('91', '1', '22', '2', '20', '36', 'Femenino');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('92', '1', '22', '2', '20', '38', 'Femenino');	
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('93', '1', '22', '2', '20', '40', 'Femenino');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('94', '1', '22', '2', '20', '42', 'Femenino');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('95', '1', '22', '2', '20', '44', 'Femenino');
+			-- 23. Vestido largo de River Island
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('96', '1', '23', '2', '20', '32', 'Femenino');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('97', '1', '23', '2', '20', '34', 'Femenino');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('98', '1', '23', '2', '20', '36', 'Femenino');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('99', '1', '23', '2', '20', '38', 'Femenino');	
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('100', '1', '23', '2', '20', '40', 'Femenino');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('101', '1', '23', '2', '20', '42', 'Femenino');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('102', '1', '23', '2', '20', '44', 'Femenino');
+			-- 24. Vestido estilo polo de Weekday
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('103', '1', '24', '2', '20', '32', 'Femenino');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('104', '1', '24', '2', '20', '34', 'Femenino');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('105', '1', '24', '2', '20', '36', 'Femenino');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('106', '1', '24', '2', '20', '38', 'Femenino');	
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('107', '1', '24', '2', '20', '40', 'Femenino');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('108', '1', '24', '2', '20', '42', 'Femenino');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('109', '1', '24', '2', '20', '44', 'Femenino');
+			-- 25. Parka de Only & Sons
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('110', '1', '25', '4', '20', 'S', 'Masculino');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('111', '1', '25', '4', '20', 'M', 'Masculino');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('112', '1', '25', '4', '20', 'L', 'Masculino');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('113', '1', '25', '4', '20', 'XL', 'Masculino');	
+			-- 26. Parka de punto extragrande de Kyoto
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('114', '1', '26', '4', '20', 'S', 'Masculino');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('115', '1', '26', '4', '20', 'M', 'Masculino');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('116', '1', '26', '4', '20', 'L', 'Masculino');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('117', '1', '26', '4', '20', 'XL', 'Masculino');	
+			-- 27. Parka larga de D-Struct
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('118', '1', '27', '4', '20', 'S', 'Masculino');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('119', '1', '27', '4', '20', 'M', 'Masculino');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('120', '1', '27', '4', '20', 'L', 'Masculino');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('121', '1', '27', '4', '20', 'XL', 'Masculino');	
+			-- 28. Parka forrada de New Look
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('122', '1', '28', '4', '20', 'S', 'Femenino');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('123', '1', '28', '4', '20', 'M', 'Femenino');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('124', '1', '28', '4', '20', 'L', 'Femenino');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('125', '1', '28', '4', '20', 'XL', 'Femenino');	
+			-- 29. Chaqueta de piel sintética de Mongolia
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('126', '1', '29', '4', '20', 'S', 'Femenino');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('127', '1', '29', '4', '20', 'M', 'Femenino');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('128', '1', '29', '4', '20', 'L', 'Femenino');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('129', '1', '29', '4', '20', 'XL', 'Femenino');	
+			-- 30. Parka de camuflaje de Weekday
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('130', '1', '30', '3', '20', 'S', 'Femenino');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('131', '1', '30', '3', '20', 'M', 'Femenino');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('132', '1', '30', '3', '20', 'L', 'Femenino');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('133', '1', '30', '3', '20', 'XL', 'Femenino');	
+			-- 31. Vaqueros de Liquor N Poker
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('134', '1', '31', '3', '20', 'W30 L', 'Unisex');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('135', '1', '31', '3', '20', 'W32 L', 'Unisex');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('136', '1', '31', '3', '20', 'W34 L', 'Unisex');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('137', '1', '31', '3', '20', 'W36 L', 'Unisex');	
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('138', '1', '31', '3', '20', 'W32 XL', 'Unisex');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('139', '1', '31', '3', '20', 'W34 XL', 'Unisex');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('140', '1', '31', '3', '20', 'W36 XL', 'Unisex');
+			-- 32. Vaqueros ajustados de Liquor N Poker
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('141', '1', '32', '3', '20', 'W30 L', 'Unisex');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('142', '1', '32', '3', '20', 'W32 L', 'Unisex');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('143', '1', '32', '3', '20', 'W34 L', 'Unisex');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('144', '1', '32', '3', '20', 'W36 L', 'Unisex');	
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('145', '1', '32', '3', '20', 'W32 XL', 'Unisex');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('146', '1', '32', '3', '20', 'W34 XL', 'Unisex');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('147', '1', '32', '3', '20', 'W36 XL', 'Unisex');
+			-- 33. Vaqueros elásticos de Armani Exchange
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('148', '1', '33', '3', '20', 'W30 L', 'Unisex');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('149', '1', '33', '3', '20', 'W32 L', 'Unisex');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('150', '1', '33', '3', '20', 'W34 L', 'Unisex');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('151', '1', '33', '3', '20', 'W36 L', 'Unisex');	
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('152', '1', '33', '3', '20', 'W32 XL', 'Unisex');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('153', '1', '33', '3', '20', 'W34 XL', 'Unisex');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('154', '1', '33', '3', '20', 'W36 XL', 'Unisex');
+			-- 34. Vaqueros ajustados de Liquor N Poker
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('155', '1', '34', '3', '20', 'W30 L', 'Unisex');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('156', '1', '34', '3', '20', 'W32 L', 'Unisex');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('157', '1', '34', '3', '20', 'W34 L', 'Unisex');
+		
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('158', '1', '34', '3', '20', 'W36 L', 'Unisex');	
+		
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('159', '1', '34', '3', '20', 'W32 XL', 'Unisex');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('160', '1', '34', '3', '20', 'W34 XL', 'Unisex');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('161', '1', '34', '3', '20', 'W36 XL', 'Unisex');
+			-- 35. Vaqueros ajustado de Liquor N Poker
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('162', '1', '35', '3', '20', 'W30 L', 'Unisex');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('163', '1', '35', '3', '20', 'W32 L', 'Unisex');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('164', '1', '35', '3', '20', 'W34 L', 'Unisex');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('165', '1', '35', '3', '20', 'W36 L', 'Unisex');	
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('166', '1', '35', '3', '20', 'W32 XL', 'Unisex');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('167', '1', '35', '3', '20', 'W34 XL', 'Unisex');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('168', '1', '35', '3', '20', 'W36 XL', 'Unisex');
+			-- 36. Vaqueros ajustados de Brooklyn Denim
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('169', '1', '36', '3', '20', 'W30 L', 'Unisex');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('170', '1', '36', '3', '20', 'W32 L', 'Unisex');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('171', '1', '36', '3', '20', 'W34 L', 'Unisex');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('172', '1', '36', '3', '20', 'W36 L', 'Unisex');	
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('173', '1', '36', '3', '20', 'W32 XL', 'Unisex');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('174', '1', '36', '3', '20', 'W34 XL', 'Unisex');
+		
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('175', '1', '36', '3', '20', 'W36 XL', 'Unisex');
+			-- 37. Chandal Adidas
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('176', '1', '37', '5', '20', '30', 'Femenino');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('177', '1', '37', '5', '20', '32', 'Femenino');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('178', '1', '37', '5', '20', '34', 'Femenino');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('179', '1', '37', '5', '20', '36', 'Femenino');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('180', '1', '37', '5', '20', '38', 'Femenino');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('181', '1', '37', '5', '20', '40', 'Femenino');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('182', '1', '37', '5', '20', '42', 'Femenino');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('183', '1', '37', '5', '20', '44', 'Femenino');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('184', '1', '37', '5', '20', '46', 'Femenino');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('185', '1', '37', '5', '20', '48', 'Femenino');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('186', '1', '37', '5', '20', '50', 'Femenino');
+			-- 38. Chandal Puma
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('187', '1', '38', '5', '20', 'XXS', 'Femenino');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('188', '1', '38', '5', '20', 'XS', 'Femenino');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('189', '1', '38', '5', '20', 'S', 'Femenino');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('190', '1', '38', '5', '20', 'M', 'Femenino');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('191', '1', '38', '5', '20', 'L', 'Femenino');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('192', '1', '38', '5', '20', 'XL', 'Femenino');
+			-- 39. Chandal Nike
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('193', '1', '39', '5', '20', 'XS', 'Femenino');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('194', '1', '39', '5', '20', 'S', 'Femenino');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('195', '1', '39', '5', '20', 'M', 'Femenino');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('196', '1', '39', '5', '20', 'L', 'Femenino');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('197', '1', '39', '5', '20', 'XL', 'Femenino');
+			-- 40. Chandal SF Completo
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('198', '1', '40', '5', '20', 'XXS (81-86cm)', 'Masculino');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('199', '1', '40', '5', '20', 'XS (86-91cm)', 'Masculino');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('200', '1', '40', '5', '20', 'S (91-96cm)', 'Masculino');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('201', '1', '40', '5', '20', 'M (96-101cm)', 'Masculino');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('202', '1', '40', '5', '20', 'L (101-106cm)', 'Masculino');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('203', '1', '40', '5', '20', 'XL (106-111cm)', 'Masculino');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('204', '1', '40', '5', '20', 'XXL (111-116cm)', 'Masculino');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('205', '1', '40', '5', '20', 'XXXL (116-121cm)', 'Masculino');
+			-- 41. Chandal ASOS Completo
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('206', '1', '41', '5', '20', 'XXS (81-86cm)', 'Masculino');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('207', '1', '41', '5', '20', 'XS (86-91cm)', 'Masculino');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('208', '1', '41', '5', '20', 'S (91-96cm)', 'Masculino');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('209', '1', '41', '5', '20', 'M (96-101cm)', 'Masculino');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('210', '1', '41', '5', '20', 'L (101-106cm)', 'Masculino');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('211', '1', '41', '5', '20', 'XL (106-111cm)', 'Masculino');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('212', '1', '41', '5', '20', 'XXL (111-116cm)', 'Masculino');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('213', '1', '41', '5', '20', 'XXXL (116-121cm)', 'Masculino');
+			-- 42. Chandal ARMANI Completo
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('214', '1', '42', '5', '20', 'XXS (81-86cm)', 'Masculino');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('215', '1', '42', '5', '20', 'XS (86-91cm)', 'Masculino');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('216', '1', '42', '5', '20', 'S (91-96cm)', 'Masculino');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('217', '1', '42', '5', '20', 'M (96-101cm)', 'Masculino');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('218', '1', '42', '5', '20', 'L (101-106cm)', 'Masculino');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('219', '1', '42', '5', '20', 'XL (106-111cm)', 'Masculino');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('220', '1', '42', '5', '20', 'XXL (111-116cm)', 'Masculino');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('221', '1', '42', '5', '20', 'XXXL (116-121cm)', 'Masculino');
+			-- 43. Americana Azul
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('222', '1', '43', '6', '20', '46 Corto', 'Masculino');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('223', '1', '43', '6', '20', '48 Corto', 'Masculino');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('224', '1', '43', '6', '20', '50 Corto', 'Masculino');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('225', '1', '43', '6', '20', '52 Corto', 'Masculino');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('226', '1', '43', '6', '20', '42 W81cm', 'Masculino');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('227', '1', '43', '6', '20', '44 W86cm', 'Masculino');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('228', '1', '43', '6', '20', '46 W91cm', 'Masculino');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('229', '1', '43', '6', '20', '48 W96cm', 'Masculino');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('230', '1', '43', '6', '20', '50 W101cm', 'Masculino');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('231', '1', '43', '6', '20', '52 W106cm', 'Masculino');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('232', '1', '43', '6', '20', '54 W111cm', 'Masculino');
+			-- 44. Americana Gris
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('233', '1', '44', '6', '20', '44', 'Masculino');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('234', '1', '44', '6', '20', '46', 'Masculino');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('235', '1', '44', '6', '20', '48', 'Masculino');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('236', '1', '44', '6', '20', '50', 'Masculino');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('237', '1', '44', '6', '20', '52', 'Masculino');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('238', '1', '44', '6', '20', '54', 'Masculino');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('239', '1', '44', '6', '20', '56', 'Masculino');
+			-- 45. Americana de Cuadros
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('240', '1', '45', '6', '20', '46', 'Masculino');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('241', '1', '45', '6', '20', '48', 'Masculino');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('242', '1', '45', '6', '20', '50', 'Masculino');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('243', '1', '45', '6', '20', '52', 'Masculino');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('244', '1', '45', '6', '20', '54', 'Masculino');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('245', '1', '45', '6', '20', '56', 'Masculino');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('246', '1', '45', '6', '20', '58', 'Masculino');
+			-- 46. Blazer Verde Pistacho
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('247', '1', '46', '6', '20', '32', 'Femenino');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('248', '1', '46', '6', '20', '34', 'Femenino');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('249', '1', '46', '6', '20', '36', 'Femenino');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('250', '1', '46', '6', '20', '38', 'Femenino');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('251', '1', '46', '6', '20', '40', 'Femenino');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('252', '1', '46', '6', '20', '42', 'Femenino');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('253', '1', '46', '6', '20', '44', 'Femenino');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('254', '1', '46', '6', '20', '46', 'Femenino');
+			-- 47. Blazer Negro
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('255', '1', '47', '6', '20', '32', 'Femenino');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('256', '1', '47', '6', '20', '34', 'Femenino');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('257', '1', '47', '6', '20', '36', 'Femenino');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('258', '1', '47', '6', '20', '38', 'Femenino');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('259', '1', '47', '6', '20', '40', 'Femenino');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('260', '1', '47', '6', '20', '42', 'Femenino');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('261', '1', '47', '6', '20', '44', 'Femenino');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('262', '1', '47', '6', '20', '46', 'Femenino');
+			-- 48. Blazer Rosa
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('263', '1', '48', '6', '20', '32', 'Femenino');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('264', '1', '48', '6', '20', '34', 'Femenino');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('265', '1', '48', '6', '20', '36', 'Femenino');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('266', '1', '48', '6', '20', '38', 'Femenino');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('267', '1', '48', '6', '20', '40', 'Femenino');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('268', '1', '48', '6', '20', '42', 'Femenino');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('269', '1', '48', '6', '20', '44', 'Femenino');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('270', '1', '48', '6', '20', '46', 'Unisex');
+			-- 49. Bambas Nike Cortez
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('271', '1', '49', '7', '20', '35.5', 'Unisex');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('272', '1', '49', '7', '20', '36', 'Unisex');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('273', '1', '49', '7', '20', '36.5', 'Unisex');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('274', '1', '49', '7', '20', '37.5', 'Unisex');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('275', '1', '49', '7', '20', '38', 'Unisex');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('276', '1', '49', '7', '20', '38.5', 'Unisex');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('277', '1', '49', '7', '20', '39', 'Unisex');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('278', '1', '49', '7', '20', '40', 'Unisex');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('279', '1', '49', '7', '20', '40.5', 'Unisex');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('280', '1', '49', '7', '20', '41', 'Unisex');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('281', '1', '49', '7', '20', '42', 'Unisex');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('282', '1', '49', '7', '20', '42.5', 'Unisex');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('283', '1', '49', '7', '20', '43', 'Unisex');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('284', '1', '49', '7', '20', '44', 'Unisex');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('285', '1', '49', '7', '20', '44.5', 'Unisex');
+			-- 50. Bambas Nike Thea Air Max
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('286', '1', '50', '7', '20', '35.5', 'Femenino');
+	
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('287', '1', '50', '7', '20', '36', 'Femenino');
+	
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('288', '1', '50', '7', '20', '36.5', 'Femenino');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('289', '1', '50', '7', '20', '37.5', 'Femenino');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('290', '1', '50', '7', '20', '38', 'Femenino');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('291', '1', '50', '7', '20', '38.5', 'Femenino');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('292', '1', '50', '7', '20', '39', 'Femenino');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('293', '1', '50', '7', '20', '40', 'Femenino');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('294', '1', '50', '7', '20', '40.5', 'Femenino');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('295', '1', '50', '7', '20', '41', 'Femenino');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('296', '1', '50', '7', '20', '42', 'Femenino');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('297', '1', '50', '7', '20', '42.5', 'Femenino');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('298', '1', '50', '7', '20', '43', 'Femenino');
+	
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('299', '1', '50', '7', '20', '44', 'Femenino');
+			-- 51. Bambas Nike - SB
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('300', '1', '51', '7', '20', '35.5', 'Femenino');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('301', '1', '51', '7', '20', '36', 'Femenino');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('302', '1', '51', '7', '20', '36.5', 'Femenino');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('303', '1', '51', '7', '20', '37.5', 'Femenino');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('304', '1', '51', '7', '20', '38', 'Femenino');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('305', '1', '51', '7', '20', '38.5', 'Femenino');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('306', '1', '51', '7', '20', '39', 'Femenino');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('307', '1', '51', '7', '20', '40', 'Femenino');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('308', '1', '51', '7', '20', '40.5', 'Femenino');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('309', '1', '51', '7', '20', '41', 'Femenino');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('310', '1', '51', '7', '20', '42', 'Femenino');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('311', '1', '51', '7', '20', '42.5', 'Femenino');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('312', '1', '51', '7', '20', '43', 'Femenino');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('313', '1', '51', '7', '20', '44', 'Femenino');
+			-- 52. Bambas Nike - SJ
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('314', '1', '52', '7', '20', '38.5', 'Masculino');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('315', '1', '52', '7', '20', '40', 'Masculino');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('316', '1', '52', '7', '20', '40.5', 'Masculino');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('317', '1', '52', '7', '20', '41', 'Masculino');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('318', '1', '52', '7', '20', '42', 'Masculino');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('319', '1', '52', '7', '20', '42.5', 'Masculino');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('320', '1', '52', '7', '20', '43', 'Masculino');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('321', '1', '52', '7', '20', '44', 'Masculino');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('322', '1', '52', '7', '20', '44.5', 'Masculino');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('323', '1', '52', '7', '20', '45', 'Masculino');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('324', '1', '52', '7', '20', '45.5', 'Masculino');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('325', '1', '52', '7', '20', '46', 'Masculino');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('326', '1', '52', '7', '20', '47.5', 'Masculino');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('327', '1', '52', '7', '20', '48.5', 'Masculino');
+			-- 53. Bambas Nike Lunar
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('328', '1', '53', '7', '20', '38.5', 'Masculino');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('329', '1', '53', '7', '20', '40', 'Masculino');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('330', '1', '53', '7', '20', '40.5', 'Masculino');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('331', '1', '53', '7', '20', '41', 'Masculino');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('332', '1', '53', '7', '20', '42', 'Masculino');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('333', '1', '53', '7', '20', '42.5', 'Masculino');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('334', '1', '53', '7', '20', '43', 'Masculino');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('335', '1', '53', '7', '20', '44', 'Masculino');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('336', '1', '53', '7', '20', '44.5', 'Masculino');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('337', '1', '53', '7', '20', '45', 'Masculino');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('338', '1', '53', '7', '20', '45.5', 'Masculino');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('339', '1', '53', '7', '20', '46', 'Masculino');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('340', '1', '53', '7', '20', '47.5', 'Masculino');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('341', '1', '53', '7', '20', '48.5', 'Masculino');
+			-- 54. Bambas Nike Air-Force	
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('342', '1', '54', '7', '20', '38.5', 'Masculino');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('343', '1', '54', '7', '20', '40', 'Masculino');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('344', '1', '54', '7', '20', '40.5', 'Masculino');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('345', '1', '54', '7', '20', '41', 'Masculino');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('346', '1', '54', '7', '20', '42', 'Masculino');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('347', '1', '54', '7', '20', '42.5', 'Masculino');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('348', '1', '54', '7', '20', '43', 'Masculino');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('349', '1', '54', '7', '20', '44', 'Masculino');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('350', '1', '54', '7', '20', '44.5', 'Masculino');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('351', '1', '54', '7', '20', '45', 'Masculino');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('352', '1', '54', '7', '20', '45.5', 'Masculino');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('353', '1', '54', '7', '20', '46', 'Masculino');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('354', '1', '54', '7', '20', '47.5', 'Masculino');
+			
+			INSERT INTO `inventario` (`idInventario`, `idTienda`, `idProducto`, `idTipos`, `Stock`, `Talla`, `Genero`) VALUES ('355', '1', '54', '7', '20', '48.5', 'Masculino');
 			

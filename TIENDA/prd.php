@@ -1,5 +1,14 @@
 <?php require_once('Connections/conexion.php'); ?>
 <?php
+    if(!isset($_SESSION)) 
+    { 
+        session_start();
+		
+    } 
+	
+?>
+
+<?php
 $id = $_GET['id'];
 $variable_Consulta = "0";
 if (isset($VARIABLE)) {
@@ -33,17 +42,43 @@ $DatosConsultaTIPO = mysqli_query($conn,  $query_DatosConsultaTIPO) or die(mysql
 $row_DatosConsultaTIPO = mysqli_fetch_assoc($DatosConsultaTIPO);
 $totalRows_DatosConsultaTIPO = mysqli_num_rows($DatosConsultaTIPO);
 //FINAL DE LA PARTE SUPERIOR
-	
-	
-
-    
-
-    
-    
-
 ?>
 
+<?php
+$idP = $_GET["id"];
+$nombre = $row_DatosConsulta["Nombre"];
+$color = $row_DatosConsulta["Color"];
+$imagen = $row_DatosConsulta["Imagen"];
+$precio = $row_DatosConsulta["PrecioUnidad"];
+if(isset($_POST["add"])){
+	if(isset($_SESSION["email"])){
+		$item_array_id = array_column($_SESSION["email"], 'id');
+		if(!in_array($_GET["id"], $item_array_id)){
+			$count = count($_SESSION["email"]);
+			$item_array= array(
+		'id' => $idP,
+		'Nombre' => $nombre,
+		'Color' => $color,
+		'Imagen' => $imagen,
+		'Precio' =>$precio
+		);
+		$_SESSION["email"][$count] = $item_array;
+		
+		}
+	}else{
+		$item_array= array(
+		'id' => $idP,
+		'Nombre' => $nombre,
+		'Color' => $color,
+		'Imagen' => $imagen,
+		'Precio' =>$precio
+		);
+		
+		$_SESSION["email"][0]=$item_array;
+	}
+}
 
+?>
 
 
 <!DOCTYPE html>
@@ -250,7 +285,7 @@ else
   <!-- Top header -->
 <header class="w3-container w3-xlarge">
      <p class="w3-right">
-      <i class="fa fa-shopping-cart w3-margin-right"></i>
+      <a style='text-decoration:none;color:black;'href="carritodecompras1.php" ><i class="fa fa-shopping-cart openBtn"></i></a>
       <i onclick="openSearch()" class="fa fa-search openBtn" id="search">
       </i>
     </p>
@@ -277,7 +312,7 @@ function closeSearch() {
   <div class="column">
   <?php 
 
-	echo '<img src="'.$row_DatosConsulta['Imagen'].'" width="400" height="550" alt=""/>';
+	echo '<img  name="imagen" src="'.$row_DatosConsulta['Imagen'].'" width="400" height="550" alt=""/>';
 	// echo '<img src="data:image/jpeg;base64,'.base64_encode($row_DatosConsulta['Imagen'] ).'" width="400" height="550" alt=""/>';
 ?>
 
@@ -285,7 +320,7 @@ function closeSearch() {
   <div class="column">
     <h1><?php echo $row_DatosConsulta["Nombre"]; ?></h1>
     <h4>Color: <?php echo $row_DatosConsulta["Color"]; ?></h4>
-    <h3>Precio: <?php echo $row_DatosConsulta["PrecioUnidad"]; ?>€</h3>
+	<h4>Precio: <?php echo $row_DatosConsulta["PrecioUnidad"]; ?>€</h4>
     <label style="display: table-cell; vertical-align: top" data-bind="text: sizeLabel, visible: !hideLabels, disable: isDisabled">TALLA:</label>
 	<div class="colour-size-select" data-bind="visible: sizeDropdownVisible()">	
                 <select name="madredelsoria" id="madredelsoria" data-id="sizeSelect" data-bind="options: variants,
@@ -314,7 +349,10 @@ else
 { //MOSTRAR SI NO HAY RESULTADOS ?>
     No hay resultados.
 	
-    <?php } ?>
+    <?php } 
+	
+	 // echo $_SESSION['email']= array("Nombre" => $row_DatosConsulta["Nombre"],"Color" => $row_DatosConsulta["Color"], "Imagen" => $row_DatosConsulta['Imagen'], "Precio"=>$row_DatosConsulta["PrecioUnidad"]);
+	?>
 	
 					
 					
@@ -323,15 +361,17 @@ else
             </select></div>
              <p></p>
 		 
-		 <form action="">
-         <a href="<?php echo 'carritodecompras1.php?id='.$row_DatosConsulta["idProducto"]?>" class="btn">Añadir a la Cesta</a>
+		<form method="post" action="">
+        <!--  <a href=""name="add_to_cart"id="add_to_cart"class="btn">Añadir a la Cesta</a>-->
+		 <input type="submit" name = "add" class = "btn" value ="Añadir a la Cesta">
+		
 		 </form>
-		 
          <p><br></p>
     <a onclick="myAccFunc()" href="javascript:void(0)" class="w3-button w3-block w3-white w3-left-align" id="myBtn">
       Descripcion del Producto: <i class="fa fa-caret-down"></i>
     </a>
     <div id="demoAcc" class="w3-bar-block w3-hide w3-medium">
+
       <p style="
     margin-top: 0px;
     margin-bottom: 0px;
@@ -345,6 +385,7 @@ else
 </div>
   
   </div>
+  
 <div class="w3-row w3-grayscale">
   <?php
 //AQUI ES DONDE SE SACAN LOS DATOS, SE COMPRUEBA QUE HAY RESULTADOS

@@ -1,68 +1,48 @@
+<<<<<<< Updated upstream
 <?php require_once('Connections/conexion.php'); ?>
+<?php
+    if(!isset($_SESSION)) 
+    { 
+        session_start(); 
+		
+    }
+// if($_SESSION['email']){
+  // echo 'Your name Is Here!  :) ';
+  
+  // }else{
+		// echo 'STFU';
+	// }
+  
+?>
 <?php 
 $query_DatosConsultaTIPO = sprintf("SELECT * FROM tipos limit 7");
 $DatosConsultaTIPO = mysqli_query($conn,  $query_DatosConsultaTIPO) or die(mysqli_error($conn));
 $row_DatosConsultaTIPO = mysqli_fetch_assoc($DatosConsultaTIPO);
 $totalRows_DatosConsultaTIPO = mysqli_num_rows($DatosConsultaTIPO);
 ?>
-<?php 
 
-if(isset($_SESSION['carrito'])){
-	
-	$arreglo=$_SESSION['carrito'];
-	$entro=false;
-	$numero=0;
-	
-	for($i=0; $i<count($arreglo); $i++){
-		if($arreglo[$i]['id'] == 1){
-		    $entro=true;
-            $numero=$i;			
+<?php 
+if(isset($_GET["action"])){
+	if($_GET["action"]=="delete"){
+		foreach($_SESSION["email"] as $keys =>$value){
+			if($value["id"] == $_GET["id"]){
+				unset($_SESSION["email"][$keys]);
+				?>
+				<script>window.location="carritodecompras1.php"</script>
+				<?php
+			}
 		}
 	}
-	
-	if($entro==true){
-		$arreglo[$numero]['Cantidad']= $arreglo[$numero]['Cantidad']+1;
-		$_SESSION['carrito']=$arreglo;
-	}else{
-	 
-	   $nombre="";
-	   $precio=0;
-	   $imagen="";
-	   $id = 1;
-	   $re="select * from productos where idProducto=$id";
-	   $mi = mysqli_query($conn,  $re);
-	   while($fa = mysqli_fetch_assoc($mi)){
-		    $nombre=$fa['Nombre'];
-			$precio=$fa['PrecioUnidad'];
-			$imagen=$fa['Imagen'];
-	   
-	   
-	   
-	   $datosnuevos=array('idProducto'=>$id,
-	                    'Nombre' =>$nombre,
-						'PrecioUnidad' =>$precio,
-						'Imagen' =>$imagen,
-						'Cantidad'=>1);
-	
-	
-
-	   array_push($arreglo,$datosnuevos);
-	   
-	   $_SESSION['carrito']=$arreglo;
-	   }
 }
-	
-}
-	
-	
-
-
 
 ?>
 
+=======
 <?php
-
+  require_once('Connections/conexion.php'); 
 ?>
+>>>>>>> Stashed changes
+
 
 <!DOCTYPE html>
 <html>
@@ -281,6 +261,7 @@ ul.breadcrumb li a:hover {
       <button type="submit"><i class="fa fa-search"></i></button>
     </form>
   </div>
+<<<<<<< Updated upstream
 </div>
 <?php
 //AQUI ES DONDE SE SACAN LOS DATOS, SE COMPRUEBA QUE HAY RESULTADOS
@@ -314,6 +295,9 @@ else
 <!-- Overlay effect when opening sidebar on small screens -->
 <div class="w3-overlay w3-hide-large" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
 
+=======
+</div>	 
+>>>>>>> Stashed changes
 <!-- !PAGE CONTENT! -->
 <div class="w3-main" style="margin-left:250px">
 
@@ -323,45 +307,33 @@ else
   <!-- Top header -->
   <header class="w3-container w3-xlarge">
     <p class="w3-right">
-      <i class="fa fa-shopping-cart w3-margin-right"></i>
+<<<<<<< Updated upstream
+      <a style='text-decoration:none;color:black;'href="carritodecompras1.php" ><i class="fa fa-shopping-cart openBtn"></i></a>
      <i onclick="openSearch()" class="fa fa-search openBtn">
 	</i>
     </p>
-	
-	 <?php
-	 
-	   $total=0;
-	   if(isset($_SESSION['carrito'])){
-		   $datos=$_SESSION['carrito'];
-		   
-		   for($i=0;$i<count($datos); $i++){
-			
-       ?>
+	<?php 
+	if(!empty($_SESSION["email"])){
+		$total =0;
 		
-		<div class="producto">
-		     <center>
-			 <br>
-			 <span><?php echo $datos[$i]['Nombre']?></span><br>
-			 <span>Precio: <?php echo $datos[$i]['Precio'];?></span><br>
-			 <span>Cantidad<input type="text" value="<?php echo $datos[$i]['Cantidad']; ?>"></span>
-			 
-			 <span>Preciototal  <?php echo $datos[$i]['Precio'] * $datos[$i]['Cantidad'];?></span>
-			 </center>
+		
+		foreach($_SESSION["email"] as $key =>$value){
 			
-	<?php	
-
-        $total=($datos[$i]['Cantidad']*$datos[$i]['Precio'])+total;
+		?>
+		
+		<p><?php echo $value["Nombre"];?></p>
+		<p>Color: <?php echo $value["Color"];?></p>
+		<p>Precio: <?php echo $value["Precio"];?>€</p>
+		<?php echo '<img src="'.$value["Imagen"].'" width="400" height="550" alt=""/>';?>
+		<a href="carritodecompras1.php?action=delete&id=<?php echo $value["id"];?>">Remove</a>	
+			
+	<?php
+$total = $total + (1 + $value["Precio"]);	
+		}
+	}
 	
-		   }
-		   
-		   
-	   }else{
-		   echo '<center><h2>El carrito esta vacio</h2></center>';
-	 
-	   }
-	   echo '<center><h2>Total: '.$total.' </h2></center>';
-	 
-	 ?>
+	?>
+	 <p><?php echo number_format($total, 2); ?>€</p>
 	 <center><a href="inicio.php">ver productos</a></center>
 	 
 	 
@@ -375,6 +347,8 @@ function closeSearch() {
     document.getElementById("myOverlay2").style.display = "none";
 }
 </script>
+
+
   </header>
 
   
@@ -403,6 +377,23 @@ function showSlides() {
 }
 </script>
  
+=======
+      <i class="fa fa-shopping-cart w3-margin-right"></i>
+     <i onclick="openSearch()" class="fa fa-search openBtn">
+	</i>
+    </p>  
+	  </header>
+     <?php
+	   if(isset($_SESSION['carrito'])){
+		   
+	   }else{
+		   echo '<center><h2>El carro esta vacio</h2></center>';
+	 
+	   }
+	 
+	 ?>
+
+>>>>>>> Stashed changes
 <!-- Subscribe section -->
   <!-- Footer -->
   <footer class="w3-padding-64 w3-light-grey w3-small w3-center" id="footer">
