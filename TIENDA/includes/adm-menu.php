@@ -248,17 +248,17 @@
 							</ul>
 						</li>	
                         <li>
-
                        
                         
                           <li>
+ 
                             <a href="productos-lista.php"><i class="fa fa-dashboard fa-fw"></i>Productos</a>
                             <ul class="nav nav-second-level">
                                 <li>
                                     <a href="productos-lista.php">Listar Productos</a>
                                 </li>
                                 <li>
-                                    <a href="proveedores-lista.php">Añadir Productos</a>
+                                    <a href="productos-add.php">Añadir Productos</a>
                                 </li>
                             </ul>
 						</li>
@@ -274,13 +274,16 @@
                             </ul>
                         </li>
                         <li>
-                            <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Pedido<span class="fa arrow"></span></a>
+                            <a href="#"><i <span class="fa fa-dashboard fa-fw"></i> Pedido</span></a>
                             <ul class="nav nav-second-level">
                                 <li>
                                     <a href="flot.html">Detalle Pedido</a>
                                 </li>
                                 <li>
                                     <a href="morris.html">Metodo de Pagos</a>
+									  </ul>
+					</li>
+					</li>
                              <li>
                             <a href="productos-lista.php"><i class="fa fa-dashboard fa-fw"></i>Pedidos</a>
                             <ul class="nav nav-second-level">
@@ -336,7 +339,7 @@
                             </ul>
 						
                                
-                            </ul>
+                          
                                 </li>
                                                      
   

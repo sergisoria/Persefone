@@ -66,6 +66,9 @@ if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "forminsertar")) {
 
 <body>
 <!-- InstanceBeginEditable name="ContenidoAdmin" -->
+<script src="scriptupload.js"></script>
+<script src="../js/scriptadmin.js"></script>
+
 <div id="wrapper">
   <!-- Navigation -->
   <?php include("../includes/adm-menu.php"); ?>
@@ -156,7 +159,7 @@ if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "forminsertar")) {
 //PARÁMETROS DE IMAGEN
 $nombrecampoimagen="Imagen";
 $nombrecampoimagenmostrar="Imagenpic";
-$nombrecarpetadestino="../images/usuarios/"; //carpeta destino con barra al final
+$nombrecarpetadestino="../images/productos/"; //carpeta destino con barra al final
 $nombrecampofichero="file1";
 $nombrecampostatus="status1";
 $nombrebarraprogreso="progressBar1";
