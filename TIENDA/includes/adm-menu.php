@@ -223,7 +223,6 @@
             <div class="navbar-default sidebar" role="navigation">
                 <div class="sidebar-nav navbar-collapse">
                     <ul class="nav" id="side-menu">
-<<<<<<< HEAD
                         <li class="sidebar-search">
                             <div class="input-group custom-search-form">
                                 <input type="text" class="form-control" placeholder="Search...">
@@ -249,11 +248,10 @@
 							</ul>
 						</li>	
                         <li>
-=======
+
                        
                         
                           <li>
->>>>>>> master
                             <a href="productos-lista.php"><i class="fa fa-dashboard fa-fw"></i>Productos</a>
                             <ul class="nav nav-second-level">
                                 <li>
@@ -264,7 +262,6 @@
                                 </li>
                             </ul>
 						</li>
-<<<<<<< HEAD
                         <li>
                             <a href="productos-lista.php"><i class="fa fa-dashboard fa-fw"></i>Proveedores</a>
                             <ul class="nav nav-second-level">
@@ -284,7 +281,6 @@
                                 </li>
                                 <li>
                                     <a href="morris.html">Metodo de Pagos</a>
-=======
                              <li>
                             <a href="productos-lista.php"><i class="fa fa-dashboard fa-fw"></i>Pedidos</a>
                             <ul class="nav nav-second-level">
@@ -324,7 +320,6 @@
                                 </li>
                                  <li>
                                     <a href="usuario-lista.php">Precios de Grupo</a>
->>>>>>> master
                                 </li>
                                 <li>
                                     <a href="usuario-lista.php">Idiomas</a>
