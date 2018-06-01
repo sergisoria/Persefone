@@ -277,10 +277,10 @@
                             <a href="#"><i <span class="fa fa-dashboard fa-fw"></i> Pedido</span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="flot.html">Detalle Pedido</a>
+                                    <a href="usuario-lista.php">Detalle Pedido</a>
                                 </li>
                                 <li>
-                                    <a href="morris.html">Metodo de Pagos</a>
+                                    <a href="usuario-lista.php">Metodo de Pagos</a>
 									  </ul>
 					</li>
 					</li>

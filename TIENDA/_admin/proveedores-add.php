@@ -75,7 +75,7 @@ if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "forminsertarprove")
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
-	  <a href="productos-lista.php"class="btn btn-outline btn-info">Volver atras</a><br></br>
+	  <a href="proveedores-lista.php"class="btn btn-outline btn-info">Volver atras</a><br></br>
             
 	<div class="row">
                 <div class="col-lg-12">
@@ -92,7 +92,7 @@ if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "forminsertarprove")
                                       
                                         <div class="form-group">
                                             <label>Nombre </label>
-                                            <input class="form-control" placeholder="Escribir Nombre del usuario" name="Nombre" id="Nombre">
+                                            <input class="form-control" placeholder="Escribir Nombre" name="Nombre" id="Nombre">
                                         </div>
                                           <div class="alert alert-danger oculto" id="errorNom">Nombre obligatorio</div>
                                           
@@ -100,14 +100,14 @@ if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "forminsertarprove")
                                            
                                           <div class="form-group">
                                             <label>Direccion </label>
-                                            <input class="form-control" placeholder="Escribir la direcion del usuario" name="Direccion" id="Direcion">
+                                            <input class="form-control" placeholder="Escribir Direccion" name="Direccion" id="Direcion">
                                         </div>
                                         
                                          <div class="alert alert-danger oculto" id="errorDir">Direccion obligatorio</div>
                                              
                                             <div class="form-group">
                                             <label>Correo</label>
-                                            <input class="form-control" placeholder="e-mail" name="Correo" id="Correo" type="email">
+                                            <input class="form-control" placeholder="Escribe Correo" name="Correo" id="Correo" type="email">
                                         	</div>
                                         
                                          <div class="alert alert-danger oculto" id="errorCorreo">Correo obligatorio</div>

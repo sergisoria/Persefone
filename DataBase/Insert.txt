@@ -79,166 +79,166 @@ INSERT INTO `metodopago` (`idMetodoPago`, `TipoPago`, `Descripcion`) VALUES
 --Insert Productos
 
 			INSERT INTO `productos` (`idProducto`, `Nombre`, `Referencia`, `PrecioUnidad`, `idTipos`, `Color`, `Talla`, `Genero`, `Imagen`, `idProveedor`,`Descripcion`) VALUES
-			(1, 'Camiseta Nike FC', '1', '62.99', 1, 'Negro', 'S', 'Masculino', '.\\camisetas\\camisetas_dentro\\CAMISETAS_DENTRO1.jpg', 4,' Cuello redondo - Estampado de Nike FC - Corte estándar - Se adapta a ti');
+			(1, 'Camiseta Nike FC', '1', '62.99', 1, 'Negro', 'S', 'Masculino', 'CAMISETAS_DENTRO1.jpg', 4,' Cuello redondo - Estampado de Nike FC - Corte estándar - Se adapta a ti');
 
 			INSERT INTO `productos` (`idProducto`, `Nombre`, `Referencia`, `PrecioUnidad`, `idTipos`, `Color`, `Talla`, `Genero`, `Imagen`, `idProveedor`,`Descripcion`) VALUES
-			(2, 'Campera', '2', '210.00', 8, 'Negro', 'S', 'Masculino', '.\\AX_hombre\\AX_hombre_dentro\\AXHD1.jpg', 11,' Tela técnica - Cuello redondo - Manga larga - Multibolsillos - Monocolor - Abotonadura simple - Cierre de cremallera - Interior forrado');
+			(2, 'Campera', '2', '210.00', 8, 'Negro', 'S', 'Masculino', 'AXHD1.jpg', 11,' Tela técnica - Cuello redondo - Manga larga - Multibolsillos - Monocolor - Abotonadura simple - Cierre de cremallera - Interior forrado');
 
 			INSERT INTO `productos` (`idProducto`, `Nombre`, `Referencia`, `PrecioUnidad`, `idTipos`, `Color`, `Talla`, `Genero`, `Imagen`, `idProveedor`,`Descripcion`) VALUES
-			(3, 'Sneakers', '3', '145.00', 8, 'Azul Marino', '40', 'Masculino', '.\\AX_hombre\\AX_hombre_dentro\\AXHD2.jpg', 11,' Monocolor - Cierre con elásticos - Puntera redonda - Suela de goma');
+			(3, 'Sneakers', '3', '145.00', 8, 'Azul Marino', '40', 'Masculino', 'AXHD2.jpg', 11,' Monocolor - Cierre con elásticos - Puntera redonda - Suela de goma');
 
 			INSERT INTO `productos` (`idProducto`, `Nombre`, `Referencia`, `PrecioUnidad`, `idTipos`, `Color`, `Talla`, `Genero`, `Imagen`, `idProveedor`,`Descripcion`) VALUES
-			(4, 'Sandalia de dedo', '4', '49.00', 8, 'Negro', '40', 'Masculino', '.\\AX_hombre\\AX_hombre_dentro\\AXHD3.jpg', 11,' Logotipo - Suela de goma');
+			(4, 'Sandalia de dedo', '4', '49.00', 8, 'Negro', '40', 'Masculino', 'AXHD3.jpg', 11,' Logotipo - Suela de goma');
 
 			INSERT INTO `productos` (`idProducto`, `Nombre`, `Referencia`, `PrecioUnidad`, `idTipos`, `Color`, `Talla`, `Genero`, `Imagen`, `idProveedor`,`Descripcion`) VALUES
-			(5, 'Cazadora de plumas', '5', '165.00', 8, 'Gris', 'S', 'Masculino', '.\\AX_hombre\\AX_hombre_dentro\\AXHD4.jpg', 11,' Cuello alto - Manga larga - Bolsillos con cremallera - Monocolor - Cierre de cremallera - Interior en pluma de pato - Tela técnica');
+			(5, 'Cazadora de plumas', '5', '165.00', 8, 'Gris', 'S', 'Masculino', 'AXHD4.jpg', 11,' Cuello alto - Manga larga - Bolsillos con cremallera - Monocolor - Cierre de cremallera - Interior en pluma de pato - Tela técnica');
 
 			INSERT INTO `productos` (`idProducto`, `Nombre`, `Referencia`, `PrecioUnidad`, `idTipos`, `Color`, `Talla`, `Genero`, `Imagen`, `idProveedor`,`Descripcion`) VALUES
-			(6, 'Campera', '6', '210.00', 8, 'Blanco', 'S', 'Masculino', '.\\AX_hombre\\AX_hombre_dentro\\AXHD5.jpg', 11,' Tela técnica - Cuello alto - Manga larga - Multibolsillos - Abotonadura simple - Cierre de cremallera - Interior sin forro');
+			(6, 'Campera', '6', '210.00', 8, 'Blanco', 'S', 'Masculino', 'AXHD5.jpg', 11,' Tela técnica - Cuello alto - Manga larga - Multibolsillos - Abotonadura simple - Cierre de cremallera - Interior sin forro');
 
 			INSERT INTO `productos` (`idProducto`, `Nombre`, `Referencia`, `PrecioUnidad`, `idTipos`, `Color`, `Talla`, `Genero`, `Imagen`, `idProveedor`,`Descripcion`) VALUES
-			(7, 'Gorra', '7', '60.00', 8, 'Azul Marino', 'Talla Unica', 'Masculino', '.\\AX_hombre\\AX_hombre_dentro\\AXHD6.jpg', 11,' Tela técnica - Cierre de Velcro - Logotipo - Visera rígida');
+			(7, 'Gorra', '7', '60.00', 8, 'Azul Marino', 'Talla Unica', 'Masculino', 'AXHD6.jpg', 11,' Tela técnica - Cierre de Velcro - Logotipo - Visera rígida');
 
 			INSERT INTO `productos` (`idProducto`, `Nombre`, `Referencia`, `PrecioUnidad`, `idTipos`, `Color`, `Talla`, `Genero`, `Imagen`, `idProveedor`,`Descripcion`) VALUES
-			(8, 'Sneakers', '8', '125.00', 9, 'Blanco', '40', 'Femenino', '.\\AX_mujer\\AX_mujer_dentro\\AXMD1.jpg', 11,' Piel de imitación - Logotipo - Cierre con cordones - Suela de goma - Puntera redonda');
+			(8, 'Sneakers', '8', '125.00', 9, 'Blanco', '40', 'Femenino', 'AXMD1.jpg', 11,' Piel de imitación - Logotipo - Cierre con cordones - Suela de goma - Puntera redonda');
 
 			INSERT INTO `productos` (`idProducto`, `Nombre`, `Referencia`, `PrecioUnidad`, `idTipos`, `Color`, `Talla`, `Genero`, `Imagen`, `idProveedor`,`Descripcion`) VALUES
-			(9, 'Shorts', '9','105.00', 9, 'Negro', 'S', 'Femenino', '.\\AX_mujer\\AX_mujer_dentro\\AXMD2.jpg', 11,' Crepé - Cintura alta - Cintura con elástico - Logotipo - Dos bolsillos delanteros');
+			(9, 'Shorts', '9','105.00', 9, 'Negro', 'S', 'Femenino', 'AXMD2.jpg', 11,' Crepé - Cintura alta - Cintura con elástico - Logotipo - Dos bolsillos delanteros');
 
 			INSERT INTO `productos` (`idProducto`, `Nombre`, `Referencia`, `PrecioUnidad`, `idTipos`, `Color`, `Talla`, `Genero`, `Imagen`, `idProveedor`,`Descripcion`) VALUES
-			(10, 'Bolso Shopping', '10', '145.00', 9, 'Rosa', 'Talla Unica', 'Femenino', '.\\AX_mujer\\AX_mujer_dentro\\AXMD3.jpg', 11,' Piel de imitación - Logotipo - Monocolor - Cierre de cremallera');
+			(10, 'Bolso Shopping', '10', '145.00', 9, 'Rosa', 'Talla Unica', 'Femenino', 'AXMD3.jpg', 11,' Piel de imitación - Logotipo - Monocolor - Cierre de cremallera');
 
 			INSERT INTO `productos` (`idProducto`, `Nombre`, `Referencia`, `PrecioUnidad`, `idTipos`, `Color`, `Talla`, `Genero`, `Imagen`, `idProveedor`,`Descripcion`) VALUES
-			(11, 'Talones', '11', '145.00', 9, 'Rojo', '40', 'Femenino', '.\\AX_mujer\\AX_mujer_dentro\\AXMD4.jpg', 11,' Tecnofibra - Efecto ante - Suela de goma - Puntera cuadrada - Tacón revestido - Cierre con correa en el tobillo');
+			(11, 'Talones', '11', '145.00', 9, 'Rojo', '40', 'Femenino', 'AXMD4.jpg', 11,' Tecnofibra - Efecto ante - Suela de goma - Puntera cuadrada - Tacón revestido - Cierre con correa en el tobillo');
 
 			INSERT INTO `productos` (`idProducto`, `Nombre`, `Referencia`, `PrecioUnidad`, `idTipos`, `Color`, `Talla`, `Genero`, `Imagen`, `idProveedor`,`Descripcion`) VALUES
-			(12, 'Clutch', '12','75.00', 9, 'Gris', 'Talla Unica', 'Femenino', '.\\AX_mujer\\AX_mujer_dentro\\AXMD5.jpg', 11,' Logotipo - Monocolor básico - Cierre de cremallera - Bolsillo interno');
+			(12, 'Clutch', '12','75.00', 9, 'Gris', 'Talla Unica', 'Femenino', 'AXMD5.jpg', 11,' Logotipo - Monocolor básico - Cierre de cremallera - Bolsillo interno');
 
 			INSERT INTO `productos` (`idProducto`, `Nombre`, `Referencia`, `PrecioUnidad`, `idTipos`, `Color`, `Talla`, `Genero`, `Imagen`, `idProveedor`,`Descripcion`) VALUES
-			(13, 'Mochila', '13', '125.00', 9, 'Gris', 'Talla Unica', 'Femenino', '.\\AX_mujer\\AX_mujer_dentro\\AXMD6.jpg', 11,' Monocolor básico - Bolsillo interno con cremallera - Logotipo');
+			(13, 'Mochila', '13', '125.00', 9, 'Gris', 'Talla Unica', 'Femenino', 'AXMD6.jpg', 11,' Monocolor básico - Bolsillo interno con cremallera - Logotipo');
 
 			INSERT INTO `productos` (`idProducto`, `Nombre`, `Referencia`, `PrecioUnidad`, `idTipos`, `Color`, `Talla`, `Genero`, `Imagen`, `idProveedor`,`Descripcion`) VALUES
-			(14, 'Camiseta de Botones', '14', '19.99', 1, 'Blanco', 'S', 'Femenino', '.\\camisetas\\camisetas_dentro\\CAMISETAS_DENTRO2.jpg', 2,' Tirantes ajustables');
+			(14, 'Camiseta de Botones', '14', '19.99', 1, 'Blanco', 'S', 'Femenino', 'CAMISETAS_DENTRO2.jpg', 2,' Tirantes ajustables');
 
 			INSERT INTO `productos` (`idProducto`, `Nombre`, `Referencia`, `PrecioUnidad`, `idTipos`, `Color`, `Talla`, `Genero`, `Imagen`, `idProveedor`,`Descripcion`) VALUES
-			(15, 'Camiseta Levis', '15', '35.99', 1, 'Blanco', 'S', 'Femenino', '.\\camisetas\\camisetas_dentro\\CAMISETAS_DENTRO4.jpg', 3,' Manga corta - Logo');
+			(15, 'Camiseta Levis', '15', '35.99', 1, 'Blanco', 'S', 'Femenino', 'CAMISETAS_DENTRO4.jpg', 3,' Manga corta - Logo');
 
 			INSERT INTO `productos` (`idProducto`, `Nombre`, `Referencia`, `PrecioUnidad`, `idTipos`, `Color`, `Talla`, `Genero`, `Imagen`, `idProveedor`,`Descripcion`) VALUES
-			(16, 'Camiseta con Estampado', '16', '150.99', 1, 'Blanco', 'S', 'Femenino', '.\\camisetas\\camisetas_dentro\\CAMISETAS_DENTRO6.jpg', 2,' Manga corta - Estampado con corazones');
+			(16, 'Camiseta con Estampado', '16', '16.59', 1, 'Blanco', 'S', 'Femenino', 'CAMISETAS_DENTRO6.jpg', 2,' Manga corta - Estampado con corazones');
 
 			INSERT INTO `productos` (`idProducto`, `Nombre`, `Referencia`, `PrecioUnidad`, `idTipos`, `Color`, `Talla`, `Genero`, `Imagen`, `idProveedor`,`Descripcion`) VALUES
-			(17, 'Camiseta Merci', '17', '15.99', 1, 'Blanco', 'S', 'Masculino', '.\\camisetas\\camisetas_dentro\\CAMISETAS_DENTRO5.jpg', 2,' Manga corta - Logo');
+			(17, 'Camiseta Merci', '17', '15.99', 1, 'Blanco', 'S', 'Masculino', 'CAMISETAS_DENTRO5.jpg', 2,' Manga corta - Logo');
 
 			INSERT INTO `productos` (`idProducto`, `Nombre`, `Referencia`, `PrecioUnidad`, `idTipos`, `Color`, `Talla`, `Genero`, `Imagen`, `idProveedor`,`Descripcion`) VALUES
-			(18, 'Camiseta Gris', '18', '25.99', 1, 'Gris', 'S', 'Masculino', '.\\camisetas\\camisetas_dentro\\CAMISETAS_DENTRO3.jpg', 2,' Manga larga - Estampado calaveras');
+			(18, 'Camiseta Gris', '18', '25.99', 1, 'Gris', 'S', 'Masculino', 'CAMISETAS_DENTRO3.jpg', 2,' Manga larga - Estampado calaveras');
 
 			INSERT INTO `productos` (`idProducto`, `Nombre`, `Referencia`, `PrecioUnidad`, `idTipos`, `Color`, `Talla`, `Genero`, `Imagen`, `idProveedor`,`Descripcion`) VALUES
-			(19, 'Vestido largo de PrettyLittleThing', '19', '47.99', 2, 'Blanco', 'S', 'Femenino', '.\\vestidos\\VESTIDOS_DENTRO\\VESTIDOS_DENTRO1.jpg', 5,' Estampado floral - Escote Bardot - Abertura lateral de talle alto - Corte estándar');
+			(19, 'Vestido largo de PrettyLittleThing', '19', '47.99', 2, 'Blanco', 'S', 'Femenino', 'VESTIDOS_DENTRO1.jpg', 5,' Estampado floral - Escote Bardot - Abertura lateral de talle alto - Corte estándar');
 
 			INSERT INTO `productos` (`idProducto`, `Nombre`, `Referencia`, `PrecioUnidad`, `idTipos`, `Color`, `Talla`, `Genero`, `Imagen`, `idProveedor`,`Descripcion`) VALUES
-			(20, 'Vestido largo de Warehouse', '20',  '51.99', 2, 'Multicolor', 'S', 'Femenino', '.\\vestidos\\VESTIDOS_DENTRO\\VESTIDOS_DENTRO2.jpg', 6,' Diseño a rayas - Ponte en línea -Escote y espalda redondos - Cinta anudada en la cintura - Abertura lateral - Corte estándar - Corte estándar para conseguir un diseño clásico');
+			(20, 'Vestido largo de Warehouse', '20',  '51.99', 2, 'Multicolor', 'S', 'Femenino', 'VESTIDOS_DENTRO2.jpg', 6,' Diseño a rayas - Ponte en línea -Escote y espalda redondos - Cinta anudada en la cintura - Abertura lateral - Corte estándar - Corte estándar para conseguir un diseño clásico');
 			
 			INSERT INTO `productos` (`idProducto`, `Nombre`, `Referencia`, `PrecioUnidad`, `idTipos`, `Color`, `Talla`, `Genero`, `Imagen`, `idProveedor`,`Descripcion`) VALUES
-			(21, 'Vestido con manga de PrettyLittleThing', '21', '40.99', 2, 'Verde', 'S', 'Femenino', '.\\vestidos\\VESTIDOS_DENTRO\\VESTIDOS_DENTRO3.jpg', 5,' Parte delantera cruzada - Un cruzado genial - Aplicación floral y detalle de perlas de imitación - Cinturilla ajustada - Escote en la espalda - Cierre con cremallera - Corte estándar');
+			(21, 'Vestido con manga de PrettyLittleThing', '21', '40.99', 2, 'Verde', 'S', 'Femenino', 'VESTIDOS_DENTRO3.jpg', 5,' Parte delantera cruzada - Un cruzado genial - Aplicación floral y detalle de perlas de imitación - Cinturilla ajustada - Escote en la espalda - Cierre con cremallera - Corte estándar');
 
 			INSERT INTO `productos` (`idProducto`, `Nombre`, `Referencia`, `PrecioUnidad`, `idTipos`, `Color`, `Talla`, `Genero`, `Imagen`, `idProveedor`,`Descripcion`) VALUES
-			(22, 'Vestido con ribete de volante de Boohoo', '22', '13.49', 2, 'Negro', 'S', 'Femenino', '.\\vestidos\\VESTIDOS_DENTRO\\VESTIDOS_DENTRO4.jpg', 7,' El LBD, todo un clásico - Punto de canalé - Cuello en V - Ribetes acampanados - Corte ceñido');
+			(22, 'Vestido con ribete de volante de Boohoo', '22', '13.49', 2, 'Negro', 'S', 'Femenino', 'VESTIDOS_DENTRO4.jpg', 7,' El LBD, todo un clásico - Punto de canalé - Cuello en V - Ribetes acampanados - Corte ceñido');
 
 			INSERT INTO `productos` (`idProducto`, `Nombre`, `Referencia`, `PrecioUnidad`, `idTipos`, `Color`, `Talla`, `Genero`, `Imagen`, `idProveedor`,`Descripcion`) VALUES
-			(23, 'Vestido largo de River Island', '23', '68.99', 2, 'Naranja', 'S', 'Femenino', '.\\vestidos\\VESTIDOS_DENTRO\\VESTIDOS_DENTRO5.jpg', 9,' -Cuello redondo Cuello redondo más amplio que el habitual - Estilo sin mangas - Apertura en la parte delantera - Corte ajustado');
+			(23, 'Vestido largo de River Island', '23', '68.99', 2, 'Naranja', 'S', 'Femenino', 'VESTIDOS_DENTRO5.jpg', 9,' -Cuello redondo Cuello redondo más amplio que el habitual - Estilo sin mangas - Apertura en la parte delantera - Corte ajustado');
 			
 			INSERT INTO `productos` (`idProducto`, `Nombre`, `Referencia`, `PrecioUnidad`, `idTipos`, `Color`, `Talla`, `Genero`, `Imagen`, `idProveedor`,`Descripcion`) VALUES
-			(24, 'Vestido estilo polo de de Weekday', '24', '45.00', 2, 'Blanco', 'S', 'Femenino', '.\\vestidos\\VESTIDOS_DENTRO\\VESTIDOS_DENTRO6.jpg', 8,' Diseño liso - Cool desenfadado - Cuello tipo polo - Tapeta de botones - Corte holgado');
+			(24, 'Vestido estilo polo de de Weekday', '24', '45.00', 2, 'Blanco', 'S', 'Femenino', 'VESTIDOS_DENTRO6.jpg', 8,' Diseño liso - Cool desenfadado - Cuello tipo polo - Tapeta de botones - Corte holgado');
 
 			INSERT INTO `productos` (`idProducto`, `Nombre`, `Referencia`, `PrecioUnidad`, `idTipos`, `Color`, `Talla`, `Genero`, `Imagen`, `idProveedor`,`Descripcion`) VALUES
-			(25, 'Parka de Only & Sons', '25', '70.99', 4, 'Gris', 'S', 'Masculino', '.\\chaqueta\\CHAQUETAS_DENTRO\\CHAQUETAS_DENTRO1.jpg', 13,' Forro suave - Acabado muy sedoso - Una calidad superior tanto dentro como fuera - Capucha ajustable - Mangas raglán - Cierre con boton de presión - Abertura con cremallera - Bolsillos funcionales - Corte estándar - Corte estándar para conseguir un diseño clásico');
+			(25, 'Parka de Only & Sons', '25', '70.99', 4, 'Gris', 'S', 'Masculino', 'CHAQUETAS_DENTRO1.jpg', 13,' Forro suave - Acabado muy sedoso - Una calidad superior tanto dentro como fuera - Capucha ajustable - Mangas raglán - Cierre con boton de presión - Abertura con cremallera - Bolsillos funcionales - Corte estándar - Corte estándar para conseguir un diseño clásico');
 
 			INSERT INTO `productos` (`idProducto`, `Nombre`, `Referencia`, `PrecioUnidad`, `idTipos`, `Color`, `Talla`, `Genero`, `Imagen`, `idProveedor`,`Descripcion`) VALUES
-			(26, 'Parka de punto extragrande de Kyoto', '26', '48.99', 4, 'Negro', 'S', 'Masculino', '.\\chaqueta\\CHAQUETAS_DENTRO\\CHAQUETAS_DENTRO2.jpg', 15,' Capucha con cordón ajustable - Cierre con cremallera - Cordón ajustable en la cinturilla y en el bajo - Bolsillos funcionales - Estampado gráfico en la parte posterior - Diseño empresarial en la parte delantera y festivo en la parte posterior - Bajo en forma de cola de pez - Corte extragrande');
+			(26, 'Parka de punto extragrande de Kyoto', '26', '48.99', 4, 'Negro', 'S', 'Masculino', 'CHAQUETAS_DENTRO2.jpg', 15,' Capucha con cordón ajustable - Cierre con cremallera - Cordón ajustable en la cinturilla y en el bajo - Bolsillos funcionales - Estampado gráfico en la parte posterior - Diseño empresarial en la parte delantera y festivo en la parte posterior - Bajo en forma de cola de pez - Corte extragrande');
 
 			INSERT INTO `productos` (`idProducto`, `Nombre`, `Referencia`, `PrecioUnidad`, `idTipos`, `Color`, `Talla`, `Genero`, `Imagen`, `idProveedor`,`Descripcion`) VALUES
-			(27, 'Parka larga de D-Struct', '27', '76.99', 4, 'Blanco', 'S', 'Masculino', '.\\chaqueta\\CHAQUETAS_DENTRO\\CHAQUETAS_DENTRO3.jpg', 14,' En un acabado de tejido liso - Forro acolchado para mayor calidez - Forro con bolsillo interno - Capucha fija - Ribete de piel sintética - Cierre con cremallera y botones de presión - Bolsillos funcionales - Corte estándar - Lavar a máquina - 100% poliéster');
+			(27, 'Parka larga de D-Struct', '27', '76.99', 4, 'Blanco', 'S', 'Masculino', '\CHAQUETAS_DENTRO3.jpg', 14,' En un acabado de tejido liso - Forro acolchado para mayor calidez - Forro con bolsillo interno - Capucha fija - Ribete de piel sintética - Cierre con cremallera y botones de presión - Bolsillos funcionales - Corte estándar - Lavar a máquina - 100% poliéster');
 
 			INSERT INTO `productos` (`idProducto`, `Nombre`, `Referencia`, `PrecioUnidad`, `idTipos`, `Color`, `Talla`, `Genero`, `Imagen`, `idProveedor`,`Descripcion`) VALUES
-			(28, 'Parka forrada de New Look', '28', '56.49', 4, 'Crema', 'S', 'Femenino', '.\\chaqueta\\CHAQUETAS_DENTRO\\CHAQUETAS_DENTRO4.jpg', 16,' Forro de piel de oveja - Para sentirte muy abrigadita - Cuello de piel sintética de quita y pon - Cierre con cremallera - Puños con cremallera - Bolsillos funcionales - Bajo ajustable - Corte estándar');
+			(28, 'Parka forrada de New Look', '28', '56.49', 4, 'Crema', 'S', 'Femenino', 'CHAQUETAS_DENTRO4.jpg', 16,' Forro de piel de oveja - Para sentirte muy abrigadita - Cuello de piel sintética de quita y pon - Cierre con cremallera - Puños con cremallera - Bolsillos funcionales - Bajo ajustable - Corte estándar');
 
 			INSERT INTO `productos` (`idProducto`, `Nombre`, `Referencia`, `PrecioUnidad`, `idTipos`, `Color`, `Talla`, `Genero`, `Imagen`, `idProveedor`,`Descripcion`) VALUES
-			(29, 'Chaqueta de piel sintética de Mongolia', '29', '66.99', 4, 'Azul', 'S', 'Femenino', '.\\chaqueta\\CHAQUETAS_DENTRO\\CHAQUETAS_DENTRO5.jpg', 2,' Parte delantera abierta\nManga larga - Corte estándar');
+			(29, 'Chaqueta de piel sintética de Mongolia', '29', '66.99', 4, 'Azul', 'S', 'Femenino', 'CHAQUETAS_DENTRO5.jpg', 2,' Parte delantera abierta\nManga larga - Corte estándar');
 
 			INSERT INTO `productos` (`idProducto`, `Nombre`, `Referencia`, `PrecioUnidad`, `idTipos`, `Color`, `Talla`, `Genero`, `Imagen`, `idProveedor`,`Descripcion`) VALUES
-			(30, 'Parka de camuflaje de Weekday', '30', '89.99', 4, 'Verde', 'S', 'Femenino', '.\\chaqueta\\CHAQUETAS_DENTRO\\CHAQUETAS_DENTRO6.jpg', 8,' Tejido estampado - Capucha de piel sintética - Cierre con cremallera - Tapeta con botones de presión - Cordón ajustable en la cintura y en el bajo - Bolsillos funcionales - Corte estándar - Lavar a máquina - 64% algodón, 36% poliéster');
+			(30, 'Parka de camuflaje de Weekday', '30', '89.99', 4, 'Verde', 'S', 'Femenino', 'CHAQUETAS_DENTRO6.jpg', 8,' Tejido estampado - Capucha de piel sintética - Cierre con cremallera - Tapeta con botones de presión - Cordón ajustable en la cintura y en el bajo - Bolsillos funcionales - Corte estándar - Lavar a máquina - 64% algodón, 36% poliéster');
 
 			INSERT INTO `productos` (`idProducto`, `Nombre`, `Referencia`, `PrecioUnidad`, `idTipos`, `Color`, `Talla`, `Genero`, `Imagen`, `idProveedor`,`Descripcion`) VALUES
-			(31, 'Vaqueros de Liquor N Poker', '31', '55.99', 3, 'Azul', '36', 'Unisex', '.\\jeans\\buenas\\JEANS_DENTRO\\JEANS_DENTRO2.jpeg', 10,' Gris descolorido - Bragueta de cremallera - Estilo con cinco bolsillos - Corte muy ajustado');
+			(31, 'Vaqueros de Liquor N Poker', '31', '55.99', 3, 'Azul', '36', 'Unisex', 'JEANS_DENTRO2.jpeg', 10,' Gris descolorido - Bragueta de cremallera - Estilo con cinco bolsillos - Corte muy ajustado');
 
 			INSERT INTO `productos` (`idProducto`, `Nombre`, `Referencia`, `PrecioUnidad`, `idTipos`, `Color`, `Talla`, `Genero`, `Imagen`, `idProveedor`,`Descripcion`) VALUES
-			(32, 'Vaqueros ajustados de Liquor N Poker', '32', '55.99', 3, 'Negro', '36', 'Unisex', '.\\jeans\\buenas\\JEANS_DENTRO\\JEANS_DENTRO3.jpeg', 10,' Talle estándar - Bragueta oculta  - Bolsillos funcionales - Corte slim - Corte estrecho que se ajusta al cuerpo');
+			(32, 'Vaqueros ajustados de Liquor N Poker', '32', '55.99', 3, 'Negro', '36', 'Unisex', 'JEANS_DENTRO3.jpeg', 10,' Talle estándar - Bragueta oculta  - Bolsillos funcionales - Corte slim - Corte estrecho que se ajusta al cuerpo');
 
 			INSERT INTO `productos` (`idProducto`, `Nombre`, `Referencia`, `PrecioUnidad`, `idTipos`, `Color`, `Talla`, `Genero`, `Imagen`, `idProveedor`,`Descripcion`) VALUES
-			(33, 'Vaqueros elásticos de Armani Exchange', '33','131.99', 3, 'Azul', '36', 'Unisex', '.\\jeans\\buenas\\JEANS_DENTRO\\JEANS_DENTRO4.jpeg', 11,' Talle estándar - Bragueta oculta  - Bolsillos funcionales - Corte slim - Corte estrecho que se ajusta al cuerpo');
+			(33, 'Vaqueros elásticos de Armani Exchange', '33','131.99', 3, 'Azul', '36', 'Unisex', 'JEANS_DENTRO4.jpeg', 11,' Talle estándar - Bragueta oculta  - Bolsillos funcionales - Corte slim - Corte estrecho que se ajusta al cuerpo');
 
 			INSERT INTO `productos` (`idProducto`, `Nombre`, `Referencia`, `PrecioUnidad`, `idTipos`, `Color`, `Talla`, `Genero`, `Imagen`, `idProveedor`,`Descripcion`) VALUES
-			(34, 'Vaqueros ajustados de Liquor N Poker', '34', '50.99', 3, 'Negro', '36', 'Unisex', '.\\jeans\\buenas\\JEANS_DENTRO\\JEANS_DENTRO5.jpeg', 10,' Denim elástico - Lavado oscuro - Talle estándar - Bragueta con cremallera oculta - Diseño motero - Corte pitillo ajustado al cuerpo - Lavar a máquina');
+			(34, 'Vaqueros ajustados de Liquor N Poker', '34', '50.99', 3, 'Negro', '36', 'Unisex', 'JEANS_DENTRO5.jpeg', 10,' Denim elástico - Lavado oscuro - Talle estándar - Bragueta con cremallera oculta - Diseño motero - Corte pitillo ajustado al cuerpo - Lavar a máquina');
 
 			INSERT INTO `productos` (`idProducto`, `Nombre`, `Referencia`, `PrecioUnidad`, `idTipos`, `Color`, `Talla`, `Genero`, `Imagen`, `idProveedor`,`Descripcion`) VALUES
-			(35, 'Vaqueros ajustado de Liquor N Poker', '35', '55.99', 3, 'Blanco', '36', 'Unisex', '.\\jeans\\buenas\\JEANS_DENTRO\\JEANS_DENTRO6.jpeg', 10,' Blanco desgastado - Mejor si lo combinas con líquidos de color claro - Bragueta oculta - Bolsillos funcionales - Detalle de roturas - Con ese toque desgastado - Corte ajustado');
+			(35, 'Vaqueros ajustado de Liquor N Poker', '35', '55.99', 3, 'Blanco', '36', 'Unisex', 'JEANS_DENTRO6.jpeg', 10,' Blanco desgastado - Mejor si lo combinas con líquidos de color claro - Bragueta oculta - Bolsillos funcionales - Detalle de roturas - Con ese toque desgastado - Corte ajustado');
 
 			INSERT INTO `productos` (`idProducto`, `Nombre`, `Referencia`, `PrecioUnidad`, `idTipos`, `Color`, `Talla`, `Genero`, `Imagen`, `idProveedor`,`Descripcion`) VALUES
-			(36, 'Vaqueros ajustados de Brooklyn Denim', '36', '62.99', 3, 'Negro', '36', 'Unisex', '.\\jeans\\buenas\\JEANS_DENTRO\\9576510-1-black.jpg', 12, ' Diseño de serpiente bordada - Talle estándar - Bragueta oculta con cierre de botón - Bolsillos funcionales - Corte ajustado ceñido');
+			(36, 'Vaqueros ajustados de Brooklyn Denim', '36', '62.99', 3, 'Negro', '36', 'Unisex', '9576510-1-black.jpg', 12, ' Diseño de serpiente bordada - Talle estándar - Bragueta oculta con cierre de botón - Bolsillos funcionales - Corte ajustado ceñido');
 
 			INSERT INTO `productos` (`idProducto`, `Nombre`, `Referencia`, `PrecioUnidad`, `idTipos`, `Color`, `Talla`, `Genero`, `Imagen`, `idProveedor`,`Descripcion`) VALUES
-			(37, 'Chandal Adidas', '37', '43.99', 5, 'Rojo', '36', 'Femenino', '.\\ropa de deporte\\RD_DENTRO\\RD_DENTRO1.jpg', 17,' Diseño con detalle de la marca - Botones de presión en los laterales - Un ligero toque para deslumbrar - Corte estándar');
+			(37, 'Chandal Adidas', '37', '43.99', 5, 'Rojo', '36', 'Femenino', 'RD_DENTRO1.jpg', 17,' Diseño con detalle de la marca - Botones de presión en los laterales - Un ligero toque para deslumbrar - Corte estándar');
 
 			INSERT INTO `productos` (`idProducto`, `Nombre`, `Referencia`, `PrecioUnidad`, `idTipos`, `Color`, `Talla`, `Genero`, `Imagen`, `idProveedor`,`Descripcion`) VALUES
-			(38, 'Chandal Puma', '38', '65.99', 5, 'Negro', '36', 'Femenino', '.\\ropa de deporte\\RD_DENTRO\\RD_DENTRO5.jpg', 18,' Tejido DRYCELL para el control de la humedad - Repele el sudor de la piel - Ayuda a que el sudor se evapore más rápido. - Diseñadas para mantenerte seco y cómodo - Cintura de talle medio - Cintura con cordón elástico ajustable - Bolsillos laterales - Largo a media pierna - Corte estándar');
+			(38, 'Chandal Puma', '38', '65.99', 5, 'Negro', '36', 'Femenino', 'RD_DENTRO5.jpg', 18,' Tejido DRYCELL para el control de la humedad - Repele el sudor de la piel - Ayuda a que el sudor se evapore más rápido. - Diseñadas para mantenerte seco y cómodo - Cintura de talle medio - Cintura con cordón elástico ajustable - Bolsillos laterales - Largo a media pierna - Corte estándar');
 
 			INSERT INTO `productos` (`idProducto`, `Nombre`, `Referencia`, `PrecioUnidad`, `idTipos`, `Color`, `Talla`, `Genero`, `Imagen`, `idProveedor`,`Descripcion`) VALUES
-			(39, 'Chandal Nike', '39', '80.99', 5, 'Rosa', '36', 'Femenino', '.\\ropa de deporte\\RD_DENTRO\\RD_DENTRO4.jpg', 4, ' Diseño reversible con logo - Cuello redondo - Hombros caídos - Para un look desenfadado - Corte estándar');
+			(39, 'Chandal Nike', '39', '80.99', 5, 'Rosa', '36', 'Femenino', 'RD_DENTRO4.jpg', 4, ' Diseño reversible con logo - Cuello redondo - Hombros caídos - Para un look desenfadado - Corte estándar');
 
 			INSERT INTO `productos` (`idProducto`, `Nombre`, `Referencia`, `PrecioUnidad`, `idTipos`, `Color`, `Talla`, `Genero`, `Imagen`, `idProveedor`,`Descripcion`) VALUES
-			(40, 'Chandal SF Completo', '40','160.99', 5, 'Gris', 'S', 'Masculino', '.\\ropa de deporte\\RD_DENTRO\\RD_DENTRO2.jpg', 19, ' Cinturilla con cordón ajustable - Corte ajustado - Corte ajustado para un diseño elegante');
+			(40, 'Chandal SF Completo', '40','160.99', 5, 'Gris', 'S', 'Masculino', 'RD_DENTRO2.jpg', 19, ' Cinturilla con cordón ajustable - Corte ajustado - Corte ajustado para un diseño elegante');
 
 			INSERT INTO `productos` (`idProducto`, `Nombre`, `Referencia`, `PrecioUnidad`, `idTipos`, `Color`, `Talla`, `Genero`, `Imagen`, `idProveedor`,`Descripcion`) VALUES
-			(41, 'Chandal Asos Completo', '41', '90.99', 5, 'Rojo', 'S', 'Masculino', '.\\ropa de deporte\\RD_DENTRO\\RD_DENTRO6.jpg', 2, ' Capucha con cordón ajustable - Bolsillo abultado - Ribetes ajustados - Corte ajustado en la parte de arriba - Cinturilla con cordón ajustable - Con puntas y ojales de metal');
+			(41, 'Chandal Asos Completo', '41', '90.99', 5, 'Rojo', 'S', 'Masculino', 'RD_DENTRO6.jpg', 2, ' Capucha con cordón ajustable - Bolsillo abultado - Ribetes ajustados - Corte ajustado en la parte de arriba - Cinturilla con cordón ajustable - Con puntas y ojales de metal');
 
 			INSERT INTO `productos` (`idProducto`, `Nombre`, `Referencia`, `PrecioUnidad`, `idTipos`, `Color`, `Talla`, `Genero`, `Imagen`, `idProveedor`,`Descripcion`) VALUES
-			(42, 'Chandal Armani Completo', '42', '300.99', 5, 'Negro', 'S', 'Masculino', '.\\ropa de deporte\\RD_DENTRO\\RD_DENTRO3.jpg', 11,' Capucha con cordón ajustable - Corte ajustado - Parte de arriba con neopreno');
+			(42, 'Chandal Armani Completo', '42', '300.99', 5, 'Negro', 'S', 'Masculino', 'RD_DENTRO3.jpg', 11,' Capucha con cordón ajustable - Corte ajustado - Parte de arriba con neopreno');
 
 			INSERT INTO `productos` (`idProducto`, `Nombre`, `Referencia`, `PrecioUnidad`, `idTipos`, `Color`, `Talla`, `Genero`, `Imagen`, `idProveedor`,`Descripcion`) VALUES 
-			('43', 'Americana Azul', '43', '83.99', '6', 'Azul Marino', '32', 'Masculino', '.\\americanas\\AMERICANAS_DENTRO\\AMERICANAS_DENTRO2.jpg', '2', ' Solapas de muesca - Cuatro bolsillos delanteros - Doble abertura trasera - Dos botones');
+			('43', 'Americana Azul', '43', '83.99', '6', 'Azul Marino', '32', 'Masculino', 'AMERICANAS_DENTRO2.jpg', '2', ' Solapas de muesca - Cuatro bolsillos delanteros - Doble abertura trasera - Dos botones');
 
 			INSERT INTO `productos` (`idProducto`, `Nombre`, `Referencia`, `PrecioUnidad`, `idTipos`, `Color`, `Talla`, `Genero`, `Imagen`, `idProveedor`,`Descripcion`) VALUES 
-			('44', 'Americana Gris', '44', '95.99 ', '6', 'Gris', '34', 'Masculino', '.\\americanas\\AMERICANAS_DENTRO\\AMERICANAS_DENTRO4.jpg', '11',' Solapas de muesca - Abertura con dos botones - Forro con bolsillo interno - Bolsillos funcionales');
+			('44', 'Americana Gris', '44', '95.99 ', '6', 'Gris', '34', 'Masculino', 'AMERICANAS_DENTRO4.jpg', '11',' Solapas de muesca - Abertura con dos botones - Forro con bolsillo interno - Bolsillos funcionales');
 
 			INSERT INTO `productos` (`idProducto`, `Nombre`, `Referencia`, `PrecioUnidad`, `idTipos`, `Color`, `Talla`, `Genero`, `Imagen`, `idProveedor`,`Descripcion`) VALUES
-			 ('45', 'Americana de Cuadros', '45', '100.99 ', '6', 'Gris', '36', 'Masculino', '.\\americanas\\AMERICANAS_DENTRO\\AMERICANAS_DENTRO3.jpg', '1',' Contiene elástico para más comodidad - Solapa de muesca - Abertura con un único botón - Forro con dos bolsillos en el interior - Bolsillos funcionales - Abertura en el centro de la parte posterior - Corte muy ajustado');
+			 ('45', 'Americana de Cuadros', '45', '100.99 ', '6', 'Gris', '36', 'Masculino', 'AMERICANAS_DENTRO3.jpg', '1',' Contiene elástico para más comodidad - Solapa de muesca - Abertura con un único botón - Forro con dos bolsillos en el interior - Bolsillos funcionales - Abertura en el centro de la parte posterior - Corte muy ajustado');
 
 			INSERT INTO `productos` (`idProducto`, `Nombre`, `Referencia`, `PrecioUnidad`, `idTipos`, `Color`, `Talla`, `Genero`, `Imagen`, `idProveedor`,`Descripcion`) VALUES
-			 ('46', 'Blazer Verde Pistacho', '46','60.99', '6', 'Verde ', '26', 'Femenino', '.\\americanas\\AMERICANAS_DENTRO\\AMERICANAS_DENTRO1.jpg', '9',' Diseño de sastre en T - Solapa de muesca - Cierre de botón - Corte estándar');
+			 ('46', 'Blazer Verde Pistacho', '46','60.99', '6', 'Verde ', '26', 'Femenino', 'AMERICANAS_DENTRO1.jpg', '9',' Diseño de sastre en T - Solapa de muesca - Cierre de botón - Corte estándar');
 
 			INSERT INTO `productos` (`idProducto`, `Nombre`, `Referencia`, `PrecioUnidad`, `idTipos`, `Color`, `Talla`, `Genero`, `Imagen`, `idProveedor`,`Descripcion`) VALUES 
-			('47', 'Blazer Negro', '47', '50.99', '6', 'Negro', '28', 'Femenino', '.\\americanas\\AMERICANAS_DENTRO\\AMERICANAS_DENTRO6.jpg', '2',' Diseño totalmente forrado - Solapas en pico - Parte delantera abierta - Estilo corto - Aberturas en los puños - Corte estándar');
+			('47', 'Blazer Negro', '47', '50.99', '6', 'Negro', '28', 'Femenino', 'AMERICANAS_DENTRO6.jpg', '2',' Diseño totalmente forrado - Solapas en pico - Parte delantera abierta - Estilo corto - Aberturas en los puños - Corte estándar');
 
 			INSERT INTO `productos` (`idProducto`, `Nombre`, `Referencia`, `PrecioUnidad`, `idTipos`, `Color`, `Talla`, `Genero`, `Imagen`, `idProveedor`,`Descripcion`) VALUES 
-			('48', 'Blazer Rosa', '48', '80.99', '6', 'Rosa', '30', 'Femenino', '.\\americanas\\AMERICANAS_DENTRO\\AMERICANAS_DENTRO7.jpg', '2', ' Parte delantera abierta - Diseño liso - Corte estándar - Bolsillos funcionales');
+			('48', 'Blazer Rosa', '48', '80.99', '6', 'Rosa', '30', 'Femenino', 'AMERICANAS_DENTRO7.jpg', '2', ' Parte delantera abierta - Diseño liso - Corte estándar - Bolsillos funcionales');
 
 			INSERT INTO `productos` (`idProducto`, `Nombre`, `Referencia`, `PrecioUnidad`, `idTipos`, `Color`, `Talla`, `Genero`, `Imagen`, `idProveedor`,`Descripcion`) VALUES 
-			('49', 'Bambas Nike Cortez', '49', '73.99', '7', 'Blanco', '40', 'Unisex', '.\\zapatosc\\ZAPATO_DENTRO\\ZAPATOS_DENTRO1.jpg', '4', ' Exterior de cuero suave - Cierre de cordones - Nombre de la marca en el lateral - Tobillo y lengüeta acolchados - Suela gruesa - Dibujo moldeado');
+			('49', 'Bambas Nike Cortez', '49', '73.99', '7', 'Blanco', '40', 'Unisex', 'ZAPATOS_DENTRO1.jpg', '4', ' Exterior de cuero suave - Cierre de cordones - Nombre de la marca en el lateral - Tobillo y lengüeta acolchados - Suela gruesa - Dibujo moldeado');
 
 			INSERT INTO `productos` (`idProducto`, `Nombre`, `Referencia`, `PrecioUnidad`, `idTipos`, `Color`, `Talla`, `Genero`, `Imagen`, `idProveedor`,`Descripcion`) VALUES
-			 ('50', 'Bambas Nike Thea Air Max ', '50', '55.99', '7', 'Negro', '39', 'Femenino', '.\\zapatosc\\ZAPATO_DENTRO\\ZAPATOS_DENTRO2.jpg', '4', ' Cierre de cordones - Logo de Nike en los laterales - Espuma moldeada para apoyar la zona media del pie y el talón - Borde con forma - Trabilla para calzar');
+			 ('50', 'Bambas Nike Thea Air Max ', '50', '55.99', '7', 'Negro', '39', 'Femenino', 'ZAPATOS_DENTRO2.jpg', '4', ' Cierre de cordones - Logo de Nike en los laterales - Espuma moldeada para apoyar la zona media del pie y el talón - Borde con forma - Trabilla para calzar');
 
 			INSERT INTO `productos` (`idProducto`, `Nombre`, `Referencia`, `PrecioUnidad`, `idTipos`, `Color`, `Talla`, `Genero`, `Imagen`, `idProveedor`,`Descripcion`) VALUES 
-			('51', 'Bambas Nike - SB', '51', '85.99', '7', 'Gris', '40', 'Femenino','.\\zapatosc\\ZAPATO_DENTRO\\ZAPATOS_DENTRO6.jpg', '4', ' Diseño liso - Un básico en tu armario - Cierre de cordones - Acolchados para mayor comodidad - Logo característico de Nike - Suela gruesa - Dibujo moldeado');
+			('51', 'Bambas Nike - SB', '51', '85.99', '7', 'Gris', '40', 'Femenino','ZAPATOS_DENTRO6.jpg', '4', ' Diseño liso - Un básico en tu armario - Cierre de cordones - Acolchados para mayor comodidad - Logo característico de Nike - Suela gruesa - Dibujo moldeado');
 
 			INSERT INTO `productos` (`idProducto`, `Nombre`, `Referencia`, `PrecioUnidad`, `idTipos`, `Color`, `Talla`, `Genero`, `Imagen`, `idProveedor`,`Descripcion`) VALUES 
-			('52', 'Bambas Nike - SJ', '52', '90.99', '7', 'Marron', '45', 'Masculino', '.\\zapatosc\\ZAPATO_DENTRO\\ZAPATOS_DENTRO5.jpg', '4',' Exterior de ante - Cierre de cordones - Marca en la lengüeta y en la abertura - Acolchados para mayor comodidad - Logo de Nike en contraste - Suela gruesa de goma - Dibujo texturizado');
+			('52', 'Bambas Nike - SJ', '52', '90.99', '7', 'Marron', '45', 'Masculino', 'ZAPATOS_DENTRO5.jpg', '4',' Exterior de ante - Cierre de cordones - Marca en la lengüeta y en la abertura - Acolchados para mayor comodidad - Logo de Nike en contraste - Suela gruesa de goma - Dibujo texturizado');
 
 			INSERT INTO `productos` (`idProducto`, `Nombre`, `Referencia`, `PrecioUnidad`, `idTipos`, `Color`, `Talla`, `Genero`, `Imagen`, `idProveedor`,`Descripcion`) VALUES
-			 ('53', 'Bambas Nike Lunar', '53',  '70.99 ', '7', 'Negro', '43', 'Masculino', '.\\zapatosc\\ZAPATO_DENTRO\\ZAPATOS_DENTRO3.jpg', '4', ' Superposiciones resistentes a las abrasiones - Cierre de cordones - Con cables Flywire para un ajuste seguro - Tobillo acolchado - Amotiguación de espuma para mayor estabilidad y comodidad - Logo característico de Nike - Goma adherente en la parte delantera del pie para un mejor agarre');
+			 ('53', 'Bambas Nike Lunar', '53',  '70.99 ', '7', 'Negro', '43', 'Masculino', 'ZAPATOS_DENTRO3.jpg', '4', ' Superposiciones resistentes a las abrasiones - Cierre de cordones - Con cables Flywire para un ajuste seguro - Tobillo acolchado - Amotiguación de espuma para mayor estabilidad y comodidad - Logo característico de Nike - Goma adherente en la parte delantera del pie para un mejor agarre');
 
 			INSERT INTO `productos` (`idProducto`, `Nombre`, `Referencia`, `PrecioUnidad`, `idTipos`, `Color`, `Talla`, `Genero`, `Imagen`, `idProveedor`,`Descripcion`) VALUES
-			 ('54', 'Bambas Nike Air-Force', '54','120.99', '7', 'Negro', '45', 'Masculino', '.\\zapatosc\\ZAPATO_DENTRO\\ZAPATOS_DENTRO4.jpg', '4',' Cierre de cordones - Logo de Nike en los laterales - Espuma moldeada para apoyar la zona media del pie y el talón - Borde con forma - Trabilla para calzar - Unidad Max Air para amortiguar y permitir un movimiento suave');
+			 ('54', 'Bambas Nike Air-Force', '54','120.99', '7', 'Negro', '45', 'Masculino', 'ZAPATOS_DENTRO4.jpg', '4',' Cierre de cordones - Logo de Nike en los laterales - Espuma moldeada para apoyar la zona media del pie y el talón - Borde con forma - Trabilla para calzar - Unidad Max Air para amortiguar y permitir un movimiento suave');
 
 --Insert Promociones
 			INSERT INTO `promociones` (`idPromocion`, `Nombre`, `FechaInicio`, `FechaFinal`, `Descripcion`, `Descuento`) VALUES ('1', 'Navidad', '2018-12-20', '2019-01-07', 'Epoca Navideña 2018', '10'); 

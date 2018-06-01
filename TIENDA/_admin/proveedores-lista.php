@@ -147,12 +147,12 @@ if (isset($_GET['totalRows_DatosConsulta'])) {
 		</div>
 		</form>
 		</div>
-
 	</div>
 </div>
                    
                     <div class="panel panel-default">
                         <div class="panel-heading">
+						
  	                        </div>
                         <!-- /.panel-heading -->
                         <div class="panel-body">
@@ -172,6 +172,7 @@ if (isset($_GET['totalRows_DatosConsulta'])) {
                                         </tr>
                                     </thead>
                                     <tbody>
+									
                                        <?php 
 		//AQUI ES DONDE SE SACAN LOS DATOS, SE COMPRUEBA QUE HAY RESULTADOS
 		
@@ -185,7 +186,7 @@ if (isset($_GET['totalRows_DatosConsulta'])) {
 						<td><?php echo $row_DatosConsulta["Correo"];?></td>
 						<td><?php echo $row_DatosConsulta["Telefono"];?></td>
 						<td><?php echo $row_DatosConsulta["Webpage"];?></td>
-						<td><a href="usuario-edit.php?id=<?php echo $row_DatosConsulta["idProveedor"];?>" class="btn btn-warning btn-circle"><i class="fa fa-edit"></i></a></td>
+						<td><a href="proveedores-edit.php?id=<?php echo $row_DatosConsulta["idProveedor"];?>" class="btn btn-warning btn-circle"><i class="fa fa-edit"></i></a></td>
 						
 				
 				</tr>
@@ -197,38 +198,7 @@ if (isset($_GET['totalRows_DatosConsulta'])) {
                                     </tbody>
                                 </table>
                                                   <!-- inicio paginacion--> 
-            <ul class="pagination">
-		<?php if ($pageNum_DatosConsulta > 0) { // Show if not first page ?>
-			<li><a href="<?php printf("%s?pageNum_DatosConsulta=%d%s", $currentPage, 0, $queryString_DatosConsulta); ?>" title="Primero">Primero</a></li>
-		<?php } // Show if not first page ?>
-		<?php if ($pageNum_DatosConsulta > 0) { // Show if not first page ?>
-                	<li><a href="<?php printf("%s?pageNum_DatosConsulta=%d%s", $currentPage, max(0, $pageNum_DatosConsulta - 1), $queryString_DatosConsulta); ?>" title="Anterior">&laquo;</a></li> 								
-		<?php } // Show if not first page 
-                if ($pageNum_DatosConsulta-$interval_page<1){
-		 $inicio = 0;
-		 } else{
-		 $inicio = $pageNum_DatosConsulta-$interval_page;
-		 }
-		 if ($pageNum_DatosConsulta+$interval_page>=$totalPages_DatosConsulta){
-			$final = $totalPages_DatosConsulta;
-			} else{
-			 $final = $pageNum_DatosConsulta+$interval_page;
-			}
-			for ($pagina=$inicio; $pagina<=$final; ++$pagina){
-				if ($pagina==$pageNum_DatosConsulta){
-					$clase = "active";
-				} 
-				else 
-				{
-					$clase = "";
-				}?>
-				<li class="<?php echo $clase; ?>"><a href="<?php printf("%s?pageNum_DatosConsulta=%d%s", $currentPage, min($totalPages_DatosConsulta,$pagina), $queryString_DatosConsulta); ?>"  title="<?php echo $pagina+1; ?>"><?php echo $pagina+1; ?></a></li>				<?php }?>
-                        <?php if ($pageNum_DatosConsulta < $totalPages_DatosConsulta) { // Show if not last page ?>
-			<li class="disabled"><a href="#">...</a></li>								
-			<li><a href="<?php printf("%s?pageNum_DatosConsulta=%d%s", $currentPage, min($totalPages_DatosConsulta, $pageNum_DatosConsulta + 1), $queryString_DatosConsulta); ?>" title="Siguiente">&raquo;</a></li>									<?php } // Show if not last page ?>
-			<?php if ($pageNum_DatosConsulta < $totalPages_DatosConsulta) { // Show if not last page ?>							<li><a href="<?php printf("%s?pageNum_DatosConsulta=%d%s", $currentPage, $totalPages_DatosConsulta, $queryString_DatosConsulta); ?>" title="Ultimo">Último</a></li>							
-			<?php } // Show if not last page ?>       
-	</ul>
+          
             <?php   
 }
 		else
