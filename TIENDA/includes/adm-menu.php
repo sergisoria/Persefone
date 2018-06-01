@@ -255,10 +255,10 @@
                             <a href="productos-lista.php"><i class="fa fa-dashboard fa-fw"></i>Productos</a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="productos-lista.php">Productos</a>
+                                    <a href="productos-lista.php">Listar Productos</a>
                                 </li>
                                 <li>
-                                    <a href="proveedores-lista.php">Proveedores</a>
+                                    <a href="proveedores-lista.php">Añadir Productos</a>
                                 </li>
                             </ul>
 						</li>

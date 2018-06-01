@@ -1,5 +1,6 @@
 <?php require_once('../Connections/conexion.php'); ?>
 <?php require_once('../includes/funciones.php'); ?>
+  <?php include("../includes/adm-menu.php"); ?>
 
 <?php
 
