@@ -191,17 +191,8 @@ if (isset($_GET['totalRows_DatosConsulta'])) {
               		?>
               		
 				<tr>
-				<td><?php echo $row_DatosConsulta["idProducto"];?></td>
+				
             
-            <td>
-           
-						<?php if ($row_DatosConsulta["Imagen"]!=""){?>
-            <img src="../images/productos/<?php echo $row_DatosConsulta["Imagen"];?>" width="50" height="50" alt=""/>
-						<?php }
-						else
-						{?>
-						<img src="../images/productos/sinfoto.jpg" width="30" height="30" alt=""/>
-						<?php }?></td>
 						<td><?php echo $row_DatosConsulta["idProducto"];?></td>
 						<td><?php echo $row_DatosConsulta["Nombre"];?></td>
 						<td><?php echo $row_DatosConsulta["Referencia"];?></td>
@@ -212,7 +203,17 @@ if (isset($_GET['totalRows_DatosConsulta'])) {
 						
 						<td><?php echo $row_DatosConsulta["Genero"];?></td>
 						
-						<td><?php echo '<img src=".'.$row_DatosConsulta["Imagen"].'"width="100" height="100"/>';?></td>
+						            <td>
+           
+						<?php if ($row_DatosConsulta["Imagen"]!=""){?>
+						<img src="../images/productos/<?php echo $row_DatosConsulta["Imagen"];?>" width="50" height="50" alt=""/>
+						<?php }
+						else
+						{?>
+						<img src="../images/productos/sinfoto.jpg" width="30" height="30" alt=""/>
+						<?php }?></td>
+						
+					
 						 
 						  <td><a href="productos-edit.php?id=<?php echo $row_DatosConsulta["idProducto"];?>" class="btn btn-warning btn-circle"><i class="fa fa-edit"></i></a></td>
             	          
