@@ -6,6 +6,7 @@
 		
     } 
 	
+	
 ?>
 
 <?php
@@ -42,43 +43,10 @@ $DatosConsultaTIPO = mysqli_query($conn,  $query_DatosConsultaTIPO) or die(mysql
 $row_DatosConsultaTIPO = mysqli_fetch_assoc($DatosConsultaTIPO);
 $totalRows_DatosConsultaTIPO = mysqli_num_rows($DatosConsultaTIPO);
 //FINAL DE LA PARTE SUPERIOR
-?>
-
-<?php
-$idP = $_GET["id"];
-$nombre = $row_DatosConsulta["Nombre"];
-$color = $row_DatosConsulta["Color"];
-$imagen = $row_DatosConsulta["Imagen"];
-$precio = $row_DatosConsulta["PrecioUnidad"];
-if(isset($_POST["add"])){
-	if(isset($_SESSION["email"])){
-		$item_array_id = array_column($_SESSION["email"], 'id');
-		if(!in_array($_GET["id"], $item_array_id)){
-			$count = count($_SESSION["email"]);
-			$item_array= array(
-		'id' => $idP,
-		'Nombre' => $nombre,
-		'Color' => $color,
-		'Imagen' => $imagen,
-		'Precio' =>$precio
-		);
-		$_SESSION["email"][$count] = $item_array;
-		
-		}
-	}else{
-		$item_array= array(
-		'id' => $idP,
-		'Nombre' => $nombre,
-		'Color' => $color,
-		'Imagen' => $imagen,
-		'Precio' =>$precio
-		);
-		
-		$_SESSION["email"][0]=$item_array;
-	}
-}
 
 ?>
+
+
 
 
 <!DOCTYPE html>
@@ -91,6 +59,12 @@ if(isset($_POST["add"])){
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <style>
+.div1{
+float:left;
+}
+.div2{
+float:left;
+}
 .w3-sidebar a {font-family: "Roboto", sans-serif}
 body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
 article {
@@ -307,44 +281,47 @@ function closeSearch() {
   <li><?php echo $row_DatosConsulta["Nombre"]; ?></li>
 </ul>
   <!-- Product grid -->
+
   <div class="w3-row w3-grayscale">
   <div class="row">
   <div class="column">
   <?php 
 
-	echo '<img  name="imagen" src="'.$row_DatosConsulta['Imagen'].'" width="400" height="550" alt=""/>';
+	// echo '<img  name="imagen" src="'.$row_DatosConsulta['Imagen'].'" width="400" height="550" alt=""/>';
 	// echo '<img src="data:image/jpeg;base64,'.base64_encode($row_DatosConsulta['Imagen'] ).'" width="400" height="550" alt=""/>';
+	echo '<img name="imagen" src="./images/productos/'.$row_DatosConsulta["Imagen"].'" width="400" height="550" alt=""/>';
 ?>
 
   </div>
+ 
   <div class="column">
     <h1><?php echo $row_DatosConsulta["Nombre"]; ?></h1>
     <h4>Color: <?php echo $row_DatosConsulta["Color"]; ?></h4>
 	<h4>Precio: <?php echo $row_DatosConsulta["PrecioUnidad"]; ?>€</h4>
+	
     <label style="display: table-cell; vertical-align: top" data-bind="text: sizeLabel, visible: !hideLabels, disable: isDisabled">TALLA:</label>
-	<div class="colour-size-select" data-bind="visible: sizeDropdownVisible()">	
-                <select name="madredelsoria" id="madredelsoria" data-id="sizeSelect" data-bind="options: variants,
-                    optionsAfterRender: disableSizeIfOutOfStock,
-                    optionsText: &quot;Size&quot;,
-                    optionsCaption: selectSizeText,
-                    value: size,
-                    disable: isDisabled || sizeDropdownDisabled(),
-                    css:{ required : noSizeSelected()}"><option value="">Porfavor Selecciona</option>  
+	 	<form method="post"  >
+	<div class="colour-size-select">	
+				
+                <select name="tallas"id="tallas" onchange="getSelectValue2();">
+				<option value="Seleccione una talla">Seleccione una talla</option>
 					<?php
 					
 //AQUI ES DONDE SE SACAN LOS DATOS, SE COMPRUEBA QUE HAY RESULTADOS
 if ($totalRows_DatosConsultaINV > 0) {
 do {?>
 
-    
-<option value=""><?php echo $row_DatosConsultaINV['Talla']; ?></option>
+   
+<option value="<?php echo $row_DatosConsultaINV['Talla']; ?>"<?php if($_GET["talla"] == $row_DatosConsultaINV['Talla'])echo 'selected="yes"'; ?>><?php echo $row_DatosConsultaINV['Talla']; ?></option>
 										
 
   <?php
 
-
        } while ($row_DatosConsultaINV = mysqli_fetch_assoc($DatosConsultaINV));
+echo ' </select>';	   
 }
+
+
 else
 { //MOSTRAR SI NO HAY RESULTADOS ?>
     No hay resultados.
@@ -357,15 +334,84 @@ else
 					
 					
 					
-                <!-- ko if: noSizeSelected() --><!-- /ko -->
-            </select></div>
-             <p></p>
+     
+			
+			</div>
+			</form>
+			
+			<p>Tienes seleccionada la talla:  <strong><?php echo $_GET["talla"];?></strong></p>
+				
+		<p></p>	
+
 		 
-		<form method="post" action="">
+		<form method="post" onsubmit="return getSelectValue2();">
         <!--  <a href=""name="add_to_cart"id="add_to_cart"class="btn">Añadir a la Cesta</a>-->
 		 <input type="submit" name = "add" class = "btn" value ="Añadir a la Cesta">
 		
 		 </form>
+		  <script>
+		  // function getSelectValue(){
+			  // var selectedValue = document.getElementById("tallas").value;
+			  
+			  
+			  // window.location.href = "prd.php?id=<?php echo $row_DatosConsulta["idProducto"]; ?>&talla=" + selectedValue; 
+			  
+		  // }
+		  function getSelectValue2(){
+			  var selectedValue = document.getElementById("tallas").value;
+			  // var selectedValue2 = document.getElementById("cantidad_seleccionada").value;
+			  window.location.href = "prd.php?id=<?php echo $row_DatosConsulta["idProducto"]; ?>&talla=" + selectedValue;
+			  // window.location.href = "prd.php?id=<?php echo $row_DatosConsulta["idProducto"]; ?>&talla=" + selectedValue + "&cant="+selectedValue2; 
+			  
+		  }
+</script>
+ 
+
+		  
+		 <?php
+$idP = $_GET["id"];
+$nombre = $row_DatosConsulta["Nombre"];
+$color = $row_DatosConsulta["Color"];
+$imagen = $row_DatosConsulta["Imagen"];
+$precio = $row_DatosConsulta["PrecioUnidad"];
+
+if(isset($_POST['add'])){
+	$talla = $_GET["talla"];
+	// $cantidad = $_GET["cant"];
+	if(isset($_SESSION["email"])){
+		$item_array_id = array_column($_SESSION["email"], 'id');
+		if(!in_array($_GET["id"], $item_array_id)){
+			
+			$count = count($_SESSION["email"]);
+			$item_array= array(
+		'id' => $idP,
+		'Nombre' => $nombre,
+		'Color' => $color,
+		'Imagen' => $imagen,
+		'Precio' =>$precio,
+		'Talla'=>$talla
+		
+		
+		);
+		$_SESSION["email"][$count] = $item_array;
+		
+		}
+	}else{
+		$item_array= array(
+		'id' => $idP,
+		'Nombre' => $nombre,
+		'Color' => $color,
+		'Imagen' => $imagen,
+		'Precio' =>$precio,
+		'Talla'=>$talla
+		
+		);
+		
+		$_SESSION["email"][0]=$item_array;
+	}
+}
+
+?>
          <p><br></p>
     <a onclick="myAccFunc()" href="javascript:void(0)" class="w3-button w3-block w3-white w3-left-align" id="myBtn">
       Descripcion del Producto: <i class="fa fa-caret-down"></i>

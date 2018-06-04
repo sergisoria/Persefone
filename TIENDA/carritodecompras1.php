@@ -1,4 +1,4 @@
-<<<<<<< Updated upstream
+
 <?php require_once('Connections/conexion.php'); ?>
 <?php
     if(!isset($_SESSION)) 
@@ -37,11 +37,6 @@ if(isset($_GET["action"])){
 
 ?>
 
-=======
-<?php
-  require_once('Connections/conexion.php'); 
-?>
->>>>>>> Stashed changes
 
 
 <!DOCTYPE html>
@@ -239,6 +234,17 @@ ul.breadcrumb li a {
 ul.breadcrumb li a:hover {
     color: #01447e;
     text-decoration: underline;
+}
+
+.column {
+    float: left;
+    width: 20%;
+    padding: 15px;
+}
+.column2 {
+    float: left;
+    width: 60%;
+    padding: 15px;
 }	
 
 	
@@ -261,7 +267,6 @@ ul.breadcrumb li a:hover {
       <button type="submit"><i class="fa fa-search"></i></button>
     </form>
   </div>
-<<<<<<< Updated upstream
 </div>
 <?php
 //AQUI ES DONDE SE SACAN LOS DATOS, SE COMPRUEBA QUE HAY RESULTADOS
@@ -295,49 +300,57 @@ else
 <!-- Overlay effect when opening sidebar on small screens -->
 <div class="w3-overlay w3-hide-large" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
 
-=======
-</div>	 
->>>>>>> Stashed changes
+
+
+
 <!-- !PAGE CONTENT! -->
 <div class="w3-main" style="margin-left:250px">
 
-  <!-- Push down content on small screens -->
-  <div class="w3-hide-large" style="margin-top:83px"></div>
+ 
   
   <!-- Top header -->
   <header class="w3-container w3-xlarge">
     <p class="w3-right">
-<<<<<<< Updated upstream
       <a style='text-decoration:none;color:black;'href="carritodecompras1.php" ><i class="fa fa-shopping-cart openBtn"></i></a>
      <i onclick="openSearch()" class="fa fa-search openBtn">
 	</i>
     </p>
+	 </header>
 	<?php 
+	$total =0;
 	if(!empty($_SESSION["email"])){
-		$total =0;
-		
-		
 		foreach($_SESSION["email"] as $key =>$value){
 			
 		?>
+
+<div class="w3-row w3-grayscale">
+<div class="row">
+<div class="productos">
+	<div class="column">
+		<?php echo '<img src="./images/productos/'.$value["Imagen"].'" width="155" height="200" alt=""/>'; ?>
+		</div>
+		<div class="column2">
+		<p><strong><?php echo $value["Precio"];?>€</strong></p>
+		<a style='color:black;text-decoration:none;font-size:120%;'href = "<?php echo 'prd.php?id='.$value["id"]?>"><p><?php echo $value["Nombre"];?></p></a>
+		<p><?php echo $value["Color"];?></p>
+		<p>Talla: <?php echo $value["Talla"];?></p>
 		
-		<p><?php echo $value["Nombre"];?></p>
-		<p>Color: <?php echo $value["Color"];?></p>
-		<p>Precio: <?php echo $value["Precio"];?>€</p>
-		<?php echo '<img src="'.$value["Imagen"].'" width="400" height="550" alt=""/>';?>
-		<a href="carritodecompras1.php?action=delete&id=<?php echo $value["id"];?>">Remove</a>	
-			
+		
+		
+		
+		
+		
+		</div>
+		<div class="column">
+		<a href="carritodecompras1.php?action=delete&id=<?php echo $value["id"];?>"class="closebtn"style='color:black;text-decoration:none;font-size:300%;'>×</a>	
+		</div>
 	<?php
-$total = $total + (1 + $value["Precio"]);	
+
+$total = $total + (1 * $value["Precio"]);	
 		}
 	}
 	
-	?>
-	 <p><?php echo number_format($total, 2); ?>€</p>
-	 <center><a href="inicio.php">ver productos</a></center>
-	 
-	 
-	 
+	?> 
 	<script>
 function openSearch() {
     document.getElementById("myOverlay2").style.display = "block";
@@ -347,13 +360,6 @@ function closeSearch() {
     document.getElementById("myOverlay2").style.display = "none";
 }
 </script>
-
-
-  </header>
-
-  
-
-
 
 <script>
 var slideIndex = 0;
@@ -376,27 +382,18 @@ function showSlides() {
     setTimeout(showSlides, 5000);
 }
 </script>
- 
-=======
-      <i class="fa fa-shopping-cart w3-margin-right"></i>
-     <i onclick="openSearch()" class="fa fa-search openBtn">
-	</i>
-    </p>  
-	  </header>
-     <?php
-	   if(isset($_SESSION['carrito'])){
-		   
-	   }else{
-		   echo '<center><h2>El carro esta vacio</h2></center>';
+ </div>
+    </div>
+</div> 
 	 
-	   }
-	 
-	 ?>
+    
+	 <center><h3 style = 'font-weight:bold;'><?php echo number_format($total, 2); ?>€</h3></center>
+	 <center><a style='color:black;'href="inicio.php">ver productos</a></center>
 
->>>>>>> Stashed changes
+
 <!-- Subscribe section -->
   <!-- Footer -->
-  <footer class="w3-padding-64 w3-light-grey w3-small w3-center" id="footer">
+   <footer class="w3-padding-64 w3-light-grey w3-small w3-center" id="footer">
     <div class="w3-row-padding">
       <div class="w3-col s4">
         <h4>Contacta con nosotros</h4>
@@ -410,15 +407,14 @@ function showSlides() {
       </div>
 
       <div class="w3-col s4">
-        <h4>Sobre nosotros...</h4>
-        <p><a href="#">Soporte</a></p>
-        <p><a href="#">Envio</a></p>
-        <p><a href="#">Pago</a></p>
-        <p><a href="#">Tarjeta Regalo</a></p>
-        <p><a href="#">Ayuda</a></p>
+        <h4>Sobre Persephónē</h4>
+        <p><a href="about_us.php"style='color:black;'>Sobre Nosotros</a></p>
+        <p><a href="#"style='color:black;'>Envio</a></p>
+        <p><a href="#"style='color:black;'>Pago</a></p>
+        <p><a href="#"style='color:black;'>Ayuda</a></p>
       </div>
 
-     <div class="w3-col s4 w3-justify">
+    <div class="w3-col s4 w3-justify">
         <h4>Tienda</h4>
         <p><i class="fa fa-fw fa-map-marker"></i> Persephónē</p>
         <p><i class="fa fa-fw fa-phone"></i> 0044123123</p>
@@ -434,7 +430,7 @@ function showSlides() {
     </div>
   </footer>
 
- 
+
 
   <!-- End page content -->
 </div>
@@ -444,16 +440,19 @@ function showSlides() {
   <div class="w3-modal-content w3-animate-zoom" style="padding:32px">
     <div class="w3-container w3-white w3-center">
       <i onclick="document.getElementById('newsletter').style.display='none'" class="fa fa-remove w3-right w3-button w3-transparent w3-xxlarge"></i>
-      <h2 class="w3-wide">NOVEDADES</h2>
+      <h2 class="w3-wide"style="
+    padding-left: 50px;
+    border-left-width: 10px;
+">NOVEDADES</h2>
       <p>Sé el primero enterarte de nuevos productos o nuevas ofertas</p>
       <p><input class="w3-input w3-border" type="text" placeholder="Inserta el correo"></p>
-      <button type="button" class="w3-button w3-padding-large w3-red w3-margin-bottom" onclick="document.getElementById('newsletter').style.display='none'">REGÍSTRATE AHORA</button>
+      <button type="button" class="w3-button w3-padding-large w3-blue w3-margin-bottom" onclick="document.getElementById('newsletter').style.display='none'">REGÍSTRATE AHORA</button>
     </div>
   </div>
 </div>
 
 <script>
-// Accordion 
+// Accordion
 function myAccFunc() {
     var x = document.getElementById("demoAcc");
     if (x.className.indexOf("w3-show") == -1) {
@@ -472,13 +471,11 @@ function w3_open() {
     document.getElementById("mySidebar").style.display = "block";
     document.getElementById("myOverlay").style.display = "block";
 }
- 
+
 function w3_close() {
     document.getElementById("mySidebar").style.display = "none";
     document.getElementById("myOverlay").style.display = "none";
 }
-	
-
 </script>
 
 </body>
