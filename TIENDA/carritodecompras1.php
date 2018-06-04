@@ -406,15 +406,14 @@ function showSlides() {
         </form>
       </div>
 
-      <div class="w3-col s4">
+        <div class="w3-col s4">
         <h4>Sobre Persephónē</h4>
         <p><a href="about_us.php"style='color:black;'>Sobre Nosotros</a></p>
-        <p><a href="#"style='color:black;'>Envio</a></p>
-        <p><a href="#"style='color:black;'>Pago</a></p>
-        <p><a href="#"style='color:black;'>Ayuda</a></p>
+        <p><a href="#"style='color:black;'>Trabajar en Persephone</a></p>
+        <p><a href="#"style='color:black;'>Envíos y devoluciones</a></p>
       </div>
 
-    <div class="w3-col s4 w3-justify">
+     <div class="w3-col s4 w3-justify">
         <h4>Tienda</h4>
         <p><i class="fa fa-fw fa-map-marker"></i> Persephónē</p>
         <p><i class="fa fa-fw fa-phone"></i> 0044123123</p>

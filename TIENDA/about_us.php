@@ -295,13 +295,15 @@ function closeSearch() {
   <div class="w3-display-container w3-container"></div>
   <ul class="breadcrumb">
   <li><a  style='text-decoration:none;color:grey;font-size:200%;margin-left: 250px;'>¿QUIENES SOMOS?</a></li>
+  
 </ul>
 <section class="grid"><section class="grid-row">        <section class="grid-column grid-column__width--1 grid-column__position--1">
-            
+  <a> Somos blabla</a>  
 <section class="grid-text grid-text__position--left-top">
     <section class="grid-text__container">
             <h2 class="grid-text__title " style="color: #000000;                 display:none;
 ">
+
 
             </h2>
                         <p class="grid-text__copy " style="color: #000000;"></p>
@@ -316,7 +318,7 @@ function closeSearch() {
     <div class="w3-row-padding">
       <div class="w3-col s4">
         <h4>Contacta con nosotros</h4>
-        <p>Preguntas? </p>
+        <p>Necesitas ayuda? </p>
         <form action="/action_page.php" target="_blank">
           <p><input class="w3-input w3-border" type="text" placeholder="Nombre" name="Nombre" required></p>
           <p><input class="w3-input w3-border" type="text" placeholder="Correo Electronico" name="Email" required></p>
@@ -328,9 +330,8 @@ function closeSearch() {
       <div class="w3-col s4">
         <h4>Sobre Persephónē</h4>
         <p><a href="about_us.php"style='color:black;'>Sobre Nosotros</a></p>
-        <p><a href="#"style='color:black;'>Envio</a></p>
-        <p><a href="#"style='color:black;'>Pago</a></p>
-        <p><a href="#"style='color:black;'>Ayuda</a></p>
+        <p><a href="#"style='color:black;'>Trabajar en Persephone</a></p>
+        <p><a href="#"style='color:black;'>Envíos y devoluciones</a></p>
       </div>
 
      <div class="w3-col s4 w3-justify">
