@@ -15,6 +15,12 @@ $DatosConsultaTIPO = mysqli_query($conn,  $query_DatosConsultaTIPO) or die(mysql
 $row_DatosConsultaTIPO = mysqli_fetch_assoc($DatosConsultaTIPO);
 $totalRows_DatosConsultaTIPO = mysqli_num_rows($DatosConsultaTIPO);
 
+$idP =$row_DatosConsulta['idProducto']; 
+$query_DatosConsultaINV = sprintf("SELECT * FROM inventario where idProducto = '$idP'");
+$DatosConsultaINV = mysqli_query($conn,  $query_DatosConsultaINV) or die(mysqli_error($conn));
+$row_DatosConsultaINV = mysqli_fetch_assoc($DatosConsultaINV);
+$totalRows_DatosConsultaINV = mysqli_num_rows($DatosConsultaINV);
+
 
 //FINAL DE LA PARTE SUPERIOR
 ?>
@@ -233,10 +239,10 @@ if ($totalRows_DatosConsulta > 0) {
 do {?>
   <div class="w3-col l3 s6">
 <div class="w3-container">
-<a style='text-decoration:none;color:black;'class="w3-container"  href="<?php echo 'prd.php?id='.$row_DatosConsulta["idProducto"]?>">
+<a style='text-decoration:none;color:black;'class="w3-container"  href="<?php echo 'prd.php?id='.$row_DatosConsulta["idProducto"]."&talla=0"?>">
 <?php 
-	echo '<img src="'.$row_DatosConsulta['Imagen'].'" width="180" height="230" alt=""/>';
-	
+	// echo '<img src="'.$row_DatosConsulta['Imagen'].'" width="180" height="230" alt=""/>';
+	echo '<img src="./images/productos/'.$row_DatosConsulta["Imagen"].'" width="180" height="230" alt=""/>';
 ?>
 										
 <p><?php echo $row_DatosConsulta["Nombre"]; ?><br>
@@ -260,17 +266,31 @@ else
  </div>
 <!-- Subscribe section -->
   <!-- Footer -->
-  
+  <?php 
+if(isset($_POST['correo'])){
+$Nombre = $_POST['Nombre'];
+$Mail = $_POST['Email'];
+$Mensaje = $_POST['Mensaje'];
+
+$formsent = mail('Mi-email', '¡Usuario Con problemas!', "Peticion de: $FonornMail: $MailrnMensaje: $Mensaje");
+if ($formsent) {
+    echo "<p>Hola, $Nombre. Hemos recibido tu mensaje, en breve reciviras una respuesta";
+}   else {
+    echo "Lo siento no se pudo entregar el mensaje.";
+    }
+
+}
+?>
   <footer class="w3-padding-64 w3-light-grey w3-small w3-center" id="footer">
     <div class="w3-row-padding">
       <div class="w3-col s4">
         <h4>Contacta con nosotros</h4>
         <p>Preguntas? </p>
-        <form action="/action_page.php" target="_blank">
+        <form method="post" target="_blank">
           <p><input class="w3-input w3-border" type="text" placeholder="Nombre" name="Nombre" required></p>
           <p><input class="w3-input w3-border" type="text" placeholder="Correo Electronico" name="Email" required></p>
           <p><input class="w3-input w3-border" type="text" placeholder="Mensaje" name="Mensaje" required></p>
-          <button type="submit" class="w3-button w3-block w3-black">Enviar</button>
+          <button type="submit" name ="correo" class="w3-button w3-block w3-black">Enviar</button>
         </form>
       </div>
 
