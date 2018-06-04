@@ -259,7 +259,7 @@ else
   <!-- Top header -->
 <header class="w3-container w3-xlarge">
      <p class="w3-right">
-      <a style='text-decoration:none;color:black;'href="carritodecompras1.php" ><i class="fa fa-shopping-cart openBtn"></i></a>
+      <a style='text-decoration:none;color:black;'href="carritodecompras1.php?cant=1" ><i class="fa fa-shopping-cart openBtn"></i></a>
       <i onclick="openSearch()" class="fa fa-search openBtn" id="search">
       </i>
     </p>
@@ -284,7 +284,9 @@ function closeSearch() {
 
   <div class="w3-row w3-grayscale">
   <div class="row">
+ <div class="w3-container">
   <div class="column">
+  
   <?php 
 
 	// echo '<img  name="imagen" src="'.$row_DatosConsulta['Imagen'].'" width="400" height="550" alt=""/>';
@@ -293,7 +295,7 @@ function closeSearch() {
 ?>
 
   </div>
- 
+   
   <div class="column">
     <h1><?php echo $row_DatosConsulta["Nombre"]; ?></h1>
     <h4>Color: <?php echo $row_DatosConsulta["Color"]; ?></h4>
@@ -326,10 +328,7 @@ else
 { //MOSTRAR SI NO HAY RESULTADOS ?>
     No hay resultados.
 	
-    <?php } 
-	
-	 // echo $_SESSION['email']= array("Nombre" => $row_DatosConsulta["Nombre"],"Color" => $row_DatosConsulta["Color"], "Imagen" => $row_DatosConsulta['Imagen'], "Precio"=>$row_DatosConsulta["PrecioUnidad"]);
-	?>
+    <?php } ?>
 	
 					
 					
@@ -425,11 +424,11 @@ if(isset($_POST['add'])){
 	
 	
    
-	</div>
 	
+	</div>
   </div>
 </div>
-  
+  </div>
   </div>
   
 <div class="w3-row w3-grayscale">

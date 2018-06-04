@@ -266,21 +266,7 @@ else
  </div>
 <!-- Subscribe section -->
   <!-- Footer -->
-  <?php 
-if(isset($_POST['correo'])){
-$Nombre = $_POST['Nombre'];
-$Mail = $_POST['Email'];
-$Mensaje = $_POST['Mensaje'];
-
-$formsent = mail('Mi-email', '¡Usuario Con problemas!', "Peticion de: $FonornMail: $MailrnMensaje: $Mensaje");
-if ($formsent) {
-    echo "<p>Hola, $Nombre. Hemos recibido tu mensaje, en breve reciviras una respuesta";
-}   else {
-    echo "Lo siento no se pudo entregar el mensaje.";
-    }
-
-}
-?>
+  
   <footer class="w3-padding-64 w3-light-grey w3-small w3-center" id="footer">
     <div class="w3-row-padding">
       <div class="w3-col s4">

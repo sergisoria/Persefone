@@ -326,21 +326,42 @@ else
 <div class="w3-row w3-grayscale">
 <div class="row">
 <div class="productos">
+<div class="w3-container">
 	<div class="column">
 		<?php echo '<img src="./images/productos/'.$value["Imagen"].'" width="155" height="200" alt=""/>'; ?>
 		</div>
+		<script>
+		function madreSoria(){
+				var selectedValue = document.getElementById("cantidad_seleccionada").value;
+		<?php $cantidad = "<script>document.write(selectedValue)</script>"?>}
+		</script>
 		<div class="column2">
 		<p><strong><?php echo $value["Precio"];?>€</strong></p>
-		<a style='color:black;text-decoration:none;font-size:120%;'href = "<?php echo 'prd.php?id='.$value["id"]?>"><p><?php echo $value["Nombre"];?></p></a>
+		<a style='color:black;text-decoration:none;font-size:120%;'href = "<?php echo 'prd.php?id='.$value["id"]."&talla=0"?>"><p><?php echo $value["Nombre"];?></p></a>
 		<p><?php echo $value["Color"];?></p>
 		<p>Talla: <?php echo $value["Talla"];?></p>
+		<label style="display: table-cell; vertical-align: top" data-bind="text: sizeLabel, visible: !hideLabels, disable: isDisabled">CANTIDAD:</label>
+		<form method="post">
+			<select name="cantidad_seleccionada"id="cantidad_seleccionada"onchange="madreSoria();">
+				<option value="1"<?php if( $cantidad == 1)echo 'selected="yes"'; ?>>1</option>
+				<option value="2"<?php if( $cantidad == 2)echo 'selected="yes"'; ?>>2</option>
+				<option value="3"<?php if( $cantidad == 3)echo 'selected="yes"'; ?>>3</option>
+				<option value="4"<?php if( $cantidad == 4)echo 'selected="yes"'; ?>>4</option>
+				<option value="5"<?php if( $cantidad == 5)echo 'selected="yes"'; ?>>5</option>
+				<option value="6"<?php if( $cantidad == 6)echo 'selected="yes"'; ?>>6</option>
+				<option value="7"<?php if( $cantidad == 7)echo 'selected="yes"'; ?>>7</option>
+				<option value="8"<?php if( $cantidad == 8)echo 'selected="yes"'; ?>>8</option>
+				<option value="9"<?php if( $cantidad == 9)echo 'selected="yes"'; ?>>9</option>
+			</select>
+		</form>
 		
 		
 		
-		
+		<p><strong><?php echo $cantidad;?></strong></p>
 		
 		
 		</div>
+		
 		<div class="column">
 		<a href="carritodecompras1.php?action=delete&id=<?php echo $value["id"];?>"class="closebtn"style='color:black;text-decoration:none;font-size:300%;'>×</a>	
 		</div>
@@ -385,7 +406,7 @@ function showSlides() {
  </div>
     </div>
 </div> 
-	 
+	</div> 
     
 	 <center><h3 style = 'font-weight:bold;'><?php echo number_format($total, 2); ?>€</h3></center>
 	 <center><a style='color:black;'href="inicio.php">ver productos</a></center>
