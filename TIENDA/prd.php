@@ -1,4 +1,4 @@
-<?php require_once('Connections/conexion.php'); ?>
+<?php require_once('conexion.php'); ?>
 <?php
     if(!isset($_SESSION)) 
     { 
@@ -206,7 +206,7 @@ ul.breadcrumb li a:hover {
   <div class="w3-container w3-display-container w3-padding-16">
     <i onclick="w3_close()" class="fa fa-remove w3-hide-large w3-button w3-display-topright"></i>
     <!-- <h3 class="w3-wide"><b>Persephónē</b></h3> -->
-	  <a href="inicio.php"><img src="logo2.png" /></a>
+	  <a href="index.php"><img src="logo2.png" /></a>
 
   </div>
    <div id="myOverlay2" class="overlay">
@@ -259,7 +259,7 @@ else
   <!-- Top header -->
 <header class="w3-container w3-xlarge">
      <p class="w3-right">
-      <a style='text-decoration:none;color:black;'href="carritodecompras1.php?cant=1" ><i class="fa fa-shopping-cart openBtn"></i></a>
+      <a style='text-decoration:none;color:black;'href="carritodecompras1.php" ><i class="fa fa-shopping-cart openBtn"></i></a>
       <i onclick="openSearch()" class="fa fa-search openBtn" id="search">
       </i>
     </p>
@@ -284,9 +284,7 @@ function closeSearch() {
 
   <div class="w3-row w3-grayscale">
   <div class="row">
- <div class="w3-container">
   <div class="column">
-  
   <?php 
 
 	// echo '<img  name="imagen" src="'.$row_DatosConsulta['Imagen'].'" width="400" height="550" alt=""/>';
@@ -295,7 +293,7 @@ function closeSearch() {
 ?>
 
   </div>
-   
+ 
   <div class="column">
     <h1><?php echo $row_DatosConsulta["Nombre"]; ?></h1>
     <h4>Color: <?php echo $row_DatosConsulta["Color"]; ?></h4>
@@ -328,7 +326,10 @@ else
 { //MOSTRAR SI NO HAY RESULTADOS ?>
     No hay resultados.
 	
-    <?php } ?>
+    <?php } 
+	
+	 // echo $_SESSION['email']= array("Nombre" => $row_DatosConsulta["Nombre"],"Color" => $row_DatosConsulta["Color"], "Imagen" => $row_DatosConsulta['Imagen'], "Precio"=>$row_DatosConsulta["PrecioUnidad"]);
+	?>
 	
 					
 					
@@ -388,11 +389,12 @@ if(isset($_POST['add'])){
 		'Color' => $color,
 		'Imagen' => $imagen,
 		'Precio' =>$precio,
-		'Talla'=>$talla
+		'Cant' => 1,
+		'Talla'=> $talla
 		
 		
 		);
-		$_SESSION["email"][$count] = $item_array;
+		array_push($_SESSION["email"], $item_array);
 		
 		}
 	}else{
@@ -402,6 +404,7 @@ if(isset($_POST['add'])){
 		'Color' => $color,
 		'Imagen' => $imagen,
 		'Precio' =>$precio,
+		'Cant' => 1,
 		'Talla'=>$talla
 		
 		);
@@ -424,11 +427,11 @@ if(isset($_POST['add'])){
 	
 	
    
-	
 	</div>
+	
   </div>
 </div>
-  </div>
+  
   </div>
   
 <div class="w3-row w3-grayscale">

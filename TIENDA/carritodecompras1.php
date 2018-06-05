@@ -1,5 +1,5 @@
 
-<?php require_once('Connections/conexion.php'); ?>
+<?php require_once('conexion.php'); ?>
 <?php
     if(!isset($_SESSION)) 
     { 
@@ -35,7 +35,42 @@ if(isset($_GET["action"])){
 	}
 }
 
+
+//para actualizar las cantidades
+if(isset($_POST["prdId"])) {
+	$id = $_POST["prdId"];
+	$newCant = $_POST["newCant"];
+	
+	$arregloCarrito = $_SESSION["email"];
+	$finalIndex = count($arregloCarrito);
+	for ($i=0; $i<$finalIndex; $i++) {
+		
+		if(!isset($arregloCarrito[$i])) {
+			$finalIndex++;
+			continue;
+		}
+		
+		if($arregloCarrito[$i]['id'] == $id) {
+			$arregloCarrito[$i]['Cant'] = $newCant;
+			break;
+		}
+		
+	}
+	
+	$_SESSION["email"] = $arregloCarrito;
+	/*
+	foreach($_SESSION["email"] as $key =>$value){
+		if($value['id']==$id) {
+			$value['Cant'] = $newCant;
+			break;
+		}
+	}
+	*/
+}
+
+
 ?>
+
 
 
 
@@ -52,6 +87,24 @@ if(isset($_GET["action"])){
 .w3-sidebar a {font-family: "Roboto", sans-serif}
 body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
 	/* Slideshow container */
+
+.btn {
+    position: absolute;
+    background-color: #ddd;
+    outline: 0;
+    color: black;
+    font-size: 12px;
+    padding: 10px 25px;
+    border: none;
+    cursor: pointer;
+    text-align: center;
+    display: inline-block;
+	text-decoration:none;
+}
+.btn:hover {
+   background-color: #555;
+  color: white;
+}
 	
 .slideshow-container {
   max-width: 1000px;
@@ -256,7 +309,7 @@ ul.breadcrumb li a:hover {
   <div class="w3-container w3-display-container w3-padding-16">
     <i onclick="w3_close()" class="fa fa-remove w3-hide-large w3-button w3-display-topright"></i>
     <!-- <h3 class="w3-wide"><b>Persephónē</b></h3> -->
-	  <a href="inicio.php"><img src="logo2.png" /></a>
+	  <a href="index.php"><img src="logo2.png" /></a>
   </div>
   
    <div id="myOverlay2" class="overlay">
@@ -317,6 +370,7 @@ else
     </p>
 	 </header>
 	<?php 
+	
 	$total =0;
 	if(!empty($_SESSION["email"])){
 		foreach($_SESSION["email"] as $key =>$value){
@@ -326,48 +380,47 @@ else
 <div class="w3-row w3-grayscale">
 <div class="row">
 <div class="productos">
-<div class="w3-container">
 	<div class="column">
 		<?php echo '<img src="./images/productos/'.$value["Imagen"].'" width="155" height="200" alt=""/>'; ?>
 		</div>
-		<script>
-		function madreSoria(){
-				var selectedValue = document.getElementById("cantidad_seleccionada").value;
-		<?php $cantidad = "<script>document.write(selectedValue)</script>"?>}
-		</script>
 		<div class="column2">
-		<p><strong><?php echo $value["Precio"];?>€</strong></p>
-		<a style='color:black;text-decoration:none;font-size:120%;'href = "<?php echo 'prd.php?id='.$value["id"]."&talla=0"?>"><p><?php echo $value["Nombre"];?></p></a>
+		<p><strong><?php echo $value["Precio"]*$value["Cant"];?>€</strong></p>
+		<a style='color:black;text-decoration:none;font-size:120%;'href = "<?php echo 'prd.php?id='.$value["id"]?>"><p><?php echo $value["Nombre"];?></p></a>
 		<p><?php echo $value["Color"];?></p>
 		<p>Talla: <?php echo $value["Talla"];?></p>
-		<label style="display: table-cell; vertical-align: top" data-bind="text: sizeLabel, visible: !hideLabels, disable: isDisabled">CANTIDAD:</label>
-		<form method="post">
-			<select name="cantidad_seleccionada"id="cantidad_seleccionada"onchange="madreSoria();">
-				<option value="1"<?php if( $cantidad == 1)echo 'selected="yes"'; ?>>1</option>
-				<option value="2"<?php if( $cantidad == 2)echo 'selected="yes"'; ?>>2</option>
-				<option value="3"<?php if( $cantidad == 3)echo 'selected="yes"'; ?>>3</option>
-				<option value="4"<?php if( $cantidad == 4)echo 'selected="yes"'; ?>>4</option>
-				<option value="5"<?php if( $cantidad == 5)echo 'selected="yes"'; ?>>5</option>
-				<option value="6"<?php if( $cantidad == 6)echo 'selected="yes"'; ?>>6</option>
-				<option value="7"<?php if( $cantidad == 7)echo 'selected="yes"'; ?>>7</option>
-				<option value="8"<?php if( $cantidad == 8)echo 'selected="yes"'; ?>>8</option>
-				<option value="9"<?php if( $cantidad == 9)echo 'selected="yes"'; ?>>9</option>
-			</select>
+		<p> 
+		<form action="" method="post">
+		<input name="prdId" type="hidden" value="<?php echo $value["id"];?>">
+		<label>Cantidad:</label>
+		<select name="newCant" onChange="this.form.submit()">
+			<option value="1" <?php if($value["Cant"] == 1) echo 'selected="true"'; ?>>1</option>
+			<option value="2" <?php if($value["Cant"] == 2) echo 'selected="true"'; ?>>2</option>
+			<option value="3" <?php if($value["Cant"] == 3) echo 'selected="true"'; ?>>3</option>
+			<option value="4" <?php if($value["Cant"] == 4) echo 'selected="true"'; ?>>4</option>
+			<option value="5" <?php if($value["Cant"] == 5) echo 'selected="true"'; ?>>5</option>
+			<option value="6" <?php if($value["Cant"] == 6) echo 'selected="true"'; ?>>6</option>
+			<option value="7" <?php if($value["Cant"] == 7) echo 'selected="true"'; ?>>7</option>
+			<option value="8" <?php if($value["Cant"] == 8) echo 'selected="true"'; ?>>8</option>
+			<option value="9" <?php if($value["Cant"] == 9) echo 'selected="true"'; ?>>9</option>
+		</select>
 		</form>
+		</p>
 		
 		
 		
-		<p><strong><?php echo $cantidad;?></strong></p>
+		
 		
 		
 		</div>
-		
 		<div class="column">
 		<a href="carritodecompras1.php?action=delete&id=<?php echo $value["id"];?>"class="closebtn"style='color:black;text-decoration:none;font-size:300%;'>×</a>	
 		</div>
+		</div>
+    </div>
+</div>
 	<?php
 
-$total = $total + (1 * $value["Precio"]);	
+$total = $total + ($value["Cant"] * $value["Precio"]);	
 		}
 	}
 	
@@ -403,13 +456,15 @@ function showSlides() {
     setTimeout(showSlides, 5000);
 }
 </script>
- </div>
-    </div>
-</div> 
-	</div> 
-    
+  
+	 
+    <input type="submit" name = "pay" class = "btn" value ="Pago"style="
+    right: 200px;
+">
 	 <center><h3 style = 'font-weight:bold;'><?php echo number_format($total, 2); ?>€</h3></center>
 	 <center><a style='color:black;'href="inicio.php">ver productos</a></center>
+
+
 
 
 <!-- Subscribe section -->
