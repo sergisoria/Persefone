@@ -1,11 +1,12 @@
-
-<?php require_once('conexion.php'); ?>
-<?php
-    if(!isset($_SESSION)) 
+<?php 
+ if(!isset($_SESSION)) 
     { 
         session_start(); 
 		
     }
+require_once('conexion.php'); ?>
+<?php
+   
 // if($_SESSION['email']){
   // echo 'Your name Is Here!  :) ';
   
@@ -76,7 +77,7 @@ if(isset($_POST["prdId"])) {
 
 <!DOCTYPE html>
 <html>
-<title>Persephónē</title>
+<title>Carrito | Persephónē</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="css_para_todo.css">
@@ -458,11 +459,29 @@ function showSlides() {
 </script>
   
 	 
-    <input type="submit" name = "pay" class = "btn" value ="Pago"style="
-    right: 200px;
-">
+    
+	
+
+
+<form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post"> 
+   <!--  Identify your business so that you can collect the payments. --> 
+   <input type="hidden" name="business" value="tiendapersefone@gmail.com"> 
+   <!-- Specify a PayPal Shopping Cart Add to Cart button. --> 
+   <input type="hidden" name="cmd" value="_cart"> 
+   <input type="hidden" name="add" value="1"> 
+   <!-- Specify details about the item that buyers will purchase. --> 
+   <input type="hidden" name="item_name" value="Persephone"> 
+   <input type="hidden" name="amount" value="<?php echo  number_format($total, 2);?>"> 
+   <input type="hidden" name="currency_code" value="EUR"> 
+   <!-- Display the payment button. --> 
+   <input type="image" name="submit" border="0" src="https://www.sandbox.paypal.com/es_ES/ES/i/btn/btn_buynowCC_LG.gif" alt="PayPal - The safer, easier way to pay online"style="
+    margin-left: 700px;"> 
+   
+  
+</form> 
+
 	 <center><h3 style = 'font-weight:bold;'><?php echo number_format($total, 2); ?>€</h3></center>
-	 <center><a style='color:black;'href="inicio.php">ver productos</a></center>
+	 <center><a style='color:black;'href="index.php">ver productos</a></center>
 
 
 
@@ -474,14 +493,25 @@ function showSlides() {
       <div class="w3-col s4">
         <h4>Contacta con nosotros</h4>
         <p>Preguntas? </p>
-        <form action="/action_page.php" target="_blank">
+        <form action="#"  method = "post">
           <p><input class="w3-input w3-border" type="text" placeholder="Nombre" name="Nombre" required></p>
           <p><input class="w3-input w3-border" type="text" placeholder="Correo Electronico" name="Email" required></p>
           <p><input class="w3-input w3-border" type="text" placeholder="Mensaje" name="Mensaje" required></p>
-          <button type="submit" class="w3-button w3-block w3-black">Enviar</button>
+          <button type="submit" name = "enviar_correo"class="w3-button w3-block w3-black">Enviar</button>
         </form>
       </div>
+<?php
+if(isset($_POST["enviar_correo"])){
+$to      = 'tiendapersefone@gmail.com';
+$subject = 'Ayuda';
+$message = $_POST["Mensaje"];
+$headers = 'From: '.$_POST["Email"]. "\r\n" .
+    'Reply-To:'.$_POST["Email"]. "\r\n" .
+    'X-Mailer: PHP/' . phpversion();
 
+mail($to, $subject, $message, $headers);
+}
+?> 
         <div class="w3-col s4">
         <h4>Sobre Persephónē</h4>
         <p><a href="about_us.php"style='color:black;'>Sobre Nosotros</a></p>
@@ -493,7 +523,7 @@ function showSlides() {
         <h4>Tienda</h4>
         <p><i class="fa fa-fw fa-map-marker"></i> Persephónē</p>
         <p><i class="fa fa-fw fa-phone"></i> 0044123123</p>
-        <p><i class="fa fa-fw fa-envelope"></i> Persephone@gmail.com</p>
+        <p><i class="fa fa-fw fa-envelope"></i> tiendaersephone@gmail.com</p>
         <h4>Nosotros Aceptamos</h4>
 <p><em class="fa fa-fw fa-credit-card"></em> Tarjeta de Credito</p>
         <br>
@@ -520,12 +550,25 @@ function showSlides() {
     border-left-width: 10px;
 ">NOVEDADES</h2>
       <p>Sé el primero enterarte de nuevos productos o nuevas ofertas</p>
-      <p><input class="w3-input w3-border" type="text" placeholder="Inserta el correo"></p>
-      <button type="button" class="w3-button w3-padding-large w3-blue w3-margin-bottom" onclick="document.getElementById('newsletter').style.display='none'">REGÍSTRATE AHORA</button>
-    </div>
+	  <form method="post"action="#">
+      <p><input class="w3-input w3-border" type="text" name="mail_novedades" placeholder="Inserta el correo"></p>
+      <button type="submit" name="novedades_correo" class="w3-button w3-padding-large w3-blue w3-margin-bottom" onclick="document.getElementById('newsletter').style.display='none'">REGÍSTRATE AHORA</button>
+   </form>
+   </div>
   </div>
 </div>
+<?php
+if(isset($_POST["novedades_correo"])){
+$to      = $_POST['mail_novedades'];
+$subject = 'Novedades';
+$message = 'Bienvenido, estamos agradecidos de que quieras enterarte de las novedades';
+$headers = 'From: tiendapersefone@gmail.com'. "\r\n" .
+    'Reply-To: tiendapersefone@gmail.com'. "\r\n" .
+    'X-Mailer: PHP/' . phpversion();
 
+mail($to, $subject, $message, $headers);
+}
+?> 
 <script>
 // Accordion
 function myAccFunc() {

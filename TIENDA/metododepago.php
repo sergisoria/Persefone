@@ -1,11 +1,12 @@
-﻿<?php require_once('conexion.php'); ?>
+<?php require_once('conexion.php'); ?>
 <?php
-$idtipos = $_GET['id'];
+$precio = $_GET['precio'];
 $variable_Consulta = "0";
 if (isset($VARIABLE)) {
   $variable_Consulta = $VARIABLE;
 }
-$query_DatosConsulta = sprintf("SELECT * FROM productos WHERE idTipos = '$idtipos'");
+//WHERE NOMBRECAMPO = %s ORDER BY NOMBRECAMPOFECHA DESC condicion ordenador todo
+$query_DatosConsulta = sprintf("SELECT * FROM productos");
 $DatosConsulta = mysqli_query($conn,  $query_DatosConsulta) or die(mysqli_error($conn));
 $row_DatosConsulta = mysqli_fetch_assoc($DatosConsulta);
 $totalRows_DatosConsulta = mysqli_num_rows($DatosConsulta);
@@ -15,25 +16,13 @@ $DatosConsultaTIPO = mysqli_query($conn,  $query_DatosConsultaTIPO) or die(mysql
 $row_DatosConsultaTIPO = mysqli_fetch_assoc($DatosConsultaTIPO);
 $totalRows_DatosConsultaTIPO = mysqli_num_rows($DatosConsultaTIPO);
 
-$idP =$row_DatosConsulta['idProducto']; 
-$query_DatosConsultaINV = sprintf("SELECT * FROM inventario where idProducto = '$idP'");
-$DatosConsultaINV = mysqli_query($conn,  $query_DatosConsultaINV) or die(mysqli_error($conn));
-$row_DatosConsultaINV = mysqli_fetch_assoc($DatosConsultaINV);
-$totalRows_DatosConsultaINV = mysqli_num_rows($DatosConsultaINV);
-
-
 //FINAL DE LA PARTE SUPERIOR
 ?>
-<?php
- if(isset($_POST['search'])){
-	 $query_DatosConsulta = sprintf("SELECT * FROM productos WHERE Nombre like '%".$_POST['search']."%'");
-	 $DatosConsulta = mysqli_query($conn,  $query_DatosConsulta) or die(mysqli_error($conn));
- }
- ?>
+
 
 <!DOCTYPE html>
 <html>
-<title>Persephónē</title>
+<title>Metodo de Pago | Persephónē</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="css_para_todo.css">
@@ -41,12 +30,62 @@ $totalRows_DatosConsultaINV = mysqli_num_rows($DatosConsultaINV);
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <style>
-.w3-container {text-decoration:none;}
 .w3-sidebar a {font-family: "Roboto", sans-serif}
 body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
+	
+	
+	body {
+  font-family: Arial;
+  font-size: 17px;
+  padding: 8px;
+}
 
 * {
-    box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.row {
+  display: -ms-flexbox; /* IE10 */
+  display: flex;
+  -ms-flex-wrap: wrap; /* IE10 */
+  flex-wrap: wrap;
+  margin: 0 -16px;
+}
+
+.col-25 {
+  -ms-flex: 25%; /* IE10 */
+  flex: 25%;
+}
+
+.col-50 {
+  -ms-flex: 50%; /* IE10 */
+  flex: 50%;
+}
+
+.col-75 {
+  -ms-flex: 75%; /* IE10 */
+  flex: 75%;
+}
+
+.col-25,
+.col-50,
+.col-75 {
+  padding: 0 16px;
+}
+
+.container {
+  background-color: #f2f2f2;
+  padding: 5px 20px 15px 20px;
+  border: 1px solid lightgrey;
+  border-radius: 3px;
+}
+
+input[type=text] {
+  width: 100%;
+  margin-bottom: 20px;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
 }
 
 .openBtn {
@@ -121,30 +160,59 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
 .overlay button:hover {
     background: #bbb;
 }
-ul.breadcrumb {
-    padding: 10px 16px;
-    list-style: none;
-  
+label {
+  margin-bottom: 10px;
+  display: block;
 }
-ul.breadcrumb li {
-    display: inline;
-    font-size: 20px;
+
+.icon-container {
+  margin-bottom: 20px;
+  padding: 7px 0;
+  font-size: 24px;
 }
-ul.breadcrumb li+li:before {
-    padding: 5px;
-  
-    content: "/";
+
+.btn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 12px;
+  margin: 10px 0;
+  border: none;
+  width: 100%;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 17px;
 }
-ul.breadcrumb li a {
-    color: #0275d8;
-    text-decoration: none;
+
+.btn:hover {
+  background-color: #45a049;
 }
-ul.breadcrumb li a:hover {
-    color: #01447e;
-    text-decoration: underline;
+
+a {
+  color: #2196F3;
+}
+
+hr {
+  border: 1px solid lightgrey;
+}
+
+span.price {
+  float: right;
+  color: grey;
+}
+
+/* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other (also change the direction - make the "cart" column go on top) */
+@media (max-width: 800px) {
+  .row {
+    flex-direction: column-reverse;
+  }
+  .col-25 {
+    margin-bottom: 20px;
+  }
 }
 </style>
+
 <body class="w3-content" style="max-width:1200px">
+
 
 <!-- Sidebar/menu -->
 <nav class="w3-sidebar w3-bar-block w3-white w3-collapse w3-top" style="z-index:3;width:250px" id="mySidebar">
@@ -152,38 +220,18 @@ ul.breadcrumb li a:hover {
     <i onclick="w3_close()" class="fa fa-remove w3-hide-large w3-button w3-display-topright"></i>
     <!-- <h3 class="w3-wide"><b>Persephónē</b></h3> -->
 	  <a href="index.php"><img src="logo2.png" /></a>
-
   </div>
-  <div id="myOverlay2" class="overlay">
+  
+   <div id="myOverlay2" class="overlay">
   <span class="closebtn" onclick="closeSearch()" title="Close Overlay">×</span>
   <div class="overlay-content">
-    <form action="/cat.php">
+    <form action="/action_page.php">
       <input type="text" placeholder="Buscar.." name="search"id="search">
       <button type="submit"><i class="fa fa-search"></i></button>
     </form>
   </div>
 </div>
-<?php
-//AQUI ES DONDE SE SACAN LOS DATOS, SE COMPRUEBA QUE HAY RESULTADOS
-if ($totalRows_DatosConsultaTIPO > 0) {
-do {?>
-  <div class=" w3-large w3-text-grey" style="font-weight:bold">
-	  <a href="<?php echo 'cat.php?id='.$row_DatosConsultaTIPO["idTipos"]?>" class="w3-bar-item w3-button"><?php echo $row_DatosConsultaTIPO["NombreTipo"];?></a>
-	</div>
 
-										
-
-  <?php
-	
-
-       } while ($row_DatosConsultaTIPO = mysqli_fetch_assoc($DatosConsultaTIPO));
-}
-else
-{ //MOSTRAR SI NO HAY RESULTADOS ?>
-    No hay resultados.
-    <?php } ?>
-  <a href="#footer" class="w3-bar-item w3-button w3-padding">Contacta con nosotros</a>
-  <a href="javascript:void(0)" class="w3-bar-item w3-button w3-padding" onclick="document.getElementById('newsletter').style.display='block'">Novedades</a>
 </nav>
 
 <!-- Top menu on small screens -->
@@ -200,16 +248,21 @@ else
 
   <!-- Push down content on small screens -->
   <div class="w3-hide-large" style="margin-top:83px"></div>
-
+  
   <!-- Top header -->
 <header class="w3-container w3-xlarge">
-     <!-- <p class="w3-left">A|X HOMBRE</p> -->
-    <p class="w3-right">
-     <a style='text-decoration:none;color:black;'href="carritodecompras1.php" ><i class="fa fa-shopping-cart openBtn"></i></a>
-      <i onclick="openSearch()" class="fa fa-search openBtn" id="search">
-      </i>
-    </p>
-    <script>
+  <p class="w3-left">Metodo de Pago</p>
+  
+  <p class="w3-right">
+ <a style='text-decoration:none;color:black;'href="carritodecompras1.php" ><i class="fa fa-shopping-cart openBtn"></i></a>
+  <i onClick="openSearch()" class="fa fa-search openBtn">
+  </i> 
+  
+ 
+  </p>
+ 
+  
+  <script>
 function openSearch() {
     document.getElementById("myOverlay2").style.display = "block";
 }
@@ -217,82 +270,93 @@ function openSearch() {
 function closeSearch() {
     document.getElementById("myOverlay2").style.display = "none";
 }
-
 </script>
-	
-  </header>
-
+ </header>
   <!-- Image header -->
-  <div class="w3-display-container w3-container"> </div>
-<ul class="breadcrumb">
-  <li><a  style='text-decoration:none;color:grey;'href="inicio.php">INICIO</a></li>
+<div class="w3-display-container w3-container"> </div>
 
-</ul>
-  <div class="w3-container w3-text-grey" id="jeans">
-    <p><?php echo $totalRows_DatosConsulta  ?> items</p>
+<h2>Precio de todo: <?php echo $precio;?> €</h2>
+<div class="row">
+  <div class="col-75">
+    <div class="container">
+      <form action="/action_page.php">
+      
+        <div class="row">
+          <div class="col-50">
+            <h3>Direccón de Envio</h3>
+            <label for="fname"><i class="fa fa-user"></i> Nombre Completo</label>
+            <input type="text" id="fname" name="firstname" placeholder="Oriol Valls">
+            <label for="email"><i class="fa fa-envelope"></i> Email</label>
+            <input type="text" id="email" name="email" placeholder="oriol@gmail.com">
+            <label for="adr"><i class="fa fa-address-card-o"></i> Dirección</label>
+            <input type="text" id="adr" name="address" placeholder="542 -  15 Rambla Paraiso">
+            <label for="city"><i class="fa fa-institution"></i> Ciudad</label>
+            <input type="text" id="city" name="city" placeholder="Florencia">
+
+            <div class="row">
+              <div class="col-50">
+                <label for="country">Pais</label>
+                <input type="text" id="contry" name="country" placeholder="Italia">
+              </div>
+              <div class="col-50">
+                <label for="zip">Codigo Postal</label>
+                <input type="text" id="zip" name="zip" placeholder="10001">
+              </div>
+            </div>
+          </div>
+
+          <div class="col-50">
+            <h3>Pago</h3>
+            <label for="fname">Targetas Aceptadas</label>
+            <div class="icon-container">
+              <i class="fa fa-cc-visa" style="color:navy;"></i>
+              <i class="fa fa-cc-amex" style="color:blue;"></i>
+              <i class="fa fa-cc-mastercard" style="color:red;"></i>
+              <i class="fa fa-cc-discover" style="color:orange;"></i>
+            </div>
+            <label for="cname">Nombre de la Targeta</label>
+            <input type="text" id="cname" name="cardname" placeholder="Oriol Valls Nuñez">
+            <label for="ccnum">Numero de la Targeta</label>
+            <input type="text" id="ccnum" name="cardnumber" placeholder="1111-2222-3333-4444">
+            <label for="expmonth">DNI</label>
+            <input type="text" id="expmonth" name="expmonth" placeholder="94256732D">
+            <div class="row">
+              <div class="col-50">
+                <label for="expyear">Caduca Final</label>
+                <input type="text" id="expyear" name="expyear" placeholder="2020">
+              </div>
+              <div class="col-50">
+
+                <label for="cvv">CVV</label>
+                <input type="text" id="cvv" name="cvv" placeholder="352">
+              </div>
+            </div>
+          </div>
+          
+        </div>
+        <label>
+          <input type="checkbox"  name="sameadr">  Aceptas las politicas de Persephónē
+        </label>
+        <input type="submit" value="Continue el Pago" class="btn">
+      </form>
+    </div>
   </div>
-<div class="w3-row w3-grayscale">
-  <?php
-  //style='text-decoration:none;color:black;'class="w3-container" 
-//AQUI ES DONDE SE SACAN LOS DATOS, SE COMPRUEBA QUE HAY RESULTADOS
-if ($totalRows_DatosConsulta > 0) {
-do {?>
-  <div class="w3-col l3 s6">
-<div class="w3-container">
-<a style='text-decoration:none;color:black;'class="w3-container"  href="<?php echo 'prd.php?id='.$row_DatosConsulta["idProducto"]."&talla=0"?>">
-<?php 
-	// echo '<img src="'.$row_DatosConsulta['Imagen'].'" width="180" height="230" alt=""/>';
-	echo '<img src="./images/productos/'.$row_DatosConsulta["Imagen"].'" width="180" height="230" alt=""/>';
-?>
-										
-<p><?php echo $row_DatosConsulta["Nombre"]; ?><br>
-<strong><?php echo $row_DatosConsulta["PrecioUnidad"]; ?>€</strong></p>
-</a>											
-										
-								
-							</div>
-						</div>
-  <?php
-	
-
-       } while ($row_DatosConsulta = mysqli_fetch_assoc($DatosConsulta));
-}
-else
-{ //MOSTRAR SI NO HAY RESULTADOS ?>
-    No hay resultados.
-    <?php } ?>
-
-  <!-- Product grid -->
- </div>
-<!-- Subscribe section -->
-  <!-- Footer -->
-  
-  <footer class="w3-padding-64 w3-light-grey w3-small w3-center" id="footer">
+     
+</div>
+ <footer class="w3-padding-64 w3-light-grey w3-small w3-center" id="footer">
     <div class="w3-row-padding">
       <div class="w3-col s4">
         <h4>Contacta con nosotros</h4>
         <p>Preguntas? </p>
-        <form action="#"  method = "post">
+        <form action="/action_page.php" target="_blank">
           <p><input class="w3-input w3-border" type="text" placeholder="Nombre" name="Nombre" required></p>
           <p><input class="w3-input w3-border" type="text" placeholder="Correo Electronico" name="Email" required></p>
           <p><input class="w3-input w3-border" type="text" placeholder="Mensaje" name="Mensaje" required></p>
-          <button type="submit" name = "enviar_correo"class="w3-button w3-block w3-black">Enviar</button>
+          <button type="submit" class="w3-button w3-block w3-black">Enviar</button>
         </form>
       </div>
-<?php
-if(isset($_POST["enviar_correo"])){
-$to      = 'tiendapersefone@gmail.com';
-$subject = 'Ayuda';
-$message = $_POST["Mensaje"];
-$headers = 'From: '.$_POST["Email"]. "\r\n" .
-    'Reply-To:'.$_POST["Email"]. "\r\n" .
-    'X-Mailer: PHP/' . phpversion();
 
-mail($to, $subject, $message, $headers);
-}
-?> 
-
-    <div class="w3-col s4">
+       <div class="w3-col s4">
         <h4>Sobre Persephónē</h4>
         <p><a href="about_us.php"style='color:black;'>Sobre Nosotros</a></p>
         <p><a href="#"style='color:black;'>Trabajar en Persephone</a></p>
@@ -319,7 +383,6 @@ mail($to, $subject, $message, $headers);
 
   <!-- End page content -->
 </div>
-
 <!-- Newsletter Modal -->
 <div id="newsletter" class="w3-modal">
   <div class="w3-modal-content w3-animate-zoom" style="padding:32px">
@@ -330,27 +393,15 @@ mail($to, $subject, $message, $headers);
     border-left-width: 10px;
 ">NOVEDADES</h2>
       <p>Sé el primero enterarte de nuevos productos o nuevas ofertas</p>
-      <form method="post"action="#">
-      <p><input class="w3-input w3-border" type="text" name="mail_novedades" placeholder="Inserta el correo"></p>
-      <button type="submit" name="novedades_correo" class="w3-button w3-padding-large w3-blue w3-margin-bottom" onclick="document.getElementById('newsletter').style.display='none'">REGÍSTRATE AHORA</button>
-   </form>
-   </div>
+      <p><input class="w3-input w3-border" type="text" placeholder="Inserta el correo"></p>
+      <button type="button" class="w3-button w3-padding-large w3-blue w3-margin-bottom" onclick="document.getElementById('newsletter').style.display='none'">REGÍSTRATE AHORA</button>
+    </div>
   </div>
 </div>
-<?php
-if(isset($_POST["novedades_correo"])){
-$to      = $_POST['mail_novedades'];
-$subject = 'Novedades';
-$message = 'Bienvenido, estamos agradecidos de que quieras enterarte de las novedades';
-$headers = 'From: tiendapersefone@gmail.com'. "\r\n" .
-    'Reply-To: tiendapersefone@gmail.com'. "\r\n" .
-    'X-Mailer: PHP/' . phpversion();
 
-mail($to, $subject, $message, $headers);
-}
-?> 
+
 <script>
-// Accordion
+// Accordion 
 function myAccFunc() {
     var x = document.getElementById("demoAcc");
     if (x.className.indexOf("w3-show") == -1) {
@@ -359,7 +410,6 @@ function myAccFunc() {
         x.className = x.className.replace(" w3-show", "");
     }
 }
-
 
 // Click on the "Jeans" link on page load to open the accordion for demo purposes
 document.getElementById("myBtn").click();
@@ -370,7 +420,7 @@ function w3_open() {
     document.getElementById("mySidebar").style.display = "block";
     document.getElementById("myOverlay").style.display = "block";
 }
-
+ 
 function w3_close() {
     document.getElementById("mySidebar").style.display = "none";
     document.getElementById("myOverlay").style.display = "none";
@@ -379,8 +429,3 @@ function w3_close() {
 
 </body>
 </html>
-
-<?php
-//AÑADIR AL FINAL DE LA PÁGINA
-mysqli_free_result($DatosConsulta);
-?>

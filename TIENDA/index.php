@@ -1,11 +1,12 @@
-﻿<?php require_once('conexion.php'); ?>
+<?php require_once('conexion.php'); ?>
 <?php
-$idtipos = $_GET['id'];
+
 $variable_Consulta = "0";
 if (isset($VARIABLE)) {
   $variable_Consulta = $VARIABLE;
 }
-$query_DatosConsulta = sprintf("SELECT * FROM productos WHERE idTipos = '$idtipos'");
+//WHERE NOMBRECAMPO = %s ORDER BY NOMBRECAMPOFECHA DESC condicion ordenador todo
+$query_DatosConsulta = sprintf("SELECT * FROM productos");
 $DatosConsulta = mysqli_query($conn,  $query_DatosConsulta) or die(mysqli_error($conn));
 $row_DatosConsulta = mysqli_fetch_assoc($DatosConsulta);
 $totalRows_DatosConsulta = mysqli_num_rows($DatosConsulta);
@@ -15,21 +16,8 @@ $DatosConsultaTIPO = mysqli_query($conn,  $query_DatosConsultaTIPO) or die(mysql
 $row_DatosConsultaTIPO = mysqli_fetch_assoc($DatosConsultaTIPO);
 $totalRows_DatosConsultaTIPO = mysqli_num_rows($DatosConsultaTIPO);
 
-$idP =$row_DatosConsulta['idProducto']; 
-$query_DatosConsultaINV = sprintf("SELECT * FROM inventario where idProducto = '$idP'");
-$DatosConsultaINV = mysqli_query($conn,  $query_DatosConsultaINV) or die(mysqli_error($conn));
-$row_DatosConsultaINV = mysqli_fetch_assoc($DatosConsultaINV);
-$totalRows_DatosConsultaINV = mysqli_num_rows($DatosConsultaINV);
-
-
 //FINAL DE LA PARTE SUPERIOR
 ?>
-<?php
- if(isset($_POST['search'])){
-	 $query_DatosConsulta = sprintf("SELECT * FROM productos WHERE Nombre like '%".$_POST['search']."%'");
-	 $DatosConsulta = mysqli_query($conn,  $query_DatosConsulta) or die(mysqli_error($conn));
- }
- ?>
 
 <!DOCTYPE html>
 <html>
@@ -41,11 +29,95 @@ $totalRows_DatosConsultaINV = mysqli_num_rows($DatosConsultaINV);
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <style>
-.w3-container {text-decoration:none;}
 .w3-sidebar a {font-family: "Roboto", sans-serif}
 body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
+	/* Slideshow container */
+	
+.slideshow-container {
+  max-width: 1000px;
+  position: relative;
+  margin: auto;
+}
 
-* {
+
+.active {
+  background-color: #717171;
+}
+
+/* Fading animation */
+.fade {
+  -webkit-animation-name: fade;
+  -webkit-animation-duration: 1.5s;
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@-webkit-keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
+
+@keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
+.container {
+    position: relative;
+    width: 100%;
+    max-width: 1000px;
+}
+
+.container img {
+    width: 100%;
+    height: auto;
+}
+
+.container .btn {
+    position: absolute;
+    top: 50%;
+    left: 40%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    background-color: #ddd;
+    outline: 0;
+    color: black;
+    font-size: 16px;
+    padding: 10px 25px;
+    border: none;
+    cursor: pointer;
+    text-align: center;
+    display: inline-block;
+	text-decoration:none;
+}
+.container .btn2 {
+    position: absolute;
+    top: 50%;
+    left: 60%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    background-color: #ddd;
+    outline: 0;
+    color: black;
+    font-size: 16px;
+    padding: 10px 25px;
+    border: none;
+    cursor: pointer;
+    text-align: center;
+    display: inline-block;
+	text-decoration:none;
+}
+
+.container .btn:hover {
+   background-color: #555;
+  color: white;
+}
+.container .btn2:hover {
+   background-color: #555;
+  color: white;
+}
+	
+
+{
     box-sizing: border-box;
 }
 
@@ -142,7 +214,9 @@ ul.breadcrumb li a {
 ul.breadcrumb li a:hover {
     color: #01447e;
     text-decoration: underline;
-}
+}	
+
+	
 </style>
 <body class="w3-content" style="max-width:1200px">
 
@@ -151,19 +225,21 @@ ul.breadcrumb li a:hover {
   <div class="w3-container w3-display-container w3-padding-16">
     <i onclick="w3_close()" class="fa fa-remove w3-hide-large w3-button w3-display-topright"></i>
     <!-- <h3 class="w3-wide"><b>Persephónē</b></h3> -->
-	  <a href="index.php"><img src="logo2.png" /></a>
-
+	 <a href="index.php"><img src="logo2.png" /></a>
   </div>
-  <div id="myOverlay2" class="overlay">
+  
+   <div id="myOverlay2" class="overlay">
   <span class="closebtn" onclick="closeSearch()" title="Close Overlay">×</span>
   <div class="overlay-content">
-    <form action="/cat.php">
+    <form action="/action_page.php">
       <input type="text" placeholder="Buscar.." name="search"id="search">
       <button type="submit"><i class="fa fa-search"></i></button>
     </form>
   </div>
 </div>
-<?php
+ 
+  
+  <?php
 //AQUI ES DONDE SE SACAN LOS DATOS, SE COMPRUEBA QUE HAY RESULTADOS
 if ($totalRows_DatosConsultaTIPO > 0) {
 do {?>
@@ -182,8 +258,8 @@ else
 { //MOSTRAR SI NO HAY RESULTADOS ?>
     No hay resultados.
     <?php } ?>
-  <a href="#footer" class="w3-bar-item w3-button w3-padding">Contacta con nosotros</a>
-  <a href="javascript:void(0)" class="w3-bar-item w3-button w3-padding" onclick="document.getElementById('newsletter').style.display='block'">Novedades</a>
+  <a href="#footer" class="w3-bar-item w3-button w3-padding">Contacta con nosotros</a> 
+  <a href="javascript:void(0)" class="w3-bar-item w3-button w3-padding" onclick="document.getElementById('newsletter').style.display='block'">Novedades</a> 
 </nav>
 
 <!-- Top menu on small screens -->
@@ -200,16 +276,15 @@ else
 
   <!-- Push down content on small screens -->
   <div class="w3-hide-large" style="margin-top:83px"></div>
-
+  
   <!-- Top header -->
-<header class="w3-container w3-xlarge">
-     <!-- <p class="w3-left">A|X HOMBRE</p> -->
+  <header class="w3-container w3-xlarge">
     <p class="w3-right">
-     <a style='text-decoration:none;color:black;'href="carritodecompras1.php" ><i class="fa fa-shopping-cart openBtn"></i></a>
-      <i onclick="openSearch()" class="fa fa-search openBtn" id="search">
-      </i>
+      <a style='text-decoration:none;color:black;'href="carritodecompras1.php" ><i class="fa fa-shopping-cart openBtn"></i></a>
+     <i onclick="openSearch()" class="fa fa-search openBtn">
+	</i>
     </p>
-    <script>
+	<script>
 function openSearch() {
     document.getElementById("myOverlay2").style.display = "block";
 }
@@ -217,62 +292,73 @@ function openSearch() {
 function closeSearch() {
     document.getElementById("myOverlay2").style.display = "none";
 }
-
 </script>
-	
   </header>
 
   <!-- Image header -->
-  <div class="w3-display-container w3-container"> </div>
-<ul class="breadcrumb">
-  <li><a  style='text-decoration:none;color:grey;'href="inicio.php">INICIO</a></li>
+  <div class="w3-display-container w3-container"> 
 
-</ul>
-  <div class="w3-container w3-text-grey" id="jeans">
-    <p><?php echo $totalRows_DatosConsulta  ?> items</p>
-  </div>
-<div class="w3-row w3-grayscale">
-  <?php
-  //style='text-decoration:none;color:black;'class="w3-container" 
-//AQUI ES DONDE SE SACAN LOS DATOS, SE COMPRUEBA QUE HAY RESULTADOS
-if ($totalRows_DatosConsulta > 0) {
-do {?>
-  <div class="w3-col l3 s6">
-<div class="w3-container">
-<a style='text-decoration:none;color:black;'class="w3-container"  href="<?php echo 'prd.php?id='.$row_DatosConsulta["idProducto"]."&talla=0"?>">
-<?php 
-	// echo '<img src="'.$row_DatosConsulta['Imagen'].'" width="180" height="230" alt=""/>';
-	echo '<img src="./images/productos/'.$row_DatosConsulta["Imagen"].'" width="180" height="230" alt=""/>';
-?>
-										
-<p><?php echo $row_DatosConsulta["Nombre"]; ?><br>
-<strong><?php echo $row_DatosConsulta["PrecioUnidad"]; ?>€</strong></p>
-</a>											
-										
-								
-							</div>
-						</div>
-  <?php
+<div class="container">
+  <img src="imagen_inicio.jpg" alt="Snow" style="width:100%">
+  <a href="cat.php?id=8" class="btn">HOMBRE</a>
+  <a href="cat.php?id=9" class="btn2">MUJER</a>
+ </div>	  
+	 
+
+<div class="slideshow-container">
+
+<div class="mySlides fade">
+  <img src="slide1.jpg" style="width:100%">
 	
+</div>
 
-       } while ($row_DatosConsulta = mysqli_fetch_assoc($DatosConsulta));
+<div class="mySlides fade">
+  <img src="slide2.jpg" style="width:100%">
+</div>
+
+<div class="mySlides fade">
+ <img src="slide3.jpg" style="width:100%">
+</div>
+
+</div>
+<br>
+
+<div style="text-align:center">
+  <span class="dot"></span> 
+  <span class="dot"></span> 
+  <span class="dot"></span> 
+</div>
+  </div>
+<script>
+var slideIndex = 0;
+showSlides();
+
+function showSlides() {
+    var i;
+    var slides = document.getElementsByClassName("mySlides");
+    var dots = document.getElementsByClassName("dot");
+    for (i = 0; i < slides.length; i++) {
+       slides[i].style.display = "none";  
+    }
+    slideIndex++;
+    if (slideIndex > slides.length) {slideIndex = 1}    
+    for (i = 0; i < dots.length; i++) {
+        dots[i].className = dots[i].className.replace(" active", "");
+    }
+    slides[slideIndex-1].style.display = "block";  
+    dots[slideIndex-1].className += " active";
+    setTimeout(showSlides, 5000);
 }
-else
-{ //MOSTRAR SI NO HAY RESULTADOS ?>
-    No hay resultados.
-    <?php } ?>
-
-  <!-- Product grid -->
- </div>
+</script>
+ 
 <!-- Subscribe section -->
   <!-- Footer -->
-  
   <footer class="w3-padding-64 w3-light-grey w3-small w3-center" id="footer">
     <div class="w3-row-padding">
       <div class="w3-col s4">
         <h4>Contacta con nosotros</h4>
         <p>Preguntas? </p>
-        <form action="#"  method = "post">
+       <form action="#"  method = "post">
           <p><input class="w3-input w3-border" type="text" placeholder="Nombre" name="Nombre" required></p>
           <p><input class="w3-input w3-border" type="text" placeholder="Correo Electronico" name="Email" required></p>
           <p><input class="w3-input w3-border" type="text" placeholder="Mensaje" name="Mensaje" required></p>
@@ -291,8 +377,7 @@ $headers = 'From: '.$_POST["Email"]. "\r\n" .
 mail($to, $subject, $message, $headers);
 }
 ?> 
-
-    <div class="w3-col s4">
+       <div class="w3-col s4">
         <h4>Sobre Persephónē</h4>
         <p><a href="about_us.php"style='color:black;'>Sobre Nosotros</a></p>
         <p><a href="#"style='color:black;'>Trabajar en Persephone</a></p>
@@ -303,7 +388,7 @@ mail($to, $subject, $message, $headers);
         <h4>Tienda</h4>
         <p><i class="fa fa-fw fa-map-marker"></i> Persephónē</p>
         <p><i class="fa fa-fw fa-phone"></i> 0044123123</p>
-        <p><i class="fa fa-fw fa-envelope"></i> tiendaersephone@gmail.com</p>
+       <p><i class="fa fa-fw fa-envelope"></i> tiendaersephone@gmail.com</p>
         <h4>Nosotros Aceptamos</h4>
 <p><em class="fa fa-fw fa-credit-card"></em> Tarjeta de Credito</p>
         <br>
@@ -315,7 +400,7 @@ mail($to, $subject, $message, $headers);
     </div>
   </footer>
 
-
+ 
 
   <!-- End page content -->
 </div>
@@ -330,7 +415,7 @@ mail($to, $subject, $message, $headers);
     border-left-width: 10px;
 ">NOVEDADES</h2>
       <p>Sé el primero enterarte de nuevos productos o nuevas ofertas</p>
-      <form method="post"action="#">
+     <form method="post"action="#">
       <p><input class="w3-input w3-border" type="text" name="mail_novedades" placeholder="Inserta el correo"></p>
       <button type="submit" name="novedades_correo" class="w3-button w3-padding-large w3-blue w3-margin-bottom" onclick="document.getElementById('newsletter').style.display='none'">REGÍSTRATE AHORA</button>
    </form>
@@ -350,7 +435,7 @@ mail($to, $subject, $message, $headers);
 }
 ?> 
 <script>
-// Accordion
+// Accordion 
 function myAccFunc() {
     var x = document.getElementById("demoAcc");
     if (x.className.indexOf("w3-show") == -1) {
@@ -359,7 +444,6 @@ function myAccFunc() {
         x.className = x.className.replace(" w3-show", "");
     }
 }
-
 
 // Click on the "Jeans" link on page load to open the accordion for demo purposes
 document.getElementById("myBtn").click();
@@ -370,17 +454,14 @@ function w3_open() {
     document.getElementById("mySidebar").style.display = "block";
     document.getElementById("myOverlay").style.display = "block";
 }
-
+ 
 function w3_close() {
     document.getElementById("mySidebar").style.display = "none";
     document.getElementById("myOverlay").style.display = "none";
 }
+	
+
 </script>
 
 </body>
 </html>
-
-<?php
-//AÑADIR AL FINAL DE LA PÁGINA
-mysqli_free_result($DatosConsulta);
-?>

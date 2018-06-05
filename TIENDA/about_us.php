@@ -1,4 +1,4 @@
-<?php require_once('Connections/conexion.php'); ?>
+<?php require_once('conexion.php'); ?>
 <?php
 
 $variable_Consulta = "0";
@@ -17,7 +17,7 @@ $totalRows_DatosConsultaTIPO = mysqli_num_rows($DatosConsultaTIPO);
 
 <!DOCTYPE html>
 <html>
-<title>Persephónē</title>
+<title>Sobre Nosotros | Persephónē</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="css_para_todo.css">
@@ -221,7 +221,7 @@ ul.breadcrumb li a:hover {
   <div class="w3-container w3-display-container w3-padding-16">
     <i onclick="w3_close()" class="fa fa-remove w3-hide-large w3-button w3-display-topright"></i>
     <!-- <h3 class="w3-wide"><b>Persephónē</b></h3> -->
-	  <a href="inicio.php"><img src="logo2.png" /></a>
+	  <a href="index.php"><img src="logo2.png" /></a>
   </div>
   
    <div id="myOverlay2" class="overlay">
@@ -319,13 +319,25 @@ function closeSearch() {
       <div class="w3-col s4">
         <h4>Contacta con nosotros</h4>
         <p>Necesitas ayuda? </p>
-        <form action="/action_page.php" target="_blank">
+        <form action="#"  method = "post">
           <p><input class="w3-input w3-border" type="text" placeholder="Nombre" name="Nombre" required></p>
           <p><input class="w3-input w3-border" type="text" placeholder="Correo Electronico" name="Email" required></p>
           <p><input class="w3-input w3-border" type="text" placeholder="Mensaje" name="Mensaje" required></p>
-          <button type="submit" class="w3-button w3-block w3-black">Enviar</button>
+          <button type="submit" name = "enviar_correo"class="w3-button w3-block w3-black">Enviar</button>
         </form>
       </div>
+<?php
+if(isset($_POST["enviar_correo"])){
+$to      = 'tiendapersefone@gmail.com';
+$subject = 'Ayuda';
+$message = $_POST["Mensaje"];
+$headers = 'From: '.$_POST["Email"]. "\r\n" .
+    'Reply-To:'.$_POST["Email"]. "\r\n" .
+    'X-Mailer: PHP/' . phpversion();
+
+mail($to, $subject, $message, $headers);
+}
+?> 
 
       <div class="w3-col s4">
         <h4>Sobre Persephónē</h4>
@@ -338,7 +350,7 @@ function closeSearch() {
         <h4>Tienda</h4>
         <p><i class="fa fa-fw fa-map-marker"></i> Persephónē</p>
         <p><i class="fa fa-fw fa-phone"></i> 0044123123</p>
-        <p><i class="fa fa-fw fa-envelope"></i> Persephone@gmail.com</p>
+        <p><i class="fa fa-fw fa-envelope"></i> tiendaersephone@gmail.com</p>
         <h4>Nosotros Aceptamos</h4>
 <p><em class="fa fa-fw fa-credit-card"></em> Tarjeta de Credito</p>
         <br>
@@ -365,12 +377,25 @@ function closeSearch() {
     border-left-width: 10px;
 ">NOVEDADES</h2>
       <p>Sé el primero enterarte de nuevos productos o nuevas ofertas</p>
-      <p><input class="w3-input w3-border" type="text" placeholder="Inserta el correo"></p>
-      <button type="button" class="w3-button w3-padding-large w3-blue w3-margin-bottom" onclick="document.getElementById('newsletter').style.display='none'">REGÍSTRATE AHORA</button>
-    </div>
+      <form method="post"action="#">
+      <p><input class="w3-input w3-border" type="text" name="mail_novedades" placeholder="Inserta el correo"></p>
+      <button type="submit" name="novedades_correo" class="w3-button w3-padding-large w3-blue w3-margin-bottom" onclick="document.getElementById('newsletter').style.display='none'">REGÍSTRATE AHORA</button>
+   </form>
+   </div>
   </div>
 </div>
+<?php
+if(isset($_POST["novedades_correo"])){
+$to      = $_POST['mail_novedades'];
+$subject = 'Novedades';
+$message = 'Bienvenido, estamos agradecidos de que quieras enterarte de las novedades';
+$headers = 'From: tiendapersefone@gmail.com'. "\r\n" .
+    'Reply-To: tiendapersefone@gmail.com'. "\r\n" .
+    'X-Mailer: PHP/' . phpversion();
 
+mail($to, $subject, $message, $headers);
+}
+?> 
 <script>
 // Accordion 
 function myAccFunc() {
